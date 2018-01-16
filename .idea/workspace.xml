@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="281b0b22-c40a-4a53-942a-185d0829a6c7" name="Default" comment="" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="guokang" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.9705882">
+              <caret line="156" column="67" selection-start-line="156" selection-start-column="59" selection-end-line="156" selection-end-column="67" />
+              <folding>
+                <element signature="e#7#483#0#PHP" expanded="true" />
+                <marker date="1516104879796" expanded="true" signature="4472:4568" placeholder="SELECT artic... ecs_article" />
+                <marker date="1516104879796" expanded="true" signature="4472:4577" placeholder="SELECT artic... ecs_article" />
+                <marker date="1516104879796" expanded="true" signature="4682:4790" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="4835:4916" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="5044:6408" placeholder="SELECT cat_n... .$ecs-&gt;table(" />
+                <marker date="1516104879796" expanded="true" signature="5108:5216" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="5261:5342" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="5530:5638" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="5685:5766" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="5962:6070" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="6116:6197" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="6374:6387" placeholder="/* 首页主广告设置 *... " />
+                <marker date="1516104879796" expanded="true" signature="6502:6588" placeholder="SELECT ad_ty... ${$ecs-&gt;table(&quot;ad_custom&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="6952:7116" placeholder="SELECT c.cat... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
+                <marker date="1516104879796" expanded="true" signature="7836:8176" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
+                <marker date="1516104879796" expanded="true" signature="13981:14089" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.dwt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/index.dwt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-3.6773007">
+              <caret line="390" column="63" selection-start-line="390" selection-start-column="63" selection-end-line="390" selection-end-column="63" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_header.lbi" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/page_header.lbi">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.888889">
+              <caret line="65" column="86" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index_category_tree.lbi" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/index_category_tree.lbi">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.5">
+              <caret line="10" column="25" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>mysql</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/check_file.php" />
+        <option value="$PROJECT_DIR$/source/check_file.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/includes/cls_ecshop.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/includes/cls_mysql.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/api/init.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/api/client/includes/init.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/api/client/api.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/personal_index.html" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/index.html" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/index_banner.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/page_header.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/admin/templates/comment_info.htm" />
+        <option value="$PROJECT_DIR$/source/ecshop/admin/templates/category_info.htm" />
+        <option value="$PROJECT_DIR$/source/ecshop/admin/category.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/ad_position.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/index_category_tree.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/index.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/index.dwt" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="102" />
+    <option name="y" value="4" />
+    <option name="width" value="1706" />
+    <option name="height" value="995" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="添加" />
+    <OptionsSetting value="true" id="移除" />
+    <OptionsSetting value="true" id="签出" />
+    <OptionsSetting value="true" id="更新" />
+    <OptionsSetting value="true" id="状态" />
+    <OptionsSetting value="true" id="编辑" />
+    <ConfirmationsSetting value="0" id="添加" />
+    <ConfirmationsSetting value="0" id="移除" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../snimayweb" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="281b0b22-c40a-4a53-942a-185d0829a6c7" name="Default" comment="" />
+      <created>1511493362009</created>
+      <option name="number" value="Default" />
+      <updated>1511493362009</updated>
+      <workItem from="1511493364080" duration="226000" />
+      <workItem from="1511493739152" duration="1402000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="1628000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="102" y="4" width="1706" height="995" extended-state="0" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17573965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#483#0#PHP" expanded="true" />
+            <marker date="1516104879796" expanded="true" signature="4472:4568" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4472:4577" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4682:4790" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="4835:4916" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5044:6408" placeholder="SELECT cat_n... .$ecs-&gt;table(" />
+            <marker date="1516104879796" expanded="true" signature="5108:5216" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5261:5342" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5530:5638" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5685:5766" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5962:6070" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6116:6197" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6374:6387" placeholder="/* 首页主广告设置 *... " />
+            <marker date="1516104879796" expanded="true" signature="6502:6588" placeholder="SELECT ad_ty... ${$ecs-&gt;table(&quot;ad_custom&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6952:7116" placeholder="SELECT c.cat... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="7836:8176" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
+            <marker date="1516104879796" expanded="true" signature="13981:14089" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/index.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yajie/app/user/view/repair/desc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="55" column="2" selection-start-line="55" selection-start-column="2" selection-end-line="68" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/ad_position.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/index_banner.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/page_header.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="59" selection-start-line="66" selection-start-column="59" selection-end-line="66" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/index_category_tree.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="37" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="28" selection-start-line="160" selection-start-column="28" selection-end-line="160" selection-end-column="28" />
+          <folding>
+            <element signature="e#7#483#0#PHP" expanded="true" />
+            <marker date="1516104879796" expanded="true" signature="4472:4568" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4472:4577" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4682:4790" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="4835:4916" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5044:6408" placeholder="SELECT cat_n... .$ecs-&gt;table(" />
+            <marker date="1516104879796" expanded="true" signature="5108:5216" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5261:5342" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5530:5638" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5685:5766" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5962:6070" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6116:6197" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6374:6387" placeholder="/* 首页主广告设置 *... " />
+            <marker date="1516104879796" expanded="true" signature="6502:6588" placeholder="SELECT ad_ty... ${$ecs-&gt;table(&quot;ad_custom&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6952:7116" placeholder="SELECT c.cat... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="7836:8176" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
+            <marker date="1516104879796" expanded="true" signature="13981:14089" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="20" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
+          <folding>
+            <element signature="e#7#483#0#PHP" expanded="true" />
+            <marker date="1516104879796" expanded="true" signature="4472:4568" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4472:4577" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4682:4790" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="4835:4916" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5044:6408" placeholder="SELECT cat_n... .$ecs-&gt;table(" />
+            <marker date="1516104879796" expanded="true" signature="5108:5216" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5261:5342" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5530:5638" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5685:5766" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5962:6070" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6116:6197" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6374:6387" placeholder="/* 首页主广告设置 *... " />
+            <marker date="1516104879796" expanded="true" signature="6502:6588" placeholder="SELECT ad_ty... ${$ecs-&gt;table(&quot;ad_custom&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6952:7116" placeholder="SELECT c.cat... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="7836:8176" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
+            <marker date="1516104879796" expanded="true" signature="13981:14089" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/cls_template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/data/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/api/uc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09878049">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/cls_ecshop.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52682924">
+          <caret line="36" column="7" selection-start-line="36" selection-start-column="7" selection-end-line="36" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/check_file.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49390244">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/api/client/includes/lib_api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.8768293">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/api/client/includes/lib_struct.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.304878">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/cert/index.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/fckeditor/editor/fckdebug.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24268293">
+          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/api/client/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16463415">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/api/client/includes/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49390244">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#530#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/data/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/cls_template.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.032926828">
+          <caret line="316" column="13" selection-start-line="316" selection-start-column="13" selection-end-line="316" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default11/library/ad_position.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.033128835">
+          <caret line="1" column="43" selection-start-line="1" selection-start-column="43" selection-end-line="1" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default11/library/index_banner.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.388889">
+          <caret line="30" column="55" selection-start-line="30" selection-start-column="52" selection-end-line="30" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/cls_json.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.5717793">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/lib_main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.9325154">
+          <caret line="141" column="9" selection-start-line="141" selection-start-column="9" selection-end-line="141" selection-end-column="9" />
+          <folding>
+            <marker date="1506592826000" expanded="true" signature="1751:1846" placeholder="SELECT speci... ${$GLOBALS['ecs']-&gt;table('user_rank')}" />
+            <marker date="1506592826000" expanded="true" signature="2318:2488" placeholder="SELECT rank_... ${$GLOBALS['ecs']-&gt;table('user_rank')}" />
+            <marker date="1506592826000" expanded="true" signature="2934:3041" placeholder="SELECT rank_... ${$GLOBALS['ecs']-&gt;table('user_rank')}" />
+            <marker date="1506592826000" expanded="true" signature="9260:9300" placeholder="SELECT cat_i... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1506592826000" expanded="true" signature="11045:11226" placeholder="SELECT id, n... ${$GLOBALS['ecs']-&gt;table('template')}" />
+            <marker date="1506592826000" expanded="true" signature="12410:12504" placeholder="SELECT cat_n... ${$GLOBALS['ecs']-&gt;table('article_cat')}" />
+            <marker date="1506592826000" expanded="true" signature="24879:25047" placeholder="SELECT SUM(o... ${$GLOBALS['ecs']-&gt;table('vote_option')}" />
+            <marker date="1506592826000" expanded="true" signature="33985:34443" placeholder="INSERT INTO ${$GLOBALS['ecs']-&gt;table('stats')}... " />
+            <marker date="1506592826000" expanded="true" signature="47153:47264" placeholder="DELETE FROM " />
+            <marker date="1506592826000" expanded="true" signature="47520:47674" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('comment')}" />
+            <marker date="1506592826000" expanded="true" signature="47859:48050" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('comment')}" />
+            <marker date="1506592826000" expanded="true" signature="48951:49049" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('comment')}" />
+            <marker date="1506592826000" expanded="true" signature="54338:54419" placeholder="SELECT user_... ${$GLOBALS['ecs']-&gt;table('users')}" />
+            <marker date="1506592826000" expanded="true" signature="54810:54902" placeholder="SELECT paren... ${$GLOBALS['ecs']-&gt;table('article_cat')}" />
+            <marker date="1506592826000" expanded="true" signature="55099:55196" placeholder="SELECT count... ${$GLOBALS['ecs']-&gt;table('article_cat')}" />
+            <marker date="1506592826000" expanded="true" signature="57224:57264" placeholder="SELECT cat_i... ${$GLOBALS['ecs']-&gt;table('article_cat')}" />
+            <marker date="1506592826000" expanded="true" signature="58505:58707" placeholder="SELECT libra... ${$GLOBALS['ecs']-&gt;table('template')}" />
+            <marker date="1506592826000" expanded="true" signature="59734:59842" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('nav')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default11/index.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default11/library/index_category_tree.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0">
+          <caret line="4" column="46" selection-start-line="0" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/personal_index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23190184">
+          <caret line="8" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="9" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default11/library/page_header.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6551725">
+          <caret line="48" column="10" selection-start-line="48" selection-start-column="10" selection-end-line="48" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/lib_goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.3895276">
+          <caret line="90" column="69" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="69" />
+          <folding>
+            <marker date="1505995670000" expanded="true" signature="982:1071" placeholder="SELECT paren... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1505995670000" expanded="true" signature="1268:1378" placeholder="SELECT count... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1505995670000" expanded="true" signature="2442:2550" placeholder="SELECT count... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1505995670000" expanded="true" signature="32900:32988" placeholder="SELECT cat_n... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1505995670000" expanded="true" signature="35811:35902" placeholder="SELECT brand... ${$GLOBALS['ecs']-&gt;table('brand')}" />
+            <marker date="1505995670000" expanded="true" signature="36363:36439" placeholder="SELECT goods... ${$GLOBALS['ecs']-&gt;table('goods_cat')}" />
+            <marker date="1505995670000" expanded="true" signature="37543:37636" placeholder="SELECT SUM(a... ${$GLOBALS['ecs']-&gt;table('goods_attr')}" />
+            <marker date="1505995670000" expanded="true" signature="43616:43703" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('goods_activity')}" />
+            <marker date="1505995670000" expanded="true" signature="44737:44856" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('auction_log')}" />
+            <marker date="1505995670000" expanded="true" signature="48556:48660" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('favourable_activity')}" />
+            <marker date="1505995670000" expanded="true" signature="49382:49476" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('wholesale')}" />
+            <marker date="1505995670000" expanded="true" signature="54648:54773" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('products')}" />
+            <marker date="1505995670000" expanded="true" signature="54994:55211" placeholder="SELECT sum(g... ${$GLOBALS['ecs']-&gt;table('order_goods')}" />
+            <marker date="1505995670000" expanded="true" signature="55279:55373" placeholder="SELECT virtu... ${$GLOBALS['ecs']-&gt;table('goods')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yajie/app/user/view/repair/show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37055215">
+          <caret line="95" column="31" selection-start-line="95" selection-start-column="31" selection-end-line="95" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/lib_insert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="33.35294">
+          <caret line="143" column="5" selection-start-line="143" selection-start-column="5" selection-end-line="143" selection-end-column="5" />
+          <folding>
+            <marker date="1505995670000" expanded="true" signature="1609:1630" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('sessions')}" />
+            <marker date="1505995670000" expanded="true" signature="2245:2430" placeholder="SELECT goods... ${$GLOBALS['ecs']-&gt;table('goods')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/_superglobals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.2858896">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../yajie/app/user/view/repair/desc.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20490797">
+          <caret line="55" column="2" selection-start-line="55" selection-start-column="2" selection-end-line="68" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/comment_info.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41273886">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/cls_mysql.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.796319">
+          <caret line="643" column="76" selection-start-line="643" selection-start-column="54" selection-end-line="643" selection-end-column="76" />
+          <folding>
+            <marker date="1516010604245" expanded="true" signature="16925:17024" placeholder="INSERT INTO ${$table}... " />
+            <marker date="1516010604245" expanded="true" signature="18988:19087" placeholder="INSERT INTO ${$table}... " />
+            <marker date="1516010604245" expanded="true" signature="19277:19376" placeholder="INSERT INTO ${$table}... " />
+            <marker date="1516010604245" expanded="true" signature="20348:20382" placeholder="SELECT COUNT... ${$table}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/category_info.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.9897957">
+          <caret line="29" column="45" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/category.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47126436">
+          <caret line="263" column="84" selection-start-line="263" selection-start-column="84" selection-end-line="263" selection-end-column="84" />
+          <folding>
+            <element signature="e#7#490#0#PHP" expanded="true" />
+            <marker date="1516101712742" expanded="true" signature="4693:4767" placeholder="SELECT max(v... ${$ecs-&gt;table('nav')}" />
+            <marker date="1516101712742" expanded="true" signature="4845:5139" placeholder="INSERT INTO ${$ecs-&gt;table('nav')}... " />
+            <marker date="1516101712742" expanded="true" signature="6224:6312" placeholder="SELECT cat_i... ${$ecs-&gt;table('attribute')}" />
+            <marker date="1516101712742" expanded="true" signature="7192:7269" placeholder="SELECT recom... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
+            <marker date="1516101712742" expanded="true" signature="8201:8332" placeholder="INSERT INTO ${$ecs-&gt;table('category')}... " />
+            <marker date="1516101712742" expanded="true" signature="11139:11228" placeholder="SELECT cat_n... ${$ecs-&gt;table('category')}" />
+            <marker date="1516101712742" expanded="true" signature="11816:11922" placeholder="SELECT id FR... ${$ecs-&gt;table('nav')}" />
+            <marker date="1516101712742" expanded="true" signature="12048:12122" placeholder="SELECT max(v... ${$ecs-&gt;table('nav')}" />
+            <marker date="1516101712742" expanded="true" signature="12284:12470" placeholder="INSERT INTO ${$ecs-&gt;table('nav')}... " />
+            <marker date="1516101712742" expanded="true" signature="17044:17118" placeholder="SELECT max(v... ${$ecs-&gt;table('nav')}" />
+            <marker date="1516101712742" expanded="true" signature="17187:17259" placeholder="SELECT cat_n... ${$ecs-&gt;table('category')}" />
+            <marker date="1516101712742" expanded="true" signature="17427:17529" placeholder="SELECT id FR... ${$ecs-&gt;table('nav')}" />
+            <marker date="1516101712742" expanded="true" signature="17621:17795" placeholder="INSERT INTO ${$ecs-&gt;table('nav')}... " />
+            <marker date="1516101712742" expanded="true" signature="19124:19197" placeholder="SELECT cat_n... ${$ecs-&gt;table('category')}" />
+            <marker date="1516101712742" expanded="true" signature="19254:19330" placeholder="SELECT COUNT... ${$ecs-&gt;table('category')}" />
+            <marker date="1516101712742" expanded="true" signature="19389:19459" placeholder="SELECT COUNT... ${$ecs-&gt;table('goods')}" />
+            <marker date="1516101712742" expanded="true" signature="19580:19646" placeholder="DELETE FROM " />
+            <marker date="1516101712742" expanded="true" signature="19713:19816" placeholder="DELETE FROM " />
+            <marker date="1516101712742" expanded="true" signature="20946:21031" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1516101712742" expanded="true" signature="22319:22407" placeholder="SELECT recom... ${$GLOBALS['ecs']-&gt;table(&quot;cat_recommend&quot;)}" />
+            <marker date="1516101712742" expanded="true" signature="22604:22715" placeholder="INSERT INTO ${$GLOBALS['ecs']-&gt;table(&quot;cat_recommend&quot;)}... " />
+            <marker date="1516101712742" expanded="true" signature="23087:23187" placeholder="DELETE FROM " />
+            <marker date="1516101712742" expanded="true" signature="23508:23619" placeholder="INSERT INTO ${$GLOBALS['ecs']-&gt;table(&quot;cat_recommend&quot;)}... " />
+            <marker date="1516101712742" expanded="true" signature="23717:23789" placeholder="DELETE FROM " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/index_banner.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17177914">
+          <caret line="28" column="29" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/api/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33251533">
+          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/ad_position.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/page_header.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.888889">
+          <caret line="65" column="86" selection-start-line="65" selection-start-column="10" selection-end-line="65" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/index_category_tree.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.5">
+          <caret line="10" column="25" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.9705882">
+          <caret line="156" column="67" selection-start-line="156" selection-start-column="59" selection-end-line="156" selection-end-column="67" />
+          <folding>
+            <element signature="e#7#483#0#PHP" expanded="true" />
+            <marker date="1516104879796" expanded="true" signature="4472:4568" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4472:4577" placeholder="SELECT artic... ecs_article" />
+            <marker date="1516104879796" expanded="true" signature="4682:4790" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="4835:4916" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5044:6408" placeholder="SELECT cat_n... .$ecs-&gt;table(" />
+            <marker date="1516104879796" expanded="true" signature="5108:5216" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5261:5342" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5530:5638" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5685:5766" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="5962:6070" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6116:6197" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6374:6387" placeholder="/* 首页主广告设置 *... " />
+            <marker date="1516104879796" expanded="true" signature="6502:6588" placeholder="SELECT ad_ty... ${$ecs-&gt;table(&quot;ad_custom&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="6952:7116" placeholder="SELECT c.cat... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
+            <marker date="1516104879796" expanded="true" signature="7836:8176" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
+            <marker date="1516104879796" expanded="true" signature="13981:14089" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/index.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.6773007">
+          <caret line="390" column="63" selection-start-line="390" selection-start-column="63" selection-end-line="390" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
