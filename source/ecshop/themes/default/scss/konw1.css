@@ -1,0 +1,288 @@
+#banner {
+  width: 100%;
+  overflow: hidden;
+  position: relative; }
+  #banner img {
+    display: block;
+    left: 50%; }
+  #banner .bnBox {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    margin-top: -75px; }
+    #banner .bnBox ul li:nth-child(1) p {
+      color: #eeeeee;
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      line-height: 40px; }
+    #banner .bnBox ul li:nth-child(2) p {
+      color: #eeeeee;
+      text-align: center;
+      font-size: 16px;
+      line-height: 40px; }
+    #banner .bnBox a {
+      margin-top: 12px;
+      display: block;
+      width: 125px;
+      height: 36px;
+      border: 1px solid #EEEEEE;
+      border-radius: 22px;
+      font-size: 16px;
+      line-height: 36px;
+      text-align: center;
+      color: #EEEEEE; }
+
+#knowNav {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #eeeeee; }
+  #knowNav .shareLeft p {
+    line-height: 80px;
+    font-size: 14px;
+    color: #666666; }
+  #knowNav .shareLeft a {
+    display: block;
+    padding: 22px 0; }
+  #knowNav .shareRight ul li {
+    float: left; }
+    #knowNav .shareRight ul li a {
+      line-height: 80px;
+      color: #666666;
+      font-size: 16px; }
+    #knowNav .shareRight ul li p {
+      line-height: 80px;
+      color: #666666;
+      font-size: 16px; }
+
+#mainContent {
+  background-color: #f5f5f5;
+  padding: 30px 0 90px; }
+  #mainContent .leftContent {
+    background-color: white;
+    width: 823px;
+    border: 1px solid #eeeeee; }
+    #mainContent .leftContent .fullContent {
+      padding: 40px 0 100px;
+      background-color: white;
+      line-height: 30px;
+      font-size: 14px; }
+      #mainContent .leftContent .fullContent p {
+        width: 92%;
+        margin: 0 auto; }
+      #mainContent .leftContent .fullContent p:nth-child(1) {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 60px; }
+    #mainContent .leftContent .develop {
+      width: 750px;
+      margin: 0 auto;
+      padding-bottom: 40px; }
+      #mainContent .leftContent .develop .developTitle {
+        font-size: 30px;
+        color: #333333;
+        line-height: 90px;
+        margin-top: 20px; }
+      #mainContent .leftContent .develop .developBox {
+        display: block;
+        width: 100%;
+        line-height: 70px;
+        border-bottom: 1px dashed #EEEEEE; }
+        #mainContent .leftContent .develop .developBox .dbLeft {
+          width: 125px; }
+          #mainContent .leftContent .develop .developBox .dbLeft p {
+            font-size: 24px;
+            color: #333333; }
+        #mainContent .leftContent .develop .developBox .dbRight {
+          width: 625px; }
+          #mainContent .leftContent .develop .developBox .dbRight p {
+            font-size: 16px;
+            line-height: #666666; }
+          #mainContent .leftContent .develop .developBox .dbRight img {
+            max-width: 100%;
+            margin-bottom: 25px; }
+    #mainContent .leftContent .honor {
+      width: 750px;
+      margin: 0 auto;
+      padding-bottom: 40px; }
+      #mainContent .leftContent .honor .honorTitle {
+        font-size: 30px;
+        color: #333333;
+        line-height: 90px;
+        margin-top: 20px; }
+      #mainContent .leftContent .honor .honorChild {
+        margin-bottom: 18px;
+        margin-right: 23px;
+        width: 232px;
+        border: 1px solid #eeeeee;
+        position: relative;
+        transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s;
+        -ms-transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s;
+        -webkit-transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s;
+        -moz-transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s; }
+        #mainContent .leftContent .honor .honorChild .hcImg {
+          width: 216px;
+          height: 153px;
+          margin: 19px auto 0; }
+        #mainContent .leftContent .honor .honorChild .honorContent {
+          padding: 12px 0;
+          width: 216px;
+          min-height: 52px;
+          margin: 0 auto;
+          font-size: 16px;
+          color: #333333;
+          line-height: 26px;
+          border-bottom: 1px dashed #e4e4e4; }
+        #mainContent .leftContent .honor .honorChild .horTime {
+          width: 216px;
+          margin: 0 auto;
+          line-height: 36px;
+          color: #333333;
+          font-size: 12px; }
+        #mainContent .leftContent .honor .honorChild .mc {
+          display: none;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(245, 245, 245, 0.5); }
+      #mainContent .leftContent .honor .honorChild:nth-child(3n+0) {
+        margin-right: 0px; }
+      #mainContent .leftContent .honor .honorChild:hover {
+        margin-top: 0px;
+        -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        -webkit-transform: translate3d(0, -2px, 0);
+        transform: translate3d(0, -2px, 0); }
+    #mainContent .leftContent .culture {
+      width: 750px;
+      margin: 0 auto;
+      padding-bottom: 20px; }
+      #mainContent .leftContent .culture .culTitle {
+        font-size: 30px;
+        color: #333333;
+        line-height: 90px;
+        margin-top: 20px; }
+      #mainContent .leftContent .culture .culBox {
+        border-bottom: 1px dashed #EEEEEE; }
+        #mainContent .leftContent .culture .culBox .cult {
+          font-size: 20px;
+          color: #333333;
+          line-height: 30px;
+          margin-top: 15px; }
+        #mainContent .leftContent .culture .culBox .culd {
+          font-size: 16px;
+          line-height: 30px;
+          color: #666666;
+          margin-bottom: 15px; }
+      #mainContent .leftContent .culture .culBox:nth-last-child(2) {
+        border-bottom: 0px; }
+    #mainContent .leftContent .team {
+      width: 750px;
+      margin: 0 auto;
+      padding-bottom: 20px; }
+      #mainContent .leftContent .team .teamTitle {
+        font-size: 30px;
+        color: #333333;
+        line-height: 90px;
+        margin-top: 20px; }
+      #mainContent .leftContent .team .teamImg {
+        width: 100%; }
+        #mainContent .leftContent .team .teamImg img {
+          width: 100%; }
+      #mainContent .leftContent .team p {
+        font-size: 14px;
+        color: #5D5D5D;
+        line-height: 30px;
+        width: 690px;
+        margin: 0 auto; }
+      #mainContent .leftContent .team .name {
+        font-size: 22px;
+        color: #5d5d5d;
+        line-height: 40px; }
+        #mainContent .leftContent .team .name span {
+          font-size: 30px;
+          padding-right: 10px; }
+      #mainContent .leftContent .team li:nth-child(2) {
+        margin-top: 25px; }
+      #mainContent .leftContent .team li:nth-child(3) {
+        margin-bottom: 25px; }
+  #mainContent .rightNavs {
+    width: 360px;
+    margin-left: 15px; }
+    #mainContent .rightNavs .rnImg {
+      width: 100%; }
+      #mainContent .rightNavs .rnImg a {
+        width: 100%; }
+        #mainContent .rightNavs .rnImg a > img {
+          width: 100%; }
+    #mainContent .rightNavs .rnBox {
+      width: 358px;
+      background-color: white;
+      border: 1px solid #eeeeee;
+      margin-bottom: 18px; }
+      #mainContent .rightNavs .rnBox .rnTop {
+        width: 278px;
+        margin: 0 auto;
+        line-height: 50px;
+        margin-top: 10px;
+        color: #333333;
+        font-size: 20px;
+        border-bottom: 1px solid #EEEEEE;
+        position: relative; }
+      #mainContent .rightNavs .rnBox .rnTop::after {
+        content: "";
+        width: 90px;
+        height: 3px;
+        background-color: #056dbb;
+        position: absolute;
+        left: 0;
+        bottom: 0; }
+      #mainContent .rightNavs .rnBox .rnBottom {
+        padding: 20px 0; }
+      #mainContent .rightNavs .rnBox ul li {
+        position: relative; }
+        #mainContent .rightNavs .rnBox ul li span {
+          position: absolute;
+          top: 23px;
+          left: 40px;
+          display: block;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: #d5d5d5; }
+        #mainContent .rightNavs .rnBox ul li a {
+          display: block;
+          width: 100%;
+          line-height: 50px;
+          color: #555555;
+          text-indent: 55px;
+          font-size: 14px; }
+        #mainContent .rightNavs .rnBox ul li p {
+          position: absolute;
+          top: 0;
+          right: 40px;
+          line-height: 50px;
+          color: #999999;
+          font-size: 14px; }
+      #mainContent .rightNavs .rnBox li:hover {
+        background-color: #056dbb; }
+        #mainContent .rightNavs .rnBox li:hover span {
+          background-color: white; }
+        #mainContent .rightNavs .rnBox li:hover a {
+          color: white; }
+        #mainContent .rightNavs .rnBox li:hover p {
+          color: white; }
+      #mainContent .rightNavs .rnBox .indexLiActive {
+        background-color: #056dbb; }
+        #mainContent .rightNavs .rnBox .indexLiActive span {
+          background-color: white; }
+        #mainContent .rightNavs .rnBox .indexLiActive a {
+          color: white; }
+      #mainContent .rightNavs .rnBox .indexLiAc a {
+        color: #056dbb; }
+      #mainContent .rightNavs .rnBox .indexLiAc p {
+        color: #056dbb; }
+
+/*# sourceMappingURL=konw1.css.map */

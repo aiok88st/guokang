@@ -1,0 +1,46 @@
+.floatl {
+  float: left; }
+
+.floatr {
+  float: right; }
+
+.clearl {
+  clear: left;
+  width: 0px !important;
+  height: 0px !important; }
+
+.clearr {
+  clear: right;
+  width: 0px !important;
+  height: 0px !important; }
+
+.clearBoth {
+  clear: right;
+  width: 0px !important;
+  height: 0px !important; }
+
+.w12 {
+  width: 1200px;
+  margin: 0 auto; }
+
+body {
+  overflow-x: hidden; }
+
+.page ul li {
+  display: inline-block; }
+  .page ul li a {
+    display: block;
+    width: 49px;
+    line-height: 49px;
+    text-align: center;
+    font-size: 18px;
+    color: #333333;
+    background-color: #f5f5f5; }
+  .page ul li .pageActive {
+    background-color: #056dbb;
+    color: white; }
+
+a:hover {
+  text-decoration: none; }
+
+/*# sourceMappingURL=elsepublic.css.map */
