@@ -4,7 +4,7 @@
     <list default="true" id="281b0b22-c40a-4a53-942a-185d0829a6c7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default" afterPath="$PROJECT_DIR$/source/ecshop/themes/default" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/index.php" afterPath="$PROJECT_DIR$/source/ecshop/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/.gitignore" afterPath="$PROJECT_DIR$/source/ecshop/.gitignore" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -59,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/source/ecshop/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.25381905">
-              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -126,6 +126,7 @@
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/index_category_tree.lbi" />
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/index.dwt" />
         <option value="$PROJECT_DIR$/source/ecshop/index.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/.gitignore" />
       </list>
     </option>
   </component>
@@ -241,32 +242,6 @@
               <option name="myItemId" value="guokang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="source" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ecshop" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="themes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="default" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guokang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="guokang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -329,9 +304,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="102" y="4" width="1706" height="995" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17573965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17573965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -370,35 +345,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="156" column="67" selection-start-line="156" selection-start-column="59" selection-end-line="156" selection-end-column="67" />
-          <folding>
-            <element signature="e#7#483#0#PHP" expanded="true" />
-            <marker date="1516152283374" expanded="true" signature="4472:4568" placeholder="SELECT artic... ecs_article" />
-            <marker date="1516152283374" expanded="true" signature="4472:4577" placeholder="SELECT artic... ecs_article" />
-            <marker date="1516152283374" expanded="true" signature="4682:4790" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="4835:4916" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="5044:6408" placeholder="SELECT cat_n... .$ecs-&gt;table(" />
-            <marker date="1516152283374" expanded="true" signature="5108:5216" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="5261:5342" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="5530:5638" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="5685:5766" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="5962:6070" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="6116:6197" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="6374:6387" placeholder="/* 首页主广告设置 *... " />
-            <marker date="1516152283374" expanded="true" signature="6502:6588" placeholder="SELECT ad_ty... ${$ecs-&gt;table(&quot;ad_custom&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="6952:7116" placeholder="SELECT c.cat... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="7776:7924" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="7776:7931" placeholder="SELECT c.cat... ${$GLOBALS['ecs']-&gt;table(&quot;category&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="7776:8024" placeholder="SELECT c.cat... ${$GLOBALS['ecs']-&gt;table(&quot;category&quot;)}" />
-            <marker date="1516152283374" expanded="true" signature="8140:8480" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
-            <marker date="1516152283374" expanded="true" signature="14285:14393" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/index.dwt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -889,10 +835,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/.project">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25381905">
-          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
       </provider>

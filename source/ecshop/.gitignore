@@ -6,4 +6,3 @@ temp/caches/*
 temp/static_caches/*
 temp/backup/*
 .idea
-!.gitkeep
