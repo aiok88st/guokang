@@ -200,6 +200,12 @@ $smarty->display('index.dwt', $cache_id);
 //-- PRIVATE FUNCTIONS
 /*------------------------------------------------------ */
 
+//楼层分类
+function get_index_type($id){
+    $sql = "SELECT c.cat_name, c.cat_name2, c.cat_id,c.filter_attr,c.cat_desc,f.attr_values FROM " . $GLOBALS['ecs']->table("category") . "AS c WHERE c.cat_id =".$id .' LEFT JOIN ' . $GLOBALS['ecs']->table('attribute') . ' AS f ON c.filter_attr = f.shipping_id';
+}
+
+
 /**
  * 调用发货单查询
  *
