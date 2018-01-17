@@ -133,33 +133,26 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $list = $db->getAll($sql);
     $smarty->assign('index_list',     $list);
     //一楼健康保险
-    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $ecs->table("category") . " WHERE cat_id =2";
-    $one = $db->getRow($sql);
-    $sql = "SELECT attr_values, attr_id FROM " . $ecs->table("attribute") . " WHERE attr_id =".$one['filter_attr'];
-    $filter_attr = $db->getRow($sql);
-    $one['filter_attr'] = explode(',',$filter_attr['attr_values']);
-    $smarty->assign('one',     $one);
+    $smarty->assign('one',     get_index_type(2));
+    $smarty->assign('one_goods',     get_index_hot_goods(2));
+
     //二楼养老保险
-    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $ecs->table("category") . " WHERE cat_id =3";
-    $two = $db->getRow($sql);
-    $sql = "SELECT attr_values, attr_id FROM " . $ecs->table("attribute") . " WHERE attr_id =".$two['filter_attr'];
-    $filter_attr = $db->getRow($sql);
-    $two['filter_attr'] = explode(',',$filter_attr['attr_values']);
-    $smarty->assign('two',     $two);
+    $smarty->assign('two',     get_index_type(3));
+    $smarty->assign('two_goods',     get_index_hot_goods(3));
     //三楼
-    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $ecs->table("category") . " WHERE cat_id =6";
-    $three = $db->getRow($sql);
-    $sql = "SELECT attr_values, attr_id FROM " . $ecs->table("attribute") . " WHERE attr_id =".$three['filter_attr'];
-    $filter_attr = $db->getRow($sql);
-    $three['filter_attr'] = explode(',',$filter_attr['attr_values']);
-    $smarty->assign('three',     $three);
+    $smarty->assign('three',     get_index_type(6));
+    $smarty->assign('three_goods',     get_index_hot_goods(6));
     //四楼
-    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $ecs->table("category") . " WHERE cat_id =5";
-    $four = $db->getRow($sql);
-    $sql = "SELECT attr_values, attr_id FROM " . $ecs->table("attribute") . " WHERE attr_id =".$four['filter_attr'];
-    $filter_attr = $db->getRow($sql);
-    $four['filter_attr'] = explode(',',$filter_attr['attr_values']);
-    $smarty->assign('four',     $four);
+    $smarty->assign('four',     get_index_type(5));
+    $smarty->assign('four_goods',     get_index_hot_goods(5));
+    //企业新闻
+    $smarty->assign('qiye_news',     get_index_new_articles(6,11));
+    //健康资讯
+    $smarty->assign('jk_news',     get_index_new_articles(7,11));
+    //保险资讯
+    $smarty->assign('bx_news',     get_index_new_articles(8,11));
+    //了解国康
+    $smarty->assign('lj_video',     get_index_new_articles(9,4));
 
 
     /* 首页主广告设置 */
@@ -202,7 +195,38 @@ $smarty->display('index.dwt', $cache_id);
 
 //楼层分类
 function get_index_type($id){
-    $sql = "SELECT c.cat_name, c.cat_name2, c.cat_id,c.filter_attr,c.cat_desc,f.attr_values FROM " . $GLOBALS['ecs']->table("category") . "AS c WHERE c.cat_id =".$id .' LEFT JOIN ' . $GLOBALS['ecs']->table('attribute') . ' AS f ON c.filter_attr = f.shipping_id';
+    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $GLOBALS['ecs']->table("category") . " WHERE cat_id =".$id;
+    $one = $GLOBALS['db']->getRow($sql);
+    $sql = "SELECT attr_values, attr_id FROM " . $GLOBALS['ecs']->table("attribute") . " WHERE attr_id =".$one['filter_attr'];
+    $filter_attr = $GLOBALS['db']->getRow($sql);
+    $one['filter_attr'] = explode(',',$filter_attr['attr_values']);
+    return $one;
+}
+//楼层商品
+function get_index_hot_goods($id){
+    $sql = 'SELECT goods_id, goods_name, cat_id,goods_brief,shop_price,market_price,original_img FROM ' .
+            $GLOBALS['ecs']->table("goods") .
+            ' WHERE is_hot=1 AND is_on_sale=1 AND cat_id ='.$id .
+            ' ORDER BY sort_order ASC,add_time DESC LIMIT 3';
+    $data = $GLOBALS['db']->getAll($sql);
+    return $data;
+}
+//首页新闻列表
+function get_index_new_articles($id,$limit){
+    $sql = 'SELECT article_id, title, add_time, file_url, open_type, description, link' .
+        ' FROM ' . $GLOBALS['ecs']->table('article') .
+        ' WHERE is_open = 1 AND cat_id = '.$id.
+        ' ORDER BY article_type DESC, add_time DESC LIMIT '.$limit;
+    $data = $GLOBALS['db']->getAll($sql);
+    foreach($data as $k=>$v){
+        if(mb_strlen($v['title'])>25){
+            $data[$k]['title'] = mb_substr($v['title'],0,25,'utf-8').'...';
+        }
+        if(mb_strlen($v['description'])>100){
+            $data[$k]['description'] = mb_substr($v['description'],0,100,'utf-8').'...';
+        }
+    }
+    return $data;
 }
 
 

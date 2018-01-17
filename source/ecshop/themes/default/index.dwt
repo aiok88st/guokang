@@ -114,7 +114,7 @@
 				</div>
 				<div class="floatl ptImg">
 					<a href="###" class="ptImgBox">
-						<img src="themes/default/image/pwIndexImg.jpg" />
+						<img src="{$one_goods[0].original_img}" />
 					</a>
 				</div>
 				<div class="floatl ptContent">
@@ -122,24 +122,23 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$one_goods[1].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$one_goods[1].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$one_goods[1].goods_brief}
 							</li>
 							
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$one_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$one_goods[1].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -157,23 +156,22 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$one_goods[2].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$one_goods[2].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$one_goods[2].goods_brief}
 							</li>						
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$one_goods[2].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$one_goods[2].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -211,24 +209,23 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$two_goods[0].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$two_goods[0].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$two_goods[0].goods_brief}
 							</li>
 							
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$two_goods[0].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$two_goods[0].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -246,23 +243,22 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$two_goods[1].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$two_goods[1].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$two_goods[1].goods_brief}
 							</li>						
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$two_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$two_goods[1].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -277,7 +273,7 @@
 				</div>
 				<div class="floatl ptImg">
 					<a href="###" class="ptImgBox">
-						<img src="themes/default/image/pwIndexImg.jpg" />
+						<img src="{$two_goods[2].original_img}" />
 					</a>
 				</div>
 				<div class="floatl"></div>
@@ -301,7 +297,7 @@
 				</div>
 				<div class="floatl ptImg">
 					<a href="###" class="ptImgBox">
-						<img src="themes/default/image/pwIndexImg.jpg" />
+						<img src="{$three_goods[0].original_img}" />
 					</a>
 				</div>
 				<div class="floatl ptContent">
@@ -309,24 +305,23 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$three_goods[1].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$three_goods[1].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$three_goods[1].goods_brief}
 							</li>
 							
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$three_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$three_goods[1].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -344,23 +339,22 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$three_goods[2].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$three_goods[2].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$three_goods[2].goods_brief}
 							</li>						
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$three_goods[2].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$three_goods[2].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -397,24 +391,23 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$four_goods[0].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$four_goods[0].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$four_goods[0].goods_brief}
 							</li>
 							
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$four_goods[0].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$four_goods[0].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -432,23 +425,22 @@
 						<ul>
 							<li>
 								<div class="ptcHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$four_goods[1].original_img}" />
 								</div>
 							</li>
 							<li class="ptcTitle">
-								<p>国康恒大万年金保险</p>
+								<p>{$four_goods[1].goods_name}</p>
 							</li>
 							<li class="ptcDetails">
-								<p>30种重大疾病(含癌症)</p>
-								<p>住院/手术安排就诊服务</p>
+								{$four_goods[1].goods_brief}
 							</li>						
 							<li>
 								<div class="priceBox">
 									<div class="prLeft floatl">
-										<del><p>市场价&yen;2000</p></del>
+										<del><p>市场价&yen;{$four_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>600</span></p>
+										<p>会员价:<span>&yen;</span><span>{$four_goods[1].shop_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -463,7 +455,7 @@
 				</div>
 				<div class="floatl ptImg">
 					<a href="###" class="ptImgBox">
-						<img src="themes/default/image/pwIndexImg.jpg" />
+						<img src="{$four_goods[2].original_img}" />
 					</a>
 				</div>
 				<div class="floatl"></div>
@@ -539,13 +531,13 @@
 					<div class="pfrNav">
 						<ul>
 							<li>
-								<a href="###" index="1">企业新闻</a>
+								<a href="javascript:;" index="1">企业新闻</a>
 							</li>
 							<li>
-								<a href="###" index="2">健康资讯</a>
+								<a href="javascript:;" index="2">健康资讯</a>
 							</li>
 							<li>
-								<a href="###" index="3">保险资讯</a>
+								<a href="javascript:;" index="3">保险资讯</a>
 							</li>
 						</ul>
 						<div class="clearl"></div>
@@ -555,15 +547,15 @@
 						<div class="pfrThree1">
 							<div class="pfrContent">
 								<div class="pfrcLeft floatl">
-									<img src="themes/default/image/indexpf.jpg" />
+									<img src="{$qiye_news[0].file_url}" />
 								</div>
 								<div class="pfrcRight floatl">
 									<ul>
 										<li>
-											<p>热烈祝贺国康企业客户——阅文集团于香港联合交易所主板成功上市！</p>
+											<p>{$qiye_news[0].title}</p>
 										</li>
 										<li>
-											<p>2017年11月8日，国康企业客户——中国最大的网上文学平台阅文集团（股权代码：00772）在香港联交所主板挂牌上市，开盘爆涨63.64%，万众瞩目的国内文学第一股终于来临！</p>
+											<p>{$qiye_news[0].description}</p>
 										</li>
 										<li>
 											<div class="lookBtn">
@@ -576,18 +568,18 @@
 							</div>
 							<div class="pfNews">
 								<div class="pfnLeft floatl">
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
+									<a href="###">{$qiye_news[1].title}</a>
+									<a href="###">{$qiye_news[2].title}</a>
+									<a href="###">{$qiye_news[3].title}</a>
+									<a href="###">{$qiye_news[4].title}</a>
+									<a href="###">{$qiye_news[5].title}</a>
 								</div>
 								<div class="pfnRight floatl">
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
+									<a href="###">{$qiye_news[6].title}</a>
+									<a href="###">{$qiye_news[7].title}</a>
+									<a href="###">{$qiye_news[8].title}</a>
+									<a href="###">{$qiye_news[9].title}</a>
+									<a href="###">{$qiye_news[10].title}</a>
 								</div>
 								<div class="clearl"></div>
 							</div>
@@ -595,15 +587,15 @@
 						<div class="pfrThree2">
 							<div class="pfrContent">
 								<div class="pfrcLeft floatl">
-									<img src="themes/default/image/indexpf.jpg" />
+									<img src="{$jk_news[0].file_url}" />
 								</div>
 								<div class="pfrcRight floatl">
 									<ul>
 										<li>
-											<p>热烈祝贺国康企业客户——阅文集团于香港联合交易所主板成功上市！</p>
+											<p>{$jk_news[0].title}</p>
 										</li>
 										<li>
-											<p>2017年11月8日，国康企业客户——中国最大的网上文学平台阅文集团（股权代码：00772）在香港联交所主板挂牌上市，开盘爆涨63.64%，万众瞩目的国内文学第一股终于来临！</p>
+											<p>{$jk_news[0].description}</p>
 										</li>
 										<li>
 											<div class="lookBtn">
@@ -616,18 +608,18 @@
 							</div>
 							<div class="pfNews">
 								<div class="pfnLeft floatl">
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
+									<a href="###">{$jk_news[1].title}</a>
+									<a href="###">{$jk_news[2].title}</a>
+									<a href="###">{$jk_news[3].title}</a>
+									<a href="###">{$jk_news[4].title}</a>
+									<a href="###">{$jk_news[5].title}</a>
 								</div>
 								<div class="pfnRight floatl">
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
+									<a href="###">{$jk_news[6].title}</a>
+									<a href="###">{$jk_news[7].title}</a>
+									<a href="###">{$jk_news[8].title}</a>
+									<a href="###">{$jk_news[9].title}</a>
+									<a href="###">{$jk_news[10].title}</a>
 								</div>
 								<div class="clearl"></div>
 							</div>
@@ -635,15 +627,15 @@
 						<div class="pfrThree3">
 							<div class="pfrContent">
 								<div class="pfrcLeft floatl">
-									<img src="themes/default/image/indexpf.jpg" />
+									<img src="{$bx_news[0].file_url}" />
 								</div>
 								<div class="pfrcRight floatl">
 									<ul>
 										<li>
-											<p>热烈祝贺国康企业客户——阅文集团于香港联合交易所主板成功上市！</p>
+											<p>{$bx_news[0].title}</p>
 										</li>
 										<li>
-											<p>2017年11月8日，国康企业客户——中国最大的网上文学平台阅文集团（股权代码：00772）在香港联交所主板挂牌上市，开盘爆涨63.64%，万众瞩目的国内文学第一股终于来临！</p>
+											<p>{$bx_news[0].description}</p>
 										</li>
 										<li>
 											<div class="lookBtn">
@@ -656,18 +648,18 @@
 							</div>
 							<div class="pfNews">
 								<div class="pfnLeft floatl">
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
+									<a href="###">{$bx_news[1].title}</a>
+									<a href="###">{$bx_news[2].title}</a>
+									<a href="###">{$bx_news[3].title}</a>
+									<a href="###">{$bx_news[4].title}</a>
+									<a href="###">{$bx_news[5].title}</a>
 								</div>
 								<div class="pfnRight floatl">
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
-									<a href="###">热烈祝贺国康企业客户——阅文集团于香港联合交易交易</a>
+									<a href="###">{$bx_news[6].title}</a>
+									<a href="###">{$bx_news[7].title}</a>
+									<a href="###">{$bx_news[8].title}</a>
+									<a href="###">{$bx_news[9].title}</a>
+									<a href="###">{$bx_news[10].title}</a>
 								</div>
 								<div class="clearl"></div>
 							</div>
@@ -683,12 +675,12 @@
 				<p>了解国康</p>
 			</div>
 			<div class="part5 w12">
-				
+                <!--{foreach from=$lj_video item=vo}-->
 				<div class="videoChild floatl">
 					<div class="videoBox">
 						<video id="my-video1" class="video-js" controls preload="auto" width="740" height="400"
-						  poster="themes/default/image/indexVideo.jpg" data-setup="{}">
-							<source src="http://jq22com.qiniudn.com/jq22-sp.mp4" type="video/mp4"></source>
+						  poster="{$vo.file_url}" data-setup="{}">
+							<source src="{$vo.link}" type="video/mp4"></source>
 						</video>
 						<div class="playBox playBox1">
 							<button></button>
@@ -697,212 +689,19 @@
 					<div class="videoContent">
 						<ul>
 							<li>
-								<p>一分钟了解国康</p>
+								<p>{$vo.title}</p>
 							</li>
 							<li>
-								<p>国康私人医生集团是私人医生服务领导品牌</p>
+								<p>{$vo.description}</p>
 							</li>
 						</ul>
 					</div>
 				</div>
-				<div class="videoChild floatl">
-					<div class="videoBox">
-						<video id="my-video2" class="video-js" controls preload="auto" width="740" height="400"
-						  poster="themes/default/image/indexVideo.jpg" data-setup="{}">
-							<source src="http://jq22com.qiniudn.com/jq22-sp.mp4" type="video/mp4"></source>
-						</video>
-						<div class="playBox playBox2">
-							<button></button>
-						</div>
-					</div>
-					<div class="videoContent">
-						<ul>
-							<li>
-								<p>一分钟了解国康</p>
-							</li>
-							<li>
-								<p>国康私人医生集团是私人医生服务领导品牌</p>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="videoChild floatl">
-					<div class="videoBox">
-						<video id="my-video3" class="video-js" controls preload="auto" width="740" height="400"
-						  poster="themes/default/image/indexVideo.jpg" data-setup="{}">
-							<source src="http://jq22com.qiniudn.com/jq22-sp.mp4" type="video/mp4"></source>
-						</video>
-						<div class="playBox playBox3">
-							<button></button>
-						</div>
-					</div>
-					<div class="videoContent">
-						<ul>
-							<li>
-								<p>一分钟了解国康</p>
-							</li>
-							<li>
-								<p>国康私人医生集团是私人医生服务领导品牌</p>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="videoChild floatl">
-					<div class="videoBox">
-						<video id="my-video4" class="video-js" controls preload="auto" width="740" height="400"
-						  poster="themes/default/image/indexVideo.jpg" data-setup="{}">
-							<source src="http://jq22com.qiniudn.com/jq22-sp.mp4" type="video/mp4"></source>
-						</video>
-						<div class="playBox playBox4">
-							<button></button>
-						</div>
-					</div>
-					<div class="videoContent">
-						<ul>
-							<li>
-								<p>一分钟了解国康</p>
-							</li>
-							<li>
-								<p>国康私人医生集团是私人医生服务领导品牌</p>
-							</li>
-						</ul>
-					</div>
-				</div>
+                <!--{/foreach}-->
+
 				<div class="clearl"></div>
 			</div>
 		</div>
 
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
 
-		<!-- 底部内容 -->
-		<div class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-9">
-						<div class="row">
-							<div class="col-xs-6 col-sm-4 col-md-2">
-								<h4>帮助中心</h4>
-								<ul class="list-unstyled">
-									<li>
-										<a href="javascript:;">购物指南</a>
-									</li>
-									<li>
-										<a href="javascript:;">服务说明</a>
-									</li>
-									<li>
-										<a href="javascript:;">支付方式</a>
-									</li>
-									<li>
-										<a href="javascript:;">常见问题</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-2">
-								<h4>帮助中心</h4>
-								<ul class="list-unstyled">
-									<li>
-										<a href="javascript:;">购物指南</a>
-									</li>
-									<li>
-										<a href="javascript:;">服务说明</a>
-									</li>
-									<li>
-										<a href="javascript:;">支付方式</a>
-									</li>
-									<li>
-										<a href="javascript:;">常见问题</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-2">
-								<h4>帮助中心</h4>
-								<ul class="list-unstyled">
-									<li>
-										<a href="javascript:;">购物指南</a>
-									</li>
-									<li>
-										<a href="javascript:;">服务说明</a>
-									</li>
-									<li>
-										<a href="javascript:;">支付方式</a>
-									</li>
-									<li>
-										<a href="javascript:;">常见问题</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-2">
-								<h4>帮助中心</h4>
-								<ul class="list-unstyled">
-									<li>
-										<a href="javascript:;">购物指南</a>
-									</li>
-									<li>
-										<a href="javascript:;">服务说明</a>
-									</li>
-									<li>
-										<a href="javascript:;">支付方式</a>
-									</li>
-									<li>
-										<a href="javascript:;">常见问题</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-2">
-								<h4>帮助中心</h4>
-								<ul class="list-unstyled">
-									<li>
-										<a href="javascript:;">购物指南</a>
-									</li>
-									<li>
-										<a href="javascript:;">服务说明</a>
-									</li>
-									<li>
-										<a href="javascript:;">支付方式</a>
-									</li>
-									<li>
-										<a href="javascript:;">常见问题</a>
-									</li>
-								</ul>
-							</div>
-							<div class="col-xs-6 col-sm-4 col-md-2">
-								<h4>帮助中心</h4>
-								<ul class="list-unstyled">
-									<li>
-										<a href="javascript:;">购物指南</a>
-									</li>
-									<li>
-										<a href="javascript:;">服务说明</a>
-									</li>
-									<li>
-										<a href="javascript:;">支付方式</a>
-									</li>
-									<li>
-										<a href="javascript:;">常见问题</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-3">
-						<h4>
-							<a href="tel:4006788500">400-6788-500</a>
-						</h4>
-						<img src="img/icon03.png" alt="">
-						<img src="img/icon03.png" alt="">
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- 备案信息 -->
-		<div class="record-bg">
-			<p class="record">Copyright © 2005-2017 guokang,All Rights Reserved. 　粤ICP备13080796号-2<br/>深圳市国康健康管理服务有限公司|深圳市国康保险经纪有限公司　©　版权所有</p>
-		</div>
-
-
-<script type="text/javascript" src="themes/default/script/video.min.js" ></script>
-<script type="text/javascript" src="themes/default/lib/layui.js" ></script>
-<script type="text/javascript" src="themes/default/script/zjIndex.js" ></script>
-
-
-	</body>
-</html>

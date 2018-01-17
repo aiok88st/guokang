@@ -1,7 +1,7 @@
 $blue:#056dbb;
 $black:#555555;
-.navbar{
-    margin-bottom: 0px;
+p{
+    margin: 0px;
 }
 #part1{
     width: 100%;
@@ -417,12 +417,13 @@ $black:#555555;
                 text-align: right;
                 color: #777777;
                 p{
+                    margin-top: 5px;
                     span:nth-child(1){
                         color: #ff0000;
                     }
                     span:nth-child(2){
                         color: #ff0000;
-                        font-size: 28px;
+                        font-size: 20px;
                     }
                 }
                 
@@ -726,4 +727,7 @@ $black:#555555;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     -webkit-transform: translate3d(0, -2px, 0);
     transform: translate3d(0, -2px, 0);
+}
+.navbar{
+    margin-bottom: 0px;
 }

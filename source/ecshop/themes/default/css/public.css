@@ -23,8 +23,9 @@ body{margin-top: 55px;}
 .color999{color: #999999;}
 .color78a{color: #70b78a;}
 .customBtn1{width: 100px;border-radius: 50px;outline: none;}
-
-
+a:hover{text-decoration: none; }
+a:active{text-decoration: none;}
+a:link{text-decoration: none;}
 
 
 
