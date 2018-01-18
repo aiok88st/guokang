@@ -1,0 +1,85 @@
+$blue:#056dbb;
+$black:#555555;
+section{
+    min-width: 1200px;
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.onlyImg{
+    >img{
+        height: 100%;
+    }   
+}
+.section1{
+    button{
+        width: 246px;
+        height: 50px;
+        font-size: 24px;
+        color: $blue;
+        background-color: white;
+        border-radius: 8px;
+        position: absolute;
+        left: 50%;
+        bottom: 5%;
+        margin-left: -123px;
+    }
+}
+.imgContent{
+    position: relative;
+    .swiper{
+        width: 51.35%;
+        margin-left: 48.65%;
+        height: 100%;
+        overflow: hidden;
+        .swiper-container,.swiper-slide,.swiper-wrapper{
+            width: 100%;
+            height: 100%;
+        }
+        img{
+//          width: 100%;
+            height: 100%;
+        }
+    }
+    .swiperContent{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        .w12{
+            height: 100%;
+            .scBox{
+                position: absolute;
+                top: 50%;
+                margin-top: -110px;
+            }
+        }
+        .scBox{
+            p{
+                font-size: 30px;
+                color: #424242;
+                line-height:40px;
+            }
+            span{
+                display: block;
+                width: 90px;
+                border-bottom: 2px solid #424242;
+                margin: 8px 0 9px;
+            }
+            .sTitle{
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        }
+        .swiperBtn{
+            a{
+                display: block;
+                margin-right: 16px;
+            }
+        }
+    }
+}
+p{
+    margin:  0 ;
+}

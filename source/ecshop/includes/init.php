@@ -303,4 +303,7 @@ else
 {
     ob_start();
 }
+
+//定义路径
+$smarty->assign('home', 'themes/default');
 ?>

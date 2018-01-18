@@ -1,0 +1,49 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/konw1.css" />
+<link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
+<!-- #BeginLibraryItem "/library/know_position.lbi" --><!-- #EndLibraryItem -->
+		<div id="mainContent">
+			<div class="w12">
+				<div class="leftContent floatl">
+					<div class="honor">
+						<div class="honorTitle">
+							<p>企业荣誉</p>
+						</div>
+						<div class="honorBox">
+
+
+                            <!--{foreach from=$artciles_list item=vo}-->
+							<div class="honorChild floatl">
+								<ul>
+									<li>
+										<div class="hcImg">
+											<img src="{$vo.url}" />
+										</div>
+									</li>
+									<li>
+										<div class="honorContent">
+											<p>{$vo.title}</p>
+										</div>
+									</li>
+									<li>
+										<p class="horTime">时间：{$vo.add_time}</p>
+									</li>
+								</ul>
+								<div class="mc"></div>
+							</div>
+                            <!--{/foreach}-->
+
+							<div class="clearl"></div>
+						</div>
+						<div class="page" align="center">
+                            <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+						</div>
+					</div>
+				</div>
+                <!-- #BeginLibraryItem "/library/know_right.lbi" --><!-- #EndLibraryItem -->
+				<div class="clearl"></div>
+			</div>
+
+		</div>
+<script type="text/javascript" src="themes/default/script/know1.js" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

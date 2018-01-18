@@ -1,0 +1,265 @@
+#banner {
+  width: 100%;
+  overflow: hidden;
+  position: relative; }
+  #banner img {
+    display: block; }
+
+#knowNav {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #eeeeee; }
+  #knowNav .shareLeft p {
+    line-height: 80px;
+    font-size: 14px;
+    color: #666666; }
+  #knowNav .shareLeft a {
+    display: block;
+    padding: 22px 0; }
+  #knowNav .shareRight ul li {
+    float: left; }
+    #knowNav .shareRight ul li a {
+      line-height: 80px;
+      color: #666666;
+      font-size: 16px; }
+    #knowNav .shareRight ul li p {
+      line-height: 80px;
+      color: #666666;
+      font-size: 16px; }
+
+#mainContent {
+  background-color: #f5f5f5;
+  padding: 30px 0; }
+  #mainContent .leftContent {
+    background-color: white;
+    width: 823px;
+    border: 1px solid #eeeeee; }
+    #mainContent .leftContent .fullContent {
+      padding: 40px 0 100px;
+      background-color: white;
+      line-height: 30px;
+      font-size: 14px; }
+      #mainContent .leftContent .fullContent p {
+        width: 92%;
+        margin: 0 auto; }
+      #mainContent .leftContent .fullContent p:nth-child(1) {
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 60px; }
+    #mainContent .leftContent .planBox {
+      padding: 10px 0;
+      width: 823px;
+      margin-bottom: 20px;
+      border: 1px solid #eeeeee;
+      background-color: white;
+      transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s;
+      -ms-transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s;
+      -webkit-transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s;
+      -moz-transition: margin-top 0.5s,transform 0.5s,box-shadow 0.5s,-webkit-box-shadow 0.5s; }
+    #mainContent .leftContent .planBox:hover {
+      margin-top: 0px;
+      -webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      -webkit-transform: translate3d(0, -2px, 0);
+      transform: translate3d(0, -2px, 0); }
+    #mainContent .leftContent .planBox:nth-last-child(1) {
+      margin-bottom: 0px; }
+    #mainContent .leftContent .plLeft {
+      width: 210px;
+      height: 160px;
+      overflow: hidden;
+      margin-left: 10px; }
+    #mainContent .leftContent .plMiddle {
+      width: 380px;
+      margin-left: 40px; }
+      #mainContent .leftContent .plMiddle P {
+        width: 345px; }
+      #mainContent .leftContent .plMiddle ul li:nth-child(1) {
+        margin: 15px 0 10px; }
+        #mainContent .leftContent .plMiddle ul li:nth-child(1) p {
+          color: #333333;
+          font-size: 16px; }
+      #mainContent .leftContent .plMiddle ul li:nth-child(2) p {
+        font-size: 14px;
+        color: #999999;
+        line-height: 22px; }
+      #mainContent .leftContent .plMiddle ul li:nth-child(3) {
+        margin-top: 30px; }
+      #mainContent .leftContent .plMiddle a {
+        display: block;
+        line-height: 24px;
+        padding: 0 8px;
+        border: 1px solid #dcdcdc;
+        color: #a7a7a7;
+        margin-right: 6px; }
+      #mainContent .leftContent .plMiddle a:nth-last-child(2) {
+        margin-right: 0px; }
+    #mainContent .leftContent .plLine {
+      height: 160px;
+      border-right: 1px dashed #eeeeee; }
+    #mainContent .leftContent .plRight {
+      margin-top: 12px; }
+      #mainContent .leftContent .plRight p {
+        color: #868686;
+        font-size: 14px;
+        line-height: 30px;
+        text-indent: 28px; }
+        #mainContent .leftContent .plRight p span {
+          font-size: 18px; }
+      #mainContent .leftContent .plRight a {
+        display: block;
+        margin-left: 45px;
+        text-align: center;
+        line-height: 28px;
+        width: 96px;
+        border-radius: 14px;
+        background-color: #056dbb;
+        color: white;
+        font-size: 14px;
+        margin-top: 10px; }
+      #mainContent .leftContent .plRight ul li:nth-child(1) p span {
+        color: #fa2821; }
+  #mainContent .noBord {
+    width: 825px;
+    border: 0;
+    background-color: #f5f5f5; }
+  #mainContent .rightNavs {
+    width: 360px;
+    margin-left: 15px; }
+    #mainContent .rightNavs .rnImg {
+      width: 100%; }
+      #mainContent .rightNavs .rnImg a {
+        width: 100%; }
+        #mainContent .rightNavs .rnImg a > img {
+          width: 100%; }
+    #mainContent .rightNavs .rnBox {
+      width: 358px;
+      background-color: white;
+      border: 1px solid #eeeeee;
+      margin-bottom: 18px; }
+      #mainContent .rightNavs .rnBox .rnTop {
+        width: 278px;
+        margin: 0 auto;
+        line-height: 50px;
+        margin-top: 10px;
+        color: #333333;
+        font-size: 20px;
+        border-bottom: 1px solid #EEEEEE;
+        position: relative; }
+        #mainContent .rightNavs .rnBox .rnTop a {
+          position: absolute;
+          top: 0px;
+          right: 0px; }
+      #mainContent .rightNavs .rnBox .rnTop::after {
+        content: "";
+        width: 90px;
+        height: 3px;
+        background-color: #056dbb;
+        position: absolute;
+        left: 0;
+        bottom: 0; }
+      #mainContent .rightNavs .rnBox .rnBottom {
+        padding: 20px 0; }
+      #mainContent .rightNavs .rnBox .newsBox:nth-child(1) {
+        margin-top: 10px; }
+      #mainContent .rightNavs .rnBox .newsBox {
+        width: 278px;
+        margin: 0 auto;
+        margin-bottom: 20px; }
+        #mainContent .rightNavs .rnBox .newsBox .nsLeft {
+          width: 60px;
+          height: 60px; }
+        #mainContent .rightNavs .rnBox .newsBox .nsRight {
+          width: 206px;
+          margin-left: 12px;
+          line-height: 24px; }
+          #mainContent .rightNavs .rnBox .newsBox .nsRight p:nth-child(1) {
+            font-size: 14px;
+            color: #333333;
+            margin-top: 8px; }
+          #mainContent .rightNavs .rnBox .newsBox .nsRight p:nth-child(2) {
+            font-size: 12px;
+            color: #999999; }
+      #mainContent .rightNavs .rnBox ul li {
+        position: relative; }
+        #mainContent .rightNavs .rnBox ul li span {
+          position: absolute;
+          top: 23px;
+          left: 40px;
+          display: block;
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background-color: #d5d5d5; }
+        #mainContent .rightNavs .rnBox ul li a {
+          display: block;
+          width: 100%;
+          line-height: 50px;
+          color: #555555;
+          text-indent: 55px;
+          font-size: 14px; }
+        #mainContent .rightNavs .rnBox ul li p {
+          position: absolute;
+          top: 0;
+          right: 40px;
+          line-height: 50px;
+          color: #999999;
+          font-size: 14px; }
+      #mainContent .rightNavs .rnBox li:hover {
+        background-color: #056dbb; }
+        #mainContent .rightNavs .rnBox li:hover span {
+          background-color: white; }
+        #mainContent .rightNavs .rnBox li:hover a {
+          color: white; }
+        #mainContent .rightNavs .rnBox li:hover p {
+          color: white; }
+      #mainContent .rightNavs .rnBox .indexLiActive {
+        background-color: #056dbb; }
+        #mainContent .rightNavs .rnBox .indexLiActive span {
+          background-color: white; }
+        #mainContent .rightNavs .rnBox .indexLiActive a {
+          color: white; }
+      #mainContent .rightNavs .rnBox .indexLiAc a {
+        color: #056dbb; }
+      #mainContent .rightNavs .rnBox .indexLiAc p {
+        color: #056dbb; }
+
+#typeList {
+  background-color: white;
+  border: 1px solid #eeeeee;
+  width: 1200px;
+  padding: 40px 0;
+  margin-top: 30px; }
+  #typeList .typeList .tlLeft {
+    width: 100px;
+    line-height: 32px;
+    text-align: center; }
+    #typeList .typeList .tlLeft p {
+      text-align: center;
+      font-size: 16px;
+      color: #555555; }
+  #typeList .typeList .tlRight {
+    width: 1000px; }
+    #typeList .typeList .tlRight a {
+      display: block;
+      line-height: 32px;
+      padding: 0 23px;
+      color: #333333;
+      border-radius: 3px;
+      margin-right: 10px; }
+    #typeList .typeList .tlRight .aActive {
+      background-color: #056dbb;
+      color: white; }
+  #typeList .typeList:nth-child(1) {
+    margin-bottom: 25px; }
+
+p {
+  margin: 0px; }
+
+.navbar {
+  margin-bottom: 0px; }
+
+.whitePage ul li a {
+  background-color: white; }
+
+/*# sourceMappingURL=produce.css.map */

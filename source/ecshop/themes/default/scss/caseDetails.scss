@@ -1,0 +1,388 @@
+$blue:#056dbb;
+$black:#555555;
+#banner{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    img{
+        display: block;
+    }
+    .partner{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        .w12{
+            margin-top: 150px;
+            .pnLeft{
+                width: 230px;
+                img{
+                    width: 100%;
+                }
+            }
+            .pfnRight{
+                width: 552px;
+                margin-left: 38px;
+                color: white;
+                font-size: 16px;
+                line-height: 30px;
+                text-align: left;
+                ul li:nth-child(1){
+                    font-size: 30px;
+                    line-height: 40px;
+                }
+            }
+        }
+    }
+}
+#knowNav{
+    width: 100%;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    .shareLeft{
+        p{
+            line-height: 80px;
+            font-size: 14px;
+            color: #666666;
+        }
+        a{
+            display: block;
+            padding: 22px 0;
+        }
+    }
+    .shareRight{
+        ul li{
+            float: left;
+            a{
+                line-height: 80px;
+                color: #666666;
+                font-size: 16px;
+            }
+            p{
+                line-height: 80px;
+                color: #666666;
+                font-size: 16px;
+            }
+        }
+    }
+}
+#mainContent{
+    background-color: #f5f5f5;
+    padding: 30px 0;
+    .leftContent{
+        width: 825px;
+        
+        .article{
+            width: 823px;
+            border:1px solid #eeeeee;
+            background-color: white;
+            margin-bottom: 18px;
+        }
+        .fullContent{
+            padding: 40px 0 100px;
+            
+            
+            line-height: 30px;
+            font-size: 14px;
+            
+            p {
+                width: 92%;
+                margin: 0 auto;
+            }
+            
+            p:nth-child(1) {
+                font-size: 30px;
+                font-weight: bold;
+                line-height: 60px;
+            }
+        }  
+        .point{
+            background-color: white;
+            width: 822px;
+            margin: 0 auto;
+            .pointTitle{
+                width: 760px;
+                margin: 0 auto;
+                line-height: 80px;
+                font-size: 20px;
+                color: #333333;
+                margin-bottom: 15px;
+            }
+            .pointMessage{
+                width: 760px;
+                margin: 0 auto;
+                .pmLeft{
+                    width: 58px;
+                    height: 58px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                    >img{
+                        width: 100%;
+                    }
+                }
+                .pmRight{
+                    margin-left: 20px;
+                    width: 680px;
+                    height: 170px;
+                    border: 1px solid #d2d2d2;
+                    border-radius: 5px;
+                    textarea{
+                        display: block;
+                        width: 630px;
+                        margin: 0 auto;
+                        border: 0px;
+                        margin-top: 10px;
+                        height: 150px;
+                        resize: none;
+                        line-height: 24px;
+                    }
+                }
+                .pmessage{
+                    border: 0px;
+                    width: 675px;
+                    height: auto;
+                    ul li:nth-child(1){
+                        position: relative;
+                        .pointTime{
+                            position:absolute;
+                            top: 0;
+                            right: 0;
+                            color: #cccccc;
+                            line-height: 26px;
+                        }
+                    }
+                    .pointName{
+                        font-size: 14px;
+                        color: #333333;
+                        line-height: 26px;
+                    }
+                    .pointContent{
+                        font-size: 12px;
+                        color: #666666;
+                    }
+                }
+            }
+            .pmm{
+                margin-bottom: 20px;
+            }
+            .pmBox{
+                padding: 30px 0 10px;
+            }
+            .pmm:nth-last-child(1){
+                margin-bottom: 0 px;
+            }
+            .pointBtn{
+                width: 760px;
+                margin: 15px auto 0px;
+                
+                button{
+                    display: block;
+                    height: 34px;
+                    width: 134px;
+                    border-radius: 17px;
+                    background-color: $blue;
+                    color: white;
+                    font-size: 14px;
+                }
+            }
+            span.border{
+               margin-top: 30px;
+               width: 100%;
+               display: block;
+               border-bottom: 1px solid #EEEEEE;
+            }
+        }
+        .lookPoint{
+            width: 100%;
+            background-color: #fdfdfd;
+            a{
+                width: 115px;
+                line-height: 60px;
+                font-size: 16px;
+                margin: 0 auto;
+                display: block;
+                color: $blue;
+                background: url(../image/downArrow.png)no-repeat right center;
+            }
+        }
+        .nextPrev{
+            width: 750px;
+            margin: 0 auto;
+            border-top: 1px solid #EEEEEE;
+            a{
+                display: block;
+                line-height: 24px;
+                color: #333333;
+                font-size: 14px;
+                padding: 40px 0;
+                
+                p{
+                    display: inline-block;
+                }
+            }
+            a:nth-child(1){
+                img{
+                    display: block;
+                    margin-right: 10px;
+                }
+            }
+            a:nth-child(2){
+                img{
+                    display: block;
+                    margin-left: 10px;
+                }
+                p{
+                    color: $blue;
+                }
+            }
+        }    
+    }
+    .noBord{
+        width: 825px;
+        border: 0;
+        background-color: #f5f5f5;
+    }
+    .rightNavs{
+        width: 360px;
+        margin-left: 15px;
+        .rnImg{
+            width: 100%;
+            a{
+                width: 100%;
+                >img{
+                    width: 100%;
+                }
+            }
+            
+        }
+        .rnBox{
+            width: 358px;
+            background-color: white;
+            border: 1px solid #eeeeee;
+            margin-bottom: 18px;
+            .rnTop{
+                width: 278px;
+                margin: 0 auto;
+                line-height: 50px;
+                margin-top: 10px;
+                color: #333333;
+                font-size: 20px;
+                border-bottom: 1px solid #EEEEEE;
+                position: relative;
+                a{
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                }
+            }
+            .rnTop::after{
+                content: "";
+                width: 90px;
+                height: 3px;
+                background-color: $blue;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+            }
+            .rnBottom{
+                padding: 20px 0;
+            }
+            .newsBox:nth-child(1){
+                margin-top: 10px;
+            }
+            .newsBox{
+                width: 278px;
+                margin: 0 auto;
+                margin-bottom: 20px;
+                .nsLeft{
+                    width: 60px;
+                    height: 60px;
+                    overflow: hidden;
+                    border-radius: 50%;
+                }
+                .nsRight{
+                    width: 206px;
+                    margin-left: 12px;
+                    line-height: 24px;
+                    p:nth-child(1){
+                        font-size: 14px;
+                        color: #333333;
+                        margin-top: 8px;
+                    }
+                    p:nth-child(2){
+                        font-size: 12px;
+                        color: #999999;
+                    }
+                }
+            }
+            ul li{
+                position: relative;
+                span{
+                    position: absolute;
+                    top: 23px;
+                    left: 40px;
+                    display: block;
+                    width: 5px;
+                    height: 5px;
+                    border-radius: 50%;
+                    background-color: #d5d5d5;
+                }
+                a{
+                    display: block;
+                    width: 100%;
+                    line-height: 50px;
+                    color: $black;
+                    text-indent: 55px;
+                    font-size: 14px;
+                }
+                p{
+                    position: absolute;
+                    top: 0;
+                    right: 40px;
+                    line-height: 50px;
+                    color: #999999;;
+                    font-size: 14px;
+                }
+            }
+            li:hover{
+                background-color: $blue;
+                span{
+                    background-color: white;
+                }
+                a{
+                    color: white;
+                }
+                p{
+                    color: white;
+                }
+            }
+            .indexLiActive{
+                background-color: $blue;
+                span{
+                    background-color: white;
+                }
+                a{
+                    color: white;
+                }
+            }
+            .indexLiAc{
+                a{
+                   color: $blue; 
+                }
+                p{
+                    color: $blue;
+                }
+            }
+        }
+    }
+}
+p{
+    margin: 0px;    
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.whitePage ul li a{
+    background-color: white;
+}

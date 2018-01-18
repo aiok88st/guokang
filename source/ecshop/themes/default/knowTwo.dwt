@@ -2,23 +2,19 @@
 <link rel="stylesheet" href="themes/default/scss/konw1.css" />
 <link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
 
-
-
         <!-- #BeginLibraryItem "/library/know_position.lbi" --><!-- #EndLibraryItem -->
-
-        <div id="mainContent">
-            <div class="w12">
-                <div class="leftContent floatl">
-                    <div class="fullContent">
-                        <p>{$article.title}</p>
-                        <p>{$article.content}</p>
-                     </div>
-                </div>
+		<div id="mainContent">
+			<div class="w12">
+				<div class="leftContent floatl">
+					<div class="fullContent">
+						<p>{$article.title}</p>
+						<p>{$article.content}</p>
+                    </div>
+				</div>
                 <!-- #BeginLibraryItem "/library/know_right.lbi" --><!-- #EndLibraryItem -->
-                <div class="clearl"></div>
-            </div>
+				<div class="clearl"></div>
+			</div>
 
-        </div>
+		</div>
 <script type="text/javascript" src="themes/default/script/know1.js" ></script>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
-

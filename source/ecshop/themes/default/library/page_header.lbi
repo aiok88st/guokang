@@ -18,6 +18,11 @@
   <script type="text/javascript" src="themes/default/script/swiper-3.4.2.min.js" ></script>
   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src='themes/default/js/bootstrap.min.js'></script>
+  <style>
+    .navbar{
+      margin-bottom: 0;
+    }
+  </style>
 </head>
 <body>
 <!-- 顶部导航条 -->
@@ -56,7 +61,7 @@
         <span class='icon-bar'></span>
         <span class='icon-bar'></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="../index.php">
         <img alt="Brand" src="themes/default/img/logo.png" class="img-responsive">
       </a>
     </div>
@@ -84,15 +89,6 @@
           <!-- {/foreach} -->
 
 
-        <!--<li><a href="javascript:;">首页</a></li>-->
-        <!--<li><a href="javascript:;">产品中心</a></li>-->
-        <!--<li><a href="javascript:;">解决方案</a></li>-->
-        <!--<li><a href="javascript:;">优质资源</a></li>-->
-        <!--<li><a href="javascript:;">服务体系</a></li>-->
-        <!--<li><a href="javascript:;">品牌体系</a></li>-->
-        <!--<li><a href="javascript:;">新闻资讯</a></li>-->
-        <!--<li><a href="javascript:;">了解国康</a></li>-->
-        <!--<li><a href="javascript:;">保险社区</a></li>-->
       </ul>
     </div>
 

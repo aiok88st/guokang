@@ -101,12 +101,12 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     assign_template();
 
     $position = assign_ur_here();
-    $smarty->assign('page_title',      '国康');    // 页面标题
+    $smarty->assign('page_title',      $position['title']);    // 页面标题
     $smarty->assign('ur_here',         $position['ur_here']);  // 当前位置
 
     /* meta information */
-    $smarty->assign('keywords',        htmlspecialchars('国康'));
-    $smarty->assign('description',     htmlspecialchars('国康'));
+    $smarty->assign('keywords',        htmlspecialchars($_CFG['shop_keywords']));
+    $smarty->assign('description',     htmlspecialchars($_CFG['shop_desc']));
     $smarty->assign('flash_theme',     $_CFG['flash_theme']);  // Flash轮播图片模板
 
     $smarty->assign('feed_url',        ($_CFG['rewrite'] == 1) ? 'feed.xml' : 'feed.php'); // RSS URL

@@ -1,0 +1,11 @@
+$(function(){
+	$('section').width($(window).width());
+	$('section').height($(window).height());
+	$('.section1').css('margin-left',-($('.section1').children('img').width()-$(window).width())/2+'px');
+	$('.section4').css('margin-left',-($('.section4').children('img').width()-$(window).width())/2+'px');
+	$('.scBox1').css('margin-top',-$('.scBox1').height()/2+'px');
+	$(window).resize(function(){
+		$('.section1').css('margin-left',-($('.section1').children('img').width()-$(window).width())/2+'px');
+		$('.section4').css('margin-left',-($('.section4').children('img').width()-$(window).width())/2+'px');
+	});
+});

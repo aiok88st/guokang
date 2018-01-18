@@ -1,0 +1,34 @@
+.bdsharebuttonbox a{
+    width: 36px;
+    height: 36px;
+    padding: 0 !important;
+    line-height: 36px;
+}
+.bdsharebuttonbox a.bds_weixin{
+    height: 36px;
+    line-height: 36px;
+    background: url(../image/sharem.png) no-repeat;
+    background-size: auto 36px;
+    background-position: -150px 0px;
+}
+.bdsharebuttonbox a.bds_tsina{
+    height: 36px;
+    line-height: 36px;
+    background: url(../image/sharem.png) no-repeat;
+    background-size: auto 100%;
+    background-position-x: -100px;
+}
+.bdsharebuttonbox a.bds_tqq{
+    height: 36px;
+    line-height: 36px;
+    background: url(../image/sharem.png) no-repeat;
+    background-size: auto 100%;
+    background-position-x: 0px;
+}
+.bdsharebuttonbox a.bds_qzone{
+    height: 36px;
+    line-height: 36px;
+    background: url(../image/sharem.png) no-repeat;
+    background-size: auto 100%;
+    background-position-x: -50px;
+}
