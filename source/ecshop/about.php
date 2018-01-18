@@ -49,6 +49,8 @@ if($catid == 14){
     $cache_id = sprintf('%X', crc32($catid . '-' . $page . '-' . $_CFG['lang']));
     if (!$smarty->is_cached($tpl.'.dwt', $cache_id))
     {
+        /* 文章详情 */
+        $article = get_article_info($article_id);
 
         //面包屑
         $smarty->assign('url_html', '<li><a href="./index.php">首页 &gt;</a></li><li><a href="./about.php?tpl='.$tpl.'&id='.$article_id.'">了解国康 &gt;</a></li><li><a href="javascript:;">'.$article['title'] .'</a></li>');
@@ -59,45 +61,40 @@ if($catid == 14){
 
 
         /* 如果页面没有被缓存则重新获得页面的内容 */
-
         assign_template('a', array($catid));
-        $position = assign_ur_here($catid);
-        $smarty->assign('page_title',           $position['title']);     // 页面标题
-        $smarty->assign('ur_here',              $position['ur_here']);   // 当前位置
+        $position = assign_ur_here($article['cat_id'], $article['title']);
+        $smarty->assign('page_title',   $position['title']);    // 页面标题
+        $smarty->assign('ur_here',      $position['ur_here']);  // 当前位置
 
         $smarty->assign('categories',           get_categories_tree(0)); // 分类树
         $smarty->assign('article_categories',   article_categories_tree($catid)); //文章分类树
         $smarty->assign('helps',                get_shop_help());        // 网店帮助
         $smarty->assign('top_goods',            get_top10());            // 销售排行
-
         $smarty->assign('best_goods',           get_recommend_goods('best'));
         $smarty->assign('new_goods',            get_recommend_goods('new'));
         $smarty->assign('hot_goods',            get_recommend_goods('hot'));
         $smarty->assign('promotion_goods',      get_promote_goods());
         $smarty->assign('promotion_info', get_promotion_info());
-
-
         $smarty->assign('keywords',    htmlspecialchars($meta['keywords']));
         $smarty->assign('description', htmlspecialchars($meta['cat_desc']));
 
         /* 获得文章总数 */
-//        $size   = isset($_CFG['article_page_size']) && intval($_CFG['article_page_size']) > 0 ? intval($_CFG['article_page_size']) : 20;
-        $size   = 1;
+        $size   = 12;
         $count  = get_article_count($catid);
-        $pages  = ($count > 0) ? ceil($count / $size) : 1;
-
-        if ($page > $pages)
-        {
-            $page = $pages;
+        $pager = get_pager('about.php', array('tpl'=>'knowfive','id'=>98,'cat_id'=>14), $count, $page,$size);
+        $smarty->assign('pager', $pager);
+        $sql = 'SELECT article_id, title, author, add_time, file_url, open_type, description' .
+            ' FROM ' .$GLOBALS['ecs']->table('article') .
+            ' WHERE is_open = 1 AND cat_id=' . $catid .
+            ' ORDER BY article_type DESC, article_id DESC'.
+            ' limit '.$pager[start] . ',' .$pager[size];
+        $data = $db->getAll($sql);
+        foreach($data as $k=>$v){
+            $data[$k]['add_time'] = date($GLOBALS['_CFG']['date_format'], $v['add_time']);
         }
-        $pager['search']['id'] = $catid;
-        $keywords = '';
-        $goon_keywords = ''; //继续传递的搜索关键词
+        $smarty->assign('artciles_list',    $data);
 
-        $smarty->assign('artciles_list',    get_cat_articles($catid, $page, $size ,$keywords));
-        $smarty->assign('cat_id',    $catid);
-        /* 分页 */
-        assign_pager('about', $catid, $count, $size, '', '', $page, $goon_keywords);
+
         assign_dynamic('article_cat');
     }
 

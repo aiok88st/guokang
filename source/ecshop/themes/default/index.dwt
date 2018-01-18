@@ -139,7 +139,7 @@
 										<del><p>市场价&yen;{$one_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$one_goods[1].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$one_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -172,7 +172,7 @@
 										<del><p>市场价&yen;{$one_goods[2].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$one_goods[2].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$one_goods[2].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -226,7 +226,7 @@
 										<del><p>市场价&yen;{$two_goods[0].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$two_goods[0].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$two_goods[0].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -259,7 +259,7 @@
 										<del><p>市场价&yen;{$two_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$two_goods[1].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$two_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -322,7 +322,7 @@
 										<del><p>市场价&yen;{$three_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$three_goods[1].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$three_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -355,7 +355,7 @@
 										<del><p>市场价&yen;{$three_goods[2].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$three_goods[2].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$three_goods[2].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -408,7 +408,7 @@
 										<del><p>市场价&yen;{$four_goods[0].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$four_goods[0].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$four_goods[0].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>
@@ -441,7 +441,7 @@
 										<del><p>市场价&yen;{$four_goods[1].market_price}</p></del>
 									</div>
 									<div class="prRight floatr">
-										<p>会员价:<span>&yen;</span><span>{$four_goods[1].shop_price}</span></p>
+										<p>会员价:<span>&yen;</span><span>{$four_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
 								</div>

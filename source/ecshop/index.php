@@ -199,12 +199,13 @@ function get_index_type($id){
     $one = $GLOBALS['db']->getRow($sql);
     $sql = "SELECT attr_values, attr_id FROM " . $GLOBALS['ecs']->table("attribute") . " WHERE attr_id =".$one['filter_attr'];
     $filter_attr = $GLOBALS['db']->getRow($sql);
-    $one['filter_attr'] = explode(',',$filter_attr['attr_values']);
+    $filter= str_replace("\n", ",", $filter_attr['attr_values']);
+    $one['filter_attr'] = explode(",",$filter);
     return $one;
 }
 //楼层商品
 function get_index_hot_goods($id){
-    $sql = 'SELECT goods_id, goods_name, cat_id,goods_brief,shop_price,market_price,original_img FROM ' .
+    $sql = 'SELECT goods_id, goods_name, cat_id,goods_brief,shop_price,market_price,original_img, member_price, no_member_price, vip_price, return_amount FROM ' .
             $GLOBALS['ecs']->table("goods") .
             ' WHERE is_hot=1 AND is_on_sale=1 AND cat_id ='.$id .
             ' ORDER BY sort_order ASC,add_time DESC LIMIT 3';

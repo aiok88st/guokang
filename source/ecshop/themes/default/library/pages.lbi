@@ -19,7 +19,7 @@
   </div>
   <!--{else}-->
   <!--翻页 start-->
-  <div id="pager" class="pagebar">
+  <div id="pager" class="pagebar" align="center">
     <!-- {if $pager.page_first} -->
     <a href="{$pager.page_first}">{$lang.page_first} ...</a>
     <!-- {/if} -->

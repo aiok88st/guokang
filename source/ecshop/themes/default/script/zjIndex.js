@@ -6,8 +6,8 @@ $(function(){
 		paginationClickable :true,
 		nextButton: '.swiper-button-next',
     	prevButton: '.swiper-button-prev',
-		autoplayDisableOnInteraction : false,
-//		autoplay:5000,
+		autoplayDisableOnInteraction : true,
+		autoplay:5000,
 		onInit: function(swiper){
 		}
 	});

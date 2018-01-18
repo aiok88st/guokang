@@ -19,7 +19,7 @@
 								<div class="mapContent mapIndex">
 									<ul>
 										<li>
-											<p>{$vo.title}<a href="javascript:;">[查看地图]</a></p>
+											<p>{$vo.description}<a href="javascript:;">[查看地图]</a></p>
 										</li>
 										<li>
                                             {$vo.content}

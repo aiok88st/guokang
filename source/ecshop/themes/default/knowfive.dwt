@@ -1,6 +1,7 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <link rel="stylesheet" href="themes/default/scss/konw1.css" />
 <link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
+<link rel="stylesheet" href="themes/default/scss/page.css" />
 <!-- #BeginLibraryItem "/library/know_position.lbi" --><!-- #EndLibraryItem -->
 		<div id="mainContent">
 			<div class="w12">
@@ -17,12 +18,12 @@
 								<ul>
 									<li>
 										<div class="hcImg">
-											<img src="{$vo.url}" />
+											<img src="{$vo.file_url}" />
 										</div>
 									</li>
 									<li>
 										<div class="honorContent">
-											<p>{$vo.title}</p>
+											<p>{$vo.description}</p>
 										</div>
 									</li>
 									<li>

@@ -1,0 +1,54 @@
+p {
+  margin: 0px; }
+
+.navbar {
+  margin-bottom: 0px; }
+
+.w14 {
+  width: 1140px;
+  margin: 0 auto; }
+
+#topNav {
+  width: 100%;
+  height: 72px;
+  box-shadow: 0 2px 2px rgba(231, 231, 231, 0.5);
+  background-color: white; }
+  #topNav .w12 {
+    width: 1140px;
+    position: relative; }
+    #topNav .w12 > p {
+      line-height: 72px;
+      color: #333333;
+      font-size: 18px; }
+    #topNav .w12 .rightNav {
+      position: absolute;
+      top: 0;
+      right: 0; }
+      #topNav .w12 .rightNav ul li {
+        float: left; }
+        #topNav .w12 .rightNav ul li a {
+          display: block;
+          margin: 28px 0;
+          font-size: 16px;
+          line-height: 16px;
+          color: #6b6b6b;
+          padding: 0 16px;
+          border-right: 1px solid #e5e5e5; }
+        #topNav .w12 .rightNav ul li .aActive {
+          color: #056dbb; }
+        #topNav .w12 .rightNav ul li button {
+          width: 96px;
+          display: block;
+          height: 28px;
+          background-color: #056dbb;
+          font-size: 14px;
+          border-radius: 14px;
+          color: white;
+          margin: 22px 5px; }
+      #topNav .w12 .rightNav ul li:nth-child(6) a {
+        border-right: 0px; }
+
+.footer {
+  margin-top: 0px; }
+
+/*# sourceMappingURL=shop.css.map */
