@@ -156,3 +156,52 @@
     width: 260px;
   }
 }
+.floatleft{
+  float: left;
+}
+.captcha{
+  width: 68%;
+}
+.captchaimg{
+  width: 100px;
+  height: 46px;
+  margin: 13px 0 0 13px;
+}
+.step2{
+  display: none;
+}
+.sms_code{
+  width: 62%;
+}
+.sms_code_box button,.sms_code{
+  border: none;
+  box-shadow:none !important;
+  background: none;
+}
+.sms_code_box{
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px;
+  height: 51px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.sms_code_box .sms_code{
+  border-right:1px solid #eee ;
+  height: 43px !important;
+}
+.sms_code_box button{
+  color: #286090;
+  text-align: center;
+  width: 38%;
+}
+.sms_code_box .disabled{
+  background-color: #ccc;
+}
+.step2 div{
+  margin: 13px 0 18px;
+}
+.step2{
+  font-size: 18px;
+}

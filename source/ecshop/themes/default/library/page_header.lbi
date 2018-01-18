@@ -38,8 +38,12 @@
         <li><a href="javascript:;">问题反馈</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="javascript:;">登陆</a></li>
-        <li><a href="javascript:;">注册</a></li>
+
+        {insert name='member_info'}
+        <!---->
+        <!--<li><a href="javascript:;">登陆</a></li>-->
+        <!--<li><a href="javascript:;">注册</a></li>-->
+
         <li><a href="javascript:;">消息通知</a></li>
         <li><a href="javascript:;"><span class="glyphicon icon01" aria-hidden="true"></span> 购物车（ 0 ）</a></li>
       </ul>

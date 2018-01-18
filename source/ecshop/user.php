@@ -93,6 +93,7 @@ if (in_array($action, $ui_arr))
 if ($action == 'default')
 {
     include_once(ROOT_PATH .'includes/lib_clips.php');
+
     if ($rank = get_rank_info())
     {
         $smarty->assign('rank_name', sprintf($_LANG['your_level'], $rank['rank_name']));
@@ -110,6 +111,7 @@ if ($action == 'default')
 /* 显示会员注册界面 */
 if ($action == 'register')
 {
+
     if ((!isset($back_act)||empty($back_act)) && isset($GLOBALS['_SERVER']['HTTP_REFERER']))
     {
         $back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
@@ -126,14 +128,16 @@ if ($action == 'register')
         $smarty->assign('enabled_captcha', 1);
         $smarty->assign('rand',            mt_rand());
     }
-
+    //用户协议
+    $article=get_article_info(6);
+    $smarty->assign('article',$article);
     /* 密码提示问题 */
     $smarty->assign('passwd_questions', $_LANG['passwd_questions']);
 
     /* 增加是否关闭注册 */
     $smarty->assign('shop_reg_closed', $_CFG['shop_reg_closed']);
 //    $smarty->assign('back_act', $back_act);
-    $smarty->display('user_passport.dwt');
+    $smarty->display('login.dwt');
 }
 
 /* 注册会员的处理 */
@@ -149,9 +153,11 @@ elseif ($action == 'act_register')
     else
     {
         include_once(ROOT_PATH . 'includes/lib_passport.php');
+        require('admin/includes/lib_main.php');
 
         $username = isset($_POST['username']) ? trim($_POST['username']) : '';
         $password = isset($_POST['password']) ? trim($_POST['password']) : '';
+        $confirm_password= isset($_POST['confirm_password']) ? trim($_POST['confirm_password']) : '';
         $email    = isset($_POST['email']) ? trim($_POST['email']) : '';
         $other['msn'] = isset($_POST['extend_field1']) ? $_POST['extend_field1'] : '';
         $other['qq'] = isset($_POST['extend_field2']) ? $_POST['extend_field2'] : '';
@@ -163,24 +169,33 @@ elseif ($action == 'act_register')
         $sms_code = isset($_POST['sms_code'])?trim($_POST['sms_code']):'';
 
         $back_act = isset($_POST['back_act']) ? trim($_POST['back_act']) : '';
+        $email=$username.'@qq.com';
 
         if(empty($_POST['agreement']))
         {
-            show_message($_LANG['passport_js']['agreement']);
-        }
-        if (strlen($username) < 3)
-        {
-            show_message($_LANG['passport_js']['username_shorter']);
+            make_json_result("请先同意会员注册协议");
+            exit;
         }
 
-        if (strlen($password) < 6)
+        if (strlen($username) != 11 )
         {
-            show_message($_LANG['passport_js']['password_shorter']);
+            make_json_result('手机号码长度错误');
+            exit;
+        }
+
+        if(!preg_match("/^[a-zA-Z]{1}[a-zA-Z0-9]{5,15}$/",$password)){
+            make_json_result('密码必须是首位字母的6-16位字母数字混合密码');
+            exit;
+        };
+        if($password!=$confirm_password){
+            make_json_result('两次密码输入不一只');
+            exit;
         }
 
         if (strpos($password, ' ') > 0)
         {
-            show_message($_LANG['passwd_balnk']);
+            make_json_result('密码不能有空格');
+            exit;
         }
 
 
@@ -190,7 +205,8 @@ elseif ($action == 'act_register')
                 $other['mobile_phone'] = $username;
                 $_SESSION['sms_code'] ='false';
             }else{
-                show_message('短信验证码错误', $_LANG['sign_up'], 'user.php?act=register', 'error');
+                make_json_result('短信验证码错误');
+                exit;
             }
         }
 
@@ -235,11 +251,15 @@ elseif ($action == 'act_register')
             if($matrix->get_bind_info('ecos.taocrm')){
                 $matrix->createMember($_SESSION['user_id'],'ecos.taocrm');
             }
-            show_message(sprintf($_LANG['register_success'], $username . $ucdata), array($_LANG['back_up_page'], $_LANG['profile_lnk']), array($back_act, 'user.php'), 'info');
+            make_json_result('succ','user.php');
+            exit;
+//            show_message(sprintf($_LANG['register_success'], $username . $ucdata), array($_LANG['back_up_page'], $_LANG['profile_lnk']), array($back_act, 'user.php'), 'info');
         }
         else
         {
-            $err->show($_LANG['sign_up'], 'user.php?act=register');
+            $errMsg=$err->get_all();
+            var_dump($errMsg);
+//            $err->show($_LANG['sign_up'], 'user.php?act=register');
         }
     }
 
@@ -250,9 +270,13 @@ elseif ($action == 'act_register')
     if ((intval($_CFG['captcha']) || CAPTCHA_REGISTER) && gd_version() > 0)
     {
         require('admin/includes/lib_main.php');
+
         $code = str_replace('\\','',$_REQUEST['JSON']);
+
         $code = json_decode($code,1);
-        $code = $code['code'];
+
+        $code =  $code['code'];
+
         if(!$code){
             make_json_result('failed');exit;
         }
@@ -260,6 +284,7 @@ elseif ($action == 'act_register')
         /* 检查验证码 */
         include_once('includes/cls_captcha.php');
         $validator = new captcha();
+
         if ($validator->check_word($code)){
             $_SESSION['v_code'] = 'true';
             make_json_result('succ');exit;
@@ -346,7 +371,7 @@ elseif ($action == 'login')
     }
 
     $smarty->assign('back_act', $back_act);
-    $smarty->display('user_passport.dwt');
+    $smarty->display('login.dwt');
 }
 
 /* 处理会员的登录 */
@@ -432,13 +457,14 @@ elseif ($action == 'signin')
         }
     }
 
-    if ($user->login($username, $password))
+    if ($user->login($username, $password,isset($_POST['remember'])))
     {
         update_user_info();  //更新用户信息
         recalculate_price(); // 重新计算购物车中的商品价格
         $smarty->assign('user_info', get_user_info());
         $ucdata = empty($user->ucdata)? "" : $user->ucdata;
         $result['ucdata'] = $ucdata;
+
         $result['content'] = $smarty->fetch('library/member_info.lbi');
     }
     else
@@ -2956,9 +2982,12 @@ elseif ($action == 'ajax_delivery_info') {
 
 }elseif($action == 'ajax_validate_sms'){
     require('admin/includes/lib_main.php');
+
+
     $time= time();
     $date = date('Ymd',$time);
     $pre_date = date('Ymd',$time-64000);
+
 //    $ip = $_SERVER["REMOTE_ADDR"];
     $ip = ($_SERVER["HTTP_VIA"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : $_SERVER["REMOTE_ADDR"];
     if(file_exists(__FILE__.$pre_date.".txt"))unlink(__FILE__.$pre_date.".txt");//删除昨日记录
@@ -2975,11 +3004,12 @@ elseif ($action == 'ajax_delivery_info') {
     $post_data = json_decode(str_replace('\\','',$_POST['JSON']),1);
     //判断是否经过验证码验证
     if((!isset($_SESSION['v_code']) || $_SESSION['v_code']!='true') && !isset($post_data['no_need_vcode']) ){
-        make_json_result('v_code fail');exit;
+        make_json_result('验证码错误');exit;
     }
     $_SESSION['v_code'] = 'false';
     $mobile = $post_data['mobile'] ? $post_data['mobile'] : false;
     $is_send = 'fail';
+
     if($mobile){
         // 找回密码验证输入的手机号是否已注册
         if (isset($post_data['action']) && $post_data['action'] == 'sms_get_password') {
@@ -2994,7 +3024,7 @@ elseif ($action == 'ajax_delivery_info') {
         $sms =new sms();
         $_SESSION['sms_code'] = $sms_code;
         $is_send = $sms->send($mobile,'您本次的验证码为：'.$sms_code.',请不要把验证码泄露给其他人，如非本人操作可不用理会');
-        $is_send = $is_send?'succ':'fail';
+        $is_send = $is_send?'succ':'发送失败，请联系客服';
     }
     //短信发送限制
     if($is_send == 'succ'){
@@ -3034,5 +3064,35 @@ elseif ($action == 'ajax_delivery_info') {
         //显示用户名和email表单
         $smarty->display('user_passport.dwt');
     }
+}
+/**
+ * 获得指定的文章的详细信息
+ *
+ * @access  private
+ * @param   integer     $article_id
+ * @return  array
+ */
+function get_article_info($article_id)
+{
+    /* 获得文章的信息 */
+    $sql = "SELECT a.*, IFNULL(AVG(r.comment_rank), 0) AS comment_rank ".
+        "FROM " .$GLOBALS['ecs']->table('article'). " AS a ".
+        "LEFT JOIN " .$GLOBALS['ecs']->table('comment'). " AS r ON r.id_value = a.article_id AND comment_type = 1 ".
+        "WHERE a.is_open = 1 AND a.article_id = '$article_id' GROUP BY a.article_id";
+    $row = $GLOBALS['db']->getRow($sql);
+
+    if ($row !== false)
+    {
+        $row['comment_rank'] = ceil($row['comment_rank']);                              // 用户评论级别取整
+        $row['add_time']     = local_date($GLOBALS['_CFG']['date_format'], $row['add_time']); // 修正添加时间显示
+
+        /* 作者信息如果为空，则用网站名称替换 */
+        if (empty($row['author']) || $row['author'] == '_SHOPHELP')
+        {
+            $row['author'] = $GLOBALS['_CFG']['shop_name'];
+        }
+    }
+
+    return $row;
 }
 ?>
