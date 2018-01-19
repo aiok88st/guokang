@@ -2,16 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="281b0b22-c40a-4a53-942a-185d0829a6c7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/scss/page.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/library/fengxiang_uhere.lbi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/library/news_right.lbi" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/library/praise_right.lbi" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/produce.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/about.php" afterPath="$PROJECT_DIR$/source/ecshop/about.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/admin/goods.php" afterPath="$PROJECT_DIR$/source/ecshop/admin/goods.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/admin/templates/goods_info.htm" afterPath="$PROJECT_DIR$/source/ecshop/admin/templates/goods_info.htm" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/index.php" afterPath="$PROJECT_DIR$/source/ecshop/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/category.php" afterPath="$PROJECT_DIR$/source/ecshop/category.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/cart.html" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/cart.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/css/cart.css" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/css/cart.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/css/cart.scss" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/css/cart.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/css/login.css" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/css/login.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/css/login.scss" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/css/login.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/css/public.css" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/css/public.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/index.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/index.dwt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/js/utils.js" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/js/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/knowFour.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/knowFour.dwt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/knowOne.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/knowOne.dwt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/knowSeven.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/knowSeven.dwt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/knowSix.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/knowSix.dwt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/knowThree.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/knowThree.dwt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/knowTwo.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/knowTwo.dwt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/knowfive.dwt" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/knowfive.dwt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/library/pages.lbi" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/library/pages.lbi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/library/know_position.lbi" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/library/know_position.lbi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/library/know_right.lbi" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/library/know_right.lbi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/ecshop/themes/default/login.html" afterPath="$PROJECT_DIR$/source/ecshop/themes/default/login.html" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,47 +44,7 @@
     <favorites_list name="guokang" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.802454">
-              <caret line="207" column="110" selection-start-line="207" selection-start-column="98" selection-end-line="207" selection-end-column="110" />
-              <folding>
-                <element signature="e#7#483#0#PHP" expanded="true" />
-                <marker date="1516248119503" expanded="true" signature="4518:4614" placeholder="SELECT artic... ecs_article" />
-                <marker date="1516248119503" expanded="true" signature="4518:4623" placeholder="SELECT artic... ecs_article" />
-                <marker date="1516248119503" expanded="true" signature="4715:5556" placeholder="SELECT cat_n... .$ecs-&gt;table(" />
-                <marker date="1516248119503" expanded="true" signature="5522:5535" placeholder="/* 首页主广告设置 *... " />
-                <marker date="1516248119503" expanded="true" signature="5650:5736" placeholder="SELECT ad_ty... ${$ecs-&gt;table(&quot;ad_custom&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="6100:6264" placeholder="SELECT c.cat... ${$ecs-&gt;table(&quot;cat_recommend&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="6924:6932" placeholder="SELECT c.cat... ${$GLOBALS['ecs']-&gt;table(&quot;category&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="6924:7042" placeholder="SELECT cat_n... ${$ecs-&gt;table(&quot;category&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="7102:7194" placeholder="SELECT attr_... ${$ecs-&gt;table(&quot;attribute&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="7453:7599" placeholder="SELECT goods... " />
-                <marker date="1516248119503" expanded="true" signature="7453:7625" placeholder="SELECT goods... " />
-                <marker date="1516248119503" expanded="true" signature="7453:7663" placeholder="SELECT goods... ${$GLOBALS['ecs']-&gt;table(&quot;goods&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="7453:7708" placeholder="SELECT goods... ${$GLOBALS['ecs']-&gt;table(&quot;category&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="7453:7775" placeholder="SELECT goods... ${$GLOBALS['ecs']-&gt;table(&quot;goods&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="7453:7776" placeholder="SELECT goods... ${$GLOBALS['ecs']-&gt;table(&quot;goods&quot;)}" />
-                <marker date="1516248119503" expanded="true" signature="8634:8974" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
-                <marker date="1516248119503" expanded="true" signature="14779:14887" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.dwt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/index.dwt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="16.444445">
-              <caret line="443" column="99" selection-start-line="443" selection-start-column="99" selection-end-line="443" selection-end-column="99" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -105,18 +79,9 @@
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/scss/fengxiang.css" />
         <option value="$PROJECT_DIR$/source/ecshop/admin/templates/articlecat_info.htm" />
         <option value="$PROJECT_DIR$/source/ecshop/admin/articlecat.php" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/know_right.lbi" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowOne.dwt" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/know_position.lbi" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowTwo.dwt" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowThree.dwt" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowFour.dwt" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowSix.dwt" />
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/page_header.lbi" />
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/script/know1.js" />
         <option value="$PROJECT_DIR$/source/ecshop/includes/lib_main.php" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowSeven.dwt" />
-        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowfive.dwt" />
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/pages.lbi" />
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/scss/page.css" />
         <option value="$PROJECT_DIR$/source/ecshop/about.php" />
@@ -124,6 +89,20 @@
         <option value="$PROJECT_DIR$/source/ecshop/admin/goods.php" />
         <option value="$PROJECT_DIR$/source/ecshop/index.php" />
         <option value="$PROJECT_DIR$/source/ecshop/themes/default/index.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/fengxiang_uhere.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/know_position.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/category.php" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/know_right.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowTwo.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowThree.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowFour.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowfive.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowSix.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowSeven.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/knowOne.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/news_right.lbi" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/produce.dwt" />
+        <option value="$PROJECT_DIR$/source/ecshop/themes/default/library/praise_right.lbi" />
       </list>
     </option>
   </component>
@@ -264,11 +243,41 @@
               <option name="myItemId" value="guokang" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ecshop" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="default" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="library" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="guokang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -327,9 +336,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="87" y="15" width="1706" height="995" extended-state="1" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17573965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17573965" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="版本控制" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -368,54 +377,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/comment_info.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41273886">
-          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/includes/cls_mysql.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.796319">
-          <caret line="643" column="76" selection-start-line="643" selection-start-column="54" selection-end-line="643" selection-end-column="76" />
-          <folding>
-            <marker date="1516010604245" expanded="true" signature="16925:17024" placeholder="INSERT INTO ${$table}... " />
-            <marker date="1516010604245" expanded="true" signature="18988:19087" placeholder="INSERT INTO ${$table}... " />
-            <marker date="1516010604245" expanded="true" signature="19277:19376" placeholder="INSERT INTO ${$table}... " />
-            <marker date="1516010604245" expanded="true" signature="20348:20382" placeholder="SELECT COUNT... ${$table}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/category_info.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.9897957">
-          <caret line="29" column="45" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/category.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47126436">
-          <caret line="263" column="84" selection-start-line="263" selection-start-column="84" selection-end-line="263" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/ad_position.lbi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/.project">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.25381905">
@@ -503,7 +464,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -511,14 +471,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1505995670000" expanded="true" signature="4183:4290" placeholder="SELECT count... ${$ecs-&gt;table('adsense')}" />
-            <marker date="1505995670000" expanded="true" signature="4530:4639" placeholder="INSERT INTO ${$ecs-&gt;table('adsense')}... " />
-            <marker date="1505995670000" expanded="true" signature="4832:4899" placeholder="SELECT goods... ${$ecs-&gt;table('goods')}" />
-            <marker date="1505995670000" expanded="true" signature="5297:5416" placeholder="SELECT count... ${$ecs-&gt;table('adsense')}" />
-            <marker date="1505995670000" expanded="true" signature="5668:5789" placeholder="INSERT INTO ${$ecs-&gt;table('adsense')}... " />
-            <marker date="1505995670000" expanded="true" signature="5843:5903" placeholder="SELECT * FRO... ${$ecs-&gt;table('ad')}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -533,7 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="2.1705523">
           <caret line="126" column="50" selection-start-line="126" selection-start-column="36" selection-end-line="126" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -548,7 +499,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.72883433">
           <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -566,67 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/know_right.lbi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.75">
-          <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="9" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/know_position.lbi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16564417">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowTwo.dwt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.25">
-          <caret line="19" column="77" selection-start-line="19" selection-start-column="77" selection-end-line="19" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowThree.dwt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.099386506">
-          <caret line="3" column="79" selection-start-line="3" selection-start-column="79" selection-end-line="3" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowFour.dwt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79509205">
-          <caret line="24" column="77" selection-start-line="24" selection-start-column="77" selection-end-line="24" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowSix.dwt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.5">
-          <caret line="26" column="77" selection-start-line="26" selection-start-column="77" selection-end-line="26" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/page_header.lbi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.25">
-          <caret line="63" column="48" selection-start-line="63" selection-start-column="48" selection-end-line="63" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowOne.dwt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="22" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default11/library/pages.lbi">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -634,10 +523,121 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/api/init.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34723926">
+          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/script/know1.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19036427">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/index_banner.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43067485">
+          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/article_cat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.5">
+          <caret line="121" column="5" selection-start-line="104" selection-start-column="4" selection-end-line="121" selection-end-column="5" />
+          <folding>
+            <marker date="1505995670000" expanded="true" signature="2393:2483" placeholder="SELECT keywo... ${$ecs-&gt;table('article_cat')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/pages.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3888888">
+          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/scss/page.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96687114">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/includes/lib_main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41349694">
+          <caret line="463" column="79" selection-start-line="463" selection-start-column="69" selection-end-line="463" selection-end-column="79" />
+          <folding>
+            <marker date="1506592826000" expanded="true" signature="2563:2783" placeholder="INSERT INTO ${$GLOBALS['ecs']-&gt;table('admin_log')}... " />
+            <marker date="1506592826000" expanded="true" signature="4131:4216" placeholder="SELECT id FR... ${$ecs-&gt;table('shop_config')}" />
+            <marker date="1506592826000" expanded="true" signature="4268:4396" placeholder="INSERT INTO ${$ecs-&gt;table('shop_config')}... " />
+            <marker date="1506592826000" expanded="true" signature="5791:5909" placeholder="SELECT type_... ${$GLOBALS['ecs']-&gt;table('bonus_type')}" />
+            <marker date="1506592826000" expanded="true" signature="6369:6412" placeholder="SELECT rank_... ${$GLOBALS['ecs']-&gt;table('user_rank')}" />
+            <marker date="1506592826000" expanded="true" signature="6917:7028" placeholder="SELECT user_... ${$GLOBALS['ecs']-&gt;table('users')}" />
+            <marker date="1506592826000" expanded="true" signature="11484:11598" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('region')}" />
+            <marker date="1506592826000" expanded="true" signature="12605:12696" placeholder="SELECT cat_i... ${$GLOBALS['ecs']-&gt;table('goods_type')}" />
+            <marker date="1506592826000" expanded="true" signature="13206:13290" placeholder="SELECT pay_i... ${$GLOBALS['ecs']-&gt;table('payment')}" />
+            <marker date="1506592826000" expanded="true" signature="16913:17003" placeholder="SELECT attr_... ${$GLOBALS['ecs']-&gt;table('goods_type')}" />
+            <marker date="1506592826000" expanded="true" signature="19111:19258" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1506592826000" expanded="true" signature="19375:19478" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('brand')}" />
+            <marker date="1506592826000" expanded="true" signature="19656:19784" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('admin_user')}" />
+            <marker date="1506592826000" expanded="true" signature="20218:20343" placeholder="SELECT suppl... ${$GLOBALS['ecs']-&gt;table(&quot;suppliers&quot;)}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/attribute_list.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.25">
+          <caret line="36" column="47" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/attribute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.220588">
+          <caret line="353" column="86" selection-start-line="353" selection-start-column="41" selection-end-line="353" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/goods_info.htm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.083333">
+          <caret line="159" column="88" selection-start-line="159" selection-start-column="75" selection-end-line="159" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0871165">
+          <caret line="911" column="53" selection-start-line="911" selection-start-column="53" selection-end-line="911" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/goods.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.23681">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/know_position.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7349693">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/includes/lib_common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6453988">
-          <caret line="592" column="114" selection-start-line="592" selection-start-column="8" selection-end-line="592" selection-end-column="114" />
+        <state vertical-scroll-proportion="0.14846626">
+          <caret line="854" column="19" selection-start-line="854" selection-start-column="3" selection-end-line="854" selection-end-column="19" />
           <folding>
             <marker date="1509954464000" expanded="true" signature="4233:4370" placeholder="SELECT regio... ${$GLOBALS['ecs']-&gt;table('region')}" />
             <marker date="1509954464000" expanded="true" signature="4610:4715" placeholder="SELECT confi... ${$GLOBALS['ecs']-&gt;table('shipping_area')}" />
@@ -669,44 +669,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/api/init.php">
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/fengxiang_uhere.lbi">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34723926">
-          <caret line="110" column="17" selection-start-line="110" selection-start-column="17" selection-end-line="110" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/script/know1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19036427">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/index_banner.lbi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43067485">
-          <caret line="28" column="42" selection-start-line="28" selection-start-column="42" selection-end-line="28" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/article_cat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.5">
-          <caret line="121" column="5" selection-start-line="104" selection-start-column="4" selection-end-line="121" selection-end-column="5" />
-          <folding>
-            <marker date="1505995670000" expanded="true" signature="2393:2483" placeholder="SELECT keywo... ${$ecs-&gt;table('article_cat')}" />
-          </folding>
+        <state vertical-scroll-proportion="0.19877301">
+          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/includes/lib_article.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.111111">
-          <caret line="72" column="103" selection-start-line="72" selection-start-column="47" selection-end-line="72" selection-end-column="103" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="95" column="144" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="144" />
           <folding>
             <marker date="1505995670000" expanded="true" signature="2799:2954" placeholder="SELECT COUNT... ${$ecs-&gt;table('article')}" />
             <marker date="1505995670000" expanded="true" signature="3009:3120" placeholder="SELECT COUNT... ${$ecs-&gt;table('article')}" />
@@ -714,10 +687,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/page_header.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="74" column="45" selection-start-line="74" selection-start-column="45" selection-end-line="74" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/includes/lib_main.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-21.027779">
-          <caret line="635" column="31" selection-start-line="635" selection-start-column="25" selection-end-line="635" selection-end-column="31" />
+        <state vertical-scroll-proportion="-0.34846625">
+          <caret line="635" column="9" selection-start-line="635" selection-start-column="9" selection-end-line="635" selection-end-column="9" />
           <folding>
             <marker date="1516239018244" expanded="true" signature="1751:1846" placeholder="SELECT speci... ${$GLOBALS['ecs']-&gt;table('user_rank')}" />
             <marker date="1516239018244" expanded="true" signature="2318:2488" placeholder="SELECT rank_... ${$GLOBALS['ecs']-&gt;table('user_rank')}" />
@@ -741,42 +722,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowSeven.dwt">
+    <entry file="file://$PROJECT_DIR$/source/ecshop/category.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.138889">
-          <caret line="16" column="59" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="59" />
-          <folding />
+        <state vertical-scroll-proportion="-0.46380368">
+          <caret line="125" column="158" selection-start-line="125" selection-start-column="158" selection-end-line="125" selection-end-column="158" />
+          <folding>
+            <marker date="1516270601325" expanded="true" signature="3645:3769" placeholder="SELECT cat_i... ecs_category" />
+            <marker date="1516270601325" expanded="true" signature="3886:3985" placeholder="SELECT cat_i... ecs_category" />
+            <marker date="1516270601325" expanded="true" signature="3886:4018" placeholder="SELECT cat_i... ecs_category" />
+            <marker date="1516270601325" expanded="true" signature="4324:4379" placeholder="SELECT COUNT... ${$ecs-&gt;table('goods')}" />
+            <marker date="1516270601325" expanded="true" signature="4324:4395" placeholder="SELECT COUNT... ${$ecs-&gt;table('article')}" />
+            <marker date="1516270601325" expanded="true" signature="5130:5213" placeholder="SELECT COUNT... ${$ecs-&gt;table('goods')}" />
+            <marker date="1516270601325" expanded="true" signature="6063:6146" placeholder="SELECT COUNT... ${$ecs-&gt;table('goods')}" />
+            <marker date="1516270601325" expanded="true" signature="6722:6823" placeholder="SELECT goods... ecs_goods_attr" />
+            <marker date="1516270601325" expanded="true" signature="6722:6824" placeholder="SELECT goods... ecs_goods_attr" />
+            <marker date="1516270601325" expanded="true" signature="7681:7767" placeholder="SELECT brand... ${$GLOBALS['ecs']-&gt;table('brand')}" />
+            <marker date="1516270601325" expanded="true" signature="14030:14371" placeholder="SELECT a.att... ${$ecs-&gt;table('attribute')}" />
+            <marker date="1516270601325" expanded="true" signature="14531:14994" placeholder="SELECT a.att... ${$ecs-&gt;table('goods_attr')}" />
+            <marker date="1516270601325" expanded="true" signature="17091:17214" placeholder="SELECT DISTI... ${$ecs-&gt;table('goods_attr')}" />
+            <marker date="1516270601325" expanded="true" signature="21097:21251" placeholder="SELECT cat_n... ${$GLOBALS['ecs']-&gt;table('category')}" />
+            <marker date="1516270601325" expanded="true" signature="25591:25670" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('goods')}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/pages.lbi">
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/index.dwt">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3888888">
-          <caret line="21" column="47" selection-start-line="21" selection-start-column="47" selection-end-line="21" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/scss/page.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.96687114">
-          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowfive.dwt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.099386506">
-          <caret line="3" column="61" selection-start-line="3" selection-start-column="61" selection-end-line="3" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.5361963">
+          <caret line="700" column="33" selection-start-line="700" selection-start-column="16" selection-end-line="700" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/about.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2588957">
-          <caret line="83" column="107" selection-start-line="83" selection-start-column="107" selection-end-line="83" selection-end-column="107" />
+        <state vertical-scroll-proportion="0.033128835">
+          <caret line="83" column="14" selection-start-line="83" selection-start-column="8" selection-end-line="83" selection-end-column="14" />
           <folding>
             <marker date="1516242650661" expanded="true" signature="958:1060" placeholder="SELECT artic... ${$ecs-&gt;table('article')}" />
             <marker date="1516242650661" expanded="true" signature="2006:2102" placeholder="SELECT cat_i... ecs_article_cat" />
@@ -789,147 +770,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/includes/lib_main.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41349694">
-          <caret line="463" column="79" selection-start-line="463" selection-start-column="69" selection-end-line="463" selection-end-column="79" />
-          <folding>
-            <marker date="1506592826000" expanded="true" signature="2563:2783" placeholder="INSERT INTO ${$GLOBALS['ecs']-&gt;table('admin_log')}... " />
-            <marker date="1506592826000" expanded="true" signature="4131:4216" placeholder="SELECT id FR... ${$ecs-&gt;table('shop_config')}" />
-            <marker date="1506592826000" expanded="true" signature="4268:4396" placeholder="INSERT INTO ${$ecs-&gt;table('shop_config')}... " />
-            <marker date="1506592826000" expanded="true" signature="5791:5909" placeholder="SELECT type_... ${$GLOBALS['ecs']-&gt;table('bonus_type')}" />
-            <marker date="1506592826000" expanded="true" signature="6369:6412" placeholder="SELECT rank_... ${$GLOBALS['ecs']-&gt;table('user_rank')}" />
-            <marker date="1506592826000" expanded="true" signature="6917:7028" placeholder="SELECT user_... ${$GLOBALS['ecs']-&gt;table('users')}" />
-            <marker date="1506592826000" expanded="true" signature="11484:11598" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('region')}" />
-            <marker date="1506592826000" expanded="true" signature="12605:12696" placeholder="SELECT cat_i... ${$GLOBALS['ecs']-&gt;table('goods_type')}" />
-            <marker date="1506592826000" expanded="true" signature="13206:13290" placeholder="SELECT pay_i... ${$GLOBALS['ecs']-&gt;table('payment')}" />
-            <marker date="1506592826000" expanded="true" signature="16913:17003" placeholder="SELECT attr_... ${$GLOBALS['ecs']-&gt;table('goods_type')}" />
-            <marker date="1506592826000" expanded="true" signature="19111:19258" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('category')}" />
-            <marker date="1506592826000" expanded="true" signature="19375:19478" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('brand')}" />
-            <marker date="1506592826000" expanded="true" signature="19656:19784" placeholder="SELECT * FRO... ${$GLOBALS['ecs']-&gt;table('admin_user')}" />
-            <marker date="1506592826000" expanded="true" signature="20218:20343" placeholder="SELECT suppl... ${$GLOBALS['ecs']-&gt;table(&quot;suppliers&quot;)}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/attribute_list.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.25">
-          <caret line="36" column="47" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/attribute.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.220588">
-          <caret line="353" column="86" selection-start-line="353" selection-start-column="41" selection-end-line="353" selection-end-column="86" />
-          <folding>
-            <marker date="1505995670000" expanded="true" signature="3308:3391" placeholder="SELECT * FRO... ${$ecs-&gt;table('attribute')}" />
-            <marker date="1505995670000" expanded="true" signature="6433:6492" placeholder="DELETE FROM " />
-            <marker date="1505995670000" expanded="true" signature="6559:6619" placeholder="DELETE FROM " />
-            <marker date="1505995670000" expanded="true" signature="8456:8518" placeholder="DELETE FROM " />
-            <marker date="1505995670000" expanded="true" signature="8538:8601" placeholder="DELETE FROM " />
-            <marker date="1505995670000" expanded="true" signature="10531:10601" placeholder="SELECT COUNT... ${$GLOBALS['ecs']-&gt;table('attribute')}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/templates/goods_info.htm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.083333">
-          <caret line="159" column="88" selection-start-line="159" selection-start-column="75" selection-end-line="159" selection-end-column="88" />
-          <folding>
-            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#0;n#ul#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#1;n#tr#0;n#table#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#1;n#td#1;n#tr#1;n#table#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#1;n#tr#2;n#table#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#1;n#tr#4;n#table#0;n#form#0;n#div#1;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/admin/goods.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0871165">
-          <caret line="911" column="53" selection-start-line="911" selection-start-column="53" selection-end-line="911" selection-end-column="53" />
-          <folding>
-            <marker date="1516247498627" expanded="true" signature="7807:7968" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="8070:8189" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="8293:8413" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="8476:8540" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="8674:8755" placeholder="SELECT * FRO... ${$ecs-&gt;table('goods')}" />
-            <marker date="1516247498627" expanded="true" signature="11793:11962" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="12879:13002" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="13495:13619" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="14124:14188" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="14706:14796" placeholder="SELECT cat_i... ${$ecs-&gt;table('goods_cat')}" />
-            <marker date="1516247498627" expanded="true" signature="15648:15734" placeholder="SELECT * FRO... ${$ecs-&gt;table('goods_gallery')}" />
-            <marker date="1516247498627" expanded="true" signature="19527:19681" placeholder="SELECT COUNT... ${$ecs-&gt;table('goods')}" />
-            <marker date="1516247498627" expanded="true" signature="30719:30749" placeholder="SELECT MAX(g... ${$ecs-&gt;table('goods')}" />
-            <marker date="1516247498627" expanded="true" signature="33467:34915" placeholder="INSERT INTO ${$ecs-&gt;table('goods')}... " />
-            <marker date="1516247498627" expanded="true" signature="34971:36437" placeholder="INSERT INTO ${$ecs-&gt;table('goods')}... " />
-            <marker date="1516247498627" expanded="true" signature="40183:40276" placeholder="SELECT attr_... ${$ecs-&gt;table('attribute')}" />
-            <marker date="1516247498627" expanded="true" signature="40497:40744" placeholder="SELECT g.*, ${$ecs-&gt;table('goods_attr')}" />
-            <marker date="1516247498627" expanded="true" signature="42804:42991" placeholder="INSERT INTO ${$ecs-&gt;table('goods_attr')}... " />
-            <marker date="1516247498627" expanded="true" signature="43325:43421" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="45804:45995" placeholder="INSERT INTO ${$ecs-&gt;table('goods_gallery')}... " />
-            <marker date="1516247498627" expanded="true" signature="53343:53420" placeholder="SELECT goods... ${$ecs-&gt;table('products')}" />
-            <marker date="1516247498627" expanded="true" signature="54088:54165" placeholder="SELECT goods... ${$ecs-&gt;table('products')}" />
-            <marker date="1516247498627" expanded="true" signature="55186:55258" placeholder="SELECT goods... ${$ecs-&gt;table('products')}" />
-            <marker date="1516247498627" expanded="true" signature="63726:63810" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="64507:64584" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="64640:64717" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="64754:64831" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="64868:64942" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="64979:65052" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65089:65165" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65202:65278" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65315:65390" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65427:65501" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65538:65617" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65654:65721" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65758:65850" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="65887:65964" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="66001:66078" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="66115:66193" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="66303:66379" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="68066:68158" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="69484:69667" placeholder="INSERT INTO ${$ecs-&gt;table('link_goods')}... " />
-            <marker date="1516247498627" expanded="true" signature="69737:69916" placeholder="INSERT INTO ${$ecs-&gt;table('link_goods')}... " />
-            <marker date="1516247498627" expanded="true" signature="70893:71001" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="71340:71444" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="72464:72638" placeholder="INSERT INTO ${$ecs-&gt;table('group_goods')}... " />
-            <marker date="1516247498627" expanded="true" signature="73479:73569" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="74596:74713" placeholder="SELECT artic... ${$ecs-&gt;table('article')}" />
-            <marker date="1516247498627" expanded="true" signature="75444:75598" placeholder="INSERT INTO ${$ecs-&gt;table('goods_article')}... " />
-            <marker date="1516247498627" expanded="true" signature="76397:76523" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="77391:77505" placeholder="SELECT goods... ${$ecs-&gt;table('goods')}" />
-            <marker date="1516247498627" expanded="true" signature="80746:80860" placeholder="SELECT goods... ${$ecs-&gt;table('goods')}" />
-            <marker date="1516247498627" expanded="true" signature="83593:83669" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="86600:86733" placeholder="SELECT goods... ${$ecs-&gt;table('goods')}" />
-            <marker date="1516247498627" expanded="true" signature="88618:88833" placeholder="INSERT INTO ${$GLOBALS['ecs']-&gt;table('products')}... " />
-            <marker date="1516247498627" expanded="true" signature="91164:91274" placeholder="SELECT produ... ${$GLOBALS['ecs']-&gt;table('products')}" />
-            <marker date="1516247498627" expanded="true" signature="91616:91677" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="94753:94872" placeholder="DELETE FROM " />
-            <marker date="1516247498627" expanded="true" signature="95110:95317" placeholder="INSERT INTO ${$GLOBALS['ecs']-&gt;table('volume_price')}... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/index.dwt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="16.444445">
-          <caret line="443" column="99" selection-start-line="443" selection-start-column="99" selection-end-line="443" selection-end-column="99" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/ecshop/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.802454">
-          <caret line="207" column="110" selection-start-line="207" selection-start-column="98" selection-end-line="207" selection-end-column="110" />
+        <state vertical-scroll-proportion="0.033128835">
+          <caret line="202" column="47" selection-start-line="199" selection-start-column="4" selection-end-line="202" selection-end-column="47" />
           <folding>
             <element signature="e#7#483#0#PHP" expanded="true" />
             <marker date="1516248119503" expanded="true" signature="4518:4614" placeholder="SELECT artic... ecs_article" />
@@ -949,6 +793,96 @@
             <marker date="1516248119503" expanded="true" signature="7453:7776" placeholder="SELECT goods... ${$GLOBALS['ecs']-&gt;table(&quot;goods&quot;)}" />
             <marker date="1516248119503" expanded="true" signature="8634:8974" placeholder="SELECT o.ord... ${$GLOBALS['ecs']-&gt;table('order_info')}" />
             <marker date="1516248119503" expanded="true" signature="14779:14887" placeholder="SELECT link_... ${$GLOBALS['ecs']-&gt;table('friend_link')}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/know_right.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4969325">
+          <caret line="15" column="6" selection-start-line="15" selection-start-column="6" selection-end-line="15" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowThree.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="20" column="22" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowTwo.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.75">
+          <caret line="17" column="22" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowSeven.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5030675">
+          <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowSix.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66871166">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowfive.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7018405">
+          <caret line="47" column="22" selection-start-line="47" selection-start-column="22" selection-end-line="47" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowFour.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7018405">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/knowOne.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.596319">
+          <caret line="18" column="98" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/news_right.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8883436">
+          <caret line="57" column="6" selection-start-line="57" selection-start-column="6" selection-end-line="57" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/library/praise_right.lbi">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7018405">
+          <caret line="57" column="25" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/ecshop/themes/default/produce.dwt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39754602">
+          <caret line="12" column="42" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#div#2;n#div#0;n#div#0;n#div#2;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

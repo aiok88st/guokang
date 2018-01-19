@@ -1,0 +1,131 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/produce.css" />
+<link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
+<link rel="stylesheet" href="themes/default/scss/page.css" />
+<style>
+    #banner img{
+        width: 100%;
+        height: 400px;
+    }
+</style>
+		<!--集团简介-->
+		<div id="banner" align="center">
+            {insert name='ads' id=4 num=1}
+		</div>
+
+        <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+
+		<!--类型选择-->
+		<div id="typeList" class="w12">
+			<div class="typeList">
+				<div class="tlLeft floatl">
+					<p>类型</p>
+				</div>
+				<div class="tlRight floatl">				                                                                                           
+					<div>
+						<a href="category.php?id=2&cid=0" class="floatl <!-- {if $cid eq 0} -->aActive<!-- {/if} -->">全部</a>
+                        <!--{foreach from=$catList item=vo}-->
+						<a href="category.php?id=2&cid={$vo.cat_id}" class="floatl <!-- {if $cid eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
+                        <!--{/foreach}-->
+
+						<div class="clearl"></div>
+					</div>
+					
+				</div>
+				<div class="clearl"></div>
+			</div>
+            <!-- {if $cid neq 0} -->
+			<div class="typeList">
+				<div class="tlLeft floatl">
+					<p>产品</p>
+				</div>
+				<div class="tlRight floatl">				                                                                                           
+					<div>
+                        <a href="category.php?id=2&cid={$cid}&aid=0" class="floatl <!-- {if $aid eq 0} -->aActive<!-- {/if} -->">全部</a>
+                        <!--{foreach from=$cList item=vo}-->
+						<a href="category.php?id=2&cid={$cid}&aid={$vo.cat_id}" class="floatl <!-- {if $aid eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
+                        <!--{/foreach}-->
+
+						<div class="clearl"></div>
+					</div>
+					
+				</div>
+				<div class="clearl"></div>
+			</div>
+            <!-- {/if} -->
+		</div>
+		<div id="mainContent">
+			<div class="w12">
+				<div class="leftContent floatl noBord">
+                    <!-- {if $g_list neq ''} -->
+                    <!--{foreach from=$g_list item=vo}-->
+					<div class="planBox">
+						<div class="plLeft floatl">
+							<img src="{$vo.goods_img}" />
+						</div>
+						<div class="plMiddle floatl">
+							<ul>
+								<li>
+									<p>{$vo.goods_name}</p>
+								</li>
+								<li>
+									<p>{$vo.goods_brief}</p>
+								</li>
+								<li>
+                                    <!--{foreach from=$vo.attr_value item=vv}-->
+									<a href="javascript:;" class="floatl">{$vv.attr_value}</a>
+                                    <!--{/foreach}-->
+
+									<div class="clearl"> </div>
+								</li>
+							</ul>
+						</div>
+						<div class="plLine floatl"></div>
+						<div class="plRight floatl">
+							<ul>
+								<li>
+									<p>会员价：<span>&yen;{$vo.member_price}</span></p>
+								</li>
+								<li>
+									<p>贵宾价：<del><span>&yen;{$vo.vip_price}</span></del></p>
+								</li>
+								<li>
+									<p>市场价：<del><span>&yen;{$vo.market_price}</span></del></p>
+								</li>
+								<li>
+									<a href="###">查看详情</a>
+								</li>
+							</ul>
+						</div>
+						<div class="clearl"></div>
+					</div>
+                    <!--{/foreach}-->
+
+					<div class="page whitePage" align="center">
+                        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+                    </div>
+                    <!-- {else} -->
+                    <div style="text-align: center;background-color: #fff;padding: 100px;">
+                        <ul>
+                            <li>
+                                <img src="themes/default/image/nomore.png" alt=""/>
+                            </li>
+                            <li>很抱歉，该分类下暂无产品!</li>
+                        </ul>
+                    </div>
+                    <!-- {/if} -->
+				</div>
+
+
+				<div class="rightNavs floatl">
+					<!-- #BeginLibraryItem "/library/news_right.lbi" --><!-- #EndLibraryItem -->
+
+					<!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+				</div>
+				<div class="clearl"></div>
+			</div>
+			
+		</div>
+<script type="text/javascript" src="themes/default/script/famous.js" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+

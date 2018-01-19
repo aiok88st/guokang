@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="themes/default/scss/konw1.css" />
 <link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
 		<!-- #BeginLibraryItem "/library/know_position.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
 		<div id="mainContent">
 			<div class="w12">
 				<div class="leftContent floatl">
@@ -33,7 +34,10 @@
 						</div>
 					</div>
 				</div>
-				<!-- #BeginLibraryItem "/library/know_right.lbi" --><!-- #EndLibraryItem -->
+				<div class="rightNavs floatl">
+					<!-- #BeginLibraryItem "/library/know_right.lbi" --><!-- #EndLibraryItem -->
+					<!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+				</div>
 				<div class="clearl"></div>
 			</div>
 			

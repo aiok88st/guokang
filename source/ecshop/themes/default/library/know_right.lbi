@@ -1,79 +1,16 @@
-<div class="rightNavs floatl">
-    <div class="rnBox">
-        <div class="rnTop">
-            <p>关于国康</p>
-        </div>
-        <div class="rnBottom">
-            <ul>
-                <!--{foreach from=$catList item=vo}-->
-                <li <!-- {if $cat_id eq $vo.cat_id} -->class="indexLiActive"<!-- {/if} -->>
-                    <a href="{$vo.cat_link}&cat_id={$vo.cat_id}">{$vo.cat_name}</a>
-                    <span></span>
-                </li>
-                <!--{/foreach}-->
-
-            </ul>
-        </div>
+<div class="rnBox">
+    <div class="rnTop">
+        <p>关于国康</p>
     </div>
-    <div class="rnBox">
-        <div class="rnTop">
-            <p>客户表扬</p>
-            <a href="###"><img src="themes/default/image/moreLink.png"/></a>
-        </div>
-        <div class="rnBottom">
-            <ul>
-                <li class="indexLiAc">
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
+    <div class="rnBottom">
+        <ul>
+            <!--{foreach from=$catList item=vo}-->
+            <li <!-- {if $cat_id eq $vo.cat_id} -->class="indexLiActive"<!-- {/if} -->>
+            <a href="{$vo.cat_link}&cat_id={$vo.cat_id}">{$vo.cat_name}</a>
+            <span></span>
+            </li>
+            <!--{/foreach}-->
 
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-                <li>
-                    <a href="###">国康健康重大疾病保险计划计划...</a>
-                    <span></span>
-                    <p>12-07</p>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="rnImg">
-        <a href="###">
-            <img src="themes/default/image/ad.jpg" />
-        </a>
+        </ul>
     </div>
 </div>

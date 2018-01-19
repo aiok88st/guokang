@@ -1,5 +1,15 @@
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+.border-unleft {
+  border-left: 0;
+}
+
+.border-unright {
+  border-right: 0;
+}
+
+.btn-default:focus {
+  background-color: #fff;
+  border-color: #ccc;
+  outline: none;
 }
 
 .main {
@@ -7,34 +17,174 @@
   margin: 38px auto 84px;
 }
 
-.main .cartList {
-  padding: 16px 65px;
+.cartList {
+  padding: 16px 65px 66px;
 }
 
-.main .cartList .title h4 {
-  line-height: 30px;
-}
-
-.main .cartList .list li {
+.cartList ul li {
   padding: 30px 0;
 }
 
-.main .emptyCart {
+.list-header h4 {
+  line-height: 30px;
+}
+
+.list-checkbox label {
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 62px 20px 0;
+  background: url(../img/shop/icon-checkbox.png) no-repeat;
+  cursor: pointer;
+}
+
+.list-checkbox label.checked {
+  background-position-y: -24px;
+}
+
+.list-checkbox input {
+  display: none;
+}
+
+.list-msg .pull-left, .list-msg .pull-right {
+  width: 25%;
+  margin: 5px 0 0;
+}
+
+.list-msg .border-bottom {
+  padding-bottom: 30px;
+}
+
+.list-msg-name, .list-msg-prize {
+  line-height: 46px;
+}
+
+.list-msg-num .input-group {
+  width: 150px;
+  margin: 0 auto;
+}
+
+.list-msg-num .input-group input {
+  width: 50px;
+  text-align: center;
+}
+
+.list-msg-num .input-group .btn {
+  width: 50px;
+  font-size: 22px;
+}
+
+.list-msg-num .input-amount {
+  padding: 10px 0;
+}
+
+.list-msg-delet span {
+  font-size: 16px;
+  margin: 18px 24px 0;
+  float: right;
+  cursor: pointer;
+}
+
+.list-msg-delet span:hover {
+  color: skyblue;
+}
+
+.list-label {
+  display: inline-block;
+  line-height: 26px;
+  padding: 0 13px;
+  margin: 20px 7px 0 0;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  color: #a7a7a7;
+}
+
+.list-footer {
+  margin-top: 49px;
+  overflow: hidden;
+}
+
+.list-footer .btn-keepShopping {
+  cursor: pointer;
+  line-height: 30px;
+}
+
+.list-footer .icon-cart {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url(../img/shop/icon-cart-small.png) no-repeat;
+  vertical-align: text-top;
+}
+
+.list-footer .box-pay {
+  width: 190px;
+  height: 92px;
+}
+
+.list-footer .box-pay .text {
+  overflow: hidden;
+  line-height: 30px;
+}
+
+.list-footer .fontSize24 {
+  font-size: 24px;
+}
+
+.list-footer .total {
+  font-size: 30px;
+}
+
+.list-footer .red {
+  color: #fb0404;
+}
+
+.list-footer .btn-gotoPay {
+  width: 170px;
+  background: #2b65b1;
+  border-radius: 23px;
+  margin-top: 11px;
+}
+
+.emptyCart, .pay-result {
   width: 200px;
-  height: 170px;
-  background: url(../img/icon-cart.png) center 0 no-repeat;
+  background: url(../img/shop/icon-cart.png) center 0 no-repeat;
   margin: 117px auto 130px;
   overflow: hidden;
   text-align: center;
   display: none;
 }
 
-.main .emptyCart p {
+.emptyCart p, .pay-result p {
   margin: 70px 0 32px;
 }
 
-.main .emptyCart .btn {
+.emptyCart .btn, .pay-result .btn {
   width: 170px;
   height: 46px;
   border-radius: 23px;
+}
+
+.pay-result {
+  background: url(../img/shop/icon-bag2.png) center 0 no-repeat;
+  display: block;
+}
+
+.pay-result h4 {
+  margin: 80px 0 6px;
+  font-weight: bold;
+}
+
+.pay-result p {
+  margin: 0 0 32px;
+}
+
+@media (max-width: 767px) {
+  .list-msg .list-msg-name, .list-msg .list-msg-prize {
+    width: 100%;
+    text-align: left;
+  }
+  .list-msg .list-msg-num, .list-msg .list-msg-delet {
+    width: 50%;
+  }
 }

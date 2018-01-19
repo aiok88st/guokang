@@ -1,0 +1,58 @@
+<div class="rnBox">
+    <div class="rnTop">
+        <p>最新新闻</p>
+        <a href="###"><img src="themes/default/image/moreLink.png"/></a>
+    </div>
+    <div class="rnBottom">
+        <a href="###" class="newsBox">
+            <div class="nsLeft floatl">
+                <img src="themes/default/image/news.jpg" />
+            </div>
+            <div class="nsRight floatl">
+                <p>国康健康重大疾病保险计划</p>
+                <p>国康健康重大疾病保险计划</p>
+            </div>
+            <div class="clearl"></div>
+        </a>
+        <a href="###" class="newsBox">
+            <div class="nsLeft floatl">
+                <img src="themes/default/image/news.jpg" />
+            </div>
+            <div class="nsRight floatl">
+                <p>国康健康重大疾病保险计划</p>
+                <p>国康健康重大疾病保险计划</p>
+            </div>
+            <div class="clearl"></div>
+        </a>
+        <a href="###" class="newsBox">
+            <div class="nsLeft floatl">
+                <img src="themes/default/image/news.jpg" />
+            </div>
+            <div class="nsRight floatl">
+                <p>国康健康重大疾病保险计划</p>
+                <p>国康健康重大疾病保险计划</p>
+            </div>
+            <div class="clearl"></div>
+        </a>
+        <a href="###" class="newsBox">
+            <div class="nsLeft floatl">
+                <img src="themes/default/image/news.jpg" />
+            </div>
+            <div class="nsRight floatl">
+                <p>国康健康重大疾病保险计划</p>
+                <p>国康健康重大疾病保险计划</p>
+            </div>
+            <div class="clearl"></div>
+        </a>
+        <a href="###" class="newsBox">
+            <div class="nsLeft floatl">
+                <img src="themes/default/image/news.jpg" />
+            </div>
+            <div class="nsRight floatl">
+                <p>国康健康重大疾病保险计划</p>
+                <p>国康健康重大疾病保险计划</p>
+            </div>
+            <div class="clearl"></div>
+        </a>
+    </div>
+</div>

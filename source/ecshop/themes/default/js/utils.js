@@ -34,3 +34,20 @@ function encryptPhone(num){
 	}
 	return a.join('');
 }
+
+//验证身份证号码
+function validateId(str){ 
+	var path = /(^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$)|(^[1-9]\d{5}\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{2}$)/;
+	return path.test(str); 
+} 
+
+
+//判断是否为正整数
+function isNumber(str){
+	var path = /^\\d+$/;
+	if(path.test(str)) {
+		return true;
+	}
+	return false;
+}
+

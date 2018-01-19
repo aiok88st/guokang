@@ -75,8 +75,83 @@ setcookie('ECS[display]', $display, gmtime() + 86400 * 7, NULL, NULL, NULL, TRUE
 $cache_id = sprintf('%X', crc32($cat_id . '-' . $display . '-' . $sort  .'-' . $order  .'-' . $page . '-' . $size . '-' . $_SESSION['user_rank'] . '-' .
     $_CFG['lang'] .'-'. $brand. '-' . $price_max . '-' .$price_min . '-' . $filter_attr_str));
 
+//分类ID
+$cid = $_REQUEST['cid']?$_REQUEST['cid']:0;
+//二级分类ID
+$aid = $_REQUEST['aid']?$_REQUEST['aid']:0;
+
 if (!$smarty->is_cached('category.dwt', $cache_id))
 {
+    //分类
+    $sql = 'SELECT cat_id, cat_name2, cat_name, filter_attr FROM  ecs_category WHERE is_show = 1 AND parent_id=0 ORDER BY sort_order ASC';
+    $catList = $db->getAll($sql);
+    $smarty->assign('catList',    $catList);
+    if($cid != 0){
+        $sql = 'SELECT cat_id, cat_name2, cat_name, filter_attr FROM  ecs_category WHERE is_show = 1 AND parent_id= '.$cid.' ORDER BY sort_order ASC';
+        $cList = $db->getAll($sql);
+        $smarty->assign('cList',    $cList);
+    }
+
+
+    //产品
+    /* 获得产品总数 */
+    $size   = 7;
+    if($cid == 0){
+        //面包屑
+        $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="javascript:;">产品中心</a></li>';
+
+        $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1");
+        $pager = get_pager('category.php', array('id'=>2,'cid'=>$cid), $count, $page,$size);
+        $sqls = 'SELECT goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+            ' FROM ' .$GLOBALS['ecs']->table('goods') .
+            ' WHERE is_on_sale = 1'.
+            ' ORDER BY sort_order ASC, add_time DESC'.
+            ' limit '.$pager[start] . ',' .$pager[size];
+    }else{
+        $cat = get_cat_info($cid);   // 获得分类的相关信息
+        if($aid == 0){
+            //面包屑
+            $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="category.php?id=2">产品中心 &gt;</a></li><li><a href="javascript:;">'.$cat['cat_name'].'</a></li>';
+
+            $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1 AND cat_id=".$cid);
+            $pager = get_pager('category.php', array('id'=>2,'cid'=>$cid), $count, $page,$size);
+            $sqls = 'SELECT goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+                ' FROM ' .$GLOBALS['ecs']->table('goods') .
+                ' WHERE is_on_sale = 1 AND cat_id=' . $cid .
+                ' ORDER BY sort_order ASC, add_time DESC'.
+                ' limit '.$pager[start] . ',' .$pager[size];
+        }else{
+            //面包屑
+            $cat2 = get_cat_info($aid);   // 获得分类的相关信息
+            $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="category.php?id=2">产品中心 &gt;</a></li><li><a href="category.php?id=2&cid='.$cid.'">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">'.$cat2['cat_name'].'</a></li>';
+
+            $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1 AND cat_id=".$aid);
+            $pager = get_pager('category.php', array('id'=>2,'cid'=>$cid,'aid'=>$aid), $count, $page,$size);
+            $sqls = 'SELECT goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+                ' FROM ' .$GLOBALS['ecs']->table('goods') .
+                ' WHERE is_on_sale = 1 AND cat_id=' . $aid .
+                ' ORDER BY sort_order ASC, add_time DESC'.
+                ' limit '.$pager[start] . ',' .$pager[size];
+        }
+
+    }
+
+    $data = $db->getAll($sqls);
+    foreach($data as $k=>$v){
+        $sql='SELECT goods_attr_id, goods_id, attr_id, attr_value, attr_price FROM  ecs_goods_attr WHERE goods_id = '.$v['goods_id'];
+        $data[$k]['attr_value'] = $db->getAll($sql);
+    }
+    if(empty($data)){
+        $data = '';
+    }
+    $smarty->assign('cid', $cid);
+    $smarty->assign('aid', $aid);
+    $smarty->assign('pager', $pager);
+    $smarty->assign('g_list', $data);
+    $smarty->assign('url_html', $url_html);
+
+
+
     /* 如果页面没有被缓存则重新获取页面的内容 */
 
     $children = get_children($cat_id);
@@ -393,11 +468,11 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
     $smarty->assign('category',         $cat_id);
     $smarty->assign('script_name', 'category');
 
-    assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
-    assign_dynamic('category'); // 动态内容
+    //assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
+    assign_dynamic('produce'); // 动态内容
 }
 
-$smarty->display('category.dwt', $cache_id);
+$smarty->display('produce.dwt', $cache_id);
 
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTION

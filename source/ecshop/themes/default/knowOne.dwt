@@ -5,7 +5,7 @@
 
 
         <!-- #BeginLibraryItem "/library/know_position.lbi" --><!-- #EndLibraryItem -->
-
+        <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
         <div id="mainContent">
             <div class="w12">
                 <div class="leftContent floatl">
@@ -14,7 +14,11 @@
                         <p>{$article.content}</p>
                      </div>
                 </div>
-                <!-- #BeginLibraryItem "/library/know_right.lbi" --><!-- #EndLibraryItem -->
+                <div class="rightNavs floatl">
+                    <!-- #BeginLibraryItem "/library/know_right.lbi" --><!-- #EndLibraryItem -->
+                    <!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+                </div>
+
                 <div class="clearl"></div>
             </div>
 

@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>国康商城 - 填写订单详情</title>
+	<link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./css/public.css">
+	<link rel="stylesheet" type="text/css" href="./css/order_details.css">
+	<script type="text/javascript" src='./js/jquery-3.2.1.min.js'></script>
+	<script type="text/javascript" src='./js/bootstrap.min.js'></script>
+</head>
+<body>
+	<!-- 顶部导航条 -->
+	<nav class='navbar navbar-default navbar-fixed-top navbar-inverse'>
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle='collapse' data-target='#firstNav'>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
+				</button>
+			</div>
+			<div id="firstNav" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-left">
+					<li><a href="javascript:;">国康商城</a></li>
+					<li><a href="javascript:;">保险社区</a></li>
+					<li><a href="javascript:;">关于我们</a></li>
+					<li><a href="javascript:;">问题反馈</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="login.html">登陆</a></li>
+					<li><a href="javascript:;">注册</a></li>
+					<li><a href="javascript:;">消息通知</a></li>
+					<li><a href="javascript:;"><span class="glyphicon icon01" aria-hidden="true"></span> 购物车（ 0 ）</a></li>
+				</ul>
+			</div>
+			
+		</div>
+	</nav>
+	<!-- 第二导航条 -->
+	<nav class='navbar navbar-default second-nav'>
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" data-toggle='collapse' data-target='#secongNav'>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
+					<span class='icon-bar'></span>
+				</button>
+				<a class="navbar-brand" href="#">
+			        <img alt="Brand" src="./img/logo.png" class="img-responsive">
+			     </a>
+			</div>
+			<div id="secongNav" class="collapse navbar-collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="javascript:;">首页</a></li>
+					<li><a href="javascript:;">产品中心</a></li>
+					<li><a href="javascript:;">解决方案</a></li>
+					<li><a href="javascript:;">优质资源</a></li>
+					<li><a href="javascript:;">服务体系</a></li>
+					<li><a href="javascript:;">品牌体系</a></li>
+					<li><a href="javascript:;">新闻资讯</a></li>
+					<li><a href="javascript:;">了解国康</a></li>
+					<li><a href="javascript:;">保险社区</a></li>
+				</ul>
+			</div>
+			
+			
+		</div>
+	</nav>
+	
+	<!--  主体部分   -->
+	<div class="container main">
+		<!--<div class="row order-row">
+			<div class="pull-left col-lg-1">配送信息</div>
+			<div class="pull-left col-lg-11">
+				<div class="row">
+					<div class="col-md-3 col-sm-6 box-address">
+						<div class="middle">
+							<p><span class="ad-name">王文杰</span> <span class="ad-phone">1372839872635</span></p>
+							<p class="ad-address">广东省 广州市 海珠区 琶洲商业广场11栋</p>
+						</div>
+						<div class="btn-edit"></div>
+					</div>
+					<div class="col-md-3 col-sm-6 box-address">
+						<div class="middle">
+							<p><span class="ad-name">王文杰</span> <span class="ad-phone">1372839872635</span></p>
+							<p class="ad-address">广东省 广州市 海珠区 琶洲商业广场11栋xxxxx</p>
+						</div>
+						<div class="btn-edit"></div>
+					</div>
+					<div class="col-md-3 col-sm-6 add-address">
+						<p><span class="icon-add"></span> 添加新地址 </p>
+					</div>
+				</div>
+			</div>
+		</div>-->
+		<div class="row order-row">
+			
+			<!-- 配送信息  -->
+			<div class="rows pb30">
+				<div class="pull-left col-left">配送信息</div>
+				<div class="pull-left col-right">
+					<div class="pull-left pr box-address active">
+						<div class="middle">
+							<p><span class="ad-name">王文杰</span> <span class="ad-phone">1372839872635</span></p>
+							<p class="ad-address">广东省 广州市 海珠区 琶洲商业广场11栋</p>
+						</div>
+						<div class="btn-edit"></div>
+					</div>
+					<div class="pull-left pr box-address">
+						<div class="middle">
+							<p><span class="ad-name">王文杰</span> <span class="ad-phone">1372839872635</span></p>
+							<p class="ad-address">广东省 广州市 海珠区 琶洲商业广场11栋xxxxx</p>
+						</div>
+						<div class="btn-edit"></div>
+					</div>
+					<div class="pull-left pr btn-addAddress">
+						<p><span class="icon-add"></span> 添加新地址 </p>
+					</div>
+				</div>
+			</div>
+			
+			<!--  添加新地址  -->
+			<div class="rows border-top add-new-address">
+				<div class="pull-left col-left">添加新地址</div>
+				<div class="pull-left col-right">
+					<div class="form-inline">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="newName" placeholder="姓名">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg" id="newPhone" placeholder="电话">
+						</div>
+					</div>
+					<div class="form-inline">
+						<div class="form-group">
+							<select id="newProvince" class="form-control input-lg">
+								<option value="0">选择省份</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select id="newCity" class="form-control input-lg">
+								<option value="0">选择市</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<select id="newArea" class="form-control input-lg">
+								<option value="0">选择区</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg" id="newAddress" placeholder="详细地址 ">
+					</div>
+					<div class="form-inline">
+						<div class="form-group">
+							<button type="button" class="btn btn-default btn-lg btn-cancel">取消 </button>
+						</div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary btn-lg btn-save">保存 </button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row order-row">
+			
+			<!--  电子发票   -->
+			<div class="rows">
+				<div class="pull-left col-left">电子发票</div>
+				<div class="pull-left col-right">
+					<div class="pull-left form-group list-checkbox list-checkbox-1">
+						<label for="personal"><span class="icon-checkbox checked"></span>个人</label>
+						<input id="personal" class="invoice-type" type="radio" name="invoice" value="个人" checked="checked">
+					</div>
+					<div class="pull-left form-group list-checkbox">
+						<label for="company"><span class="icon-checkbox"></span>公司</label>
+						<input id="company" class="invoice-type" type="radio" name="invoice" value="公司">
+					</div>
+					<div class="col-input">
+						<input class="form-control input-lg" id="invoiceText" type="text" value="王文杰" />
+					</div>
+				</div>
+			</div>
+			
+			<!--  支付方式   -->
+			<div class="rows border-top">
+				<div class="pull-left col-left">支付方式</div>
+				<div class="pull-left col-right">
+					<div class="pull-left form-group pay-type">
+						<label class="checked" for="payOnLine">在线支付</label>
+						<input id="payOnLine" class="pay-type-input" type="radio" name="payType" value="个人">
+					</div>
+					<div class="pull-left form-group pay-type">
+						<label for="payCOD">货到付款</label>
+						<input id="payCOD" class="pay-type-input" type="radio" name="payType" value="个人">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row order-row">
+			
+			<!--  保单清单   -->
+			<div class="rows policList">
+				<div class="pull-left col-left">保单清单</div>
+				<div class="pull-left col-right">
+					<div class="pull-left col-list col-list-pic">
+						<img src="img/shop/img-product.jpg"/>
+					</div>
+					<div class="pull-left col-list">国康健康重大疾病保险计划</div>
+					<div class="pull-left col-list">¥500.00 x 1</div>
+					<div class="pull-right col-list">¥500.00</div>
+				</div>
+			</div>
+			
+			<!--  投保人信息   -->
+			<div class="rows border-top policMsg">
+				<div class="pull-left col-left">投保人信息</div>
+				<div class="pull-left col-right">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control input-lg" id="policyHolderName" placeholder="请输入您的名字">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">证件类型：</label>
+							<div class="col-sm-10">
+								<select id="policyHolderIdType" class="form-control input-lg">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">证件号码：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control input-lg" id="policyHolderId" placeholder="证件号码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">手机号码：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control input-lg" id="policyHolderPhone" placeholder="请输入11位手机号码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+							<div class="col-sm-10">
+								<div class="pull-left form-group form-group-sex">
+									<label class="label-sex checked" for="policyHolderSex1">男</label>
+									<input id="policyHolderSex1" class="policyHolder-type-input" type="radio" name="policyHolderSex" value="男">
+								</div>
+								<div class="pull-left form-group form-group-sex">
+									<label class="label-sex label-sex-2" for="policyHolderSex2">女</label>
+									<input id="policyHolderSex2" class="policyHolder-type-input" type="radio" name="policyHolderSex" value="女">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">出生年月：</label>
+							<div class="col-sm-10">
+								<select id="policyHolderDate" class="form-control input-lg">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">所在地区：</label>
+							<div class="col-sm-10">
+								<select id="policyHolderArea" class="form-control input-lg">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--  被保人信息   -->
+			<div class="rows border-top policMsg">
+				<div class="pull-left col-left">被保人信息</div>
+				<div class="pull-left col-right">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label">与投保人关系：</label>
+							<div class="col-sm-10">
+								<select id="insuredRelation" class="form-control input-lg">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control input-lg" id="insuredName" placeholder="请输入您的名字">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">证件类型：</label>
+							<div class="col-sm-10">
+								<select id="insuredIdType" class="form-control input-lg">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">证件号码：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control input-lg" id="insuredId" placeholder="证件号码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">手机号码：</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control input-lg" id="insuredPhone" placeholder="请输入11位手机号码">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+							<div class="col-sm-10">
+								<div class="pull-left form-group form-group-sex">
+									<label class="label-sex checked" for="insuredSex1">男</label>
+									<input id="insuredSex1" class="insured-type-input" type="radio" name="insuredSex" value="男">
+								</div>
+								<div class="pull-left form-group form-group-sex">
+									<label class="label-sex label-sex-2" for="insuredSex2">女</label>
+									<input id="insuredSex2" class="insured-type-input" type="radio" name="insuredSex" value="女">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">出生年月：</label>
+							<div class="col-sm-10">
+								<select id="insuredBirthdate" id="insuredBirthdate" class="form-control input-lg">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label">所在地区：</label>
+							<div class="col-sm-10">
+								<select id="insuredArea" class="form-control input-lg">
+									<option value="0">请选择</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<!--  投保明细   -->
+		<div class="row order-row policMsg">
+			<div class="rows">
+				<div class="pull-left col-left">投保明细</div>
+				<div class="pull-left col-right">
+					<div class="form-horizontal">
+						<div class="form-group">
+							<label class="col-sm-2 control-label" for="policStartDate">起保时间：</label>
+							<div class="col-sm-10">
+								<input class="form-control input-lg" type="date" name="policStartDate" id="policStartDate" value="" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-4 col-sm-2 control-label">保障期限：</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">自  <span id="dateForm" class="color-lightblue">2018-01-10</span>  至  <span id="dateTo" class="color-lightblue">2018-01-10</span>  共一年</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-4 col-sm-2 control-label">产品名称：</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">国康健康重大疾病保险计划</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-4 col-sm-2 control-label">有效份数：</label>
+							<div class="col-sm-10">
+								<p class="form-control-static"><span class="color-lightblue">1</span> 份（根据被保人数量计算）</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-4 col-sm-2 control-label">保额每份：</label>
+							<div class="col-sm-10">
+								<p class="form-control-static"><span class="color-lightblue">100</span> 万</p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-xs-4 col-sm-2 control-label">受益人：</label>
+							<div class="col-sm-10">
+								<p class="form-control-static">法定</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!--  保单总额   -->
+		<div class="row order-row">
+			<div class="rows">
+				<div class="pull-right last-row">
+					<div class="text border-bottom">
+						<div class="clearfix text"><span class="pull-left">保额</span><span class="pull-right">1</span></div>
+						<div class="clearfix text"><span class="pull-left">保单总额</span><span class="pull-right">¥500.00</span></div>
+						<div class="clearfix text"><span class="pull-left">邮费</span><span class="pull-right">¥0.00</span></div>
+					</div>
+					<div class="pull-right box-pay">
+						<div class="text"><span class="pull-left">应付</span><span class="pull-right"><span class="fontSize24 red">¥</span> <span class="total red">0.00</span></span></div>
+					</div>
+				</div>
+				<div class="pull-right btn-wrap">
+					<button class="btn btn-primary btn-lg pull-right btn-gotoPay"><small>去结算</small></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 底部内容 -->
+	<div class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-9">
+					<div class="row">
+						<div class="col-xs-6 col-sm-4 col-md-2">
+							<h4>帮助中心</h4>
+							<ul class="list-unstyled">
+								<li><a href="javascript:;">购物指南</a></li>
+								<li><a href="javascript:;">服务说明</a></li>
+								<li><a href="javascript:;">支付方式</a></li>
+								<li><a href="javascript:;">常见问题</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2">
+							<h4>帮助中心</h4>
+							<ul class="list-unstyled">
+								<li><a href="javascript:;">购物指南</a></li>
+								<li><a href="javascript:;">服务说明</a></li>
+								<li><a href="javascript:;">支付方式</a></li>
+								<li><a href="javascript:;">常见问题</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2">
+							<h4>帮助中心</h4>
+							<ul class="list-unstyled">
+								<li><a href="javascript:;">购物指南</a></li>
+								<li><a href="javascript:;">服务说明</a></li>
+								<li><a href="javascript:;">支付方式</a></li>
+								<li><a href="javascript:;">常见问题</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2">
+							<h4>帮助中心</h4>
+							<ul class="list-unstyled">
+								<li><a href="javascript:;">购物指南</a></li>
+								<li><a href="javascript:;">服务说明</a></li>
+								<li><a href="javascript:;">支付方式</a></li>
+								<li><a href="javascript:;">常见问题</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2">
+							<h4>帮助中心</h4>
+							<ul class="list-unstyled">
+								<li><a href="javascript:;">购物指南</a></li>
+								<li><a href="javascript:;">服务说明</a></li>
+								<li><a href="javascript:;">支付方式</a></li>
+								<li><a href="javascript:;">常见问题</a></li>
+							</ul>
+						</div>
+						<div class="col-xs-6 col-sm-4 col-md-2">
+							<h4>帮助中心</h4>
+							<ul class="list-unstyled">
+								<li><a href="javascript:;">购物指南</a></li>
+								<li><a href="javascript:;">服务说明</a></li>
+								<li><a href="javascript:;">支付方式</a></li>
+								<li><a href="javascript:;">常见问题</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-3">
+					<h4>
+						<a href="tel:4006788500">400-6788-500</a>
+					</h4>
+					<img src="img/icon03.png" alt="">
+					<img src="img/icon03.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 备案信息 -->
+	<div class="record-bg">
+		<p class="record">Copyright © 2005-2017 guokang,All Rights Reserved.          　粤ICP备13080796号-2<br/>深圳市国康健康管理服务有限公司|深圳市国康保险经纪有限公司　©　版权所有</p>
+	</div>
+	<script src="js/utils.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			//添加新地址
+			$(".btn-addAddress").on("click",function(){
+				$(".add-new-address").show();
+			});
+			$(".btn-cancel").on("click",function(){
+				$(".add-new-address").hide();
+				return false;
+			});
+			$(".btn-save").on("click",function(){
+				$(".add-new-address").hide();
+				var name = $("#newName").val();
+				var phone = $("#newPhone").val();
+				var province = $("#newProvince").val();
+				var city = $("#newCity").val();
+				var area = $("#newArea").val();
+				var addr = $("#newAddress").val();
+				var address = province+ " " +city+ " " +area+ " " +addr;
+				console.log(name,phone,address)
+	//			$.ajax({
+	//				url: "xxx",
+	//				data:{
+	//					name: name,
+	//					phone: phone,
+	//					address: address,
+	//				},
+	//				success: function(){
+	//					
+	//				}
+	//			})
+				return false;
+			});
+			
+			// 勾选订单
+			$(".list-checkbox label").on("click",function(){
+				var self = $(this);
+				var index = self.index(".list-checkbox label");
+				$(".icon-checkbox").removeClass("checked") && self.children(".icon-checkbox").addClass("checked");
+				$('.list-checkbox input[type="radio"]').removeAttr('checked') && $(this).siblings("input").attr('checked', 'checked');
+			});
+			
+			// 选择支付方式
+			$(".pay-type label").on("click",function(){
+				var self = $(this);
+				var index = self.index(".pay-type label");
+				$(".pay-type label").removeClass("checked") && self.addClass("checked");
+				$('.pay-type input[type="radio"]').removeAttr('checked') && $(this).siblings("input").attr('checked', 'checked');
+			})
+			
+			// 选择性别
+			$(".form-group-sex label").on("click",function(){
+				var self = $(this);
+				var index = self.index(".form-group-sex label");
+				$(".form-group-sex label").removeClass("checked") && self.addClass("checked");
+				$('.form-group-sex input[type="radio"]').removeAttr('checked') && $(this).siblings("input").attr('checked', 'checked');
+			})
+			
+			//设置当前日期
+			function setNowDate(){
+				var d = new Date();
+				var year = d.getFullYear();
+				var month = d.getMonth()+1;
+				var day = d.getDate();
+				$("#policStartDate").val(year + "-" + (month>9?month: "0"+month) + "-" + (day>9?day: "0"+day));
+			}
+			setNowDate()
+			
+			//选择起保日期
+			$("#policStartDate").on("change",function(){
+				var startDate = $(this).val();
+				$(".date-form").text(startDate);
+				var d = new Date(startDate);
+				var year = d.getFullYear()+1;
+				var month = d.getMonth()+1;
+				var day = d.getDate();
+				$(".date-to").text(year + "-" + (month>9?month: "0"+month) + "-" + (day>9?day: "0"+day));
+			})
+			
+			
+			//去结算
+			$(".btn-gotoPay").on("click",function(){
+				var _data = {};
+				var $formGroup = $(".form-group");
+				for(var i=0;i<$formGroup.length;i++){
+					if($formGroup.children)
+					var child = $formGroup.children("select,input");
+					_data[child.name] = child.val();
+				}
+				console.log(_data);
+	//			$.ajax({
+	//				url: "xxx",
+	//				data:{
+	//					name: name,
+	//					phone: phone,
+	//					address: address,
+	//				},
+	//				success: function(){
+//						location.href = "order_comfirm.html";
+	//				}
+	//			})
+				return false;
+			})
+		})
+	</script>
+</body>
+</html>
