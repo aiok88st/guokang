@@ -547,20 +547,20 @@
 					<div class="pfrThree">
 						<div class="pfrThree1">
 							<div class="pfrContent">
-								<div class="pfrcLeft floatl">
+								<div class="pfrcLeft floatl" onclick="javascript:window.location.href='article.php?id={$qiye_news[0].article_id}'">
 									<img src="{$qiye_news[0].file_url}" />
 								</div>
 								<div class="pfrcRight floatl">
 									<ul>
-										<li>
+										<li onclick="javascript:window.location.href='article.php?id={$qiye_news[0].article_id}'">
 											<p>{$qiye_news[0].title}</p>
 										</li>
-										<li>
+										<li onclick="javascript:window.location.href='article.php?id={$qiye_news[0].article_id}'">
 											<p>{$qiye_news[0].description}</p>
 										</li>
 										<li>
 											<div class="lookBtn">
-												<a href="###">查看更多</a>
+												<a href="article_cat.php?id=6">查看更多</a>
 											</div>
 										</li>
 									</ul>
@@ -569,38 +569,38 @@
 							</div>
 							<div class="pfNews">
 								<div class="pfnLeft floatl">
-									<a href="###">{$qiye_news[1].title}</a>
-									<a href="###">{$qiye_news[2].title}</a>
-									<a href="###">{$qiye_news[3].title}</a>
-									<a href="###">{$qiye_news[4].title}</a>
-									<a href="###">{$qiye_news[5].title}</a>
+									<a href="article.php?id={$qiye_news[1].article_id}">{$qiye_news[1].title}</a>
+									<a href="article.php?id={$qiye_news[2].article_id}">{$qiye_news[2].title}</a>
+									<a href="article.php?id={$qiye_news[3].article_id}">{$qiye_news[3].title}</a>
+									<a href="article.php?id={$qiye_news[4].article_id}">{$qiye_news[4].title}</a>
+									<a href="article.php?id={$qiye_news[5].article_id}">{$qiye_news[5].title}</a>
 								</div>
 								<div class="pfnRight floatl">
-									<a href="###">{$qiye_news[6].title}</a>
-									<a href="###">{$qiye_news[7].title}</a>
-									<a href="###">{$qiye_news[8].title}</a>
-									<a href="###">{$qiye_news[9].title}</a>
-									<a href="###">{$qiye_news[10].title}</a>
+									<a href="article.php?id={$qiye_news[6].article_id}">{$qiye_news[6].title}</a>
+									<a href="article.php?id={$qiye_news[7].article_id}">{$qiye_news[7].title}</a>
+									<a href="article.php?id={$qiye_news[8].article_id}">{$qiye_news[8].title}</a>
+									<a href="article.php?id={$qiye_news[9].article_id}">{$qiye_news[9].title}</a>
+									<a href="article.php?id={$qiye_news[10].article_id}">{$qiye_news[10].title}</a>
 								</div>
 								<div class="clearl"></div>
 							</div>
 						</div>
 						<div class="pfrThree2">
 							<div class="pfrContent">
-								<div class="pfrcLeft floatl">
+								<div class="pfrcLeft floatl" onclick="javascript:window.location.href='article.php?id={$jk_news[0].article_id}'">
 									<img src="{$jk_news[0].file_url}" />
 								</div>
 								<div class="pfrcRight floatl">
 									<ul>
-										<li>
+										<li onclick="javascript:window.location.href='article.php?id={$jk_news[0].article_id}'">
 											<p>{$jk_news[0].title}</p>
 										</li>
-										<li>
+										<li onclick="javascript:window.location.href='article.php?id={$jk_news[0].article_id}'">
 											<p>{$jk_news[0].description}</p>
 										</li>
 										<li>
 											<div class="lookBtn">
-												<a href="###">查看更多</a>
+												<a href="article_cat.php?id=7">查看更多</a>
 											</div>
 										</li>
 									</ul>
@@ -609,38 +609,38 @@
 							</div>
 							<div class="pfNews">
 								<div class="pfnLeft floatl">
-									<a href="###">{$jk_news[1].title}</a>
-									<a href="###">{$jk_news[2].title}</a>
-									<a href="###">{$jk_news[3].title}</a>
-									<a href="###">{$jk_news[4].title}</a>
-									<a href="###">{$jk_news[5].title}</a>
+									<a href="article.php?id={$jk_news[1].article_id}">{$jk_news[1].title}</a>
+									<a href="article.php?id={$jk_news[2].article_id}">{$jk_news[2].title}</a>
+									<a href="article.php?id={$jk_news[3].article_id}">{$jk_news[3].title}</a>
+									<a href="article.php?id={$jk_news[4].article_id}">{$jk_news[4].title}</a>
+									<a href="article.php?id={$jk_news[5].article_id}">{$jk_news[5].title}</a>
 								</div>
 								<div class="pfnRight floatl">
-									<a href="###">{$jk_news[6].title}</a>
-									<a href="###">{$jk_news[7].title}</a>
-									<a href="###">{$jk_news[8].title}</a>
-									<a href="###">{$jk_news[9].title}</a>
-									<a href="###">{$jk_news[10].title}</a>
+									<a href="article.php?id={$jk_news[6].article_id}">{$jk_news[6].title}</a>
+									<a href="article.php?id={$jk_news[7].article_id}">{$jk_news[7].title}</a>
+									<a href="article.php?id={$jk_news[8].article_id}">{$jk_news[8].title}</a>
+									<a href="article.php?id={$jk_news[9].article_id}">{$jk_news[9].title}</a>
+									<a href="article.php?id={$jk_news[10].article_id}">{$jk_news[10].title}</a>
 								</div>
 								<div class="clearl"></div>
 							</div>
 						</div>
 						<div class="pfrThree3">
 							<div class="pfrContent">
-								<div class="pfrcLeft floatl">
+								<div class="pfrcLeft floatl" onclick="javascript:window.location.href='article.php?id={$bx_news[0].article_id}'">
 									<img src="{$bx_news[0].file_url}" />
 								</div>
 								<div class="pfrcRight floatl">
 									<ul>
-										<li>
+										<li onclick="javascript:window.location.href='article.php?id={$bx_news[0].article_id}'">
 											<p>{$bx_news[0].title}</p>
 										</li>
-										<li>
+										<li onclick="javascript:window.location.href='article.php?id={$bx_news[0].article_id}'">
 											<p>{$bx_news[0].description}</p>
 										</li>
 										<li>
 											<div class="lookBtn">
-												<a href="###">查看更多</a>
+												<a href="article_cat.php?id=8">查看更多</a>
 											</div>
 										</li>
 									</ul>
@@ -649,18 +649,18 @@
 							</div>
 							<div class="pfNews">
 								<div class="pfnLeft floatl">
-									<a href="###">{$bx_news[1].title}</a>
-									<a href="###">{$bx_news[2].title}</a>
-									<a href="###">{$bx_news[3].title}</a>
-									<a href="###">{$bx_news[4].title}</a>
-									<a href="###">{$bx_news[5].title}</a>
+									<a href="article.php?id={$bx_news[1].article_id}">{$bx_news[1].title}</a>
+									<a href="article.php?id={$bx_news[2].article_id}">{$bx_news[2].title}</a>
+									<a href="article.php?id={$bx_news[3].article_id}">{$bx_news[3].title}</a>
+									<a href="article.php?id={$bx_news[4].article_id}">{$bx_news[4].title}</a>
+									<a href="article.php?id={$bx_news[5].article_id}">{$bx_news[5].title}</a>
 								</div>
 								<div class="pfnRight floatl">
-									<a href="###">{$bx_news[6].title}</a>
-									<a href="###">{$bx_news[7].title}</a>
-									<a href="###">{$bx_news[8].title}</a>
-									<a href="###">{$bx_news[9].title}</a>
-									<a href="###">{$bx_news[10].title}</a>
+									<a href="article.php?id={$bx_news[6].article_id}">{$bx_news[6].title}</a>
+									<a href="article.php?id={$bx_news[7].article_id}">{$bx_news[7].title}</a>
+									<a href="article.php?id={$bx_news[8].article_id}">{$bx_news[8].title}</a>
+									<a href="article.php?id={$bx_news[9].article_id}">{$bx_news[9].title}</a>
+									<a href="article.php?id={$bx_news[10].article_id}">{$bx_news[10].title}</a>
 								</div>
 								<div class="clearl"></div>
 							</div>

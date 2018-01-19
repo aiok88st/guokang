@@ -48,7 +48,285 @@ p {
       #topNav .w12 .rightNav ul li:nth-child(6) a {
         border-right: 0px; }
 
-.footer {
-  margin-top: 0px; }
+#shopOne {
+  width: 100%;
+  background-color: white; }
+  #shopOne .w14 {
+    margin-top: 40px; }
+  #shopOne .soLeft {
+    width: 620px; }
+    #shopOne .soLeft img {
+      width: 100%; }
+  #shopOne .soRight {
+    width: 480px;
+    margin-left: 40px; }
+    #shopOne .soRight .soTitle {
+      color: #333333;
+      font-size: 26px; }
+    #shopOne .soRight .soContent {
+      font-size: 15px;
+      color: #999999;
+      padding: 15px 0; }
+    #shopOne .soRight .labelBox {
+      margin: 2px 0 20px; }
+      #shopOne .soRight .labelBox a {
+        display: block;
+        line-height: 26px;
+        padding: 0 12px;
+        border-radius: 4px;
+        border: 1px solid #dcdcdc;
+        color: #a7a7a7;
+        margin-right: 5px; }
+      #shopOne .soRight .labelBox a:nth-last-child(2) {
+        margin-right: 0px; }
+    #shopOne .soRight .money {
+      color: #fb0404;
+      line-height: 90px;
+      font-size: 40px;
+      text-indent: 5px;
+      border-bottom: 1px solid #e5e5e5;
+      border-top: 1px solid #e5e5e5; }
+      #shopOne .soRight .money span {
+        display: inline-block;
+        margin-left: 20px;
+        color: #999999;
+        font-size: 20px; }
+    #shopOne .soRight .forWho {
+      margin-top: 10px; }
+      #shopOne .soRight .forWho .fwTitle {
+        line-height: 40px;
+        font-size: 12px;
+        color: #6b6b6b; }
+      #shopOne .soRight .forWho .forBtn button {
+        width: 235px;
+        border: 1px solid #e5e5e5;
+        border-radius: 3px;
+        color: #aaaaaa;
+        font-size: 12px;
+        height: 40px;
+        margin: 0 10px 10px 0;
+        background-color: transparent; }
+      #shopOne .soRight .forWho .forBtn button:nth-child(2n) {
+        margin-right: 0px; }
+    #shopOne .soRight .number {
+      margin-top: 10px; }
+      #shopOne .soRight .number .nbTitle {
+        line-height: 40px;
+        font-size: 12px;
+        color: #6b6b6b; }
+      #shopOne .soRight .number .nbBtn {
+        width: 235px;
+        height: 40px;
+        border: 1px solid #e5e5e5;
+        border-radius: 3px; }
+        #shopOne .soRight .number .nbBtn p {
+          width: 133px;
+          font-size: 12px;
+          color: #333333;
+          text-align: center;
+          line-height: 40px;
+          border-left: 1px solid #e5e5e5;
+          border-right: 1px solid #e5e5e5; }
+        #shopOne .soRight .number .nbBtn .reduce {
+          width: 50px;
+          height: 40px;
+          background-color: transparent; }
+          #shopOne .soRight .number .nbBtn .reduce span {
+            display: block;
+            margin: 0 auto;
+            width: 10px;
+            border-bottom: 3px solid #cfcfcf; }
+        #shopOne .soRight .number .nbBtn .increase {
+          width: 50px;
+          height: 40px;
+          background: url(../image/add.png) no-repeat center center;
+          background-size: 10px 10px; }
+    #shopOne .soRight .twoBtn {
+      margin-top: 40px; }
+      #shopOne .soRight .twoBtn a {
+        display: block;
+        width: 190px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 25px;
+        font-size: 20px;
+        color: #666666;
+        background-color: #eeeeee;
+        margin-right: 10px; }
+      #shopOne .soRight .twoBtn .aBlue {
+        color: white;
+        background-color: #056dbb; }
+
+.pTitle {
+  padding: 40px 0; }
+  .pTitle p {
+    line-height: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: #333333;
+    background-color: #eeeeee; }
+
+#part2 .part2 {
+  width: 100%;
+  background-color: white; }
+  #part2 .part2 .floatl {
+    width: 360px;
+    margin-left: 15px; }
+  #part2 .part2 ul {
+    margin: 0; }
+  #part2 .part2 .ptImg {
+    width: 100%;
+    padding: 50px 0 0px; }
+    #part2 .part2 .ptImg img {
+      width: 100%; }
+  #part2 .part2 p {
+    font-size: 14px;
+    color: #666666;
+    line-height: 24px;
+    padding: 15px 0;
+    margin-bottom: 20px; }
+
+.part3 {
+  width: 100%;
+  background-color: white;
+  padding-bottom: 100px; }
+  .part3 .ptTitle {
+    width: 1000px;
+    margin: 0 auto;
+    font-size: 24px;
+    line-height: 140px;
+    color: #333333; }
+  .part3 ul {
+    margin-bottom: 0px; }
+  .part3 .part3Box {
+    width: 1000px;
+    margin: 0 auto; }
+    .part3 .part3Box .floatl {
+      width: 200px;
+      padding-top: 40px;
+      background-color: #f5f5f5; }
+  .part3 .p3Img {
+    width: 74px;
+    height: 74px;
+    border-radius: 50%;
+    margin: 0 auto;
+    overflow: hidden; }
+    .part3 .p3Img img {
+      width: 100%; }
+  .part3 .part3Box .twoContent {
+    background-color: white;
+    padding-top: 87px; }
+    .part3 .part3Box .twoContent p {
+      color: #999999;
+      line-height: 30px;
+      font-size: 16px;
+      text-align: center;
+      width: 96%;
+      margin: 0 auto; }
+    .part3 .part3Box .twoContent p:nth-child(1) {
+      border-bottom: 1px dashed #dcdcdc; }
+  .part3 .p3Content {
+    text-align: center;
+    line-height: 100px;
+    font-size: 20px;
+    padding-bottom: 20px; }
+
+.problemBox {
+  background-color: white;
+  padding-top: 50px; }
+  .problemBox a {
+    display: block;
+    width: 490px;
+    margin: 0 40px 50px;
+    padding-left: 35px;
+    background: url(../image/problem.png) no-repeat left top; }
+    .problemBox a .pbTitle {
+      font-size: 16px;
+      line-height: 30px;
+      color: #666666; }
+    .problemBox a .pbContent {
+      font-size: 14px;
+      color: #999999;
+      line-height: 24px; }
+
+.pointBox {
+  width: 100%;
+  background-color: white;
+  padding-bottom: 40px; }
+  .pointBox .pointTop {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0; }
+    .pointBox .pointTop ul {
+      width: 300px;
+      margin-bottom: 0px; }
+      .pointBox .pointTop ul p {
+        text-align: center;
+        color: #666666;
+        font-size: 16px;
+        line-height: 24px; }
+      .pointBox .pointTop ul li:nth-child(1) p {
+        font-size: 55px;
+        color: #fb0404;
+        line-height: 60px; }
+        .pointBox .pointTop ul li:nth-child(1) p span {
+          font-size: 25px; }
+  .pointBox .ppBox {
+    width: 1100px;
+    margin: 0 auto;
+    padding: 30px 0 0;
+    border: 1px solid #e5e5e5;
+    margin-bottom: 20px; }
+    .pointBox .ppBox .ppLeft {
+      width: 56px;
+      height: 56px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 8px 22px; }
+      .pointBox .ppBox .ppLeft img {
+        width: 100%; }
+    .pointBox .ppBox .ppMiddle {
+      width: 780px; }
+      .pointBox .ppBox .ppMiddle p {
+        font-size: 14px;
+        line-height: 24px;
+        color: #666666; }
+      .pointBox .ppBox .ppMiddle .ppContent {
+        margin-bottom: 30px; }
+      .pointBox .ppBox .ppMiddle .elsePoint {
+        width: 100%;
+        border-top: 1px solid #eeeeee; }
+        .pointBox .ppBox .ppMiddle .elsePoint .epBox {
+          padding: 30px 0; }
+        .pointBox .ppBox .ppMiddle .elsePoint .epLeft {
+          width: 40px;
+          height: 40px;
+          overflow: hidden;
+          border-radius: 50%;
+          margin: 5px 10px; }
+          .pointBox .ppBox .ppMiddle .elsePoint .epLeft img {
+            width: 100%; }
+        .pointBox .ppBox .ppMiddle .elsePoint .epRight {
+          width: 720px; }
+    .pointBox .ppBox .ppRight {
+      width: 200px;
+      text-align: right;
+      color: #999999;
+      margin-top: 20px; }
+      .pointBox .ppBox .ppRight img {
+        margin-left: 4px; }
+      .pointBox .ppBox .ppRight p {
+        line-height: 30px;
+        margin-right: 5px; }
+  .pointBox .lookMore a {
+    display: block;
+    width: 1100px;
+    margin: 0 auto;
+    font-size: 18px;
+    color: #333333;
+    line-height: 60px;
+    text-align: center;
+    background-color: #eeeeee; }
 
 /*# sourceMappingURL=shop.css.map */

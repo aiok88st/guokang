@@ -92,6 +92,10 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
         $smarty->assign('cList',    $cList);
     }
 
+    //最新新闻
+    $new = get_new_news_article(17);
+    $smarty->assign('new', $new);
+
 
     //产品
     /* 获得产品总数 */

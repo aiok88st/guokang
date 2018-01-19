@@ -1700,6 +1700,17 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             }
 
             break;
+        case 'brand_news_detail':
+            if (empty($aid))
+            {
+                return false;
+            }
+            else
+            {
+                $uri = $rewrite ? 'brand_news_detail-' . $aid : 'brand_news_detail.php?id=' . $aid;
+            }
+
+            break;
         case 'group_buy':
             if (empty($gbid))
             {
@@ -3002,6 +3013,35 @@ function get_h5_api_host()
     }
 }
 
+/**
+ *  获取最新新闻
+ * @param   string  $product
+ *  @return  array
+ */
+function get_new_news_article($parent_id){
+    $sql = 'SELECT cat_id, cat_name, parent_id FROM  ecs_article_cat WHERE parent_id = '.$parent_id.' ORDER BY sort_order ASC';
+    $catlist = $GLOBALS['db']->getAll($sql);
+    $uid = '';
+    foreach($catlist as $k=>$v){
+        $uid .= $v['cat_id'].',';
+    }
+    $sqls = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id' .
+        ' FROM ' .$GLOBALS['ecs']->table('article') .
+        ' WHERE is_open = 1 AND cat_id in (' . rtrim($uid, ',') .
+        ') ORDER BY add_time DESC'.
+        ' limit 5';
+    $data = $GLOBALS['db']->getAll($sqls);
+    foreach($data as $k=>$v){
+        if(mb_strlen($v['title'])>13){
+            $data[$k]['title'] = mb_substr($v['title'],0,13,'utf-8').'...';
+        }
+        if(mb_strlen($v['description'])>16){
+            $data[$k]['description'] = mb_substr($v['description'],0,16,'utf-8').'...';
+        }
+        $data[$k]['add_time'] = date('m-d', $v['add_time']);
+    }
+    return $data;
+}
 
 
 ?>

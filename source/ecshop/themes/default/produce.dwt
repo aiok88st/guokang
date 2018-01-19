@@ -93,7 +93,7 @@
 									<p>市场价：<del><span>&yen;{$vo.market_price}</span></del></p>
 								</li>
 								<li>
-									<a href="###">查看详情</a>
+									<a href="goods.php?id={$vo.goods_id}">查看详情</a>
 								</li>
 							</ul>
 						</div>

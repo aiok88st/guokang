@@ -357,6 +357,11 @@ $black:#555555;
                 font-size: 20px;
                 border-bottom: 1px solid #EEEEEE;
                 position: relative;
+                a {
+                    position: absolute;
+                    top: 0px;
+                    right: 0px;
+                }
             }
             .rnTop::after{
                 content: "";

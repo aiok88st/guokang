@@ -1,0 +1,80 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/produce.css" />
+<link rel="stylesheet" href="themes/default/scss/news.css" />
+<link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
+<link rel="stylesheet" href="themes/default/scss/page.css" />
+<style>
+    #banner img{
+        width: 100%;
+        height: 400px;
+    }
+</style>
+		<!--集团简介-->
+		<div id="banner" align="center">
+            {insert name='ads' id=7 num=1}
+		</div>
+<!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+
+        <!--类型选择-->
+        <div id="typeList" class="w12">
+            <div class="typeList">
+                <div class="tlLeft floatl">
+                    <p>分类</p>
+                </div>
+                <div class="tlRight floatl">
+                    <div>
+                        <!--{foreach from=$catlist item=vo}-->
+                        <a href="article_cat.php?id={$vo.cat_id}" class="floatl <!-- {if $cat_id eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
+                        <!--{/foreach}-->
+
+                        <div class="clearl"></div>
+                    </div>
+
+                </div>
+                <div class="clearl"></div>
+            </div>
+        </div>
+
+		<div id="mainContent">
+			<div class="w12">
+				<div class="leftContent floatl">
+
+
+                    <!--{foreach from=$artciles_list item=vo}-->
+					<a href="article.php?id={$vo.article_id}" class="nsBox">
+						<div class="nsLeft floatl">
+							<img src="{$vo.file_url}" />
+						</div>
+						<div class="nsRight floatl">
+							<div class="nsTitle">
+								<p>{$vo.title}</p>
+							</div>
+							<div class="nsContent">
+								<p>{$vo.description}</p>
+							</div>
+						</div>
+						<div class="clearl"></div>
+						<div class="nsTime">
+							<p>{$vo.add_time[2]}</p>
+							<p>{$vo.add_time[0]}-{$vo.add_time[1]}</p>
+						</div>
+					</a>
+                    <!--{/foreach}-->
+
+
+					<div class="page whitePage" align="center">
+                        <!-- #BeginLibraryItem "/library/pages.lbi" --><!-- #EndLibraryItem -->
+					</div>
+				</div>
+				<div class="rightNavs floatl">
+                    <!-- #BeginLibraryItem "/library/news_right.lbi" --><!-- #EndLibraryItem -->
+                    <!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+				</div>
+				<div class="clearl"></div>
+			</div>
+			
+		</div>
+
+<script type="text/javascript" src="themes/default/script/news.js" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+

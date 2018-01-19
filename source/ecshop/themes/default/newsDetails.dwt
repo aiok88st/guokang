@@ -1,0 +1,152 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/newsDetails.css" />
+<link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
+<style>
+    #banner img{
+        width: 100%;
+        height: 400px;
+    }
+</style>
+		<!--集团简介-->
+		<div id="banner" align="center">
+            {insert name='ads' id=6 num=1}
+			<div class="brBox">
+				<div class="w12">
+					<ul>
+						<li>
+							<p>{$article.title}</p>
+						</li>
+						<li>
+							<!--<p>信息来源：国康健康保险</p>-->
+							<p>日期：{$article.add_time}</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+        <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+		<div id="mainContent">
+			<div class="w12">
+				<div class="leftContent floatl">
+					<div class="article">
+						<div class="fullContent">
+							<p>{$article.title}</p>
+                            <p>{$article.content}</p>
+                        </div>
+						<div class="nextPrev">
+                            <!-- {if $prev_article neq ''} -->
+							<a href="{$prev_article.url}" class="floatl">
+								<img src="themes/default/image/leftBtn.png" class="floatl"/>
+								<p  class="floatl">上一篇：{$prev_article.title}</p>
+							</a>
+                            <!-- {else} -->
+                            <a href="javascript:;" class="floatl">
+                                <img src="themes/default/image/leftBtn.png" class="floatl"/>
+                                <p class="floatl">No More</p>
+                            </a>
+                            <!-- {/if} -->
+
+
+                            <!-- {if $next_article neq ''} -->
+							<a href="{$next_article.url}" class="floatr">
+								<p class="floatl">下一篇：{$next_article.title}</p>
+								<img src="themes/default/image/rightBtn.png" class="floatl"/>
+							</a>
+                            <!-- {else} -->
+                            <a href="javascript:;" class="floatr">
+                                <p class="floatl">No More</p>
+                                <img src="themes/default/image/rightBtn.png" class="floatl"/>
+                            </a>
+                            <!-- {/if} -->
+
+							<div class="clearBoth"></div>
+						</div>
+					</div>
+
+					<div class="point">
+						<div class="pointTitle">
+							<p>评论（29）</p>
+						</div>
+						<div class="pointMessage">
+							<div class="pmLeft floatl">
+								<img src="themes/default/image/doctor.png" />
+							</div>
+							<div class="pmRight floatl ">
+								<textarea placeholder="请留下您的评论，谢谢！"></textarea>
+							</div>
+							<div class="clearl"></div>
+						</div>
+						<div class="pointBtn">
+							<button class="floatr">发表评论</button>
+							<div class="clearr"></div>
+						</div>
+						<span class="border"></span>
+						<div class="pmBox">
+							<div class="pointMessage pmm">
+								<div class="pmLeft floatl">
+									<img src="themes/default/image/doctor.png" />
+								</div>
+								<div class="pmRight floatl pmessage">
+									<ul>
+										<li>
+											<p class="pointName">Abinav sharma</p>
+											<p class="pointTime">2017-11-23</p>
+										</li>
+										<li>
+											<p class="pointContent">国康以深圳为总部，北京、上海、广州、成都、浙江、山东为运营中心，服务网络覆盖全国40多个大中城市，是中国覆盖最广服务质量满意度最高的私人医生服务商。国康是健康服务行业首个国家级高新技术企业，获得20余项健康服务相关产权...</p>
+										</li>
+									</ul>
+								</div>
+								<div class="clearl"></div>
+							</div>
+							<div class="pointMessage pmm">
+								<div class="pmLeft floatl">
+									<img src="themes/default/image/doctor.png" />
+								</div>
+								<div class="pmRight floatl pmessage">
+									<ul>
+										<li>
+											<p class="pointName">Abinav sharma</p>
+											<p class="pointTime">2017-11-23</p>
+										</li>
+										<li>
+											<p class="pointContent">国康以深圳为总部，北京、上海、广州、成都、浙江、山东为运营中心，服务网络覆盖全国40多个大中城市，是中国覆盖最广服务质量满意度最高的私人医生服务商。国康是健康服务行业首个国家级高新技术企业，获得20余项健康服务相关产权...</p>
+										</li>
+									</ul>
+								</div>
+								<div class="clearl"></div>
+							</div>
+							<div class="pointMessage pmm">
+								<div class="pmLeft floatl">
+									<img src="themes/default/image/doctor.png" />
+								</div>
+								<div class="pmRight floatl pmessage">
+									<ul>
+										<li>
+											<p class="pointName">Abinav sharma</p>
+											<p class="pointTime">2017-11-23</p>
+										</li>
+										<li>
+											<p class="pointContent">国康以深圳为总部，北京、上海、广州、成都、浙江、山东为运营中心，服务网络覆盖全国40多个大中城市，是中国覆盖最广服务质量满意度最高的私人医生服务商。国康是健康服务行业首个国家级高新技术企业，获得20余项健康服务相关产权...</p>
+										</li>
+									</ul>
+								</div>
+								<div class="clearl"></div>
+							</div>
+						</div>
+						<div class="lookPoint">
+							<a href="###">查看更多评论</a>
+						</div>
+
+					</div>
+				</div>
+				<div class="rightNavs floatl">
+                    <!-- #BeginLibraryItem "/library/news_right.lbi" --><!-- #EndLibraryItem -->
+                    <!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+				</div>
+				<div class="clearl"></div>
+			</div>
+
+		</div>
+<script type="text/javascript" src="themes/default/script/news.js" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

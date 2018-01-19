@@ -39,10 +39,17 @@ if(isset($_REQUEST['cat_id']) && $_REQUEST['cat_id'] < 0)
 
 $cache_id = sprintf('%X', crc32($_REQUEST['id'] . '-' . $_CFG['lang']));
 
-if (!$smarty->is_cached('article.dwt', $cache_id))
+if (!$smarty->is_cached('newsDetails.dwt', $cache_id))
 {
+    //最新新闻
+    $new = get_new_news_article(17);
+    $smarty->assign('new', $new);
     /* 文章详情 */
     $article = get_article_info($article_id);
+    //面包屑
+    $cat = get_cat_info($article['cat_id']);
+    $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="article_cat.php?id=6">新闻资讯 &gt;</a></li><li><a href="article_cat.php?id='.$cat['cat_id'].'">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">新闻详情</a></li>';
+    $smarty->assign('url_html', $url_html);
 
     if (empty($article))
     {
@@ -103,30 +110,37 @@ if (!$smarty->is_cached('article.dwt', $cache_id))
     $smarty->assign('goods_list', $db->getAll($sql));
 
     /* 上一篇下一篇文章 */
-    $next_article = $db->getRow("SELECT article_id, title FROM " .$ecs->table('article'). " WHERE article_id > $article_id AND cat_id=$article[cat_id] AND is_open=1 LIMIT 1");
+    $next_article = $db->getRow('SELECT article_id, title FROM ' .$ecs->table('article'). ' WHERE article_id > '.$article_id.' AND cat_id= '.$article['cat_id'].' AND is_open=1 LIMIT 1');
     if (!empty($next_article))
     {
+        $next_article['title'] = mb_substr($next_article['title'],0,12,'utf-8').'...';
         $next_article['url'] = build_uri('article', array('aid'=>$next_article['article_id']), $next_article['title']);
-        $smarty->assign('next_article', $next_article);
+    }else{
+        $next_article = '';
     }
+    $smarty->assign('next_article', $next_article);
 
-    $prev_aid = $db->getOne("SELECT max(article_id) FROM " . $ecs->table('article') . " WHERE article_id < $article_id AND cat_id=$article[cat_id] AND is_open=1");
+    $prev_aid = $db->getOne("SELECT max(article_id) FROM " . $ecs->table('article') . " WHERE article_id < ".$article_id." AND cat_id= ".$article['cat_id']." AND is_open=1");
     if (!empty($prev_aid))
     {
         $prev_article = $db->getRow("SELECT article_id, title FROM " .$ecs->table('article'). " WHERE article_id = $prev_aid");
+        $prev_article['title'] = mb_substr($prev_article['title'],0,12,'utf-8').'...';
         $prev_article['url'] = build_uri('article', array('aid'=>$prev_article['article_id']), $prev_article['title']);
-        $smarty->assign('prev_article', $prev_article);
+    }else{
+        $prev_article = '';
     }
+    $smarty->assign('prev_article', $prev_article);
+
 
     assign_dynamic('article');
 }
 if(isset($article) && $article['cat_id'] > 2)
 {
-    $smarty->display('article.dwt', $cache_id);
+    $smarty->display('newsDetails.dwt', $cache_id);
 }
 else
 {
-    $smarty->display('article_pro.dwt', $cache_id);
+    $smarty->display('newsDetails.dwt', $cache_id);
 }
 
 /*------------------------------------------------------ */
@@ -208,6 +222,19 @@ function article_related_goods($id)
     }
 
     return $arr;
+}
+
+/**
+ * 获得分类的信息
+ *
+ * @param   integer $cat_id
+ *
+ * @return  void
+ */
+function get_cat_info($cat_id)
+{
+    return $GLOBALS['db']->getRow('SELECT cat_id, cat_name, parent_id FROM ' . $GLOBALS['ecs']->table('article_cat') .
+        " WHERE cat_id = '$cat_id'");
 }
 
 ?>

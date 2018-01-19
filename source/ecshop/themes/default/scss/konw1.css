@@ -270,6 +270,10 @@
         font-size: 20px;
         border-bottom: 1px solid #EEEEEE;
         position: relative; }
+        #mainContent .rightNavs .rnBox .rnTop a {
+          position: absolute;
+          top: 0px;
+          right: 0px; }
       #mainContent .rightNavs .rnBox .rnTop::after {
         content: "";
         width: 90px;

@@ -20,6 +20,13 @@ body{margin-top: 55px;}
 .record-bg{text-align: center;background-color: #7d7d7d;padding: 20px 0;line-height: 25px;}
 
 
+/*other*/
+.color999{color: #999999;}
+.color78a{color: #70b78a;}
+.customBtn1{width: 100px;border-radius: 50px;outline: none;}
+a:hover{text-decoration: none; }
+a:active{text-decoration: none;}
+a:link{text-decoration: none;}
 .pr{position: relative;}
 .pa{position: absolute;}
 .border-bottom{border-bottom: 1px solid #e5e5e5;}

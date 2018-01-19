@@ -1,0 +1,62 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/famous.css" />
+<link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
+<style>
+	#banner img{
+		width: 100%;
+		height: 400px;
+	}
+</style>
+
+		<!--集团简介-->
+		<div id="banner" align="center">
+            {insert name='ads' id=8 num=1}
+		</div>
+<!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+		<div id="mainContent">
+			<div class="w12">
+				<div class="leftContent floatl">
+					<div class="fullContent">
+                        <p>{$article.title}</p>
+                        <p>{$article.content}</p>
+                    </div>
+					<div class="nextPrev">
+                        <!-- {if $prev_article neq ''} -->
+                        <a href="{$prev_article.url}" class="floatl">
+                            <img src="themes/default/image/leftBtn.png" class="floatl"/>
+                            <p  class="floatl">上一篇：{$prev_article.title}</p>
+                        </a>
+                        <!-- {else} -->
+                        <a href="javascript:;" class="floatl">
+                            <img src="themes/default/image/leftBtn.png" class="floatl"/>
+                            <p class="floatl">No More</p>
+                        </a>
+                        <!-- {/if} -->
+
+
+                        <!-- {if $next_article neq ''} -->
+                        <a href="{$next_article.url}" class="floatr">
+                            <p class="floatl">下一篇：{$next_article.title}</p>
+                            <img src="themes/default/image/rightBtn.png" class="floatl"/>
+                        </a>
+                        <!-- {else} -->
+                        <a href="javascript:;" class="floatr">
+                            <p class="floatl">No More</p>
+                            <img src="themes/default/image/rightBtn.png" class="floatl"/>
+                        </a>
+                        <!-- {/if} -->
+						<div class="clearBoth"></div>
+					</div>
+				</div>
+				<div class="rightNavs floatl">
+                    <!-- #BeginLibraryItem "/library/news_right.lbi" --><!-- #EndLibraryItem -->
+                    <!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+				</div>
+				<div class="clearl"></div>
+			</div>
+			
+		</div>
+
+<script type="text/javascript" src="themes/default/script/famous.js" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
