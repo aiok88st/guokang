@@ -9,7 +9,7 @@ $(function(){
 	});
 	var swiper = new Swiper('.swiper-container-part3', {
         slidesPerView: 3,
-        spaceBetween: 28,
+        spaceBetween: 20,
         autoplayDisableOnInteraction : true,
         loop:true,
         prevButton:'.prevLeft',

@@ -142,7 +142,7 @@ $cache_id = sprintf('%X', crc32($cache_id));
 
 
 
-if (!$smarty->is_cached('produceDetails.dwt', $cache_id))
+if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
 {
     $smarty->assign('image_width',  $_CFG['image_width']);
     $smarty->assign('image_height', $_CFG['image_height']);
@@ -189,6 +189,68 @@ if (!$smarty->is_cached('produceDetails.dwt', $cache_id))
                 $goods['bonus_money'] = price_format($goods['bonus_money']);
             }
         }
+
+
+        //属性
+        $sql='SELECT goods_attr_id, goods_id, attr_id, attr_value, attr_price FROM  ecs_goods_attr WHERE goods_id = '.$goods['goods_id'];
+        $goods['attr_value'] = $db->getAll($sql);
+        //保险案例
+        $sql='SELECT goods_id, article_id, admin_id FROM  ecs_goods_article WHERE goods_id = '.$goods['goods_id'];
+        $artid =  $db->getAll($sql);
+        foreach($artid as $k=>$v){
+            $sql = 'SELECT article_id, title, file_url, description, cat_id' .
+                ' FROM ' .$GLOBALS['ecs']->table('article') .
+                ' WHERE is_open = 1 AND article_id=' . $v['article_id'] .
+                ' ORDER BY article_type DESC, article_id DESC';
+            $data_art[$k] = $GLOBALS['db']->getRow($sql);
+        }
+        $smarty->assign('data_art',              $data_art);
+
+        //常见问题
+        $sql = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id, content' .
+            ' FROM ' .$GLOBALS['ecs']->table('article') .
+            ' WHERE is_open = 1 AND cat_id = 29' .
+            ' ORDER BY article_type DESC, article_id DESC';
+        $problem = $db->getAll($sql);
+        $smarty->assign('problem',              $problem);
+        //理赔服务电话
+        $sql = 'SELECT parent_id, code, value, id' .
+            ' FROM ' .$GLOBALS['ecs']->table('shop_config') .
+            ' WHERE parent_id = 1 AND id = 115';
+        $esc_phone = $GLOBALS['db']->getRow($sql);
+        $smarty->assign('esc_phone',              $esc_phone);
+
+        //评论
+        $m = '';
+        if(isset($_REQUEST['m']) && $_REQUEST['m'] == 1){
+            $sql = 'SELECT comment_id, comment_type, id_value, user_name, content, comment_rank, user_id, add_time' .
+                ' FROM ' .$GLOBALS['ecs']->table('comment') .
+                ' WHERE status = 1 AND comment_type = 0 AND parent_id=0 AND id_value =' .$goods['goods_id'].
+                ' ORDER BY add_time DESC';
+            $m = $_REQUEST['m'];
+        }else{
+            $sql = 'SELECT comment_id, comment_type, id_value, user_name, content, comment_rank, user_id, add_time' .
+                ' FROM ' .$GLOBALS['ecs']->table('comment') .
+                ' WHERE status = 1 AND comment_type = 0 AND parent_id=0 AND id_value =' .$goods['goods_id'].
+                ' ORDER BY add_time DESC limit 10';
+        }
+        $comment = $db->getAll($sql);
+        foreach($comment as $k=>$v){
+            $comment[$k]['add_time'] = date($GLOBALS['_CFG']['date_format'], $v['add_time']);
+            //回复
+            $sql1 = 'SELECT comment_id, comment_type, id_value, user_name, content, add_time' .
+                ' FROM ' .$GLOBALS['ecs']->table('comment') .
+                ' WHERE  parent_id =' .$v['comment_id'].
+                ' ORDER BY add_time';
+            $comment[$k]['re_comment'] = $db->getAll($sql1);
+            //会员
+            $sql2='SELECT user_name, user_id, open_face FROM  ecs_users WHERE user_id = '.$v['user_id'];
+            $comment[$k]['user'] = $GLOBALS['db']->getRow($sql2);
+        }
+        $smarty->assign('m',              $m);
+        $smarty->assign('comment',              $comment);
+//        var_dump($m);exit;
+
 
         $smarty->assign('goods',              $goods);
         $smarty->assign('goods_id',           $goods['goods_id']);
@@ -281,7 +343,7 @@ else
 $db->query('UPDATE ' . $ecs->table('goods') . " SET click_count = click_count + 1 WHERE goods_id = '$_REQUEST[id]'");
 
 $smarty->assign('now_time',  gmtime());           // 当前系统时间
-$smarty->display('produceDetails.dwt',      $cache_id);
+$smarty->display('shopDetails.dwt',      $cache_id);
 
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTION

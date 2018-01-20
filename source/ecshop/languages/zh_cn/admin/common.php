@@ -132,21 +132,32 @@ $_LANG['kilogram'] = '千克';
 /* 菜单分类部分 */
 $_LANG['01_certificate_manage'] = '云服务中心';
 $_LANG['02_cat_and_goods'] = '商品管理';
-$_LANG['03_promotion'] = '促销管理';
-$_LANG['04_order'] = '订单管理';
-$_LANG['05_banner'] = '广告管理';
-$_LANG['06_stats'] = '报表统计';
-$_LANG['07_content'] = '文章管理';
-$_LANG['08_members'] = '会员管理';
-$_LANG['09_others'] = '杂项管理';
-$_LANG['10_priv_admin'] = '权限管理';
-$_LANG['11_system'] = '系统设置';
-$_LANG['12_template'] = '模板管理';
-$_LANG['13_backup'] = '数据库管理';
-$_LANG['14_sms'] = '短信管理';
-$_LANG['15_rec'] = '推荐管理';
-$_LANG['16_email_manage'] = '邮件群发管理';
+
+$_LANG['03_doctor'] = '专家管理';
+
+$_LANG['04_promotion'] = '促销管理';
+$_LANG['05_order'] = '订单管理';
+$_LANG['06_banner'] = '广告管理';
+$_LANG['07_stats'] = '报表统计';
+$_LANG['08_content'] = '文章管理';
+$_LANG['09_members'] = '会员管理';
+$_LANG['10_others'] = '杂项管理';
+$_LANG['11_priv_admin'] = '权限管理';
+$_LANG['12_system'] = '系统设置';
+$_LANG['13_template'] = '模板管理';
+$_LANG['14_backup'] = '数据库管理';
+$_LANG['15_sms'] = '短信管理';
+$_LANG['16_rec'] = '推荐管理';
+$_LANG['17_email_manage'] = '邮件群发管理';
 $_LANG['18_lead_manage'] = '移动版管理';
+
+
+
+/* 专家管理 */
+$_LANG['02_doctorcat_list'] = '科室分类';
+$_LANG['03_doctor_list'] = '专家列表';
+
+
 
 /* 商品管理 */
 $_LANG['01_goods_list'] = '商品列表';

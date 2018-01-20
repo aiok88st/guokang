@@ -13,8 +13,14 @@ p{
 #topNav{
     width: 100%;
     height: 72px;
-    box-shadow: 0 2px 2px rgba(231,231,231,0.5);
-    background-color: white;
+    .topNav{
+        position: absolute;
+        left: 0;
+         width: 100%;
+        height: 72px;
+        box-shadow: 0 2px 2px rgba(231,231,231,0.5);
+        background-color: white;
+    }
     .w12{
         width: 1140px;
         position: relative;
@@ -132,6 +138,14 @@ p{
                 }
                 button:nth-child(2n){
                     margin-right: 0px;
+                }
+                button:hover{
+                     border-color: $blue;
+                    color: #333333;
+                }
+                .forActive{
+                    border-color: $blue;
+                    color: #333333;
                 }
             }
         }

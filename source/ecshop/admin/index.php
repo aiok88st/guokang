@@ -21,6 +21,7 @@ require_once(ROOT_PATH . '/includes/lib_order.php');
 /*------------------------------------------------------ */
 if ($_REQUEST['act'] == '')
 {
+
     $smarty->assign('shop_url', urlencode($ecs->url()));
     $smarty->display('index.htm');
 }
@@ -82,7 +83,6 @@ elseif ($_REQUEST['act'] == 'calculator')
 {
     $smarty->display('calculator.htm');
 }
-
 /*------------------------------------------------------ */
 //-- 左边的框架
 /*------------------------------------------------------ */
@@ -101,6 +101,7 @@ elseif ($_REQUEST['act'] == 'menu')
 
     foreach ($modules AS $key => $val)
     {
+
         $menus[$key]['label'] = $_LANG[$key];
         if (is_array($val))
         {

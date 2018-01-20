@@ -67,10 +67,13 @@
       </tr>
       <tr>
         <td class="narrow-label">{$lang.external_links}</td>
-        <td><input name="link_url" type="text" id="link_url" value="{if $article.link neq ''}{$article.link|escape}{else}http://{/if}" maxlength="60" /></td>
+        <td>
+            <input name="link_url" type="text" id="link_url" value="{if $article.link neq ''}{$article.link|escape}{else}http://{/if}" maxlength="60" />
+            <span>腾讯、优酷视频链接</span>
+        </td>
       </tr>
       <tr>
-        <td class="narrow-label">{$lang.upload_file}</td>
+        <td class="narrow-label">封面图片</td>
         <td><input type="file" name="file">
           <span class="narrow-label">{$lang.file_url}
           <input name="file_url" type="text" value="{$article.file_url|escape}" size="30" maxlength="255" />

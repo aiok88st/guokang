@@ -75,14 +75,14 @@
 				<div class="floatl">
 					<ul>
 						<li>
-							<p class="pwTitle">{$vo.title}</p>
+							<p class="pwTitle">{$vo.goods_name}</p>
 						</li>
 						<li>
-							<p class="pwcontent">{$vo.description}</p>
+							<p class="pwcontent">{$vo.goods_brief}</p>
 						</li>
 						<li>
 							<div class="pwBtn">
-								<a href="{$vo.file_url}">查看详情</a>
+								<a href="goods.php?id={$vo.goods_id}">查看详情</a>
 							</div>
 						</li>
 					</ul>
@@ -106,15 +106,15 @@
 						</li>
 						<li>
                             <!--{foreach from=$one['filter_attr'] item=cat}-->
-							<a href="###" class="floatl">{$cat}</a>
+							<a href="category.php?id=2&cid=2&aid={$one.cat_id}" class="floatl">{$cat}</a>
                             <!--{/foreach}-->
 
-							<a href="###" class="floatl">全部</a>
+							<a href="category.php?id=2&cid=2" class="floatl">全部</a>
 						</li>
 					</ul>
 				</div>
 				<div class="floatl ptImg">
-					<a href="###" class="ptImgBox">
+					<a href="goods.php?id={$one_goods[0].goods_id}" class="ptImgBox">
 						<img src="{$one_goods[0].original_img}" />
 					</a>
 				</div>
@@ -145,7 +145,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$one_goods[1].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -178,7 +178,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$one_goods[2].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -198,9 +198,9 @@
 						</li>
 						<li>
                             <!--{foreach from=$two['filter_attr'] item=cat}-->
-                            <a href="###" class="floatl">{$cat}</a>
+                            <a href="category.php?id=2&cid=3" class="floatl">{$cat}</a>
                             <!--{/foreach}-->
-							<a href="###" class="floatl">全部</a>
+							<a href="category.php?id=2&cid=3" class="floatl">全部</a>
 						</li>
 					</ul>
 				</div>
@@ -232,7 +232,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$two_goods[0].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -265,7 +265,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$two_goods[1].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -273,7 +273,7 @@
 					</div>
 				</div>
 				<div class="floatl ptImg">
-					<a href="###" class="ptImgBox">
+					<a href="goods.php?id={$two_goods[2].goods_id}" class="ptImgBox">
 						<img src="{$two_goods[2].original_img}" />
 					</a>
 				</div>
@@ -290,14 +290,14 @@
 						</li>
 						<li>
                             <!--{foreach from=$three['filter_attr'] item=cat}-->
-                            <a href="###" class="floatl">{$cat}</a>
+                            <a href="category.php?id=2&cid=6" class="floatl">{$cat}</a>
                             <!--{/foreach}-->
-							<a href="###" class="floatl">全部</a>
+							<a href="category.php?id=2&cid=6" class="floatl">全部</a>
 						</li>
 					</ul>
 				</div>
 				<div class="floatl ptImg">
-					<a href="###" class="ptImgBox">
+					<a href="goods.php?id={$three_goods[0].goods_id}" class="ptImgBox">
 						<img src="{$three_goods[0].original_img}" />
 					</a>
 				</div>
@@ -328,7 +328,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$three_goods[1].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -361,7 +361,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$three_goods[2].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -381,9 +381,9 @@
 						</li>
 						<li>
                             <!--{foreach from=$four['filter_attr'] item=cat}-->
-                            <a href="###" class="floatl">{$cat}</a>
+                            <a href="category.php?id=2&cid=5" class="floatl">{$cat}</a>
                             <!--{/foreach}-->
-							<a href="###" class="floatl">全部</a>
+							<a href="category.php?id=2&cid=5" class="floatl">全部</a>
 						</li>
 					</ul>
 				</div>
@@ -414,7 +414,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$four_goods[0].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -447,7 +447,7 @@
 								</div>
 								<div class="ptcMethod">
 									<a href="###" class="floatl">服务介绍</a>
-									<a href="###" class="floatr">马上购买</a>
+									<a href="goods.php?id={$four_goods[1].goods_id}" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -455,7 +455,7 @@
 					</div>
 				</div>
 				<div class="floatl ptImg">
-					<a href="###" class="ptImgBox">
+					<a href="goods.php?id={$four_goods[2].goods_id}" class="ptImgBox">
 						<img src="{$four_goods[2].original_img}" />
 					</a>
 				</div>

@@ -1,0 +1,316 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/shop.css" />
+
+
+
+		
+		<!--商品上部-->
+		<div id="shopOne">
+			<!--定位导航-->
+			<div id="topNav">
+				<div class="w12">
+					<p>{$goods.goods_name}</p>
+					<div class="rightNav">
+						<ul>
+							<li>
+								<a href="###">概述</a>
+							</li>
+							<li>
+								<a href="###" class="aActive">服务详情</a>
+							</li>
+							<li>
+								<a href="#part2">保险案例</a>
+							</li>
+							<li>
+								<a href="#part3">理赔服务</a>
+							</li>
+							<li>
+								<a href="#part4">常见问题</a>
+							</li>
+							<li>
+								<a href="#part5">评价详情</a>
+							</li>
+							<li>
+								<button>立即购买</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="w14">
+				<div class="floatl soLeft">
+					<img src="{$goods.goods_img}" />
+				</div>
+				<div class="floatl soRight">
+					<ul>
+						<li>
+							<p class="soTitle">{$goods.goods_name}</p>
+						</li>
+						<li>
+							<p class="soContent">{$goods.goods_brief}</p>
+						</li>
+						<li>
+							<div class="labelBox">
+                                <!--{foreach from=$goods.attr_value item=vv}-->
+                                <a href="javascript:;" class="floatl">{$vv.attr_value}</a>
+                                <!--{/foreach}-->
+
+								<div class="clearl"></div>
+							</div>
+						</li>
+						<li>
+							<p class="money">&yen;{$goods.shop_price}<span><del>{$goods.market_price}</del></span></p>
+						</li>
+						<li>
+							<div class="forWho">
+								<div class="fwTitle">
+									<p>为谁投保</p>
+								</div>
+								<div class="forBtn">
+									<button class="floatl">为自己</button>
+									<button class="floatl">为配偶</button>
+									<button class="floatl">为父母</button>
+									<button class="floatl">为子女</button>
+									<div class="clearl"></div>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="number">
+								<div class="nbTitle">
+									<p>投保数量</p>
+								</div>
+								<div class="nbBtn">
+									<button class="floatl reduce" disabled="disabled">
+										<span></span>
+									</button>
+									<p class="floatl">0</p>
+									<button class="floatl increase"></button>
+								</div>
+								<div class="clearl"></div>
+							</div>
+						</li>
+						<li>
+							<div class="twoBtn">
+								<a href="###" class="floatl">立即购买</a>
+								<a href="###" class="floatl aBlue">加入购物车</a>
+								<div class="clearl"></div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="clearl"></div>
+			</div>
+		</div>
+		<div id="part1" class="w14">
+			<div class="pTitle">
+				<p>服务详情</p>
+			</div>
+			<div>
+                {$goods.goods_desc}
+			</div>
+		</div>
+<!-- {if $data_art} -->
+		<div id="part2" class="w14">
+			<div class="pTitle">
+				<p>保险案例</p>
+			</div>
+			<div class="part2">
+                <!--{foreach from=$data_art item=vo}-->
+				<div class="floatl">
+					<ul>
+						<li>
+							<div class="ptImg">
+								<img src="{$vo.file_url}" />
+							</div>
+						</li>
+						<li>
+							<p>{$vo.title}</p>
+						</li>
+					</ul>
+				</div>
+                <!--{/foreach}-->
+				<div class="clearl"></div>
+			</div>
+		</div>
+<!-- {/if} -->
+		<div id="part3" class="w14">
+			<div class="pTitle">
+				<p>理赔服务</p>
+			</div>
+			<div class="part3">
+				<div class="ptTitle">
+					<p>一个电话轻松理赔，24小时全天候服务</p>
+				</div>
+				<div class="part3Box">
+					<div class="floatl">
+						<ul>
+							<li>
+								<div class="p3Img">
+									<img src="themes/default/image/phone.png" />
+								</div>
+							</li>
+							<li>
+								<p class="p3Content">报案</p>
+							</li>
+						</ul>
+					</div>
+					<div class="floatl twoContent">
+						<p>出险后24小时内</p>
+						<p>拨打{$esc_phone.value}报案</p>
+					</div>
+					<div class="floatl">
+						<ul>
+							<li>
+								<div class="p3Img">
+									<img src="themes/default/image/book.png" />
+								</div>
+							</li>
+							<li>
+								<p class="p3Content">提交资料</p>
+							</li>
+						</ul>
+					</div>
+					<div class="floatl twoContent">
+						<p>根据保单条款约定</p>
+						<p>提供理赔所需材料</p>
+					</div>
+					<div class="floatl">
+						<ul>
+							<li>
+								<div class="p3Img">
+									<img src="themes/default/image/wait.png" />
+								</div>
+							</li>
+							<li>
+								<p class="p3Content">等待赔偿</p>
+							</li>
+						</ul>
+					</div>
+					<div class="clearl"></div>
+				</div>
+			</div>
+		</div>
+		<div id="part4" class="w14">
+			<div class="pTitle">
+				<p>常见问题</p>
+			</div>
+			<div class="problemBox">
+
+                <!--{foreach from=$problem item=vo}-->
+				<a href="###" class="floatl">
+					<div class="pbTitle">
+						<p>{$vo.title}</p>
+					</div>
+					<div class="pbContent">
+                        <p>{$vo.content}</p>
+                    </div>
+				</a>
+                <!--{/foreach}-->
+
+
+				<div class="clearl"></div>
+			</div>
+		</div>
+		<div id="part5" class="w14">
+			<div class="pTitle">
+				<p>评价详情</p>
+			</div>
+			<div class="pointBox">
+				<div class="pointTop">
+					<ul>
+						<li>
+							<p>{$goods.agree_num}<span>%</span></p>
+						</li>
+						<li>
+							<p>购买后满意</p>
+						</li>
+						<li>
+							<p>{$goods.user_num}名用户投票</p>
+						</li>
+					</ul>
+				</div>
+				<div class="ppBox">
+
+                    <!--{foreach from=$comment item=vo}-->
+					<div class="ppChild">
+						<div class="ppLeft floatl">
+                            <!-- {if $vo.user.open_face} -->
+							<img src="{$vo.user.open_face}" />
+                            <!-- {else} -->
+                            <img src="themes/default/image/user.png" />
+                            <!-- {/if} -->
+						</div>
+						<div class="ppMiddle floatl">
+							<ul>
+								<li>
+									<p class="ppName">{$vo.user.user_name}</p>
+								</li>
+								<li>
+									<p class="ppContent">{$vo.content}</p>
+								</li>
+								<li>
+
+                                    <!--{foreach from=$vo.re_comment item=vv}-->
+									<div class="elsePoint">
+										<div class="epBox">
+											<div class="floatl epLeft">
+												<img src="themes/default/img/headerImg.jpg" />
+											</div>
+											<div class="floatl epRight">
+												<p>{$vv.content}</p>
+											</div>
+											<div class="clearl"></div>
+										</div>
+									</div>
+                                    <!--{/foreach}-->
+
+								</li>
+							</ul>
+						</div>
+						<div class="ppRight floatl">
+							<div class="starBox">
+                                <!-- {if $vo.comment_rank eq 1} -->
+								<img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {elseif $vo.comment_rank eq 2} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {elseif $vo.comment_rank eq 3} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {elseif $vo.comment_rank eq 4} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {else} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {/if} -->
+
+								<div class="clearr"></div>
+							</div>
+							<div class="ppTime">
+								<p>{$vo.add_time}</p>
+							</div>
+						</div>
+						<div class="clearl"></div>
+					</div>
+                    <!--{/foreach}-->
+
+
+				</div>
+                <!-- {if $m neq 1} -->
+				<div class="lookMore">
+					<a href="goods.php?id={$goods.goods_id}&m=1#part5">查看更多</a>
+				</div>
+                <!-- {/if} -->
+			</div>
+		</div>
+<script type="text/javascript" src="themes/default/script/shop.js" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+

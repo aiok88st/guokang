@@ -174,6 +174,8 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             'no_member_price'  => 0,
             'vip_price'  => 0,
             'return_amount'  => 0,
+            'agree_num'  => 99,// 满意度
+            'user_num'  => 0,//顾客投票数
             'virtual_sales'  => 0,
             'integral'      => 0,
             'goods_number'  => $_CFG['default_storage'],
@@ -246,6 +248,8 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
                 'member_price'  => 0,
                 'no_member_price'  => 0,
                 'vip_price'  => 0,
+                'agree_num'  => '99',// 满意度
+                'user_num'  => 0,//顾客投票数
                 'return_amount'  => 0,
                 'virtual_sales'  => 0,
                 'integral'      => 0,
@@ -811,6 +815,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $no_member_price = !empty($_POST['no_member_price']) ? $_POST['no_member_price'] : 0;
     $vip_price = !empty($_POST['vip_price']) ? $_POST['vip_price'] : 0;
     $return_amount = !empty($_POST['return_amount']) ? $_POST['return_amount'] : 0;
+    $agree_num = !empty($_POST['agree_num']) ? $_POST['agree_num'] : 99;
+    $user_num = !empty($_POST['user_num']) ? $_POST['user_num'] : 0;
 
 
     $shop_price = !empty($_POST['shop_price']) ? $_POST['shop_price'] : 0;
@@ -847,12 +853,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     {
         if ($code == '')
         {
-            $sql = "INSERT INTO " . $ecs->table('goods') . " (member_price, no_member_price, vip_price, return_amount, goods_name, goods_name_style, goods_sn, " .
+            $sql = "INSERT INTO " . $ecs->table('goods') . " (agree_num, user_num, member_price, no_member_price, vip_price, return_amount, goods_name, goods_name_style, goods_sn, " .
             "cat_id, brand_id, shop_price, market_price, virtual_sales, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral, suppliers_id)" .
-                "VALUES ('$member_price','$no_member_price','$vip_price','$return_amount','$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
+                "VALUES ('$agree_num','$user_num','$member_price','$no_member_price','$vip_price','$return_amount','$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                 "'$brand_id', '$shop_price', '$market_price', '$virtual_sales', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
@@ -861,12 +867,12 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
         }
         else
         {
-            $sql = "INSERT INTO " . $ecs->table('goods') . " (member_price, no_member_price, vip_price, return_amount, goods_name, goods_name_style, goods_sn, " .
+            $sql = "INSERT INTO " . $ecs->table('goods') . " (agree_num, user_num, member_price, no_member_price, vip_price, return_amount, goods_name, goods_name_style, goods_sn, " .
                     "cat_id, brand_id, shop_price, market_price, virtual_sales, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
                     "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral)" .
-                "VALUES ('$member_price','$no_member_price','$vip_price','$return_amount','$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
+                "VALUES ('$agree_num','$user_num','$member_price','$no_member_price','$vip_price','$return_amount','$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$virtual_sales', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
@@ -909,7 +915,10 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "member_price = '$member_price', ".
                 "no_member_price = '$no_member_price', ".
                 "vip_price = '$vip_price', ".
-                "return_amount = '$return_amount', ";
+                "return_amount = '$return_amount', ".
+                "agree_num = '$agree_num', ".
+                "user_num = '$user_num', ";
+
 
         /* 如果有上传图片，需要更新数据库 */
         if ($goods_img)

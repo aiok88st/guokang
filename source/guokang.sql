@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-01-19 18:51:38
+Date: 2018-01-20 21:27:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -243,7 +243,7 @@ CREATE TABLE `ecs_admin_log` (
   PRIMARY KEY (`log_id`),
   KEY `log_time` (`log_time`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=202 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=231 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_admin_log
@@ -449,6 +449,35 @@ INSERT INTO `ecs_admin_log` VALUES ('198', '1516353682', '1', '添加文章分�
 INSERT INTO `ecs_admin_log` VALUES ('199', '1516353709', '1', '添加文章分类: 皮肤科', '127.0.0.1');
 INSERT INTO `ecs_admin_log` VALUES ('200', '1516353740', '1', '编辑文章分类: 内科', '127.0.0.1');
 INSERT INTO `ecs_admin_log` VALUES ('201', '1516353890', '1', '添加文章: 李文慧  教授', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('202', '1516413825', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('203', '1516413838', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('204', '1516413850', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('205', '1516413863', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('206', '1516413875', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('207', '1516413889', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('208', '1516413901', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('209', '1516413913', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('210', '1516413924', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('211', '1516413936', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('212', '1516413948', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('213', '1516413961', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('214', '1516415010', '1', '添加文章分类: 常见问题', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('215', '1516415044', '1', '编辑文章分类: 企业新闻', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('216', '1516415583', '1', '添加文章: 如何开具发票？', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('217', '1516416555', '1', '编辑商店设置: ', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('218', '1516420069', '1', '编辑用户评论: 回复', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('219', '1516431349', '1', '添加文章分类: 保险案例', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('220', '1516431580', '1', '添加文章: 黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('221', '1516432189', '1', '添加文章: 1黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('222', '1516435093', '1', '编辑商品: 国康恒大万年金保险', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('223', '1516449010', '1', '添加: 内科', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('224', '1516449933', '1', '编辑: 内科', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('225', '1516449972', '1', '编辑: 内科', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('226', '1516450017', '1', '添加: 外壳', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('227', '1516450044', '1', '编辑: 外科', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('228', '1516450059', '1', '删除商品分类: ', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('229', '1516450068', '1', '编辑: 内科', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('230', '1516453746', '1', '添加文章: ', '127.0.0.1');
 
 -- ----------------------------
 -- Table structure for ecs_admin_message
@@ -503,7 +532,7 @@ CREATE TABLE `ecs_admin_user` (
 -- ----------------------------
 -- Records of ecs_admin_user
 -- ----------------------------
-INSERT INTO `ecs_admin_user` VALUES ('1', 'admin', '', '336ddee103bb21645fc8b3d50b47e308', '9099', '1516010800', '1516324714', '127.0.0.1', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit,店铺二维码|lead.php?act=list,服务市场|service_market.php', '', '0', '0', null, null, null, null);
+INSERT INTO `ecs_admin_user` VALUES ('1', 'admin', '', '336ddee103bb21645fc8b3d50b47e308', '9099', '1516010800', '1516448342', '127.0.0.1', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit,店铺二维码|lead.php?act=list,服务市场|service_market.php', '', '0', '0', null, null, null, null);
 INSERT INTO `ecs_admin_user` VALUES ('2', '88171101845370', '88171101845370', 'shopex', null, '1516010803', '0', '', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit,店铺二维码|lead.php?act=list,服务市场|service_market.php', '', '0', '0', null, null, '88171101845370', '32767');
 
 -- ----------------------------
@@ -640,7 +669,7 @@ CREATE TABLE `ecs_article` (
   `description` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`article_id`),
   KEY `cat_id` (`cat_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=112 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_article
@@ -678,6 +707,10 @@ INSERT INTO `ecs_article` VALUES ('103', '20', '国康健康重大疾病保险�
 INSERT INTO `ecs_article` VALUES ('104', '20', '国康健康重大疾病保险计划3', '', '', '', '', '0', '1', '1516350594', 'data/article/1516350604476750046.jpg', '1', 'http://', '国康健康重大疾病保险计划,国康健康重大疾国康健康重大疾病保险计划国康健康重大疾病保险计划,国康健康重大疾国康健康重大疾病保险计划...');
 INSERT INTO `ecs_article` VALUES ('105', '21', '国康健康重大疾病保险计划4', '', '', '', '', '0', '1', '1516350639', 'data/article/1516350639123495138.jpg', '1', 'http://', '国康健康重大疾病保险计划,国康健康重大疾国康健康重大疾病保险计划国康健康重大疾病保险计划,国康健康重大疾国康健康重大疾病保险计划...');
 INSERT INTO `ecs_article` VALUES ('106', '22', '国康健康重大疾病保险计划5', '', '', '', '', '0', '1', '1516350665', 'data/article/1516350665814966081.jpg', '1', 'http://', '国康健康重大疾病保险计划,国康健康重大疾国康健康重大疾病保险计划国康健康重大疾病保险计划,国康健康重大疾国康健康重大疾病保险计划...');
+INSERT INTO `ecs_article` VALUES ('108', '29', '如何开具发票？', '<p>1.请在下单时选择&ldquo;我要开发票&rdquo;并填写相关信息。开具增&nbsp; 值税专用发票需在下单时填写增票资质信息。温馨提示：请确保增票资质信息与贵司税务登记证信息一致，避免因开票信息错误给贵司带来损失。</p>\r\n<p>2.增值税专用发票开具内容为明细。</p>', '', '', '', '0', '1', '1516415583', '', '0', 'http://', '');
+INSERT INTO `ecs_article` VALUES ('109', '30', '黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性', '<p>&nbsp;黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性</p>', '', '', '', '0', '1', '1516431580', 'data/article/1516431580281894111.jpg', '2', 'http://', '');
+INSERT INTO `ecs_article` VALUES ('110', '30', '1黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性', '', '', '', '', '0', '1', '1516432189', 'data/article/1516432189396937443.jpg', '1', 'http://', '');
+INSERT INTO `ecs_article` VALUES ('111', '0', '', '', '', '', '', '0', '0', '1516453746', '', '0', '', '');
 
 -- ----------------------------
 -- Table structure for ecs_article_cat
@@ -697,16 +730,16 @@ CREATE TABLE `ecs_article_cat` (
   KEY `cat_type` (`cat_type`),
   KEY `sort_order` (`sort_order`),
   KEY `parent_id` (`parent_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_article_cat
 -- ----------------------------
-INSERT INTO `ecs_article_cat` VALUES ('1', '系统分类', '2', '', '系统保留分类', '50', '0', '0', null);
+INSERT INTO `ecs_article_cat` VALUES ('1', '系统分类', '2', '', '系统保留分类', '50', '1', '0', null);
 INSERT INTO `ecs_article_cat` VALUES ('2', '网店信息', '3', '', '网店信息分类', '50', '0', '1', null);
 INSERT INTO `ecs_article_cat` VALUES ('3', '网店帮助分类', '4', '', '网店帮助分类', '50', '0', '1', null);
 INSERT INTO `ecs_article_cat` VALUES ('5', '首页促销活动', '1', '', '首页头部轮播图下', '1', '0', '0', null);
-INSERT INTO `ecs_article_cat` VALUES ('6', '企业新闻', '1', '', '', '50', '1', '17', '');
+INSERT INTO `ecs_article_cat` VALUES ('6', '企业新闻', '1', '', '', '50', '0', '17', '');
 INSERT INTO `ecs_article_cat` VALUES ('7', '健康资讯', '1', '', '', '50', '0', '17', '');
 INSERT INTO `ecs_article_cat` VALUES ('8', '保险资讯', '1', '', '', '50', '0', '17', '');
 INSERT INTO `ecs_article_cat` VALUES ('9', '了解国康', '1', '', '', '50', '0', '0', null);
@@ -724,6 +757,8 @@ INSERT INTO `ecs_article_cat` VALUES ('20', '国康保险', '1', '', '', '2', '0
 INSERT INTO `ecs_article_cat` VALUES ('21', '医朋', '1', '', '', '3', '0', '18', '');
 INSERT INTO `ecs_article_cat` VALUES ('22', '康管家', '1', '', '', '4', '0', '18', '');
 INSERT INTO `ecs_article_cat` VALUES ('23', '优质资源', '1', '', '', '50', '0', '0', '');
+INSERT INTO `ecs_article_cat` VALUES ('29', '常见问题', '1', '', '', '50', '0', '0', '');
+INSERT INTO `ecs_article_cat` VALUES ('30', '保险案例', '1', '', '', '50', '0', '0', '');
 
 -- ----------------------------
 -- Table structure for ecs_attribute
@@ -1121,11 +1156,15 @@ CREATE TABLE `ecs_comment` (
   PRIMARY KEY (`comment_id`),
   KEY `parent_id` (`parent_id`),
   KEY `id_value` (`id_value`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_comment
 -- ----------------------------
+INSERT INTO `ecs_comment` VALUES ('1', '0', '1', '', '招商信诺客户徐女士', '很好!', '3', '1516093362', '127.0.0.1', '1', '0', '1');
+INSERT INTO `ecs_comment` VALUES ('2', '0', '1', '', 'admin', '感谢您对国康的支持！', '0', '1516420069', '127.0.0.1', '0', '1', '0');
+INSERT INTO `ecs_comment` VALUES ('3', '0', '1', '', '哈哈', '产品不错啊', '5', '1516420069', '127.0.0.1', '1', '0', '2');
+INSERT INTO `ecs_comment` VALUES ('4', '0', '1', '', 'admin', '感谢您对国康的支持！', '0', '1516420069', '127.0.0.1', '0', '3', '0');
 
 -- ----------------------------
 -- Table structure for ecs_config
@@ -1272,6 +1311,51 @@ CREATE TABLE `ecs_device` (
 -- ----------------------------
 -- Records of ecs_device
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for ecs_doctor
+-- ----------------------------
+DROP TABLE IF EXISTS `ecs_doctor`;
+CREATE TABLE `ecs_doctor` (
+  `doctor_id` int(8) unsigned NOT NULL AUTO_INCREMENT,
+  `cat_id` smallint(5) NOT NULL,
+  `title` varchar(255) NOT NULL DEFAULT '',
+  `content` longtext NOT NULL,
+  `is_open` tinyint(1) NOT NULL DEFAULT '1',
+  `add_time` int(11) NOT NULL,
+  `file_url` varchar(255) NOT NULL DEFAULT '',
+  `description` varchar(255) NOT NULL DEFAULT '',
+  `province` int(255) DEFAULT NULL,
+  `city` int(255) DEFAULT NULL,
+  `area` int(255) DEFAULT NULL,
+  PRIMARY KEY (`doctor_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ecs_doctor
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for ecs_doctor_cat
+-- ----------------------------
+DROP TABLE IF EXISTS `ecs_doctor_cat`;
+CREATE TABLE `ecs_doctor_cat` (
+  `cat_id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
+  `cat_name` varchar(255) NOT NULL DEFAULT '',
+  `cat_type` tinyint(1) NOT NULL DEFAULT '1',
+  `keywords` varchar(255) NOT NULL DEFAULT '',
+  `cat_desc` varchar(255) NOT NULL DEFAULT '',
+  `sort_order` tinyint(3) NOT NULL DEFAULT '50',
+  `show_in_nav` tinyint(1) NOT NULL DEFAULT '0',
+  `parent_id` smallint(5) NOT NULL DEFAULT '0',
+  `cat_link` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`cat_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ecs_doctor_cat
+-- ----------------------------
+INSERT INTO `ecs_doctor_cat` VALUES ('1', '内科', '1', '', '', '1', '0', '0', '');
 
 -- ----------------------------
 -- Table structure for ecs_email_list
@@ -1467,6 +1551,8 @@ CREATE TABLE `ecs_goods` (
   `no_member_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '非会员价',
   `vip_price` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '贵宾价',
   `return_amount` decimal(10,2) NOT NULL DEFAULT '0.00' COMMENT '返现金额',
+  `agree_num` varchar(255) DEFAULT '' COMMENT '顾客满意度',
+  `user_num` int(11) DEFAULT '0' COMMENT '顾客投票数',
   PRIMARY KEY (`goods_id`),
   KEY `goods_sn` (`goods_sn`),
   KEY `cat_id` (`cat_id`),
@@ -1482,18 +1568,18 @@ CREATE TABLE `ecs_goods` (
 -- ----------------------------
 -- Records of ecs_goods
 -- ----------------------------
-INSERT INTO `ecs_goods` VALUES ('1', '2', 'ECS000000', '国康恒大万年金保险', '+', '9', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/1_thumb_G_1516153979781.jpg', 'images/201801/goods_img/1_G_1516153979834.jpg', 'images/201801/source_img/1_G_1516153979782.jpg', '1', '', '1', '1', '0', '6', '1516153979', '1', '0', '0', '0', '1', '0', '0', '1516255768', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('2', '2', 'ECS000002', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/2_thumb_G_1516154228943.jpg', 'images/201801/goods_img/2_G_1516154228029.jpg', 'images/201801/source_img/2_G_1516154228125.jpg', '1', '', '1', '1', '0', '6', '1516154228', '2', '0', '0', '0', '1', '0', '0', '1516255899', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('3', '2', 'ECS000003', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/3_thumb_G_1516154282233.jpg', 'images/201801/goods_img/3_G_1516154282670.jpg', 'images/201801/source_img/3_G_1516154282775.jpg', '1', '', '1', '1', '0', '6', '1516154282', '3', '0', '0', '0', '1', '0', '0', '1516255912', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('4', '3', 'ECS000004', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/4_thumb_G_1516156180121.jpg', 'images/201801/goods_img/4_G_1516156180406.jpg', 'images/201801/source_img/4_G_1516156180141.jpg', '1', '', '1', '1', '0', '6', '1516156180', '1', '0', '0', '0', '1', '0', '0', '1516255923', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('5', '3', 'ECS000005', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/5_thumb_G_1516156230282.jpg', 'images/201801/goods_img/5_G_1516156230689.jpg', 'images/201801/source_img/5_G_1516156230286.jpg', '1', '', '1', '1', '0', '6', '1516156230', '2', '0', '0', '0', '1', '0', '0', '1516255938', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('6', '3', 'ECS000006', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/6_thumb_G_1516156279655.jpg', 'images/201801/goods_img/6_G_1516156279875.jpg', 'images/201801/source_img/6_G_1516156279187.jpg', '1', '', '1', '1', '0', '6', '1516156279', '3', '0', '0', '0', '1', '0', '0', '1516156320', '10', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('7', '6', 'ECS000007', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/7_thumb_G_1516156765997.jpg', 'images/201801/goods_img/7_G_1516156765047.jpg', 'images/201801/source_img/7_G_1516156765818.jpg', '1', '', '1', '1', '0', '6', '1516156765', '1', '0', '0', '0', '1', '0', '0', '1516247978', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('8', '6', 'ECS000008', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/8_thumb_G_1516156808430.jpg', 'images/201801/goods_img/8_G_1516156808089.jpg', 'images/201801/source_img/8_G_1516156808701.jpg', '1', '', '1', '1', '0', '6', '1516156808', '2', '0', '0', '0', '1', '0', '0', '1516247956', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('9', '6', 'ECS000009', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/9_thumb_G_1516156847364.jpg', 'images/201801/goods_img/9_G_1516156847450.jpg', 'images/201801/source_img/9_G_1516156847652.jpg', '1', '', '1', '1', '0', '6', '1516156847', '3', '0', '0', '0', '1', '0', '0', '1516247928', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('10', '5', 'ECS000010', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/10_thumb_G_1516157098659.jpg', 'images/201801/goods_img/10_G_1516157098133.jpg', 'images/201801/source_img/10_G_1516157098751.jpg', '1', '', '1', '1', '0', '6', '1516157098', '1', '0', '0', '0', '1', '0', '0', '1516247902', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('11', '5', 'ECS000011', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/11_thumb_G_1516157142607.jpg', 'images/201801/goods_img/11_G_1516157142431.jpg', 'images/201801/source_img/11_G_1516157142594.jpg', '1', '', '1', '1', '0', '6', '1516157142', '2', '0', '0', '0', '1', '0', '0', '1516247849', '0', '', '-1', '-1', '0', null, '600.00', '2000.00', '1229.00', '10.00');
-INSERT INTO `ecs_goods` VALUES ('12', '5', 'ECS000012', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)<br/>\r\n住院/手术安排就诊服务', '', 'images/201801/thumb_img/12_thumb_G_1516157182642.jpg', 'images/201801/goods_img/12_G_1516157182646.jpg', 'images/201801/source_img/12_G_1516157182513.jpg', '1', '', '1', '1', '0', '6', '1516157182', '3', '0', '0', '0', '1', '0', '0', '1516247573', '0', '', '-1', '-1', '0', null, '600.00', '2000.00', '600.00', '30.00');
+INSERT INTO `ecs_goods` VALUES ('1', '2', 'ECS000000', '国康恒大万年金保险', '+', '106', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/1_thumb_G_1516153979781.jpg', 'images/201801/goods_img/1_G_1516153979834.jpg', 'images/201801/source_img/1_G_1516153979782.jpg', '1', '', '1', '1', '0', '6', '1516153979', '1', '0', '0', '0', '1', '0', '0', '1516435093', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00', '98.9', '10086');
+INSERT INTO `ecs_goods` VALUES ('2', '2', 'ECS000002', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/2_thumb_G_1516154228943.jpg', 'images/201801/goods_img/2_G_1516154228029.jpg', 'images/201801/source_img/2_G_1516154228125.jpg', '1', '', '1', '1', '0', '6', '1516154228', '2', '0', '0', '0', '1', '0', '0', '1516413838', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('3', '2', 'ECS000003', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/3_thumb_G_1516154282233.jpg', 'images/201801/goods_img/3_G_1516154282670.jpg', 'images/201801/source_img/3_G_1516154282775.jpg', '1', '', '1', '1', '0', '6', '1516154282', '3', '0', '0', '0', '1', '0', '0', '1516413850', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('4', '3', 'ECS000004', '国康恒大万年金保险', '+', '1', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/4_thumb_G_1516156180121.jpg', 'images/201801/goods_img/4_G_1516156180406.jpg', 'images/201801/source_img/4_G_1516156180141.jpg', '1', '', '1', '1', '0', '6', '1516156180', '1', '0', '0', '0', '1', '0', '0', '1516413863', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('5', '3', 'ECS000005', '国康恒大万年金保险', '+', '1', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/5_thumb_G_1516156230282.jpg', 'images/201801/goods_img/5_G_1516156230689.jpg', 'images/201801/source_img/5_G_1516156230286.jpg', '1', '', '1', '1', '0', '6', '1516156230', '2', '0', '0', '0', '1', '0', '0', '1516413875', '11', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('6', '3', 'ECS000006', '国康恒大万年金保险', '+', '1', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/6_thumb_G_1516156279655.jpg', 'images/201801/goods_img/6_G_1516156279875.jpg', 'images/201801/source_img/6_G_1516156279187.jpg', '1', '', '1', '1', '0', '6', '1516156279', '3', '0', '0', '0', '1', '0', '0', '1516413889', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '600.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('7', '6', 'ECS000007', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/7_thumb_G_1516156765997.jpg', 'images/201801/goods_img/7_G_1516156765047.jpg', 'images/201801/source_img/7_G_1516156765818.jpg', '1', '', '1', '1', '0', '6', '1516156765', '1', '0', '0', '0', '1', '0', '0', '1516413901', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('8', '6', 'ECS000008', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/8_thumb_G_1516156808430.jpg', 'images/201801/goods_img/8_G_1516156808089.jpg', 'images/201801/source_img/8_G_1516156808701.jpg', '1', '', '1', '1', '0', '6', '1516156808', '2', '0', '0', '0', '1', '0', '0', '1516413913', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('9', '6', 'ECS000009', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/9_thumb_G_1516156847364.jpg', 'images/201801/goods_img/9_G_1516156847450.jpg', 'images/201801/source_img/9_G_1516156847652.jpg', '1', '', '1', '1', '0', '6', '1516156847', '3', '0', '0', '0', '1', '0', '0', '1516413924', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('10', '5', 'ECS000010', '国康恒大万年金保险', '+', '16', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/10_thumb_G_1516157098659.jpg', 'images/201801/goods_img/10_G_1516157098133.jpg', 'images/201801/source_img/10_G_1516157098751.jpg', '1', '', '1', '1', '0', '6', '1516157098', '1', '0', '0', '0', '1', '0', '0', '1516413936', '0', '', '-1', '-1', '0', null, '600.00', '1229.00', '1229.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('11', '5', 'ECS000011', '国康恒大万年金保险', '+', '0', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/11_thumb_G_1516157142607.jpg', 'images/201801/goods_img/11_G_1516157142431.jpg', 'images/201801/source_img/11_G_1516157142594.jpg', '1', '', '1', '1', '0', '6', '1516157142', '2', '0', '0', '0', '1', '0', '0', '1516413948', '0', '', '-1', '-1', '0', null, '600.00', '2000.00', '1229.00', '10.00', '', '0');
+INSERT INTO `ecs_goods` VALUES ('12', '5', 'ECS000012', '国康恒大万年金保险', '+', '1', '0', '', '1', '0.000', '2000.00', '0', '600.00', '0.00', '0', '0', '1', '', '30种重大疾病(含癌症)，住院/手术安排就诊服务', '', 'images/201801/thumb_img/12_thumb_G_1516157182642.jpg', 'images/201801/goods_img/12_G_1516157182646.jpg', 'images/201801/source_img/12_G_1516157182513.jpg', '1', '', '1', '1', '0', '6', '1516157182', '3', '0', '0', '0', '1', '0', '0', '1516413961', '0', '', '-1', '-1', '0', null, '600.00', '2000.00', '600.00', '30.00', '', '0');
 
 -- ----------------------------
 -- Table structure for ecs_goods_activity
@@ -1533,6 +1619,12 @@ CREATE TABLE `ecs_goods_article` (
 -- ----------------------------
 -- Records of ecs_goods_article
 -- ----------------------------
+INSERT INTO `ecs_goods_article` VALUES ('1', '109', '0');
+INSERT INTO `ecs_goods_article` VALUES ('1', '110', '0');
+INSERT INTO `ecs_goods_article` VALUES ('2', '109', '0');
+INSERT INTO `ecs_goods_article` VALUES ('2', '110', '0');
+INSERT INTO `ecs_goods_article` VALUES ('3', '109', '0');
+INSERT INTO `ecs_goods_article` VALUES ('3', '110', '0');
 
 -- ----------------------------
 -- Table structure for ecs_goods_attr
@@ -1741,7 +1833,7 @@ CREATE TABLE `ecs_nav` (
   PRIMARY KEY (`id`),
   KEY `type` (`type`),
   KEY `ifshow` (`ifshow`)
-) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_nav
@@ -1751,15 +1843,15 @@ INSERT INTO `ecs_nav` VALUES ('2', 'c', '2', '产品中心', '1', '2', '1', 'cat
 INSERT INTO `ecs_nav` VALUES ('3', null, null, '解决方案', '1', '3', '1', 'http://127.0.0.1/guokang/source/ecshop/index.php', 'middle');
 INSERT INTO `ecs_nav` VALUES ('4', '', '0', '优质资源', '1', '4', '1', 'resource.php?id=25', 'middle');
 INSERT INTO `ecs_nav` VALUES ('5', null, null, '服务体系', '1', '4', '1', 'http://127.0.0.1/guokang/source/ecshop/index.php', 'middle');
-INSERT INTO `ecs_nav` VALUES ('6', 'a', '0', '全部产品', '0', '6', '0', '', 'middle');
+INSERT INTO `ecs_nav` VALUES ('17', 'a', '1', '内科', '0', '20', '0', 'article_cat.php?id=1', 'middle');
 INSERT INTO `ecs_nav` VALUES ('7', 'c', '0', '全部产品', '0', '8', '0', 'category.php?id=1', 'middle');
 INSERT INTO `ecs_nav` VALUES ('8', 'c', '2', '健康保险', '0', '10', '0', 'category.php?id=2', 'middle');
 INSERT INTO `ecs_nav` VALUES ('9', 'c', '3', '养老保险', '0', '12', '0', 'category.php?id=3', 'middle');
 INSERT INTO `ecs_nav` VALUES ('10', 'c', '4', '私人医生会员', '0', '14', '0', 'category.php?id=4', 'middle');
 INSERT INTO `ecs_nav` VALUES ('11', 'c', '5', '中医推拿   保健理疗', '0', '16', '0', 'category.php?id=5', 'middle');
 INSERT INTO `ecs_nav` VALUES ('12', 'c', '6', '全国全球名医转诊', '0', '18', '0', 'category.php?id=6', 'middle');
-INSERT INTO `ecs_nav` VALUES ('14', 'a', '6', '企业新闻', '0', '6', '1', 'article_cat.php?id=6', 'middle');
-INSERT INTO `ecs_nav` VALUES ('15', 'a', '6', '新闻资讯', '1', '6', '1', 'article_cat.php?id=6', 'middle');
+INSERT INTO `ecs_nav` VALUES ('14', 'a', '6', '新闻资讯', '1', '6', '1', 'article_cat.php?id=6', 'middle');
+INSERT INTO `ecs_nav` VALUES ('15', 'a', '6', '企业新闻', '0', '6', '1', 'article_cat.php?id=6', 'middle');
 INSERT INTO `ecs_nav` VALUES ('16', '', '0', '品牌体系', '1', '5', '1', 'brand_news.php?id=19', 'middle');
 
 -- ----------------------------
@@ -6234,7 +6326,9 @@ CREATE TABLE `ecs_sessions` (
 -- ----------------------------
 -- Records of ecs_sessions
 -- ----------------------------
-INSERT INTO `ecs_sessions` VALUES ('d57b39f39c0d33695c1a1254652cac03', '1516359093', '0', '1', '127.0.0.1', '0', '0', '0.00', '0', 'a:5:{s:12:\"captcha_word\";s:16:\"Y2U1MDhkMWViYw==\";s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:10:\"last_check\";i:1516359093;s:12:\"suppliers_id\";s:1:\"0\";}');
+INSERT INTO `ecs_sessions` VALUES ('3e47ad0c913fb8e7e2a29c3524990f6a', '1516454889', '0', '1', '127.0.0.1', '0', '0', '0.00', '0', 'a:5:{s:10:\"last_check\";i:1516454839;s:12:\"captcha_word\";s:16:\"MzFjMDQ4ZjhlYw==\";s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:12:\"suppliers_id\";s:1:\"0\";}');
+INSERT INTO `ecs_sessions` VALUES ('35a79eeadd500c629dd3ba6328b58a7d', '1516454915', '0', '1', '127.0.0.1', '0', '0', '0.00', '0', 'a:5:{s:12:\"captcha_word\";s:16:\"YzliZjM4NzU3OA==\";s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:10:\"last_check\";i:1516454850;s:12:\"suppliers_id\";s:1:\"0\";}');
+INSERT INTO `ecs_sessions` VALUES ('a8733e13e1e4b0b3103684bef5a80ddd', '1516454829', '0', '0', '127.0.0.1', '0', '0', '1.00', '0', 'a:3:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;}');
 
 -- ----------------------------
 -- Table structure for ecs_sessions_data
@@ -6355,7 +6449,7 @@ INSERT INTO `ecs_shop_config` VALUES ('111', '1', 'skype', 'text', '', '', '', '
 INSERT INTO `ecs_shop_config` VALUES ('112', '1', 'ym', 'text', '', '', '', '1');
 INSERT INTO `ecs_shop_config` VALUES ('113', '1', 'msn', 'text', '', '', '', '1');
 INSERT INTO `ecs_shop_config` VALUES ('114', '1', 'service_email', 'text', '', '', '', '1');
-INSERT INTO `ecs_shop_config` VALUES ('115', '1', 'service_phone', 'text', '', '', '', '1');
+INSERT INTO `ecs_shop_config` VALUES ('115', '1', 'service_phone', 'text', '', '', '4008002000', '1');
 INSERT INTO `ecs_shop_config` VALUES ('116', '1', 'shop_closed', 'select', '0,1', '', '0', '1');
 INSERT INTO `ecs_shop_config` VALUES ('117', '1', 'close_comment', 'textarea', '', '', '', '1');
 INSERT INTO `ecs_shop_config` VALUES ('118', '1', 'shop_logo', 'file', '', '../themes/{$template}/images/', '', '1');
@@ -6616,6 +6710,13 @@ INSERT INTO `ecs_stats` VALUES ('1516326396', '127.0.0.1', '28', 'Safari 537.36'
 INSERT INTO `ecs_stats` VALUES ('1516330796', '127.0.0.1', '29', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/ecshop/category.php?id=2&cid=3', '/guokang/source/ecshop/category.php');
 INSERT INTO `ecs_stats` VALUES ('1516340944', '127.0.0.1', '30', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/ecshop/article_cat.php?id=8', '/guokang/source/ecshop/article_cat.php');
 INSERT INTO `ecs_stats` VALUES ('1516343354', '127.0.0.1', '32', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/ecshop/article_cat.php?id=8', '/guokang/source/ecshop/article_cat.php');
+INSERT INTO `ecs_stats` VALUES ('1516410741', '127.0.0.1', '33', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/', '/guokang/source/ecshop/index.php');
+INSERT INTO `ecs_stats` VALUES ('1516418021', '127.0.0.1', '34', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', '', '', '/guokang/source/ecshop/goods.php');
+INSERT INTO `ecs_stats` VALUES ('1516420799', '127.0.0.1', '36', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', '', '', '/guokang/source/ecshop/goods.php');
+INSERT INTO `ecs_stats` VALUES ('1516427546', '127.0.0.1', '37', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', '', '', '/guokang/source/ecshop/goods.php');
+INSERT INTO `ecs_stats` VALUES ('1516433527', '127.0.0.1', '39', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', '', '', '/guokang/source/ecshop/goods.php');
+INSERT INTO `ecs_stats` VALUES ('1516440120', '127.0.0.1', '1', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/', '/guokang/source/ecshop/index.php');
+INSERT INTO `ecs_stats` VALUES ('1516454048', '127.0.0.1', '40', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', '', '', '/guokang/source/ecshop/goods.php');
 
 -- ----------------------------
 -- Table structure for ecs_suppliers
@@ -6753,6 +6854,7 @@ CREATE TABLE `ecs_users` (
   `credit_line` decimal(10,2) unsigned NOT NULL,
   `passwd_question` varchar(50) DEFAULT NULL,
   `passwd_answer` varchar(255) DEFAULT NULL,
+  `open_face` varchar(255) DEFAULT NULL COMMENT '头像',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `user_name` (`user_name`),
   KEY `email` (`email`),
@@ -6763,7 +6865,7 @@ CREATE TABLE `ecs_users` (
 -- ----------------------------
 -- Records of ecs_users
 -- ----------------------------
-INSERT INTO `ecs_users` VALUES ('1', 'aiok88st@163.com', '招商信诺客户徐女士', 'e10adc3949ba59abbe56e057f20f883e', '', '', '2', '2018-01-15', '0.00', '0.00', '0', '0', '0', '1516157533', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '', '', '', '', '', '', '0', '1000.00', null, null);
+INSERT INTO `ecs_users` VALUES ('1', 'aiok88st@163.com', '招商信诺客户徐女士', 'e10adc3949ba59abbe56e057f20f883e', '', '', '2', '2018-01-15', '0.00', '0.00', '0', '0', '0', '1516157533', '0', '0000-00-00 00:00:00', '', '0', '0', '0', null, '0', '0', '0', '', '', '', '', '', '', '0', '1000.00', null, null, null);
 
 -- ----------------------------
 -- Table structure for ecs_user_account

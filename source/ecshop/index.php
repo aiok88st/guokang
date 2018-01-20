@@ -129,7 +129,11 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('shop_notice',     $_CFG['shop_notice']);       // 商店公告
 
     //首页促销
-    $sql = 'SELECT article_id, title, description, file_url FROM  ecs_article WHERE is_open = 1 AND cat_id =5 limit 4';
+    $sql = 'SELECT goods_id, goods_name, cat_id,goods_brief,shop_price,market_price,original_img, member_price, no_member_price, vip_price, return_amount FROM ' .
+        $GLOBALS['ecs']->table("goods") .
+        ' WHERE is_hot=1 AND is_on_sale=1 '.
+        ' ORDER BY sort_order ASC,add_time DESC LIMIT 4';
+//    $sql = 'SELECT article_id, title, description, file_url FROM  ecs_article WHERE is_open = 1 AND cat_id =5 limit 4';
     $list = $db->getAll($sql);
     $smarty->assign('index_list',     $list);
     //一楼健康保险
