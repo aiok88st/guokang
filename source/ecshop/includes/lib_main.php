@@ -256,7 +256,7 @@ function assign_ur_here($cat = 0, $str = '')
     if (!empty($str))
     {
         $page_title  = $str . '_' . $page_title;
-        $ur_here    .= ' <code>&gt;</code> ' . $str;
+        $ur_here    .= ' &gt;'.'<a href="javascript:;">&nbsp;'.$str.'</a>';
     }
 
     /* 返回值 */

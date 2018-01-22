@@ -225,6 +225,7 @@ function init_users()
     }
     include_once(ROOT_PATH . 'includes/modules/integrates/' . $GLOBALS['_CFG']['integrate_code'] . '.php');
     $cfg = unserialize($GLOBALS['_CFG']['integrate_config']);
+
     $cls = new $GLOBALS['_CFG']['integrate_code']($cfg);
 
     return $cls;

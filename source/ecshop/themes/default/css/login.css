@@ -205,3 +205,9 @@
 .step2{
   font-size: 18px;
 }
+
+.loginErro{
+  text-align: center;
+  color: red;
+  display: none;
+}

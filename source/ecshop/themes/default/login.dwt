@@ -35,11 +35,17 @@
 		</div>
 	</div>
 	<!-- 主体内容 -->
+
+
+
 	<div class="main container-fluid">
 		<div class="container">
+			<!-- {if $action neq 'sms_get_password'} -->
+
 			<!-- {if $action eq 'login'} -->
 			<div class="layer layer-login">
 				<h3>账号登录</h3>
+				<p class="loginErro"></p>
 				<form id="loginForm">
 					<input type="text" name="username" class="form-control input-lg" id="loginUser" placeholder="手机号/邮箱">
 					<input type="password" name="password" class="form-control input-lg" id="loginPwd" placeholder="密码">
@@ -47,7 +53,7 @@
 						<label>
 							<input id="autoLogin" type="checkbox" name="remember" value="1"><small>两周内自动登录</small>
 						</label>
-						<small><a class="btn-gotoFtPwd" href="#forgotPwd">忘记密码？</a></small>
+						<small><a class="btn-gotoFtPwd" href="user.php?act=sms_get_password">忘记密码？</a></small>
 					</div>
 					<button type="submit" class="btn btn-primary btn-block btn-lg btn-login" onclick="login_submit()">登录</button>
 					<a href="user.php?act=register" class="btn btn-default btn-block btn-lg btn-gotoReg">注册国康账号</a>
@@ -97,17 +103,24 @@
 
 			</div>
 			<!--{/if}-->
+			<!--{/if}-->
 		</div>
 	</div>
-	<div class="forgotPwd container-fluid">
+	<!-- {if $action eq 'sms_get_password'} -->
+	<div class="forgotPwd container-fluid" style="display: block">
 		<div class="box">
 			<div class="logo"></div>
 			<h4>找回密码</h4>
 			<div class="wrap step-1" style="display: block;">
 				<p><small>请输入要找回的密码账号</small></p>
 				<form>
-					<input type="text" class="form-control input-lg" id="userAccount" placeholder="请输入手机号/邮箱">
-					<a  type="button" class="btn btn-primary btn-block btn-lg btn-next-1">下一步</a>
+					<input type="text" class="form-control input-lg" id="userAccount" placeholder="请输入注册手机号">
+					<div>
+						<input type="text" name="captcha" class="form-control input-lg captcha floatleft" id="regCode" placeholder="请输入验证码" style="margin-bottom: 0">
+						<img src="captcha.php?v={$rand}" alt="captcha" class="floatleft captchaimg" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?is_login=1&'+Math.random()" />
+						<div style="clear: both"></div>
+					</div>
+					<a  type="button" class="btn btn-primary btn-block btn-lg btn-next-1" onclick="rep_validate_code()">下一步</a>
 				</form>
 			</div>
 			<div class="wrap step-2">
@@ -117,13 +130,13 @@
 						<div class="input-group">
 							<input type="text" class="form-control input-lg" id="msgCode" placeholder="请输入短信验证码">
 							<span class="input-group-btn">
-								<a href="javascript:getCode();" class="btn btn-default input-lg" id="btn-getCode" type="button">获取验证码</a>
+								<a href="javascript:;" class="btn btn-default input-lg" id="btn-getCode" type="button">获取验证码</a>
 							</span>
 						</div>
 					</div>
 					<a  type="button" class="btn btn-primary btn-block btn-lg btn-next-2">下一步</a>
 				</form>
-				<p class="tip"><small>短信可能会延时，请耐心等待，如果长时间未收到短信，请60秒后重新获取。</small></p>
+				<p class="tip"><small>短信可能会延时，请耐心等待，如果长时间未收到短信，请120秒后重新获取。</small></p>
 			</div>
 			<div class="wrap step-3">
 				<p><small>请设置密码</small></p>
@@ -140,6 +153,7 @@
 			</div>
 		</div>
 	</div>
+	<!--{/if}-->
 	<!-- 备案信息 -->
 	<div class="record-bg">
 		<p class="record">Copyright © 2005-2017 guokang,All Rights Reserved. <br/>
@@ -165,40 +179,6 @@
 
 
 
-
-		$(".btn-next-1").on("click",function(){
-			var userAccount = $("#userAccount").val();
-			if(validatePhone(userAccount)||validateEmail(userAccount)){
-				$(".step-1").hide();
-				$(".step-2").show();
-				$("#showPhone").text(encryptPhone(userAccount));
-			}else{
-				alert("请输入正确的手机");
-			}
-		});
-
-
-
-
-		//提交短信验证码
-		$(".btn-next-2").on("click",function(){
-			var msgCode = $("#msgCode").val();
-			if(validateCode(msgCode)){
-//				$.ajax({
-//					type: "POST",
-//					async: false,
-//					cache: false,
-//					url: "xxx",
-//					data: {},
-//					success: function(data) {
-						$(".step-2").hide();
-						$(".step-3").show();
-//					}
-//				});
-			}else{
-				alert("请输入正确的短信验证码！");
-			}
-		})
 
 
 		//密码是否明文可见

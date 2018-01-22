@@ -93,7 +93,6 @@ if (in_array($action, $ui_arr))
 if ($action == 'default')
 {
     include_once(ROOT_PATH .'includes/lib_clips.php');
-
     if ($rank = get_rank_info())
     {
         $smarty->assign('rank_name', sprintf($_LANG['your_level'], $rank['rank_name']));
@@ -102,10 +101,13 @@ if ($action == 'default')
             $smarty->assign('next_rank_name', sprintf($_LANG['next_level'], $rank['next_rank'] ,$rank['next_rank_name']));
         }
     }
-    $smarty->assign('info',        get_user_default($user_id));
+    $info= get_user_default($user_id);
+
+    $smarty->assign('info',        $info);
     $smarty->assign('user_notice', $_CFG['user_notice']);
     $smarty->assign('prompt',      get_user_prompt($user_id));
-    $smarty->display('user_clips.dwt');
+    $smarty->display('personal_index.dwt');
+
 }
 
 /* 显示会员注册界面 */
@@ -535,7 +537,7 @@ elseif ($action == 'profile')
     $smarty->assign('passwd_questions', $_LANG['passwd_questions']);
 
     $smarty->assign('profile', $user_info);
-    $smarty->display('user_transaction.dwt');
+    $smarty->display('personal_index.dwt');
 }
 
 /* 修改个人资料的处理 */
@@ -657,12 +659,12 @@ elseif ($action == 'get_password')
         $smarty->assign('uid',    $uid);
         $smarty->assign('code',   $code);
         $smarty->assign('action', 'reset_password');
-        $smarty->display('user_passport.dwt');
+        $smarty->display('login.dwt');
     }
     else
     {
         //显示用户名和email表单
-        $smarty->display('user_passport.dwt');
+        $smarty->display('login.dwt');
     }
 }
 
@@ -2983,13 +2985,13 @@ elseif ($action == 'ajax_delivery_info') {
 }elseif($action == 'ajax_validate_sms'){
     require('admin/includes/lib_main.php');
 
-
     $time= time();
     $date = date('Ymd',$time);
     $pre_date = date('Ymd',$time-64000);
 
 //    $ip = $_SERVER["REMOTE_ADDR"];
     $ip = ($_SERVER["HTTP_VIA"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] : $_SERVER["REMOTE_ADDR"];
+
     if(file_exists(__FILE__.$pre_date.".txt"))unlink(__FILE__.$pre_date.".txt");//删除昨日记录
     if(file_exists(__FILE__.$date.".txt")){
         $send_limit_ip = file_get_contents(__FILE__.$date.".txt");
@@ -3054,15 +3056,16 @@ elseif ($action == 'ajax_delivery_info') {
             $user->set_session($username);
             $smarty->assign('action', 'reset_password_rep');
             $smarty->assign('uid', $user_info['user_id']);
-            $smarty->display('user_passport.dwt');
+            $smarty->display('login.dwt');
         }else{
             show_message('短信验证码错误', '返回上一页', 'user.php?act=sms_get_password', 'info');
         }
     }
     else
     {
+        show_message('短信验证码错误', '返回上一页', 'user.php?act=sms_get_password', 'info',false);
         //显示用户名和email表单
-        $smarty->display('user_passport.dwt');
+        $smarty->display('login.dwt');
     }
 }
 /**

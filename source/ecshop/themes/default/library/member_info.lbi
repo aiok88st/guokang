@@ -1,8 +1,10 @@
-
 {if $user_info}
-<font > {$lang.hello}，<font class="f4_b">{$user_info.username}</font>, {$lang.welcome_return}！
-    <a href="user.php">{$lang.user_center}</a>|
-    <a href="user.php?act=logout">{$lang.user_logout}</a> </font>
+<li>
+    <a href="user.php">{$user_info.username}</a>
+</li>
+<li>
+    <a href="user.php?act=logout">{$lang.user_logout}</a>
+</li>
 {else}
 <li><a href="user.php" target="_blank">登陆</a></li>
 <li><a href="user.php?act=register" target="_blank">注册</a></li>

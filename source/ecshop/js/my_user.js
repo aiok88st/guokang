@@ -9,6 +9,9 @@ $(function(){
         login_submit();
         return false;
     });
+    $('#btn-getCode').on('click',function(){
+        rep_validate_code();
+    });
 });
 function go_captcha() { //验证验证码
         var captcha=$('#regCode').val();
@@ -51,13 +54,13 @@ function register_sms(res) {
         $('.step2').show();
         var html="重新发送(<span id='wagetTime'>120</span>)";
         $('.waget').html(html).attr('disabled','disabled').addClass("disabled");
-        if(waget==60){
+        if(waget==120){
             var wt=setInterval(function(){
                 waget--;
                 if(waget<=0){
-                    $('.waget').html("重新发送").attr('disabled',false).removeClass("disabled");
+                    $('.waget').html("获取验证码").attr('disabled',false).removeClass("disabled");
                     clearInterval(wt);
-                    waget=60;
+                    waget=120;
                 }else{
                     $('#wagetTime').text(waget);
                 }
@@ -117,6 +120,7 @@ function login_submit() {
     if($('#autoLogin').is(":checked")){
         autoLogin=1;
     }
+    $('.loginErro').text('').hide();
     var filter = new Object;
     filter.username=username;
     filter.password=loginPwd;
@@ -126,9 +130,87 @@ function login_submit() {
 }
 function login_succ(res) {
     if(res.error==1){
-        layer.msg(res.content);
+        $('.loginErro').text(res.content).show();
         return false;
     }else{
         window.location.href='user.php';
     }
 }
+
+/*
+ *找回密码
+ * **/
+
+//发送验证码
+
+function rep_validate_code(){
+    var userAccount = $("#userAccount").val();
+    if(!validatePhone(userAccount)||validateEmail(userAccount)){
+        layer.msg(res.content);
+        return false;
+    }
+
+    var captcha=$('#regCode').val();
+    var filter = new Object;
+    filter.code    = captcha;
+    Ajax('user.php?is_ajax=1&act=ajax_validate_vcode', filter, rep_validate_code_result, 'GET', 'JSON');
+}
+function rep_validate_code_result(res){
+    var userAccount = $("#userAccount").val();
+    if(res.content=="succ"){
+        Ajax('user.php?act=ajax_validate_sms', {"mobile":userAccount,"action":"sms_get_password"}, rep_send_sms, 'POST', 'JSON');
+
+    }else{
+        layer.msg('验证码错误');
+        return false;
+    }
+}
+function rep_send_sms(res){
+
+    if(res.content=="succ"){
+
+        var userAccount = $("#userAccount").val();
+        $(".step-1").hide();
+        $(".step-2").show();
+        $("#showPhone").text(encryptPhone(userAccount));
+
+        var html="重新发送(<span id='wagetTime'>120</span>)";
+        $('#btn-getCode').html(html).attr('disabled','disabled').addClass("disabled");
+        if(waget==120){
+            var wt=setInterval(function(){
+                waget--;
+                if(waget<=0){
+                    $('#btn-getCode').html("获取验证码").attr('disabled',false).removeClass("disabled");
+                    clearInterval(wt);
+                    waget=120;
+                }else{
+                    $('#wagetTime').text(waget);
+                }
+            },1000);
+        }
+    }else{
+        layer.msg(res.content);
+    }
+}
+
+
+//提交短信验证码
+$(".btn-next-2").on("click",function(){
+    var msgCode = $("#msgCode").val();
+    if(validateCode(msgCode)){
+//				$.ajax({
+//					type: "POST",
+//					async: false,
+//					cache: false,
+//					url: "xxx",
+//					data: {},
+//					success: function(data) {
+        $(".step-2").hide();
+        $(".step-3").show();
+//					}
+//				});
+    }else{
+        alert("请输入正确的短信验证码！");
+    }
+});
+/*找回密码end*/

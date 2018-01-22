@@ -1,8 +1,6 @@
-<link rel="stylesheet" href="themes/default/scss/video-js.css" />
-<link rel="stylesheet" href="themes/default/scss/zjindex.css" />
-
-    <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-
+ <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+ <link rel="stylesheet" href="themes/default/scss/video-js.css" />
+ <link rel="stylesheet" href="themes/default/scss/zjindex.css" />
 		<div id="part1" class="w12">
 			<div class="w12">
 
