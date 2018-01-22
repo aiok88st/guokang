@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50714
 File Encoding         : 65001
 
-Date: 2018-01-20 21:27:46
+Date: 2018-01-22 13:58:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -243,7 +243,7 @@ CREATE TABLE `ecs_admin_log` (
   PRIMARY KEY (`log_id`),
   KEY `log_time` (`log_time`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=231 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=236 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_admin_log
@@ -478,6 +478,11 @@ INSERT INTO `ecs_admin_log` VALUES ('227', '1516450044', '1', '编辑: 外科', 
 INSERT INTO `ecs_admin_log` VALUES ('228', '1516450059', '1', '删除商品分类: ', '127.0.0.1');
 INSERT INTO `ecs_admin_log` VALUES ('229', '1516450068', '1', '编辑: 内科', '127.0.0.1');
 INSERT INTO `ecs_admin_log` VALUES ('230', '1516453746', '1', '添加文章: ', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('231', '1516590196', '1', '编辑文章: 测试', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('232', '1516590916', '1', '添加: 邱嘎嘎', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('233', '1516591527', '1', '编辑: 邱嘎嘎0', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('234', '1516591534', '1', '编辑: 邱嘎嘎', '127.0.0.1');
+INSERT INTO `ecs_admin_log` VALUES ('235', '1516592902', '1', '编辑: 邱嘎嘎', '127.0.0.1');
 
 -- ----------------------------
 -- Table structure for ecs_admin_message
@@ -532,7 +537,7 @@ CREATE TABLE `ecs_admin_user` (
 -- ----------------------------
 -- Records of ecs_admin_user
 -- ----------------------------
-INSERT INTO `ecs_admin_user` VALUES ('1', 'admin', '', '336ddee103bb21645fc8b3d50b47e308', '9099', '1516010800', '1516448342', '127.0.0.1', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit,店铺二维码|lead.php?act=list,服务市场|service_market.php', '', '0', '0', null, null, null, null);
+INSERT INTO `ecs_admin_user` VALUES ('1', 'admin', '', '336ddee103bb21645fc8b3d50b47e308', '9099', '1516010800', '1516585818', '127.0.0.1', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit,店铺二维码|lead.php?act=list,服务市场|service_market.php', '', '0', '0', null, null, null, null);
 INSERT INTO `ecs_admin_user` VALUES ('2', '88171101845370', '88171101845370', 'shopex', null, '1516010803', '0', '', 'all', '商品列表|goods.php?act=list,订单列表|order.php?act=list,用户评论|comment_manage.php?act=list,会员列表|users.php?act=list,商店设置|shop_config.php?act=list_edit,店铺二维码|lead.php?act=list,服务市场|service_market.php', '', '0', '0', null, null, '88171101845370', '32767');
 
 -- ----------------------------
@@ -710,7 +715,7 @@ INSERT INTO `ecs_article` VALUES ('106', '22', '国康健康重大疾病保险�
 INSERT INTO `ecs_article` VALUES ('108', '29', '如何开具发票？', '<p>1.请在下单时选择&ldquo;我要开发票&rdquo;并填写相关信息。开具增&nbsp; 值税专用发票需在下单时填写增票资质信息。温馨提示：请确保增票资质信息与贵司税务登记证信息一致，避免因开票信息错误给贵司带来损失。</p>\r\n<p>2.增值税专用发票开具内容为明细。</p>', '', '', '', '0', '1', '1516415583', '', '0', 'http://', '');
 INSERT INTO `ecs_article` VALUES ('109', '30', '黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性', '<p>&nbsp;黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性</p>', '', '', '', '0', '1', '1516431580', 'data/article/1516431580281894111.jpg', '2', 'http://', '');
 INSERT INTO `ecs_article` VALUES ('110', '30', '1黄女士在国内某三甲医院查出左乳房肿块,进过穿刺活检，确诊为癌症阳性', '', '', '', '', '0', '1', '1516432189', 'data/article/1516432189396937443.jpg', '1', 'http://', '');
-INSERT INTO `ecs_article` VALUES ('111', '0', '', '', '', '', '', '0', '0', '1516453746', '', '0', '', '');
+INSERT INTO `ecs_article` VALUES ('111', '5', '测试', '', '', '', '', '0', '0', '1516453746', '', '0', 'http://', '');
 
 -- ----------------------------
 -- Table structure for ecs_article_cat
@@ -1329,11 +1334,12 @@ CREATE TABLE `ecs_doctor` (
   `city` int(255) DEFAULT NULL,
   `area` int(255) DEFAULT NULL,
   PRIMARY KEY (`doctor_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ecs_doctor
 -- ----------------------------
+INSERT INTO `ecs_doctor` VALUES ('1', '1', '邱嘎嘎', '<p>&nbsp;撒飞洒发三个四个撒飞洒发三个四个撒飞洒发三个四个撒飞洒发三个四个撒飞洒发三个四个撒飞洒发三个四个</p>', '1', '1516590916', 'data/doctor/1516590916215905021.jpg', '撒飞洒发三个四个', '20', '231', '2389');
 
 -- ----------------------------
 -- Table structure for ecs_doctor_cat
@@ -6326,9 +6332,8 @@ CREATE TABLE `ecs_sessions` (
 -- ----------------------------
 -- Records of ecs_sessions
 -- ----------------------------
-INSERT INTO `ecs_sessions` VALUES ('3e47ad0c913fb8e7e2a29c3524990f6a', '1516454889', '0', '1', '127.0.0.1', '0', '0', '0.00', '0', 'a:5:{s:10:\"last_check\";i:1516454839;s:12:\"captcha_word\";s:16:\"MzFjMDQ4ZjhlYw==\";s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:12:\"suppliers_id\";s:1:\"0\";}');
-INSERT INTO `ecs_sessions` VALUES ('35a79eeadd500c629dd3ba6328b58a7d', '1516454915', '0', '1', '127.0.0.1', '0', '0', '0.00', '0', 'a:5:{s:12:\"captcha_word\";s:16:\"YzliZjM4NzU3OA==\";s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:10:\"last_check\";i:1516454850;s:12:\"suppliers_id\";s:1:\"0\";}');
-INSERT INTO `ecs_sessions` VALUES ('a8733e13e1e4b0b3103684bef5a80ddd', '1516454829', '0', '0', '127.0.0.1', '0', '0', '1.00', '0', 'a:3:{s:7:\"from_ad\";i:0;s:7:\"referer\";s:6:\"本站\";s:10:\"login_fail\";i:0;}');
+INSERT INTO `ecs_sessions` VALUES ('71471775237174c8d7140c3196990028', '1516600789', '0', '1', '127.0.0.1', '0', '0', '0.00', '0', 'a:5:{s:12:\"captcha_word\";s:16:\"NTAyMWEzOTYzYQ==\";s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:10:\"last_check\";i:1516600642;s:12:\"suppliers_id\";s:1:\"0\";}');
+INSERT INTO `ecs_sessions` VALUES ('6150e30a1705cf1ce1291345ff2a074d', '1516600763', '0', '1', '127.0.0.1', '0', '0', '0.00', '0', 'a:5:{s:12:\"captcha_word\";s:16:\"MjI3YjM2YjlhYg==\";s:10:\"admin_name\";s:5:\"admin\";s:11:\"action_list\";s:3:\"all\";s:10:\"last_check\";i:1516600705;s:12:\"suppliers_id\";s:1:\"0\";}');
 
 -- ----------------------------
 -- Table structure for ecs_sessions_data
@@ -6717,6 +6722,9 @@ INSERT INTO `ecs_stats` VALUES ('1516427546', '127.0.0.1', '37', 'Safari 537.36'
 INSERT INTO `ecs_stats` VALUES ('1516433527', '127.0.0.1', '39', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', '', '', '/guokang/source/ecshop/goods.php');
 INSERT INTO `ecs_stats` VALUES ('1516440120', '127.0.0.1', '1', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/', '/guokang/source/ecshop/index.php');
 INSERT INTO `ecs_stats` VALUES ('1516454048', '127.0.0.1', '40', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', '', '', '/guokang/source/ecshop/goods.php');
+INSERT INTO `ecs_stats` VALUES ('1516583891', '127.0.0.1', '41', 'Safari 537.36', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/', '/guokang/source/ecshop/index.php');
+INSERT INTO `ecs_stats` VALUES ('1516585803', '127.0.0.1', '1', 'FireFox 57.0', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/', '/guokang/source/ecshop/index.php');
+INSERT INTO `ecs_stats` VALUES ('1516591600', '127.0.0.1', '2', 'FireFox 57.0', 'Windows NT', 'zh-CN,zh', 'LAN', 'http://127.0.0.1', '/guokang/source/ecshop/admin/article.php?act=list', '/guokang/source/ecshop/article.php');
 
 -- ----------------------------
 -- Table structure for ecs_suppliers

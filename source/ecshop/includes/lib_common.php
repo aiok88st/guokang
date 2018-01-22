@@ -876,6 +876,11 @@ function get_article_children ($cat = 0)
     return db_create_in(array_unique(array_merge(array($cat), array_keys(article_cat_list($cat, 0, false)))), 'cat_id');
 }
 
+function get_doctor_children ($cat = 0)
+{
+    return db_create_in(array_unique(array_merge(array($cat), array_keys(doctor_cat_list($cat, 0, false)))), 'cat_id');
+}
+
 /**
  * 获取邮件模板
  *

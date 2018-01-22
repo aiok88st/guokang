@@ -79,6 +79,7 @@ elseif ($_REQUEST['act'] == 'query')
 /*------------------------------------------------------ */
 if ($_REQUEST['act'] == 'add')
 {
+
     /* 权限判断 */
     admin_priv('article_manage');
 
@@ -90,11 +91,7 @@ if ($_REQUEST['act'] == 'add')
     $article['is_open'] = 1;
 
     //省
-    $sql = 'SELECT region_id, parent_id, region_name, region_type' .
-        ' FROM ' .$GLOBALS['ecs']->table('region') .
-        ' WHERE parent_id = 1 AND region_type = 1';
-    $province = $GLOBALS['db']->getAll($sql);
-    $smarty->assign('province',  $province);
+    $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
 
 
 
@@ -117,16 +114,17 @@ if ($_REQUEST['act'] == 'add')
 /*------------------------------------------------------ */
 if ($_REQUEST['act'] == 'insert')
 {
+
     /* 权限判断 */
     admin_priv('article_manage');
 
-    /*检查是否重复*/
-    $is_only = $exc->is_only('title', $_POST['title'],0, " cat_id ='$_POST[article_cat]'");
+//    /*检查是否重复*/
+//    $is_only = $exc->is_only('title', $_POST['title'],0, " cat_id ='$_POST[doctor_cat]'");
 
-    if (!$is_only)
-    {
-        sys_msg(sprintf($_LANG['title_exist'], stripslashes($_POST['title'])), 1);
-    }
+//    if (!$is_only)
+//    {
+//        sys_msg(sprintf($_LANG['title_exist'], stripslashes($_POST['title'])), 1);
+//    }
 
     /* 取得文件地址 */
     $file_url = '';
@@ -169,9 +167,9 @@ if ($_REQUEST['act'] == 'insert')
     }
     $sql = "INSERT INTO ".$ecs->table('doctor')."(title, cat_id, is_open,".
         "  content, add_time, file_url, description, province, city, area) ".
-        "VALUES ('$_POST[title]', '$_POST[article_cat]', '$_POST[is_open]', ".
-        "'$_POST[FCKeditor1]', ".
-        "'$add_time', '$file_url','$_POST[description]','$_POST[province]','$_POST[city]','$_POST[area]')";
+        "VALUES ('$_POST[title]', '$_POST[doctor_cat]',1,'$_POST[FCKeditor1]',  ".
+        "'$add_time', '$file_url','$_POST[description]','$_POST[province]','$_POST[city]','$_POST[district]')";
+
     $db->query($sql);
 
 //    /* 处理关联商品 */
@@ -179,17 +177,17 @@ if ($_REQUEST['act'] == 'insert')
 //    $sql = "UPDATE " . $ecs->table('goods_article') . " SET doctor_id = '$article_id' WHERE doctor_id = 0";
 //    $db->query($sql);
 
-    $link[0]['text'] = $_LANG['continue_add'];
+    $link[0]['text'] = '继续添加专家';
     $link[0]['href'] = 'doctor.php?act=add';
 
-    $link[1]['text'] = $_LANG['back_list'];
+    $link[1]['text'] = '专家列表';
     $link[1]['href'] = 'doctor.php?act=list';
 
     admin_log($_POST['title'],'add','doctor');
 
     clear_cache_files(); // 清除相关的缓存文件
 
-    sys_msg($_LANG['articleadd_succeed'],0, $link);
+    sys_msg('添加专家成功',0, $link);
 }
 
 /*------------------------------------------------------ */
@@ -207,18 +205,21 @@ if ($_REQUEST['act'] == 'edit')
     /* 创建 html editor */
     create_html_editor('FCKeditor1',$article['content']);
 
-    /* 取得分类、品牌 */
-    $smarty->assign('goods_cat_list', cat_list());
-    $smarty->assign('brand_list', get_brand_list());
+//    /* 取得分类、品牌 */
+//    $smarty->assign('goods_cat_list', cat_list());
+//    $smarty->assign('brand_list', get_brand_list());
 
-    /* 取得关联商品 */
-    $goods_list = get_article_goods($_REQUEST['id']);
-    $smarty->assign('goods_list', $goods_list);
+//    /* 取得关联商品 */
+//    $goods_list = get_article_goods($_REQUEST['id']);
+//    $smarty->assign('goods_list', $goods_list);
 
+    //省
+    $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
+//    var_dump($article);exit;
     $smarty->assign('doctor',     $article);
-    $smarty->assign('cat_select',  article_cat_list(0, $article['cat_id']));
-    $smarty->assign('ur_here',     $_LANG['article_edit']);
-    $smarty->assign('action_link', array('text' => $_LANG['03_article_list'], 'href' => 'doctor.php?act=list&' . list_link_postfix()));
+    $smarty->assign('cat_select',  doctor_cat_list(0, $article['cat_id']));
+    $smarty->assign('ur_here',     '编辑专家内容');
+    $smarty->assign('action_link', array('text' => '专家列表', 'href' => 'doctor.php?act=list&' . list_link_postfix()));
     $smarty->assign('form_action', 'update');
 
     assign_query_info();
@@ -230,13 +231,13 @@ if ($_REQUEST['act'] =='update')
     /* 权限判断 */
     admin_priv('article_manage');
 
-    /*检查文章名是否相同*/
-    $is_only = $exc->is_only('title', $_POST['title'], $_POST['id'], "cat_id = '$_POST[article_cat]'");
-
-    if (!$is_only)
-    {
-        sys_msg(sprintf($_LANG['title_exist'], stripslashes($_POST['title'])), 1);
-    }
+//    /*检查文章名是否相同*/
+//    $is_only = $exc->is_only('title', $_POST['title'], $_POST['id'], "cat_id = '$_POST[article_cat]'");
+//
+//    if (!$is_only)
+//    {
+//        sys_msg(sprintf($_LANG['title_exist'], stripslashes($_POST['title'])), 1);
+//    }
 
 
     if (empty($_POST['cat_id']))
@@ -285,12 +286,12 @@ if ($_REQUEST['act'] =='update')
         @unlink(ROOT_PATH . $old_url);
     }
 
-    if ($exc->edit("title='$_POST[title]', cat_id='$_POST[article_cat]', article_type='$_POST[article_type]', is_open='$_POST[is_open]', author='$_POST[author]', author_email='$_POST[author_email]', keywords ='$_POST[keywords]', file_url ='$file_url', open_type='$open_type', content='$_POST[FCKeditor1]', link='$_POST[link_url]', description = '$_POST[description]'", $_POST['id']))
+    if ($exc->edit("title='$_POST[title]', cat_id='$_POST[doctor_cat]', file_url ='$file_url', content='$_POST[FCKeditor1]', description = '$_POST[description]', province = '$_POST[province]', city = '$_POST[city]', area = '$_POST[district]'", $_POST['id']))
     {
-        $link[0]['text'] = $_LANG['back_list'];
+        $link[0]['text'] = '专家列表';
         $link[0]['href'] = 'doctor.php?act=list&' . list_link_postfix();
 
-        $note = sprintf($_LANG['articleedit_succeed'], stripslashes($_POST['title']));
+        $note = sprintf('编辑成功', stripslashes($_POST['title']));
         admin_log($_POST['title'], 'edit', 'doctor');
 
         clear_cache_files();
