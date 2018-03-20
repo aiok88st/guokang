@@ -2248,7 +2248,8 @@ function get_navigator($ctype = '', $catlist = array())
             'url'       =>  $row['url'],
             'ctype'     =>  $row['ctype'],
             'cid'       =>  $row['cid'],
-            'parent_id' =>  $row['parent_id']
+            'parent_id' =>  $row['parent_id'],
+            'wap_url' =>$row['wap_url']
             );
     }
 

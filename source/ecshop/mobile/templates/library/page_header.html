@@ -40,14 +40,14 @@
                     href="javascript:;"
                    {else/}
                    class="none"
-                   href="{$nav.url}"
+                   href="/{$nav.wap_url}"
                    {/if}
                     isOpen=false>{$nav.name}</a>
                 {if $nav.child}
                 <ul>
                     {foreach from=$nav.child item=v}
                     <li>
-                        <a href="{$v.url}">{$v.name}</a>
+                        <a href="/{$v.wap_url}">{$v.name}</a>
                     </li>
                     {/foreach}
 

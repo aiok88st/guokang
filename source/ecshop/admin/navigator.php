@@ -149,6 +149,7 @@ elseif ($_REQUEST['act'] == 'edit')
         $rt['item_opennew_'.$row['opennew']] = 'selected';
         $rt['item_type_'.$row['type']] = 'selected';
         $rt['parent_id']=$row['parent_id'];
+        $rt['wap_url']=$row['wap_url'];
 
         $sysmain = get_sysnav();
 
