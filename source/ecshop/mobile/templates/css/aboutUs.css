@@ -1,0 +1,80 @@
+html{
+    font-size: 50px;
+}
+body{
+    width: 100%;
+    position: relative;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+.menu{
+    width: 100%;
+    height: 1rem;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+    /*position: relative;*/
+}
+.menu div{
+    height: 100%;
+    position: relative;
+    top: -.47rem;
+    width: 1.8rem;
+    display: inline-block;
+    font-size: .2rem;
+    text-align: center;
+    line-height: 1rem;
+}
+.menu div.selectList{
+    color: #0068b7;
+    border-bottom: 1px solid #0068b7;
+    top: -.48rem;
+}
+.content{
+    background-color: #fff;
+    padding: 1px;
+}
+.content .content-title{
+    font-size: .35rem;
+    margin: .5rem 0 0 .2rem;
+    font-weight: bold;
+}
+.content-mes{
+    padding: .2rem;
+    width: 94%;
+    height: 10rem;
+}
+.content-bottom{
+    width: 100%;
+    height: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+.content-bottom img{
+    width: 1rem;
+    display: inline-block;
+}
+.content-bottom img.top{
+    width: .7rem;
+    display: inline-block;
+    position: absolute;
+    right: .3rem;
+}
+.content .sim{
+    width: 97%;
+    height: 1.3rem;
+    background-color: #b3b3b3;
+    margin: .1rem;
+    font-size: .1rem;
+    color: #fff;
+    /*line-height: 1.3rem;*/
+}
+.content .sim span{
+    display: inline-block;
+    margin-left: .2rem;
+}
+.content .sim span.span1{
+    margin-top: .3rem;
+}

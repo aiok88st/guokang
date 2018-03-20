@@ -19,6 +19,11 @@ require(dirname(__FILE__) . '/includes/init.php');
 require(ROOT_PATH . 'includes/lib_model.php');
 $model=new Model;
 assign_template();
+
+$position = assign_ur_here();
+
+$smarty->assign('page_title',      $position['title']);    // 页面标题
+$smarty->assign('ur_here',         $position['ur_here']);  // 当前位置
 $act=!empty($_GET['act'])?$_GET['act']:'';
 
 if($act==''){
@@ -30,10 +35,16 @@ if($act==''){
     $smarty->assign('cat_id',$cat_id);
 
     $cat_list=$model->table($ecs->table('category'))
-        ->where('`parent_id`=0')
-        ->field('cat_name,cat_id')
+        ->where('`parent_id`=0 and `is_show`=1')
+        ->field('cat_name3,cat_id,thumb')
+        ->limit(5)
         ->order('sort_order asc')
         ->select();
+    foreach ($cat_list as $key=>$v){
+        $cat_list[$key]['thumb']='../'.$v['thumb'];
+    }
+
+    $smarty->assign('cat_id',$cat_id);
     $smarty->assign('cat_list',$cat_list);
     $smarty->display('goods_list.html');
 }else if($act=='goods_list'){

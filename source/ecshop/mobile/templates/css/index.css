@@ -186,12 +186,12 @@
   height: 100%;
 }
 /*新闻资讯*/
-#news .nav{
+#news .nav2{
     width: 92%;
     overflow-x:scroll ;
     -webkit-overflow-scrolling: touch;
 }
-#news .nav ul li{
+#news .nav2 ul li{
   width: 1.4rem;
   height:0.56rem;
   line-height:0.56rem ;
@@ -202,15 +202,15 @@
   border-radius:0.35rem ;
   margin-right: 10px;
 }
-#news .nav ul{
+#news .nav2 ul{
     width: 570px;
 }
-#news .nav ul .select{
+#news .nav2 ul .select{
     background-color:#056dbb ;
     border-color: #056dbb;
     color: #fff;
 }
-#news .nav ul .clear{display: none}
+#news .nav2 ul .clear{display: none}
 .newsbox{
     height: 1.5rem;
     margin-top: 0.4rem;

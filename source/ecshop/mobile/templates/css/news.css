@@ -1,0 +1,96 @@
+body {
+  background: #f4f4f4; }
+
+#banner {
+  width: 100%; }
+  #banner > img {
+    width: 100%; }
+
+.getMore {
+  width: 100%;
+  font-size: 0.22rem;
+  line-height: 1.0rem;
+  background-color: #f4f4f4;
+  text-align: center; }
+  .getMore a {
+    display: block;
+    width: 100%;
+    color: #999999; }
+
+#newsList {
+  background: white;
+  width: 100%; }
+
+.cjBottom {
+  width: 89.33%;
+  margin: 0 auto;
+  padding: 0.2rem 0 0.5rem; }
+  .cjBottom .cjbBox p {
+    font-size: 0.4rem;
+    color: #000000;
+    line-height: 1rem; }
+  .cjBottom .cjl {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin: 0.4rem 0 0; }
+  .cjBottom .cjl:nth-child(1) {
+    margin-top: 0px; }
+  .cjBottom .cjl:nth-last-child(1) .cjContent::after {
+    display: none; }
+  .cjBottom .cjImg {
+    width: 21.83%;
+    margin-left: 78.17%; }
+    .cjBottom .cjImg > img {
+      width: 100%; }
+  .cjBottom .cjContent {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 68.03%;
+    margin-left: 0.97%;
+    height: 100%;
+    line-height: 0.38rem; }
+    .cjBottom .cjContent p:nth-child(1) {
+      width: 100%;
+      font-size: 0.24rem;
+      color: #000000; }
+    .cjBottom .cjContent p:nth-child(2) {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      font-size: 0.2rem;
+      color: #888888; }
+  .cjBottom .cjContent::after {
+    content: "";
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #cecece; }
+
+#newsChoice {
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: scroll;
+  background: #ffffff;
+  border-bottom: 1px solid #dcdcdc; }
+  #newsChoice a {
+    display: block;
+    font-size: 0.24rem;
+    color: #333333;
+    line-height: 0.9rem;
+    margin-right: 0.4rem;
+    position: relative; }
+  #newsChoice a:nth-last-child(2) {
+    margin-right: 0px; }
+  #newsChoice .ncActive {
+    color: #0068b7; }
+  #newsChoice .ncActive::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    border-bottom: 2px solid #0068b7; }
+
+/*# sourceMappingURL=news.css.map */

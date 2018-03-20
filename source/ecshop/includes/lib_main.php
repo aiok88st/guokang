@@ -1907,6 +1907,7 @@ function assign_template($ctype = '', $catlist = array())
 
     $middle= $nav_list['middle'];
     $middle=tree($middle,0);
+
     $smarty->assign('middle',$middle);
 
     $bottom= $nav_list['bottom'];

@@ -1,0 +1,73 @@
+#web {
+  width: 100%; }
+  #web .webTitle {
+    width: 89.73%;
+    margin: 0 auto;
+    font-size: 0.4rem;
+    color: #000000;
+    line-height: 1rem; }
+
+.webBox {
+  width: 100%;
+  position: relative; }
+  .webBox > img {
+    width: 100%; }
+  .webBox .pBox {
+    position: absolute;
+    left: 6%;
+    bottom: 5%;
+    font-size: 0.46rem;
+    color: white; }
+    .webBox .pBox p:nth-child(2) {
+      font-size: 0.24rem;
+      color: #949aa6; }
+  .webBox .pBox2 {
+    left: 57%; }
+
+#Authentication {
+  padding-top: 0.6rem; }
+  #Authentication .authentication {
+    width: 90.66%;
+    margin: 0 auto; }
+    #Authentication .authentication .title {
+      width: 44.0%;
+      margin: 0 auto;
+      text-align: center;
+      color: #737373;
+      font-size: 0.26rem;
+      position: relative; }
+    #Authentication .authentication .title::after {
+      width: 63.5%;
+      content: "";
+      left: 100%;
+      top: 50%;
+      position: absolute;
+      border-bottom: 1px solid #b3b3b3; }
+    #Authentication .authentication .title::before {
+      width: 63.5%;
+      content: "";
+      right: 100%;
+      top: 50%;
+      position: absolute;
+      border-bottom: 1px solid #b3b3b3; }
+  #Authentication .ati {
+    width: 90.66%;
+    margin: 0 auto;
+    padding: 0.5rem 0; }
+    #Authentication .ati a {
+      width: 22%;
+      display: block;
+      margin-right: 17%; }
+    #Authentication .ati a:nth-last-child(2) {
+      margin-right: 0%; }
+    #Authentication .ati img {
+      width: 80%;
+      margin: 0 auto;
+      display: block;
+      margin-bottom: 0.15rem; }
+    #Authentication .ati p {
+      font-size: 0.24rem;
+      color: #555555;
+      text-align: center; }
+
+/*# sourceMappingURL=know.css.map */

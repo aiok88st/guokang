@@ -11,15 +11,56 @@
     <meta content="telephone=no" name="format-detection"/>
     <link rel="stylesheet" href="templates/css/swiper-3.4.2.min.css" />
     <link rel="stylesheet" href="templates/css/reset.css" />
-    <link rel="stylesheet" href="templates/css/public.css" />
+    <link rel="stylesheet" href="templates/css/public.css?v=1" />
 
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="templates/js/rem.js" ></script>
     <script type="text/javascript" src="templates/js/swiper-3.4.2.min.js" ></script>
+    <script type="text/javascript">
+        var img_link='templates/';
+    </script>
+
 </head>
 <body>
-<header>
-    <button class="mNav"></button>
+<header class="nav">
+    <button class="mNav" isOpen = false></button>
     <button class="pCenter"></button>
-    <img src="templates/img/logo.png" />
+    <img src="templates/img/logo.png" onclick="window.location.href='/mobile'"/>
+    <div class="secondNav">
+        <ul>
+            <li>
+                <a href="mobile/">首页</a>
+            </li>
+            {foreach name=nav_middle_list from=$middle item=nav}
+            <li>
+
+                <a
+                   {if $nav.child}
+                    class="navMore"
+                    href="javascript:;"
+                   {else/}
+                   class="none"
+                   href="{$nav.url}"
+                   {/if}
+                    isOpen=false>{$nav.name}</a>
+                {if $nav.child}
+                <ul>
+                    {foreach from=$nav.child item=v}
+                    <li>
+                        <a href="{$v.url}">{$v.name}</a>
+                    </li>
+                    {/foreach}
+
+                </ul>
+                {/if}
+            </li>
+            {/foreach}
+
+            <li class="navSearch" style="display: none">
+                <input type="text" placeholder="您在找什么？"/>
+                <button class="shBtn">搜索</button>
+            </li>
+        </ul>
+        <div class="zw"></div>
+    </div>
 </header>

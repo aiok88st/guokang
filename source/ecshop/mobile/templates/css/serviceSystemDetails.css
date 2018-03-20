@@ -1,0 +1,189 @@
+html{
+    font-size: 50px;
+}
+body{
+    width: 100%;
+    position: relative;
+    background-color: #f4f4f4;
+    overflow-x: hidden;
+}
+.title{
+    width: 100%;
+    height: 5rem;
+    position: relative;
+}
+.title img{
+    position: relative;
+    width: 100%;
+}
+.title-name{
+    font-size: .3rem;
+    color: #fff;
+    margin-left: .2rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -.2rem;
+}
+.title p{
+    font-size: .12rem;
+    color: #8b8b8b;
+    margin-left: .2rem;
+    position: absolute;
+    top: 60%;
+    margin-top:0rem;
+}
+.content{
+    background-color: #fff;
+    padding: 1px;
+}
+.content .content-title{
+    font-size: .35rem;
+    margin: .5rem 0 0 .2rem;
+    font-weight: bold;
+}
+.content-mes{
+    padding: .2rem;
+    width: 94%;
+    height: 10rem;
+}
+.content-bottom{
+    width: 100%;
+    height: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+.content-bottom img{
+    width: 1rem;
+    display: inline-block;
+}
+.content-bottom img.top{
+    width: .7rem;
+    display: inline-block;
+    position: absolute;
+    top: -2rem;
+    right: .3rem;
+}
+.content .sim{
+    width: 97%;
+    height: 1.3rem;
+    background-color: #b3b3b3;
+    margin: .1rem;
+    font-size: .1rem;
+    color: #fff;
+    /*line-height: 1.3rem;*/
+}
+.content .sim span{
+    display: inline-block;
+    margin-left: .2rem;
+}
+.content .sim span.span1{
+    margin-top: .3rem;
+}
+.comment{
+    width: 100%;
+    margin-top: .1rem;
+    text-align: center;
+    background-color: #fff;
+}
+.comment-title{
+    display: inline-block;
+    width: 95%;
+    height: 1rem;
+    line-height: 1rem;
+}
+.comment .comment-title div{
+    float: left;
+    font-size: .3rem;
+}
+.comment .comment-title .left{
+    font-weight: bold;
+}
+.comment .comment-title .right{
+    float: right;
+    font-size: .15rem;
+    color: #555555;
+}
+.comment-content{
+    display: inline-block;
+    width: 95%;
+    border-bottom: 1px solid #cecece;
+}
+.con-info{
+    overflow: hidden;
+    padding: .4rem 0;
+}
+.comment-content .head {
+    display: inline-block;
+    width: 1rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+}
+.comment-content .head img{
+    width: 1rem;
+    height: 1.1rem;
+}
+.comment-content .wrap{
+    width: 80%;
+    float: left;
+    font-size: .2rem;
+    text-align: left;
+    margin-left: .2rem;
+    border-bottom: 1px solid #cecece;
+    padding: 0 0 .3rem 0;
+}
+.comment-content .wrap .commentName{
+    height: .5rem;
+    line-height: .5rem;
+    font-size: .25rem;
+    font-weight: bold;
+}
+.comment-content .wrap .commentTime{
+    height: .5rem;
+    font-size: .1rem;
+    color: #888888;
+    line-height: .5rem;
+}
+.comment-content .wrap .commentReply{
+    width: 90%;
+    overflow: hidden;
+    padding: .4rem;
+    background-color: #f6f6f6;
+}
+.comment-content .wrap .commentReply div{
+    float: left;
+}
+.comment-content .wrap .commentReply .reply-name{
+    color: #006fbb;
+}
+.comment .yourReplay{
+    display: inline-block;
+    width: 91%;
+    margin-bottom: .5rem;
+}
+.comment .yourReplay .youReplay-title{
+    font-size: .4rem;
+    font-weight: bold;
+    text-align: left;
+    margin: .3rem 0;
+}
+.comment .yourReplay .youReplay-info{
+    width: 98%;
+    height: 2rem;
+    -webkit-border-radius: .1rem;
+    -moz-border-radius: .1rem;
+    border-radius: .1rem;
+    padding: .1rem;
+}
+.comment .yourReplay .btn-publish{
+    width: 100%;
+    font-size: .28rem;
+    height: .7rem;
+    line-height: .7rem;
+    color: #fff;
+    background-color: #0068b7;
+    -webkit-border-radius: .14rem;
+    -moz-border-radius: .14rem;
+    border-radius: .14rem;
+}

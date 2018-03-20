@@ -1,39 +1,24 @@
 {include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/shop.css" />
+<link rel="stylesheet" href="templates/lib/css/layui.mobile.css">
+<script type="text/javascript" src="templates/lib/layui.js"></script>
 <!--banner-->
 <div id="banner">
-    <img src="templates/img/shop00.png" />
+    <img src="templates/images/shop00.jpg" />
 </div>
 <!--商城选择-->
 <div id="shopChoice">
     <div class="box">
-
-        <a href="###" class="floatl">
-            <img src="templates/img/shop01.png"/>
-            <p>健康保险</p>
+        <a href="" name="cat" style="display: inline"></a>
+        {foreach from=$cat_list item=item}
+        <a href="goods_list.php?cat_id={$item.cat_id}#cat" class="floatl {if $cat_id eq $item.cat_id}aChoice{/if}">
+            <img src="{$item.thumb}"/>
+            <p>{$item.cat_name3}</p>
         </a>
-
-        <a href="###" class="floatl">
-            <img src="templates/img/shop02.png"/>
-            <p>养老保险</p>
-        </a>
-
-        <a href="###" class="floatl">
-            <img src="templates/img/shop03.png"/>
-            <p>全球转诊</p>
-        </a>
-
-        <a href="###" class="floatl">
-            <img src="templates/img/shop04.png"/>
-            <p>私人医生</p>
-        </a>
-
-        <a href="###" class="floatl">
-            <img src="templates/img/shop05.png"/>
-            <p>体检</p>
-        </a>
-
+        {/foreach}
         <div class="clearl"></div>
     </div>
+
 </div>
 <div id="shopList">
     <div class="cjBottom">
@@ -74,6 +59,30 @@
         <a href="###">没有更多~</a>
     </div>
 </div>
+<script type="text/javascript">
+    layui.use('flow', function(){
+        var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+        var flow = layui.flow;
+        flow.load({
+            elem: '#shopList' //指定列表容器
+            ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+                var lis = [];
+                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                $.get('/api/list?page='+page, function(res){
+                    //假设你的列表返回在data集合中
+                    layui.each(res.data, function(index, item){
+                        lis.push('<li>'+ item.title +'</li>');
+                    });
+
+                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                    next(lis.join(''), page < res.pages);
+                });
+            }
+        });
+
+    });
+</script>
 {include file="/library/page_footer.html"}
 </body>
 </html>
