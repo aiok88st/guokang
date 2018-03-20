@@ -1,0 +1,94 @@
+<!-- 底部内容 -->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-9">
+                <div class="row">
+                    <!--{foreach name=nav_bottom_list from=$bottom item=nav}-->
+                    <div class="col-xs-6 col-sm-4 col-md-2">
+                        <h4>{$nav.name}</h4>
+                        <!--{if $nav.child}-->
+                        <ul class="list-unstyled">
+                            <!--{foreach from=$nav.child item=v}-->
+                            <li>
+                                <a href="{$v.url}" <!--{if $v.opennew eq 1}-->target="_blank"<!--{/if}-->>{$v.name}</a>
+                            </li>
+                            <!--{/foreach}-->
+
+                        </ul>
+                        <!--{/if}-->
+                    </div>
+                    <!--{/foreach}-->
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <h4>
+                    <a href="tel:{$service_phone}">{$service_phone}</a>
+                </h4>
+                <!--{if $shop_weibo}-->
+                <img src=".{$shop_weibo}" width="74" height="74" alt="">
+                <!--{/if}-->>
+                <!--{if $shop_weixin}-->
+                <img src=".{$shop_weixin}" width="74" height="74" alt="">
+                <!--{/if}-->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 备案信息 -->
+<div class="record-bg">
+    <p class="record">Copyright © 2005-2018 guokang,All Rights Reserved. 　粤ICP备13080796号-2<br/>深圳市国康健康管理服务有限公司|深圳市国康保险经纪有限公司　©　版权所有</p>
+</div>
+
+
+<!--<script type="text/javascript" src="themes/default/script/video.min.js" ></script>-->
+<script type="text/javascript" src="themes/default/lib/layui.js" ></script>
+<script type="text/javascript" src="themes/default/script/zjIndex.js?v=1" ></script>
+<script>
+layui.use('element', function(){
+  var $ = layui.jquery
+  ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+  
+  //触发事件
+  var active = {
+    tabAdd: function(){
+      //新增一个Tab项
+      element.tabAdd('demo', {
+        title: '新选项'+ (Math.random()*1000|0) //用于演示
+        ,content: '内容'+ (Math.random()*1000|0)
+        ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+      })
+    }
+    ,tabDelete: function(othis){
+      //删除指定Tab项
+      element.tabDelete('demo', '44'); //删除：“商品管理”
+      
+      
+      othis.addClass('layui-btn-disabled');
+    }
+    ,tabChange: function(){
+      //切换到指定Tab项
+      element.tabChange('demo', '22'); //切换到：用户管理
+    }
+  };
+  
+  $('.site-demo-active').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+  
+  //Hash地址的定位
+  var layid = location.hash.replace(/^#test=/, '');
+  element.tabChange('test', layid);
+  
+  element.on('tab(test)', function(elem){
+    location.hash = 'test='+ $(this).attr('lay-id');
+  });
+  
+});
+</script>
+<!-- WPA start -->
+<script id="qd2852152895c07a0ec2548f94d63eab86933f484853" src="https://wp.qiye.qq.com/qidian/2852152895/c07a0ec2548f94d63eab86933f484853" charset="utf-8" async defer></script>
+<!-- WPA end -->
+</body>
+</html>

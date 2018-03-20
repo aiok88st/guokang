@@ -110,7 +110,7 @@ class sms
     function send($phones,$msg,$send_date = '', $send_num = 1,$sms_type='',$version='1.0')
     {
 
-        if ($sms_type == 'fan-out' && !stripos($msg, '退订回N')) 
+        if ($sms_type == 'fan-out' && !stripos($msg, '退订回N'))
         {
             $msg .= '退订回N';
         }
@@ -136,7 +136,7 @@ class sms
         //         $this->errors['server_errors']['error_no'] = 11;//短信功能没有激活
         //         return false;
         //     }
-            
+
         // }
          /* 获取API URL */
         // $sms_url = $this->get_url('send');
@@ -155,15 +155,20 @@ class sms
 
         $openapi_key = array('key'=>OPENAPI_KEY,'secret'=>OPENAPI_SECRET,'site'=>OPENAPI_SITE,'oauth'=>OPENAPI_OAUTH);
         $oauth = new oauth2($openapi_key);
+
         $api_url = OAUTH_API_PATH."/smsv2/send";
         $t_contents=array();
+
         if(count($contents)>1)
         {
+
             foreach ($contents as $key=>$val)
             {
                 $t_contents['0']['phones']=$val['phones'];
                 $t_contents['0']['content']=$val['content'];
+
                 $send_str['contents']= $this->json->encode($t_contents);
+
                 $send_str['shopexid'] = get_certificate_info('passport_uid');
                 $send_str['token'] = get_certificate_info('yunqi_code');
                 $send_str['sendType'] = ($sms_type == 'fan-out') ? 'fan-out' : 'notice';
@@ -192,8 +197,8 @@ class sms
                 // $send_str['sendType'] = 'fan-out';
                 // $send_str['use_backlist'] = '1';
                 // $send_str['version'] = $version;
-                // $send_str['format']='json'; 
-                // $send_str['timestamp'] = $this->getTime(); 
+                // $send_str['format']='json';
+                // $send_str['timestamp'] = $this->getTime();
                 // $send_str['certi_ac']=$this->make_shopex_ac($send_str,SOURCE_TOKEN);
                 // $sms_url= $this->get_url('send');
                 // $arr = json_decode($send_str['contents'],true);
@@ -207,7 +212,10 @@ class sms
         {
             $send_str['sendType'] = ($sms_type == 'fan-out') ? 'fan-out' : 'notice';
             $send_str['contents']= $this->json->encode($contents);
+
             $send_str['shopexid'] = get_certificate_info('passport_uid');
+
+
             $send_str['token'] = get_certificate_info('yunqi_code');
             $send_str['source']=SOURCE_ID;
             $send_str['certi_app'] = 'sms.newsend';
@@ -215,7 +223,9 @@ class sms
             if ( @constant('DEBUG_API') ) {
                 error_log(date("c")."\t".stripslashes(var_export($send_str,1))."\t\n",3,ROOT_PATH."data/logs/sms_".date("Y-m-d").".log");
             }
+
             $r = $oauth->request()->get('api/platform/timestamp');
+
             $time = $r->parsed();
             $rall = $oauth->request($_SESSION['TOKEN'])->post($api_url,$send_str,$time);
             $result = $rall->parsed();
@@ -230,8 +240,8 @@ class sms
 
             // $send_str['use_backlist'] = '1';
             // $send_str['version'] = $version;
-            // $send_str['format']='json'; 
-            // $send_str['timestamp'] = $this->getTime(); 
+            // $send_str['format']='json';
+            // $send_str['timestamp'] = $this->getTime();
             // $send_str['certi_ac']=$this->make_shopex_ac($send_str,SOURCE_TOKEN);
             // $sms_url= $this->get_url('send');
             // $arr = json_decode($send_str['contents'],true);
@@ -251,9 +261,9 @@ class sms
             }
             return false;
         }
-       
+
     }
-   
+
 
     
 

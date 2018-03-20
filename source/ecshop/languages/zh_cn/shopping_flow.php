@@ -27,7 +27,7 @@ $_LANG['login_success'] = '恭喜！您已经成功登陆本站！';
 /* 购物车 */
 $_LANG['update_cart'] = '更新购物车';
 $_LANG['back_to_cart'] = '返回购物车';
-$_LANG['update_cart_notice'] = '购物车更新成功，请您重新选择您需要的赠品。';
+$_LANG['update_cart_notice'] = '购物车更新成功';
 $_LANG['direct_shopping'] = '不打算登录，直接购买';
 $_LANG['goods_not_exists'] = '对不起，指定的商品不存在';
 $_LANG['drop_goods_confirm'] = '您确实要把该商品移出购物车吗？';

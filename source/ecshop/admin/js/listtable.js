@@ -3,14 +3,11 @@ if (typeof Ajax != 'object')
 {
   alert('Ajax object doesn\'t exists.');
 }
-
 if (typeof Utils != 'object')
 {
   alert('Utils object doesn\'t exists.');
 }
-
 var listTable = new Object;
-
 listTable.query = "query";
 listTable.filter = new Object;
 listTable.url = location.href.lastIndexOf("?") == -1 ? location.href.substring((location.href.lastIndexOf("/")) + 1) : location.href.substring((location.href.lastIndexOf("/")) + 1, location.href.lastIndexOf("?"));
@@ -67,12 +64,10 @@ listTable.edit = function(obj, act, id)
     if (Utils.trim(txt.value).length > 0)
     {
       res = Ajax.call(listTable.url, "act="+act+"&val=" + encodeURIComponent(Utils.trim(txt.value)) + "&id=" +id, null, "POST", "JSON", false);
-
       if (res.message)
       {
         alert(res.message);
       }
-
       if(res.id && (res.act == 'goods_auto' || res.act == 'article_auto'))
       {
           document.getElementById('del'+res.id).innerHTML = "<a href=\""+ thisfile +"?goods_id="+ res.id +"&act=del\" onclick=\"return confirm('"+deleteck+"');\">"+deleteid+"</a>";
@@ -188,10 +183,7 @@ listTable.retry = function(id, cfm, opt)
   {
     opt = "retry";
   }
-
-
     var args = "act=" + opt + "&id=" + id + this.compileFilter();
-
     Ajax.call(this.url, args, this.listCallback, "GET", "JSON",false);
     this.loadList();
 }
@@ -202,6 +194,7 @@ listTable.gotoPageFirst = function()
   {
     listTable.gotoPage(1);
   }
+
 }
 
 listTable.gotoPagePrev = function()
@@ -243,6 +236,8 @@ listTable.listCallback = function(result, txt)
   if (result.error > 0)
   {
     alert(result.message);
+  }else if(result.code==1){
+    window.location.reload();
   }
   else
   {

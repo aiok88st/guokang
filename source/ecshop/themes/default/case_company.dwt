@@ -1,0 +1,41 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/companyList.css" />
+
+<!--集团简介-->
+<div id="banner" align="center">
+    <img src="themes/default/image/caseList.jpg" />
+</div>
+<!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+
+<!--{foreach from=$pager.lists key=key item=item}-->
+
+<!--{if $key lt 25}-->
+<!--{if $key eq 0 }-->
+<div id="companyLogo" class="w12">
+<!--{/if}-->
+    <a href="article-{$item.article_id}.html" class="floatl" style="background-image: url('{$item.file_url}')"></a>
+
+<!--{if $key eq 24 }-->
+    <div class="clearl"></div>
+</div>
+<div id="companyList" class="w12">
+    <div class="cTable">
+<!--{/if}-->
+
+
+<!--{else /}-->
+<!--公司名称列表-->
+
+
+        <a href="article-{$item.article_id}.html" class="floatl">{$item.title}</a>
+
+<!--{/if}-->
+<!--{/foreach}-->
+
+        <div class="clearl"></div>
+    </div>
+</div>
+<!-- #BeginLibraryItem "/library/pages2.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+<script type="text/javascript" src="themes/default/script/expert.js?v=1" ></script>

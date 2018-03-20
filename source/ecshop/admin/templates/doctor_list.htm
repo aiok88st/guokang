@@ -1,0 +1,93 @@
+<!-- $Id: article_list.htm 16783 2009-11-09 09:59:06Z liuhui $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+    <form action="doctor.php?act=list" method="get" name="searchForm" >
+        <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
+        <select name="cat_id" >
+            <option value="0">全部分类</option>
+            {foreach from=$cat_list item=item}
+
+            <option value="{$item.id|my_intval}">{$item.cat_name}</option>
+            {/foreach}
+        </select>
+        专家名称 <input type="text" name="name" id="name" />
+        <input type="submit" value="{$lang.button_search}" class="button" />
+        <input type="hidden" name="act" value="list">
+    </form>
+</div>
+
+<form method="POST" action="doctor.php?act=batch_remove" name="listForm">
+    <!-- start cat list -->
+    <div class="list-div" id="listDiv">
+        {/if}
+
+        <table cellspacing='1' cellpadding='3' id='list-table'>
+            <tr>
+                <th><input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+                    <a href="javascript:; "></a>{$sort_article_id}</th>
+                <th><a href="javascript:; ">专家名称</a>{$sort_name}</th>
+                <th><a href="javascript:; ">职称</a>{$sort_job}</th>
+                <th><a href="javascript:; ">专家分类</a>{$sort_cat_id}</th>
+                <th><a href="javascript:;">职位</a>  </th>
+                <th><a href="javascript:;">所属单位</a>  </th>
+                <th>{$lang.handler}</th>
+            </tr>
+            {foreach from=$lists item=item}
+            <tr>
+                <td><span><input name="checkboxes[]" type="checkbox" value="{$item.id}" />{$list.doctor_id}</span></td>
+                <td align="center">
+                    {$item.name}
+                </td>
+                <td align="center">
+                    {$item.job}
+                </td>
+                <td align="center">
+                    {$item.cat_name}
+                </td>
+                <td>{$item.position}</td>
+                <td>{$item.unit}</td>
+                <td align="center" nowrap="true">
+                    <span>
+
+                     <a href="doctor.php?act=expert_add&id={$item.id}" title="{$lang.edit}"><img src="images/icon_edit.gif" border="0" height="16" width="16" /></a>&nbsp;
+                     <a href="javascript:;" onclick="listTable.remove({$item.id}, '{$lang.drop_confirm}','remove_expert')" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16"></a>
+                    </span>
+                </td>
+            </tr>
+            {foreachelse}
+            <tr><td class="no-records" colspan="10">{$lang.no_article}</td></tr>
+            {/foreach}
+            <tr>&nbsp;
+                <td align="right" nowrap="true" colspan="8">{include file="page2.htm"}</td>
+            </tr>
+        </table>
+
+        {if $full_page}
+    </div>
+
+    <div style="display: none">
+        <input type="hidden" name="act" value="batch" />
+        <select name="type" id="selAction" onchange="changeAction()">
+            <option value="">请选择...</option>
+            <option value="button_remove">批量删除</option>
+            <option value="button_hide">批量隐藏</option>
+            <option value="button_show">批量显示</option>
+            <option value="move_to">转移到分类</option>
+        </select>
+        <select name="target_cat" style="display:none">
+            <option value="0">请选择...</option>
+            {$cat_select}
+        </select>
+
+        <input type="submit" value="{$lang.button_submit}" id="btnSubmit" name="btnSubmit" class="button" disabled="true" />
+    </div>
+</form>
+<!-- end cat list -->
+<script type="text/javascript" language="JavaScript">
+
+</script>
+{include file="pagefooter.htm"}
+{/if}

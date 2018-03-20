@@ -18,122 +18,83 @@ define('ECS_ADMIN', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
 
-$best_goods = get_recommend_goods('best');
-$best_num = count($best_goods);
-$smarty->assign('best_num' , $best_num);
-if ($best_num > 0)
-{
-    $i = 0;
-    foreach  ($best_goods as $key => $best_data)
-    {
-        $best_goods[$key]['shop_price'] = encode_output($best_data['shop_price']);
-        $best_goods[$key]['name'] = encode_output($best_data['name']);
-        /*if ($i > 2)
-        {
-            break;
-        }*/
-        $i++;
-    }
-    $smarty->assign('best_goods' , $best_goods);
-}
+require(ROOT_PATH . 'includes/lib_model.php');
+$model=new Model;
+assign_template();
+
+$position = assign_ur_here();
+$smarty->assign('page_title',      $position['title']);    // 页面标题
+$smarty->assign('ur_here',         $position['ur_here']);  // 当前位置
+
 
 /* 热门商品 */
 $hot_goods = get_recommend_goods('hot');
-$hot_num = count($hot_goods);
-$smarty->assign('hot_num' , $hot_num);
-if ($hot_num > 0)
-{
-    $i = 0;
-    foreach  ($hot_goods as $key => $hot_data)
-    {
-        $hot_goods[$key]['shop_price'] = encode_output($hot_data['shop_price']);
-        $hot_goods[$key]['name'] = encode_output($hot_data['name']);
-        /*if ($i > 2)
-        {
-            break;
-        }*/
-        $i++;
-    }
-    $smarty->assign('hot_goods' , $hot_goods);
-}
 
+/*行业解决方案*/
+$case_list=$model->table($ecs->table('article'))
+    ->where('`cat_id`=42')
+    ->order('article_id asc')
+    ->field('title,file_url_wap,article_id')
+    ->limit(6)
+    ->select();
+$smarty->assign('case_list',$case_list);
+/*行业解决方案 END*/
 
-$promote_goods = get_promote_goods();
-$promote_num = count($promote_goods);
-$smarty->assign('promote_num' , $promote_num);
-if ($promote_num > 0)
-{
-    $i = 0;
-    foreach ($promote_goods as $key => $promote_data)
-    {
-        $promote_goods[$key]['shop_price'] = encode_output($promote_data['shop_price']);
-        $promote_goods[$key]['name'] = encode_output($promote_data['name']);
-        /*if ($i > 2)
-        {
-            break;
-        }*/
-        $i++;
-    }
-    $smarty->assign('promote_goods' , $promote_goods);
+/*国康服务 (goods)*/
+$goods_list=$model->table($ecs->table('goods'))
+    ->order('is_best desc')
+    ->field('goods_name,goods_id,goods_thumb,goods_desc')
+    ->limit(9)
+    ->select();
+foreach ($goods_list as $key=>$value){
+    $goods_list[$key]['goods_desc']=mb_substr($value['goods_desc'],0,10,'utf-8');
 }
+$smarty->assign('last_goods',count($goods_list));
+$smarty->assign('goods_list',$goods_list);
 
-$pcat_array = get_categories_tree();
-foreach ($pcat_array as $key => $pcat_data)
-{
-    $pcat_array[$key]['name'] = encode_output($pcat_data['name']);
-    if ($pcat_data['cat_id'])
-    {
-        if (count($pcat_data['cat_id']) > 3)
-        {
-            $pcat_array[$key]['cat_id'] = array_slice($pcat_data['cat_id'], 0, 3);
-        }
-        foreach ($pcat_array[$key]['cat_id'] as $k => $v)
-        {
-            $pcat_array[$key]['cat_id'][$k]['name'] = encode_output($v['name']);
-        }
-    }
-}
-$smarty->assign('pcat_array' , $pcat_array);
-$brands_array = get_brands();
-if (!empty($brands_array))
-{
-    if (count($brands_array) > 3)
-    {
-        $brands_array = array_slice($brands_array, 0, 10);
-    }
-    foreach ($brands_array as $key => $brands_data)
-    {
-        $brands_array[$key]['brand_name'] = encode_output($brands_data['brand_name']);
-    }
-    $smarty->assign('brand_array', $brands_array);
-}
+/*国康服务 end*/
 
-$article_array = $db->GetALLCached("SELECT article_id, title FROM " . $ecs->table("article") . " WHERE cat_id != 0 AND is_open = 1 AND open_type = 0 ORDER BY article_id DESC LIMIT 0,4");
-if (!empty($article_array))
-{
-    foreach ($article_array as $key => $article_data)
-    {
-        $article_array[$key]['title'] = encode_output($article_data['title']);
-    }
-    $smarty->assign('article_array', $article_array);
-}
-if ($_SESSION['user_id'] > 0)
-{
-    $smarty->assign('user_name', $_SESSION['user_name']);
-}
+/*名医团队*/
+$expert_list=$model->table($ecs->table('expert'))
+    ->where("`cat_id`=1")
+    ->field('`id`,`cat_id`,`name`,`position`,`unit`,`thumb`,`job`,`list_order`')
+    ->limit(4)
+    ->order('list_order asc,id desc')
+    ->select();
+$smarty->assign('expert_list',$expert_list);
+/*名医团队 end*/
 
-if (!empty($GLOBALS['_CFG']['search_keywords']))
-{
-    $searchkeywords = explode(',', trim($GLOBALS['_CFG']['search_keywords']));
-}
-else
-{
-    $searchkeywords = array();
-}
-$smarty->assign('searchkeywords', $searchkeywords);
+/*标杆客户*/
+$article_list=$model->table($ecs->table('article'))
+    ->where("`cat_id`=45")
+    ->limit(12)
+    ->field('file_url,article_id,title')
+    ->select();
+$smarty->assign('article_list',$article_list);
+/*标杆客户 end*/
+/*新闻动态*/
+$new_cat=$model->table($ecs->table('article_cat'))
+    ->where('`parent_id`=17')
+    ->order('sort_order asc')
+    ->field('cat_id,cat_name')
+    ->select();
+$smarty->assign('new_cat',$new_cat);
+$news_list=array();
+foreach ($new_cat as $key=>$value){
+    $news_list[$key]['cat_name']=$value['cat_name'];
+    $news_list[$key]['cat_id']=$value['cat_id'];
 
-$smarty->assign('wap_logo', $_CFG['wap_logo']);
-$smarty->assign('footer', get_footer());
+    $news=$model->table($ecs->table('article'))
+        ->where("`cat_id`=".$value['cat_id'])
+        ->limit(6)
+        ->field('article_id,file_url,title,add_time')
+        ->select();
+    $news_list[$key]['list']=$news;
+    $news_list[$key]['count']=count($news);
+}
+$smarty->assign('news_list',$news_list);
+/*新闻动态 end*/
+
 $smarty->display("index.html");
 
 ?>

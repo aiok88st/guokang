@@ -1,0 +1,130 @@
+$black:#555555;
+$blue:#0068b7;
+#forget{
+    position:fixed;
+    top:0%;
+    left:0%;
+    width:100%;
+    height:100%;
+    .forgetTitle{
+        font-size:0.32rem;
+        margin: 0.65rem auto 1.2rem;
+        text-align: center;
+    }
+    .formBox{
+        width:86.67%;
+        margin: 0 auto;
+        .formContent{
+            font-size: 0.22rem;
+            color:$black;
+            line-height: 0.6rem;
+        }
+        ul li div.input{
+            width:100%;
+                     
+            input{
+                display:block;
+                width:85%;
+                margin-left:5%;
+                border:0px;
+                line-height:0.8rem;
+                font-size:0.24rem;
+                color:$black;
+            }
+        }
+        ul li div.password{
+            margin-bottom:0px;
+        }
+        ul li.liborder{
+            border:1px solid #dddddd;
+            margin-bottom:0.4rem;
+            position: relative;
+        }
+        .twoChoice{
+            margin:0.5rem 0;
+        }
+        .tcLeft{
+            font-size:0.22rem;
+            color:$black;
+            text-indent:0.4rem;
+            height:0.3rem;
+            position:relative;
+            line-height:0.3rem;
+            .checkBox{
+                position:absolute;
+                left:0;
+                top:0;
+                width:0.3rem;
+                height:0.3rem;
+                border:1px solid #c8c8c8;
+                
+                input{
+                    display:block;
+                    width:100%;
+                    height:100%;
+                    opacity:0;
+                }
+            }
+            label{
+                margin-top: 1px;
+            }
+            .checkHas{
+                background:url(../img/yes.png) no-repeat center center;
+                background-size:0.24rem;
+            }
+        }
+        .tcRight{
+            font-size:0.22rem;
+            height:0.3rem;
+            line-height:0.3rem;
+            margin-top: 1px;
+            a{
+                color:$black;
+            }
+        }
+        ul li div.accountEr input{
+            width: 46%;
+        }
+        button{
+            width:100%;
+            height:0.8rem;
+            font-size:0.26rem;
+            color:white;
+            display:block;
+            background-color:$blue;
+            border-radius:5px;
+        }
+        .get{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 35%;
+            height: 0.6rem;
+            margin-top: 0.1rem;
+            color: $blue;
+            background-color: transparent;
+            border-left: 1px solid #dddddd;
+            border-radius: 0px;
+        }
+        .eye{
+            position: absolute;
+            top: 0.27rem;
+            height: 0.26rem;
+            right: 5%;
+            img{
+                height: 100%;
+            }
+        }
+        ul li div.pwd input{
+            width: 79%;
+        }
+    }
+}
+.tips{
+   width:100%;
+   margin: 0 auto;
+   font-size: 0.22rem;
+   line-height: 0.4rem;
+   margin-top: 0.2rem;
+   text-align: justify;
+}

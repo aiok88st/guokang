@@ -1,0 +1,287 @@
+$border-gray: #e5e5e5;
+$lightblue: #0068b7;
+
+
+.pb30{
+    padding-bottom: 30px;
+}
+.rows{
+    padding: 40px 0;
+    overflow: hidden;
+}
+.btn{
+    border-radius: 23px;
+    font-size: 16px;
+    &:focus, &:active{
+        outline: none;
+    }
+}
+.form-control{
+    border-radius: 0;
+    border-color: $border-gray;
+    color: #888;
+    font-size: 15px;
+
+}
+.btn-primary{
+    background: $lightblue;
+}
+.main{
+    margin-top: 40px;
+    .order-row{
+        background: #fff;
+        padding: 0 37px;
+        margin-bottom: 20px;
+        .col-left{
+            width: 120px;
+            margin: 8px 0 20px;
+        }
+//      .col-right{
+//          overflow: hidden;
+//      }
+//      .border-bottom{
+//          padding-bottom: 28px;
+//      }
+    }
+}
+.box-address,.btn-addAddress{
+    width: 258px;
+    height: 168px;
+    padding: 20px;
+    border: 1px solid $border-gray;
+    margin-right: 15px;
+}
+.box-address{
+    display: table;
+    &.active{
+        border-color: $lightblue;
+    }
+    .middle{
+        vertical-align: middle;
+        display: table-cell;
+    }
+    .btn-edit{
+        width: 14px;
+        height: 14px;
+        background: url(../img/shop/icon-edit.png) no-repeat;
+        position: absolute;
+        right: 20px;
+        bottom: 18px;
+        cursor: pointer;
+    }
+}
+.btn-addAddress{
+    line-height: 128px;
+    text-align: center;
+    cursor: pointer;
+    .icon-add{
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background: url(../img/shop/icon-add.png) no-repeat;
+        vertical-align: text-bottom;
+    }
+}
+
+.add-new-address{
+    display: none;
+    .btn{
+        width: 197px;
+    }
+    .btn-cancel{
+        border: 0;
+        background: #f8f8f8;
+        color: #888888;
+    }
+    .form-group{
+        margin: 0 15px 15px 0;
+    }
+}
+
+.list-checkbox{
+    margin-bottom: 25px;
+    label{
+        cursor: pointer;
+        .icon-checkbox{
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            background: url(../img/shop/icon-checkbox.png) no-repeat;
+            vertical-align: bottom;
+            margin-right: 10px;
+            &.checked{
+                background-position-y: -24px;
+            }
+        }
+    }
+    input{
+        display: none;
+    }
+}
+
+.list-checkbox-1 label{
+    margin-right: 180px;
+}
+
+.col-input{
+    input{
+        width: 440px;
+        height: 42px;
+    }
+}
+
+.pay-type, .policyHolder-type-input, .form-group-sex{
+    label{
+        display: inline-block;
+        width: 226px;
+        height: 42px;
+        margin-right: 15px;
+        border: 1px solid $border-gray;
+        cursor: pointer;
+        line-height: 42px;
+        text-align: center;
+        font-weight: normal;
+        color: #888;
+        &.checked{
+            border-color: $lightblue;
+//          color: $lightblue;
+        }
+    }
+    input{
+        display: none;
+    }
+}
+.col-list{
+    line-height: 125px;
+    &.pull-left{
+        margin-right: 100px;
+    }
+}
+.col-list-pic{
+    width: 204px;
+    height: 125px;
+    overflow: hidden;
+    img{
+        width: 204px;
+    }
+}
+.policMsg{
+    .col-right{
+        width: 100%;
+        max-width: 560px;
+        margin-bottom: 20px;
+    }
+    .col-sm-2{
+        padding: 12px 0;
+        font-weight: normal;
+    }
+    .form-group-sex{
+        margin: 0 0 15px;
+    }
+    .label-sex{
+        width: 223px;
+    }
+    .label-sex-2{
+        margin-right: 0;
+    }
+    .form-control-static{
+        line-height: 30px;
+    }
+}
+
+#policStartDate{
+    width: 234px;
+}
+.color-lightblue{
+    color: $lightblue;
+    font-weight: bold;
+}
+
+.last-row{
+    width: 246px;
+    .text{
+        margin-bottom: 24px;
+    }
+    .box-pay{
+        width: 190px;
+        .text{
+            overflow: hidden;
+            line-height: 30px;
+        }
+    }
+    .fontSize24{
+        font-size: 24px;
+    }
+    .total{
+        font-size: 30px;
+    }
+    .red{
+        color: #fb0404;
+    }
+}
+.btn-wrap{
+    clear: both;
+    margin-bottom: 20px;
+    .btn-gotoPay, .btn-back{
+        width: 170px;
+        border-radius: 23px;
+    }
+    .btn-gotoPay{
+        background: #2b65b1;
+    }
+    .btn-back{
+        background: #fff;
+        margin-right: 15px;
+    }
+}
+
+
+.order-comfirm{
+    .col-left{
+        font-size: 18px;
+    }
+    .policMsg .col-sm-2{
+        padding: 0;
+    }
+    .policMsg .form-control-static{
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+        min-height: auto;
+    }
+    .policMsg .col-right{
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 992px){
+    .box-address{
+        margin-bottom: 15px;
+    }
+    .list-checkbox-1 label{
+        margin-right: 40px;
+    }
+    .col-list.fl{
+        margin-right: 60px;
+    }
+}
+@media (max-width: 768px){
+    .policMsg .col-sm-2{
+        padding: 12px 15px 0;
+    }
+    .col-list{
+        line-height: 50px;
+    }
+    .col-list-pic{
+        width: 100%;
+    }
+    .col-input input{
+        width: 100%;
+    }
+    .box-address, .btn-addAddress{
+        width: 245px;
+    }
+    .btn-wrap .btn-gotoPay,.btn-wrap .btn-back{
+        width: 110px;
+    }
+}

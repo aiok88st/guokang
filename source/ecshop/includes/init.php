@@ -13,6 +13,7 @@
  * $Id: init.php 17217 2011-01-19 06:29:08Z liubo $
 */
 require_once(dirname(__FILE__) . '/safety.php');
+
 if (!defined('IN_ECS'))
 {
     die('Hacking attempt');
@@ -160,6 +161,8 @@ if(isset($_SERVER['PHP_SELF']))
 {
     $_SERVER['PHP_SELF']=htmlspecialchars($_SERVER['PHP_SELF']);
 }
+
+
 if (!defined('INIT_NO_SMARTY'))
 {
     header('Cache-control: private');
@@ -303,4 +306,7 @@ else
 {
     ob_start();
 }
+
+//定义路径
+//$smarty->assign('home', 'themes/default');
 ?>

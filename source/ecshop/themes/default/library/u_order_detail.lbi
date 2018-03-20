@@ -1,0 +1,290 @@
+<!--  主体部分   -->
+<link rel="stylesheet" type="text/css" href="themes/default/css/order_details2.css">
+<div class="col-xs-12 col-sm-10 my-order right-content container main order-comfirm" style="display: block">
+    <div class="main-bg-right">
+        <div class="row order-row">
+            <!--  订单信息   -->
+
+            <div class="rows policList">
+                <div class="rows1">
+                    <div class="rows1_t detail_title">订单详情</div>
+                    <div class="rows1_t detail_sn">
+                        订单号：{$order.order_sn}
+                    </div>
+                </div>
+
+                <div class="">
+                    <div class="order_status">{$order.order_status_text}</div>
+
+                    <!--{if $order.order_status eq 2}-->
+                    <div class="cancel_order">
+                        <div class="schedule" style="border-radius: 25px;overflow: hidden">
+                            <div class="pull-left item select">
+                                <p>下单</p>
+                            </div>
+                            <div class="pull-left item {if $order.order_status eq 2}select{/if}">
+                                <p>订单取消</p>
+                            </div>
+                            <div style="clear: both"></div>
+                        </div>
+                        <div class="schedule—time">
+                            <div class="pull-left item">
+                                <p>{$order.add_time|dateDay}</p>
+                            </div>
+                            <div class="pull-left item">
+                                <!--{if $order.order_status eq 2}-->
+                                <p>{$order.lastmodify|dateDay}</p>
+                                <!--{/if}-->
+                            </div>
+
+                            <div style="clear: both"></div>
+                        </div>
+                    </div>
+
+                    <!--{else}-->
+                    <div class="schedule" style="border-radius: 25px;overflow: hidden">
+                        <div class="pull-left item select">
+                            <p>下单</p>
+                        </div>
+                        <div class="pull-left item {if $order.pay_status eq 2}select{/if}">
+                            <p>付款</p>
+                        </div>
+                        <div class="pull-left item {if $order.shipping_status eq 1 or $order.shipping_status eq 2}select{/if}">
+                            <p>发货</p>
+                        </div>
+                        <div class="pull-left item {if $order.shipping_status eq 2}select{/if}">
+                            <p>交易完成</p>
+                        </div>
+
+                        <div style="clear: both"></div>
+                    </div>
+                    <div class="schedule—time">
+                        <div class="pull-left item">
+                            <p>{$order.add_time|date_time}</p>
+                        </div>
+                        <div class="pull-left item">
+                            <!--{if $order.pay_status eq 2}-->
+                            <p>{$order.pay_time|date_time}</p>
+
+                            <!--{/if}-->
+                        </div>
+                        <div class="pull-left item">
+                            <!--{if $order.shipping_status eq 1 or $order.shipping_status eq 2}-->
+                            <p>{$order.shipping_time|date_time}</p>
+                            <!--{/if}-->
+                        </div>
+                        <div class="pull-left item">
+                            <!--{if $order.shipping_status eq 2}-->
+                            <p>{$order.lastmodify|date_time}</p>
+                            <!--{/if}-->
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <!--{/if}-->
+                </div>
+            </div>
+
+            <!--  产品信息   -->
+            <div class="rows border-top policList">
+                <div class="pull-left col-left">产品信息</div>
+                <div class="pull-left col-right">
+                    <!-- {foreach from=$goods_list item=goods} -->
+                    <div class="goods_list">
+                        <div class="pull-left col-list col-list-pic">
+                            <img class="product-pic" src="{$goods.goods_img}" onerror="this.src='themes/default/img/develop.jpg'"/>
+                        </div>
+                        <div class="pull-left col-list product-name">{$goods.goods_name}</div>
+                        <div class="pull-left col-list"><span class="product-prize">{$goods.goods_price}</span> x <span class="product-amount">{$goods.goods_number}</span></div>
+                        <div style="clear: both"></div>
+                    </div>
+                    <!--{/foreach}-->
+
+                    <div class="pull-right col-list">¥<span class="product-total">
+                        {$order.goods_amount}
+                    </span></div>
+                </div>
+            </div>
+
+            <!--  收货信息   -->
+            <div class="rows border-top policMsg">
+                <div class="pull-left col-left">收货信息</div>
+                <div class="pull-left col-right">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-xs-4 col-sm-2 control-label">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static receiver-name">{$order.consignee}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 col-sm-2 control-label">联系电话：</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static receiver-phone">{$order.mobile}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 col-sm-2 control-label">收货地址：</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static receiver-address">
+                                    {$order.province|region} {$order.city|region} {$order.district|region} {$order.address}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--  发票信息   -->
+            <!--{if $order.inv_payee}-->
+            <div class="rows border-top policMsg">
+                <div class="pull-left col-left">发票信息</div>
+                <div class="pull-left col-right">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-xs-4 col-sm-2 control-label">发票类型：</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static invoice-type">纸质发票</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 col-sm-2 control-label">发票内容：</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static invoice-content">购买商品明细</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-xs-4 col-sm-2 control-label">发票抬头：</label>
+                            <div class="col-sm-10">
+                                <p class="form-control-static invoice-title">{$order.inv_payee}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--{/if}-->
+        </div>
+
+        <!--  保单总额   -->
+        <div class="row order-row">
+            <div class="rows">
+                <div class="pull-right last-row">
+                    <div class="text border-bottom">
+                        <div class="clearfix text"><span class="pull-left">商品价格</span><span class="pull-right">¥<span class="end-total">{$order.goods_amount}</span></span></div>
+
+
+                        <div class="clearfix text"><span class="pull-left">邮费</span><span class="pull-right">¥<span class="end-postage">{$order.shipping_fee}</span></span></div>
+                        <!--{if $order.tax}-->
+                        <div class="clearfix text"><span class="pull-left">发票手续费</span><span class="pull-right">¥<span class="end-postage">{$order.tax}</span></span></div>
+                        <!--{/if}-->
+                    </div>
+                    <div class="pull-right box-pay">
+                        <div class="text"><span class="pull-left">总价</span><span class="pull-right"><span class="fontSize24 red">¥</span> <span class="total red">
+                            <!--{if $order.order_amount gt 0}-->
+                                     {$order.order_amount}
+                            <!--{else}-->
+                                     {$order.money_paid}
+                            <!--{/if}-->
+
+                        </span></span></div>
+                    </div>
+                </div>
+                <div class="pull-right btn-wrap">
+                    <!--{if $order.shipping_status eq 1}-->
+                    <div class="pull-left box-pay">
+                        <button class="btn btn-primary" onclick="confirm_order('{$order.order_id}')">确认订单</button>
+                    </div>
+                    <script type="text/javascript">
+                        function confirm_order(order_id){
+                            window.location.href="user.php?act=affirm_received&order_id="+order_id;
+                        }
+                    </script>
+                    <!--{/if}-->
+                    <!--{if $order.pay_order eq 1}-->
+                    <div class="pull-left box-pay">
+                        <button class="btn btn-default" onclick="cancel_order('{$order.order_id}')">取消订单</button>
+                    </div>
+                    <div class="pull-left box-pay">
+                        {$order.pay_online}
+                    </div>
+                    <script type="text/javascript">
+                        function cancel_order(order_id){
+                            window.location.href="user.php?act=cancel_order&order_id="+order_id;
+                        }
+
+                        $(function(){
+                            $('.btn-gotoPay').on('click',function(){
+                                massges2('发起支付','请在新打开的页面进行支付，支付完成前请不要关闭该窗口');
+                            })
+                        })
+                        function massges2(title,center){
+                            var body=document.getElementsByTagName("body")[0];
+                            var bomb=document.createElement('div');
+                            bomb.className="bomb tips-cancle";
+
+
+                            var bomb_conent=document.createElement('div');
+                            bomb_conent.className="bomb-conent";
+                            /*关闭按钮start */
+                            var span=document.createElement('span');
+                            span.className="close";
+                            span.innerHTML="x";
+                            span.addEventListener("click",function(){
+                                body.removeChild(bomb);
+                            });
+                            bomb_conent.appendChild(span);
+                            /* 关闭按钮end */
+                            /*提示tile*/
+                            var h3=document.createElement('h3');
+                            h3.className="text-center";
+                            if(!title){
+                                h3.innerHTML="消息提示";
+                            }else{
+                                h3.innerHTML=title;
+                            }
+                            bomb_conent.appendChild(h3);
+                            /*提示title end*/
+                            bomb_conent.appendChild(document.createElement('hr'));
+
+                            /*提示内容*/
+                            var p=document.createElement('p');
+                            p.className="words2 text-center";
+                            p.innerHTML=center;
+                            bomb_conent.appendChild(p);
+
+                            but=document.createElement('div');
+                            but.className='btn-wrap';
+                            var but1=document.createElement('button');
+                            but1.className="btn btn-primary";
+                            but1.innerHTML="支付完成";
+                            but1.addEventListener("click",function(){
+                                window.location.reload();
+                            });
+
+                            var but2=document.createElement('button');
+                            but2.className="btn btn-default";
+                            but2.innerHTML="支付遇到问题";
+                            but2.addEventListener("click",function(){
+                                body.removeChild(bomb);
+                            });
+                            but.appendChild(but1);
+                            but.appendChild(but2);
+
+                            bomb_conent.appendChild(but);
+                            /*按钮end*/
+                            bomb.appendChild(bomb_conent);
+                            bomb.style.display="block";
+                            body.appendChild(bomb);
+                        }
+
+                    </script>
+
+
+
+                    <!--{/if}-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

@@ -144,7 +144,18 @@ class integrate
      */
     function login($username, $password, $remember = null)
     {
-        if ($this->check_user($username, $password) > 0)
+        if(is_email($username)){
+           if($this->login_email($username, $password) > 0){
+               if ($this->need_sync)
+               {
+                   $this->sync($username,$password);
+               }
+               $this->set_session($username);
+               $this->set_cookie($username, $remember);
+
+               return true;
+           }
+        }elseif ($this->check_user($username, $password) > 0)
         {
             if ($this->need_sync)
             {
@@ -516,7 +527,25 @@ class integrate
             return  $this->db->getOne($sql);
         }
     }
+    /**
+     *  检查指定邮箱是否存在及密码是否正确
+     *
+     * @access  public
+     * @param   string  $username   用户名
+     *
+     * @return  int
+     */
+    function login_email($username, $password = null)
+    {
 
+        $post_username = $username;
+
+        $sql = "SELECT " . $this->field_id .
+            " FROM " . $this->table($this->user_table).
+            " WHERE " . "`email`='" . $post_username . "' AND " . $this->field_pass . " ='" . $this->compile_password(array('password'=>$password)) . "' AND `v_email`=1";
+
+        return  $this->db->getOne($sql);
+    }
     /**
      *  检查指定邮箱是否存在
      *

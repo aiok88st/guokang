@@ -214,8 +214,7 @@ elseif ($_REQUEST['act'] == 'post')
                     {
                         @unlink($file_var_list[$code]['value']);
                     }
-                }
-                else
+                } else
                 {
                     $file_name = $file_var_list[$code]['store_dir'] . $file['name'];
                 }

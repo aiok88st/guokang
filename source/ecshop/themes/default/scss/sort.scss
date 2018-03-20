@@ -1,0 +1,362 @@
+$blue:#056dbb;
+$black:#555555;
+#banner{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    img{
+        display: block;
+        left: 50%;
+    }
+}
+#knowNav{
+    width: 100%;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    .shareLeft{
+        p{
+            line-height: 80px;
+            font-size: 14px;
+            color: #666666;
+        }
+        a{
+            display: block;
+            padding: 22px 0;
+        }
+    }
+    .shareRight{
+        ul li{
+            float: left;
+            a{
+                line-height: 80px;
+                color: #666666;
+                font-size: 16px;
+            }
+            p{
+                line-height: 80px;
+                color: #666666;
+                font-size: 16px;
+            }
+        }
+    }
+}
+#hrd{
+    
+    .hrd{
+        width: 390px;
+        border: 1px solid #eeeeee;
+        margin-top: 45px;
+        margin-right: 15px;
+        transition: margin-top 0.5s,
+        transform 0.5s,
+        box-shadow 0.5s,
+        -webkit-box-shadow 0.5s;
+        -ms-transition: margin-top 0.5s,
+        transform 0.5s,
+        box-shadow 0.5s,
+        -webkit-box-shadow 0.5s;
+        -webkit-transition: margin-top 0.5s,
+        transform 0.5s,
+        box-shadow 0.5s,
+        -webkit-box-shadow 0.5s;
+        -moz-transition: margin-top 0.5s,
+        transform 0.5s,
+        box-shadow 0.5s,
+        -webkit-box-shadow 0.5s;
+        .hrdTop{
+            height: 120px;
+            color: white;
+            background-color: $blue;
+            text-align: center;
+            p:nth-child(1){
+                font-size: 26px;
+                padding-top: 30px;
+            }
+            p:nth-child(2){
+                font-size: 14px;
+            }
+        }
+        .hrdBottom{
+            background-color: white;
+            padding: 10px 0;
+            height: 220px;
+            .hrdContent{
+                width: 348px;
+                margin: 0 auto;
+                padding: 10px 0;
+                p:nth-child(1){
+                    font-size: 14px;
+                    color: #333333;
+                    line-height: 26px;
+                }
+                p:nth-child(2){
+                    font-size: 12px;
+                    color: #888888;
+                    line-height: 18px;
+                }
+            }
+        }
+    }
+    .hrd:nth-child(3n){
+        margin-right: 0px;
+    }
+    .hrd:hover{
+            margin-top: 44px;
+            -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            -webkit-transform: translate3d(0, -2px, 0);
+            transform: translate3d(0, -2px, 0);
+           
+        }  
+}
+#sort{
+    width: 100%;
+    .sort{
+        width: 100%;
+        background-color: #181818;
+        .sortChild:hover{
+            .mc{
+                -moz-filter: none;
+                -ms-filter: none;
+                -webkit-filter: none;
+                filter: none;
+                background-position-x: 0px;
+                left: -62px;
+                width: 324px;
+                z-index: 3;
+            }
+            .sortContent{
+                z-index: 4;
+                left: -52px;
+            }
+        }
+        .sortChild:nth-child(1):hover{
+            .mc{
+                left: 0px;
+                z-index: 3;
+            }
+            .sortContent{
+                z-index: 4;
+                left: 10px;
+            }
+        }
+        .sortChild:nth-last-child(2):hover{
+            .mc{
+                left: -124px;
+                z-index: 3;
+            }
+            .sortContent{
+                z-index: 4;
+                left: -114px;
+            }
+        }
+        .sortChild{
+            display: block;
+            width: 200px;
+            height: 408px;
+            position: relative;
+            .mc{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 200px;
+                height: 100%;
+                z-index: 1;
+                background: url(../image/sort.jpg) no-repeat left top;
+                background-position-x: 0px;
+                -moz-filter: grayscale(1);
+                -ms-filter: grayscale(1);
+                -webkit-filter: grayscale(1);
+                filter: grayscale(1);
+                transition: filter 0.5s,background-position-x 0.5s,left 0.5s,width 0.5s;
+                -moz-transition: filter 0.5s,background-position-x 0.5s,left 0.5s,width 0.5s;
+                -ms-transition: filter 0.5s,background-position-x 0.5s,left 0.5s,width 0.5s;
+                -webkit-transition: filter 0.5s,background-position-x 0.5s,left 0.5s,width 0.5s;
+            }
+            
+            img{
+                margin-left: -62px;
+            }
+            .sortContent{
+                z-index: 2;
+                position: absolute;
+                bottom: 6px;
+                left: 10px;
+                line-height: 54px;
+                color: white;
+                font-size: 14px;
+                transition: left 0.5s;
+                -moz-transition: left 0.5s;
+                -ms-transition: left 0.5s;
+                -webkit-transition: left 0.5s;
+                span{
+                    display: block;
+                    width: 33px;
+                    border-bottom: 2px solid $blue;
+                }
+            }
+        }
+    }
+}
+#advantage{
+    .advantage{
+        margin-bottom: 55px;
+        .advChild{
+            width: 300px;
+            border: 1px solid #eeeeee;
+            height: 290px;
+            background-color: white;
+            display: block;
+            transition: margin-top 0.5s,
+            transform 0.5s,
+            box-shadow 0.5s,
+            -webkit-box-shadow 0.5s;
+            -ms-transition: margin-top 0.5s,
+            transform 0.5s,
+            box-shadow 0.5s,
+            -webkit-box-shadow 0.5s;
+            -webkit-transition: margin-top 0.5s,
+            transform 0.5s,
+            box-shadow 0.5s,
+            -webkit-box-shadow 0.5s;
+            -moz-transition: margin-top 0.5s,
+            transform 0.5s,
+            box-shadow 0.5s,
+            -webkit-box-shadow 0.5s;
+            .advImg{
+                width: 110px;
+                height: 110px;
+                margin: 35px auto 15px;
+                img{
+                    width: 100%;
+                }
+            }
+            .advContent{
+                width: 270px;
+                margin: 0 auto;
+                text-align: center;
+                .advtop{
+                    font-size: 16px;
+                    color: #333333;
+                    line-height: 40px;
+                }
+                .advbottom{
+                    line-height: 21px;
+                    color: #888888;
+                    font-size: 12px;
+                }
+            }
+        }
+        .advChild:hover{
+            margin-top: 0px;
+            -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            -webkit-transform: translate3d(0, -2px, 0);
+            transform: translate3d(0, -2px, 0);
+           
+        }  
+    }
+}
+#case{
+    width: 100%;
+    position: relative;
+    .case{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        color: white;
+        .caseTop{
+            text-align: center;
+            font-size: 28px;
+            line-height: 146px;
+        }
+        .caseMiddle{
+            width: 100%;
+            height: 280px;
+            .cmLeft{
+                width: 340px;
+                line-height: 24px;
+                 ul li:nth-child(1){
+                     font-size: 22px;
+                 }
+                 span{
+                     display: block;
+                     width: 82px;
+                     border-bottom: 2px solid $blue;
+                     margin: 20px 0 18px;
+                 }
+                 ul li:nth-child(3){
+                     margin-bottom: 16px;
+                 }
+            }
+            .cmRight{
+                width: 300px;
+                margin-top: 65px;
+                .cmrChild{
+                    width: 100px;
+                    .percent{
+                        width: 80px;
+                        height: 80px;
+                        text-align: center;
+                        line-height: 80px;
+                        border: 1px solid white;
+                        overflow: hidden;
+                        font-size: 16px;
+                        border-radius: 50%;
+                        margin: 0 auto;
+                    }
+                    .cmrContent{
+                        text-align: center;
+                        font-size: 14px;
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+        .caseBottom{
+            a{
+                display: block;
+                width: 230px;
+                height: 78px;
+                margin-right: 12.5px;
+                background: url(../image/huawei.jpg) no-repeat left top;
+                background-size: 100% 100%;
+                -moz-filter: grayscale(1);
+                -ms-filter: grayscale(1);
+                -webkit-filter: grayscale(1);
+                filter: grayscale(1);
+                transition: filter 0.5s;
+                -moz-transition: filter 0.5s;
+                -ms-transition: filter 0.5s;
+                -webkit-transition: filter 0.5s;
+                margin-bottom: 12.5px;
+            }
+            a:nth-child(5n){
+                margin-right: 0px;
+            }
+            a:nth-last-child(2){
+                background-image: url(../image/moreCase.jpg);
+            }
+            a:hover{
+                -moz-filter: none;
+                -ms-filter: none;
+                -webkit-filter: none;
+                filter: none;
+            }
+        }
+    }
+}
+p{
+    margin: 0px;    
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.whitePage ul li a{
+    background-color: white;
+}
+.whitePage{
+    margin-top: 25px;
+}

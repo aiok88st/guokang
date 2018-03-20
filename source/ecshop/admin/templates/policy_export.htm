@@ -1,0 +1,50 @@
+<!-- $Id: articlecat_info.htm 16752 2009-10-20 09:59:38Z wangleisvn $ -->
+{include file="pageheader.htm"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css?v=2" rel="stylesheet" type="text/css" />
+<div class="main-div">
+    <form method="post" action="policy.php" name="theForm"  onsubmit="return validate()">
+        <table cellspacing="1" cellpadding="3" width="100%">
+            <tr>
+                <td class="label">需求类型</td>
+                <td>
+                    <select name="demand" id="">
+                        <option value="0">所有</option>
+                        {foreach from=$policy_type item=item}
+                        <option value="{$item}">{$item}</option>
+                        {/foreach}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">提交时间</td>
+                <td>
+                    <input name="start_time" type="text" id="start_time" size="12" value='' readonly="readonly" />
+                    <input name="start" type="button" id="start" onclick="return showCalendar('start_time', '%Y-%m-%d', false, false, 'start');" value="开始时间" class="button"/>
+                    -
+                    <input name="end_time" type="text" id="end_time" size="12" value='' readonly="readonly" />
+                    <input name="end" type="button" id="end" onclick="return showCalendar('end_time', '%Y-%m-%d', false, false, 'end');" value="结束时间" class="button"/>
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="hidden" name="act" value="export_do">
+            <input type="submit" value="导出" class="button"  />
+        </div>
+    </form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script type="text/javascript">
+    function validate()
+    {
+        var validator = new Validator('theForm');
+        validator.required('start_time', '请选择开始时间');
+        validator.required('end_time', '请选择结束时间');
+
+        return validator.passed();
+    }
+
+</script>
+{/literal}
+{include file="pagefooter.htm"}

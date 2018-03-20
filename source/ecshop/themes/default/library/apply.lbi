@@ -1,0 +1,86 @@
+<div id="apply">
+    <script type="text/javascript" src="themes/default/js/utils.js"></script>
+    <script type="text/javascript" src="themes/default/js/public.js"></script>
+    <a href="" name="applyBox"></a>
+    <img src="themes/default/image/apply.jpg" />
+    <div class="apply">
+        <div class="applyBox">
+            <form action="javascript:;" method="post" onsubmit="apply()">
+                <ul>
+                    <li>
+                        <p>免费申请体验私人医医生服务</p>
+                    </li>
+                    <li>
+                        <input type="search" name="username" placeholder="请输入您的姓名"/>
+
+                    </li>
+                    <li>
+                        <input type="search" name="mobile" placeholder="请输入您的电话"/>
+
+                    </li>
+                    <li class="twoInput">
+                        <input type="search" name="company" class="floatl" placeholder="请输入您的单位名称"/>
+                        <input type="search" name="position" class="floatl" placeholder="请输入您的职位"/>
+                        <div class="clearl"></div>
+                        <span id="err" style="color: red;display: none"></span>
+                    </li>
+                    <li>
+                        <button type="submit">提交免费申请</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <script type="text/javascript">
+       function apply(){
+           var url="";
+           var username=$('[name="username"]').val();
+           var mobile=$('[name="mobile"]').val();
+           var company=$('[name="company"]').val();
+           var position=$('[name="position"]').val();
+           if(!username){
+               $('#err').show().text('* 请填写姓名');
+               return false;
+           }
+
+           if(!validatePhone(mobile)){
+               $('#err').show().text('* 请输入正确的手机号码');
+               return false;
+           }
+
+           if(!company){
+               $('#err').show().text('* 请输入您的单位名称');
+               return false;
+           }
+
+           if(!position){
+               $('#err').show().text('* 请输入您的职位');
+               return false;
+           }
+           var data={
+               username:username,
+               mobile:mobile,
+               company:company,
+               position:position
+           };
+           $.ajax({
+               url:'message.php?act=apply',
+               type:'POST',
+               dataType:'JSON',
+               data:data,
+               success:function (res) {
+                   if(res.code==0){
+                       layer.msg(res.msg);
+                   }else{
+                       massges('知道了','提交成功',res.msg)
+                   }
+               }
+           });
+           return false;
+
+       }
+    </script>
+</div>

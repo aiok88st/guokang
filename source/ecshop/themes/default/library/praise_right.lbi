@@ -1,0 +1,23 @@
+<div class="rnBox">
+    <div class="rnTop">
+        <p>客户表扬</p>
+        <a href="article_cat-47.html"><img src="themes/default/image/moreLink.png"/></a>
+    </div>
+    <div class="rnBottom">
+        <ul>
+            <!--{foreach from=$praise item=item}-->
+            <li>
+                <a href="article-{$item.article_id}.html">{$item.title}</a>
+                <span></span>
+                <p>{$item.add_time}</p>
+            </li>
+            <!--{/foreach}-->
+
+        </ul>
+    </div>
+</div>
+<div class="rnImg">
+    <a href="javascript:;">
+        {insert name='ads' id=5 num=1}
+    </a>
+</div>

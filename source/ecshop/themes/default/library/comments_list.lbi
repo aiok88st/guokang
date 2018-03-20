@@ -1,0 +1,135 @@
+{insert_scripts files='my_common.js'}
+<div class="point">
+    <div class="pointTitle">
+        <p>评论 （<span id="c_record_count">{$pager.record_count}</span>）</p>
+    </div>
+    <form action="javascript:;" onsubmit="submitComment(this)" method="post" class="my_from">
+        <div class="pointMessage">
+            <div class="pmLeft floatl">
+                <!--{if $user_info AND $user_info.open_face}-->
+                <img src="{$user_info.open_face}" />
+                <!--{else}-->
+                <img src="themes/default/image/doctor.png" />
+                <!--{/if}-->
+            </div>
+            <div class="pmRight floatl ">
+                <textarea name="content" maxlength="250" placeholder="请留下您的评论，谢谢！"></textarea>
+            </div>
+            <div class="clearl"></div>
+        </div>
+
+        <div class="pointBtn">
+            <!--{if $user_info}-->
+            <input type="hidden" name="enabled_captcha" value="0">
+            <input type="hidden" name="email" value="{$user_info.email}">
+            <input type="hidden" name="type" value="{$comment_type}">
+            <input type="hidden" name="id" value="{$id}">
+            <input type="hidden" name="user_id" value="{$user_info.user_id}">
+            <!--{/if}-->
+            <button type="submit" class="floatr">发表评论</button>
+            <div class="clearr"></div>
+        </div>
+    </form>
+
+    <span class="border"></span>
+    <div class="pmBox commont">
+        <!-- {if $comments} -->
+        <!-- {foreach from=$comments item=comment} -->
+        <div class="pointMessage pmm">
+            <div class="pmLeft floatl">
+                <img src="{$comment.open_face}" onerror="this.src='themes/default/img/develop.jpg'"/>
+            </div>
+            <div class="pmRight floatl pmessage">
+                <ul>
+                    <li>
+                        <p class="pointName">
+                            {if $comment.name}
+                            {$comment.name|escape:html}
+                            {else}
+                            匿名用户
+                            {/if}
+
+                        </p>
+                        <p class="pointTime">{$comment.add_time}</p>
+                    </li>
+                    <li>
+                        <p class="pointContent">{$comment.content|escape:html}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearl"></div>
+        </div>
+        <!--{/foreach}-->
+        <!--{/if}-->
+    </div>
+
+
+    <div class="lookPoint">
+        <!--{if $pager['page_count'] lt 1}-->
+        <a href="javascript:page(this);">查看更多评论</a>
+        <!--{/if}-->
+    </div>
+</div>
+<script type="text/javascript">
+    function submitComment(obj){
+        <!--{if $user_info}-->
+         var data=my_from();
+        AjaxP('comment.php',{
+            "cmt":JSON.stringify(data)
+        },function(res){
+            if(res.error==0){
+                massges('知道了','系统提示',res.message,function(){
+                    window.location.reload();
+                });
+            }else{
+                massges('知道了','系统提示',res.message);
+            }
+        },"POST","JSON");
+        <!--{else}-->
+        massges('去登录','系统提示','请先登录',function(){
+            window.open("user.php");
+        });
+        <!--{/if}-->
+    }
+    var has=1;
+    function page(obj) {
+        var page=1;
+        if(has==1){
+            page++;
+
+            $.get('ajax_news.php?act=comment&id={$id}&type={$comment_type}&page='+page,function(res){
+                if(res.pager.page==res.pager.page_count){
+                    has=0;
+                    $('.lookPoint').children().remove();
+                }
+                $('#c_record_count').text(res.pager.record_count);
+                var html2='';
+                var list=res.comments;
+                for (item in list){
+                    html2 +=' <div class="pointMessage pmm">';
+                    html2 +='<div class="pmLeft floatl">';
+                    if(list[item].open_face){
+                        html2 +='<img src="'+list[item].open_face+'"/>';
+                    }else{
+                        html2 +='<img src="themes/default/image/doctor.png"/>';
+                    }
+                    html2 +='</div>';
+                    html2 +=' <div class="pmRight floatl pmessage"><ul>';
+                    html2 +=' <li>';
+                    if(list[item].name){
+                        html2 +='<p class="pointName">'+list[item].name+'</p>';
+                    }else{
+                        html2 +='<p class="pointName">'+list[item].username+'</p>';
+                    }
+                    html2 +='<p class="pointTime">'+list[item].add_time+'</p>';
+                    html2 +='</li>';
+                    html2 +='<li><p class="pointContent">'+list[item].content+'</p></li>';
+                    html2 +='</ul></div>';
+                    html2 +='<div class="clearl"></div>';
+                    html2 +='</div>';
+                }
+                $('.commont').append(html2);
+            },'JSON')
+        }
+    }
+</script>

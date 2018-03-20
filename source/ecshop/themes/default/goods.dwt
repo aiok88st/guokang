@@ -1,0 +1,221 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/shop.css" />
+<link rel="stylesheet" href="themes/default/scss/produceDetails.css?v=6" />
+        <!--定位导航-->
+        <div id="shopOne">
+            <div id="topNav">
+                <div class="topNav" style="z-index: 999">
+                    <div class="w12">
+                        <p>{$goods_title}</p>
+                        <div class="rightNav">
+                            <ul>
+                                <li>
+                                    <a href="goods-{$goods_id}.html" class="aActive">概述</a>
+                                </li>
+                                <li>
+                                    <a href="goods-{$goods_id}-over.html#part1">服务详情</a>
+                                </li>
+                                <li>
+                                    <a href="goods-{$goods_id}-over.html#part2">案例</a>
+                                </li>
+
+                                <li>
+                                    <a href="goods-{$goods_id}-over.html#part4">常见问题</a>
+                                </li>
+                                <li>
+                                    <a href="goods-{$goods_id}-over.htmlpart6">评价详情</a>
+                                </li>
+                                <li>
+                                    <button onclick="window.location.href='goods-{$goods_id}-over.html'">立即购买</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		{if $ov.ads}
+		<section class="onlyImg section1" style="background-image: url('.{$ov.ads}')" onclick="window.location.href='goods-{$goods_id}-over.html'">
+			<div class="content">
+				{$ov.ad_content}
+			</div>
+
+		</section>
+		{/if}
+
+		{if $ov.point}
+		<section class="imgContent">
+			<div class="swiper">
+				<div class="swiper-container swiper-container-top">
+					<div class="swiper-wrapper ">
+						{foreach from=$ov.point item=v}
+						<div class="swiper-slide">
+							<img src=".{$v.img}" />
+						</div>
+						{/foreach}
+					</div>
+					<div class="swiper-button-prev swiper-button-prev-top"></div>
+					<div class="swiper-button-next swiper-button-prev-top"></div>
+				</div>
+			</div>
+			<div class="swiperContent">
+				<div class="w12">
+					<div class="scBox scBox1">
+						<ul>
+							<li>
+								{foreach from=$ov.point item=v}
+								<div class="point_title" style="display: none">
+									{$v.title|wrap}
+								</div>
+								{/foreach}
+							</li>
+							<li>
+								<span></span>
+							</li>
+							<li>
+								{foreach from=$ov.point item=v}
+								<div class="point_des sTitle" style="display: none">
+									{$v.des|wrap}
+								</div>
+								{/foreach}
+							</li>
+							<li>
+								<div class="swiperBtn swiperBtnTop">
+									{foreach from=$ov.point item=v key=key}
+									<!--<a href="###" class="floatl"><img src="themes/default/image/swiperBtnActive.png"/></a>-->
+									<a href="###" class="floatl"><img src="themes/default/image/swiperBtn.png"/></a>
+									{/foreach}
+									<div class="clearl"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		{/if}
+		{if $ov.get}
+		<section class="imgContent imgContentBottom">
+			<div class="swiper">
+				<div class="swiper-container swiper-container-bottom">
+					<div class="swiper-wrapper">
+						{foreach from=$ov.get item=v}
+						<div class="swiper-slide">
+							<img src=".{$v.img}" />
+						</div>
+						{/foreach}
+					</div>
+					<div class="swiper-button-prev swiper-button-prev-bottom"></div>
+    				<div class="swiper-button-next swiper-button-prev-bottom"></div>
+				</div>
+			</div>
+			<div class="swiperContent">
+				<div class="w12">
+					<div class="scBox scBox1">
+						<ul>
+							<li>
+								{foreach from=$ov.get item=v}
+								<div class="get_title" style="display: none">
+									{$v.title|wrap}
+								</div>
+								{/foreach}
+
+							</li>
+							<li>
+								<span></span>
+							</li>
+							<li>
+								{foreach from=$ov.get item=v}
+								<div class="get_des sTitle" style="display: none">
+									{$v.des|wrap}
+								</div>
+								{/foreach}
+							</li>
+							<li>
+								<div class="swiperBtn swiperBtnBottom">
+									{foreach from=$ov.get item=v key=key}
+									<a href="###" class="floatl"><img src="themes/default/image/swiperBtn.png"/></a>
+									{/foreach}
+									<div class="clearl"></div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		{/if}
+		{if $ov.contrast}
+		<section class="onlyImg section4" style="height:auto;">
+			<img src=".{$ov.contrast}"/>
+		</section>
+		{/if}
+
+		<section id="server">
+			{if $ov.process}
+			<div class="serverTitle">
+				<p>服务流程</p>
+			</div>
+			<div class="serverTop">
+				<img src=".{$ov.process}" />
+			</div>
+			{/if}
+
+			{if $service}
+			<div class="serverTitle serverTitle1">
+				<p>服务体验</p>
+			</div>
+			<div class="serverBottom">
+				<div class="w12">
+					<div class="sBottomBox">
+						{foreach from=$service item=item}
+						<div class="floatl">
+							<a href="article-{$item.article_id}.html">{$item.title}</a>
+						</div>
+						{/foreach}
+
+					</div>	
+				</div>
+			</div>
+			{/if}
+		</section>
+		<div id="pageCircle">
+			<ul>
+
+				<li class="liActive" >
+					<a href="###"></a>
+				</li>
+
+				<li>
+					<a href="###"></a>
+				</li>
+
+				<li>
+					<a href="###"></a>
+				</li>
+				<li>
+					<a href="###"></a>
+				</li>
+				<li>
+					<a href="###"></a>
+				</li>
+
+			</ul>
+		</div>
+
+
+<script type="text/javascript" src="themes/default/script/produceDetails.js?v=6" ></script>
+<script type="text/javascript">
+    $(window).scroll(function(){
+
+        if($(this).scrollTop()>66)
+        {
+            $('.topNav').css('position','fixed');
+            $('.topNav').css('top','55px');
+        }else{
+            $('.topNav').css('position','absolute');
+            $('.topNav').css('top','auto');
+        }
+    });
+</script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

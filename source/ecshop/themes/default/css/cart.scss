@@ -1,40 +1,171 @@
-.border-bottom{
-    border-bottom: 1px solid #e5e5e5;
+.border-unleft{
+    border-left: 0;
+}
+.border-unright{
+    border-right: 0;
+}
+.btn-default:focus{
+    background-color: #fff;
+    border-color: #ccc;
+    outline: none;
 }
 .main{
     background: #fff;
     margin: 38px auto 84px;
-    .cartList{
-        padding: 16px 65px;
-        .title{
-            h4{
-                line-height: 30px;
-            }
-        }
-        .list{
-            li{
-                padding: 30px 0;
-            }
+}
+.cartList{
+    padding: 16px 65px 66px;
+    ul li{
+        padding: 30px 0;
+    }
+}
+.list-header{
+    h4{
+        line-height: 30px;
+    }
+}
+.list-checkbox{
+    label{
+        display: block;
+        width: 24px;
+        height: 24px;
+        margin: 62px 20px 0;
+        background: url(../img/shop/icon-checkbox.png) no-repeat;
+        cursor: pointer;
+        &.checked{
+            background-position-y: -24px;
         }
     }
-    
-    
-    .emptyCart{
-        width: 200px;
-        height: 170px;
-        background: url(../img/icon-cart.png) center 0 no-repeat;
-        margin: 117px auto 130px;
-        overflow: hidden;
-        text-align: center;
+    input{
         display: none;
-        p{
-            margin: 70px 0 32px;
+    }
+}
+.list-msg{
+    .pull-left,.pull-right{
+        width: 25%;
+        margin: 5px 0 0;
+    }
+    .border-bottom{
+        padding-bottom: 30px;
+    }
+}
+.list-msg-name,.list-msg-prize{
+    line-height: 46px;
+}
+.list-msg-num{
+    .input-group{
+        width: 150px;
+        margin: 0 auto;
+        input{
+            width: 50px;
+            text-align: center;
         }
         .btn{
-            width: 170px;
-            height: 46px;
-//          background: #2b65b1;
-            border-radius: 23px;
+            width: 50px;
+            font-size: 22px;
         }
+    }
+    .input-amount{
+        padding: 10px 0;
+    }
+}
+.list-msg-delet{
+    span{
+        font-size: 16px;
+        margin: 18px 24px 0;
+        float: right;
+        cursor: pointer;
+        &:hover{
+            color: skyblue;
+        }
+    }
+}
+.list-label{
+    display: inline-block;
+    line-height: 26px;
+    padding: 0 13px;
+    margin: 20px 7px 0 0;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    color: #a7a7a7;
+}
+
+
+.list-footer{
+    margin-top: 49px;
+    overflow: hidden;
+    .btn-keepShopping{
+        cursor: pointer;
+        line-height: 30px;
+    }
+    .icon-cart{
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        background: url(../img/shop/icon-cart-small.png) no-repeat;
+        vertical-align: text-top;
+    }
+    .box-pay{
+        width: 190px;
+        height: 92px;
+        .text{
+            overflow: hidden;
+            line-height: 30px;
+        }
+    }
+    .fontSize24{
+        font-size: 24px;
+    }
+    .total{
+        font-size: 30px;
+    }
+    .red{
+        color: #fb0404;
+    }
+    .btn-gotoPay{
+        width: 170px;
+        background: #2b65b1;
+        border-radius: 23px;
+        margin-top: 11px;
+    }
+}
+
+
+.emptyCart,.pay-result{
+    width: 200px;
+    background: url(../img/shop/icon-cart.png) center 0 no-repeat;
+    margin: 117px auto 130px;
+    overflow: hidden;
+    text-align: center;
+    display: none;
+    p{
+        margin: 70px 0 32px;
+    }
+    .btn{
+        width: 170px;
+        height: 46px;
+//          background: #2b65b1;
+        border-radius: 23px;
+    }
+}
+.pay-result{
+    background: url(../img/shop/icon-bag2.png) center 0 no-repeat;
+    display: block;
+    h4{
+        margin: 80px 0 6px;
+        font-weight: bold;
+    }
+    p{
+        margin: 0 0 32px;
+    }
+}
+
+@media (max-width: 767px){
+    .list-msg .list-msg-name,.list-msg .list-msg-prize {
+        width: 100%;
+        text-align: left;
+    }
+    .list-msg .list-msg-num,.list-msg .list-msg-delet {
+        width: 50%;
     }
 }

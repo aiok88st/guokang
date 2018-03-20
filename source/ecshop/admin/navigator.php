@@ -16,6 +16,10 @@
 define('IN_ECS', true);
 require(dirname(__FILE__) . '/includes/init.php');
 
+include_once(ROOT_PATH . '/includes/lib_model.php');
+
+$model=new Model;
+
 admin_priv('navigator');
 
 $exc = new exchange($ecs->table("nav"), $db, 'id', 'name');
@@ -31,6 +35,16 @@ if ($_REQUEST['act'] == 'list')
 
     $navdb = get_nav();
 
+    $table=$ecs->table('nav');
+    foreach ($navdb['navdb'] as $key=>$value){
+          if($value['id']){
+                $chil_list=$model->table($table)->where("`parent_id`=$value[id]")->select();
+                if($chil_list){
+                    $navdb['navdb'][$key]['chile']=$chil_list;
+                }
+          }
+
+    }
     $smarty->assign('navdb',   $navdb['navdb']);
     $smarty->assign('filter',       $navdb['filter']);
     $smarty->assign('record_count', $navdb['record_count']);
@@ -63,14 +77,19 @@ elseif ($_REQUEST['act'] == 'add')
     if (empty($_REQUEST['step']))
     {
         $rt = array('act'=>'add');
-
         $sysmain = get_sysnav();
+
+        /**获取导航，并无限级分类**/
+        $nav_list=$model->table($ecs->table('nav'))->where('`parent_id`=0')->select();
+
+        $smarty->assign('nav_list',$nav_list);
 
         $smarty->assign('action_link', array('text' => $_LANG['go_list'], 'href' => 'navigator.php?act=list'));
         $smarty->assign('ur_here', $_LANG['navigator']);
         assign_query_info();
         $smarty->assign('sysmain',$sysmain);
         $smarty->assign('rt', $rt);
+
         $smarty->display('navigator_add.htm');
     }
     elseif ($_REQUEST['step'] == 2)
@@ -80,6 +99,7 @@ elseif ($_REQUEST['act'] == 'add')
         $item_ifshow = $_REQUEST['item_ifshow'];
         $item_opennew = $_REQUEST['item_opennew'];
         $item_type = $_REQUEST['item_type'];
+        $item_parent_id = (int)$_REQUEST['parent_id'];
 
         $vieworder = $db->getOne("SELECT max(vieworder) FROM ". $ecs->table('nav') . " WHERE type = '". $item_type ."'");
 
@@ -94,13 +114,13 @@ elseif ($_REQUEST['act'] == 'add')
             {
                 //如果为分类
                 set_show_in_nav($arr['type'], $arr['id'], 1);   //设置显示
-                $sql = "INSERT INTO " . $GLOBALS['ecs']->table('nav') . " (name,ctype,cid,ifshow,vieworder,opennew,url,type) VALUES('$item_name','".$arr['type']."','".$arr['id']."','$item_ifshow','$item_vieworder','$item_opennew','$item_url','$item_type')";
+                $sql = "INSERT INTO " . $GLOBALS['ecs']->table('nav') . " (name,ctype,cid,ifshow,vieworder,opennew,url,type,parent_id) VALUES('$item_name','".$arr['type']."','".$arr['id']."','$item_ifshow','$item_vieworder','$item_opennew','$item_url','$item_type',$item_parent_id)";
             }
         }
 
         if(empty($sql))
         {
-            $sql = "INSERT INTO " . $GLOBALS['ecs']->table('nav') . " (name,ifshow,vieworder,opennew,url,type) VALUES('$item_name','$item_ifshow','$item_vieworder','$item_opennew','$item_url','$item_type')";
+            $sql = "INSERT INTO " . $GLOBALS['ecs']->table('nav') . " (name,ifshow,vieworder,opennew,url,type,parent_id) VALUES('$item_name','$item_ifshow','$item_vieworder','$item_opennew','$item_url','$item_type',$item_parent_id)";
         }
         $db->query($sql);
         clear_cache_files();
@@ -125,8 +145,14 @@ elseif ($_REQUEST['act'] == 'edit')
         $rt['item_ifshow_'.$row['ifshow']] = 'selected';
         $rt['item_opennew_'.$row['opennew']] = 'selected';
         $rt['item_type_'.$row['type']] = 'selected';
+        $rt['parent_id']=$row['parent_id'];
 
         $sysmain = get_sysnav();
+
+        /**获取导航，并无限级分类**/
+        $nav_list=$model->table($ecs->table('nav'))->where('`parent_id`=0')->select();
+
+        $smarty->assign('nav_list',$nav_list);
 
         $smarty->assign('action_link', array('text' => $_LANG['go_list'], 'href' => 'navigator.php?act=list'));
         $smarty->assign('ur_here', $_LANG['navigator']);
@@ -143,7 +169,7 @@ elseif ($_REQUEST['act'] == 'edit')
         $item_opennew = $_REQUEST['item_opennew'];
         $item_type = $_REQUEST['item_type'];
         $item_vieworder = (int)$_REQUEST['item_vieworder'];
-
+        $item_parent_id = (int)$_REQUEST['parent_id'];
         $row = $db->getRow("SELECT ctype,cid,ifshow,type FROM " . $GLOBALS['ecs']->table('nav') . " WHERE id = '$id'");
         $arr = analyse_uri($item_url);
 
@@ -179,7 +205,7 @@ elseif ($_REQUEST['act'] == 'edit')
                  set_show_in_nav($arr['type'], $arr['id'], $item_ifshow);
             }
             $sql = "UPDATE " . $GLOBALS['ecs']->table('nav') .
-                " SET name='$item_name',ctype='" . $arr['type'] . "',cid='" . $arr['id'] . "',ifshow='$item_ifshow',vieworder='$item_vieworder',opennew='$item_opennew',url='$item_url',type='$item_type' WHERE id='$id'";
+                " SET name='$item_name',ctype='" . $arr['type'] . "',cid='" . $arr['id'] . "',ifshow='$item_ifshow',vieworder='$item_vieworder',opennew='$item_opennew',url='$item_url',type='$item_type',parent_id='$item_parent_id' WHERE id='$id'";
         }
         else
         {
@@ -191,7 +217,7 @@ elseif ($_REQUEST['act'] == 'edit')
             }
 
             $sql = "UPDATE " . $GLOBALS['ecs']->table('nav') .
-                " SET name='$item_name',ctype='',cid='',ifshow='$item_ifshow',vieworder='$item_vieworder',opennew='$item_opennew',url='$item_url',type='$item_type' WHERE id='$id'";
+                " SET name='$item_name',ctype='',cid='',ifshow='$item_ifshow',vieworder='$item_vieworder',opennew='$item_opennew',url='$item_url',type='$item_type',parent_id='$item_parent_id' WHERE id='$id'";
         }
 
 
@@ -313,11 +339,14 @@ function get_nav()
         /* 分页大小 */
         $filter = page_and_size($filter);
 
+        $filter['page_size']=999;
         /* 查询 */
-        $sql = "SELECT id, name, ifshow, vieworder, opennew, url, type".
+        $sql = "SELECT parent_id,id, name, ifshow, vieworder, opennew, url, type".
                " FROM ".$GLOBALS['ecs']->table('nav').
+               "WHERE `parent_id`=0".
                " ORDER by " . $filter['sort_by'] . ' ' . $filter['sort_order'] .
                " LIMIT " . $filter['start'] . ',' . $filter['page_size'];
+
 
         set_filter($filter, $sql);
     }

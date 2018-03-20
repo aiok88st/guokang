@@ -1,0 +1,203 @@
+$blue:#056dbb;
+$black:#555555;
+section{
+    min-width: 1200px;
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.onlyImg{
+    >img{
+        height: 100%;
+    }   
+}
+.section1{
+    button{
+        width: 246px;
+        height: 50px;
+        font-size: 24px;
+        color: $blue;
+        background-color: white;
+        border-radius: 8px;
+        position: absolute;
+        left: 50%;
+        bottom: 5%;
+        margin-left: -123px;
+    }
+}
+.imgContent{
+    position: relative;
+    .swiper{
+        width: 51.35%;
+        margin-left: 48.65%;
+        height: 100%;
+        overflow: hidden;
+        .swiper-container,.swiper-slide,.swiper-wrapper{
+            width: 100%;
+            height: 100%;
+           
+        }
+        .swiper-slide{
+             overflow-x: hidden;
+            -ms-overflow-x: hidden;
+        }
+        .swiper-button-prev,.swiper-button-next{            
+            width: 24px;
+            height: 48px;
+            background-size: 24px 48px;
+            margin-top: -24px;
+        }
+        .swiper-button-prev{
+            left: 30px;
+            background-image: url(../image/leftQ.png);
+        }
+        .swiper-button-next{
+            right: 30px;
+            background-image: url(../image/rightQ.png);
+        }
+        img{
+//          width: 100%;
+            height: 100%;
+        }
+    }
+    .swiperContent{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        .w12{
+            height: 100%;
+            .scBox{
+                position: absolute;
+                top: 50%;
+                margin-top: -110px;
+            }
+        }
+        .scBox{
+            p{
+                font-size: 30px;
+                color: #424242;
+                line-height:40px;
+            }
+            span{
+                display: block;
+                width: 90px;
+                border-bottom: 2px solid #424242;
+                margin: 8px 0 9px;
+            }
+            .sTitle{
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        }
+        .swiperBtn{
+            a{
+                display: block;
+                margin-right: 16px;
+            }
+        }
+    }
+}
+.imgContentBottom{
+    .swiper{
+        margin-left: 0%;
+    }
+    .swiperContent{
+        left: 53.8%;
+        .w12{
+            width: 100%;
+            
+        }
+    }
+}
+p{
+    margin:  0 ;
+}
+.footer{
+    margin-top: 0px;
+}
+#server{
+    width: 100%;
+    background-color: white;
+    .serverTitle{
+        text-align: center;
+        font-size: 36px;
+        height: 15%;
+    }
+    .serverTitle1{
+        height: 10%;
+    }
+    .serverTop{
+        height: 40%;
+        img{
+            display: block;
+            height: 100%;
+            margin: 0 auto;
+        }
+    }
+    .serverBottom{
+        height: 35%;
+        .w12{
+            height: 100%;
+            position: relative;
+            .sBottomBox{
+                width: 100%;
+                position: absolute;
+                top: 45%;
+                left: 0;
+                margin-top: -60px;
+                >div {
+                    width: 400px;
+                    a {
+                        display: block;
+                        color: #757575;
+                        line-height: 24px;
+                    }
+                }
+                
+                >div:nth-child(3n+2) {
+                    text-align: center;
+                }
+                
+                >div:nth-child(3n) {
+                    text-align: right;
+                }
+            } 
+        }
+    }
+}
+@media (min-width:1440px){
+    .imgContent .swiperContent .scBox p {
+        font-size: 40px;
+        line-height: 60px;
+    }
+    .imgContent .swiperContent .scBox .sTitle{
+        font-size: 20px;
+    }
+}
+#pageCircle{
+    position: fixed;
+    left: 20px;
+    top: 50%;
+    margin-top: -78px;
+    z-index: 1000;
+    ul li a{
+        display: block;
+        border-radius: 50%;
+        width: 14px;
+        height: 14px;
+        background-color: #d2e7ff;
+    }
+    .liActive{
+        a{
+            background-color: $blue;
+        }
+    }
+    ul li{
+        margin-bottom: 19px;
+    }
+    ul li:nth-last-child(1){
+        margin-bottom: 0px;
+    }
+}

@@ -1,0 +1,155 @@
+.main {
+	background: #fff;
+	margin: 38px auto 84px;
+}
+.box-tip{
+	max-width: 434px;
+	margin: 125px auto 98px;
+	overflow: hidden;
+}
+.box-tip .text{
+	margin-top: 15px;
+}
+.box-tip .text p{
+	margin: 0;
+}
+.icon-bag{
+	width: 140px;
+	height: 74px;
+	background: url(../img/shop/icon-bag.png) no-repeat;
+	margin-right: 38px;
+}
+.fontSize24{
+	font-size: 24px;
+}
+.fontSize16{
+	font-size: 16px;
+}
+.color-gray{
+	color: #888;
+}
+.rows{
+	margin: 0 50px 0;
+}
+.rows-pay-type{
+	margin-bottom: 290px;
+}
+
+.row-pay-type{
+	width: 100%;
+}
+.row-pay-type .text{
+	line-height: 44px;
+	margin-right: 100px;
+}
+.form-group-pay-type label{
+    display: inline-block;
+    width: 224px;
+    height: 42px;
+    margin-right: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    cursor: pointer;
+    line-height: 42px;
+    text-align: center;
+    font-weight: normal;
+    color: #888;
+}
+.form-group-pay-type label.checked{
+    border-color: #0068b7;
+    background: url(../img/shop/pay-type-active.png) right -3px no-repeat;
+}
+
+.form-group-pay-type input{
+    display: none;
+}
+
+.form-group-pay-type i{
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 9px;
+	position: relative;
+	top: -2px;
+}
+
+.icon-alipay{
+	width: 25px;
+	height: 25px;
+	background: url(../img/shop/icon-alipay.png) no-repeat;
+}
+
+.icon-wechatpay{
+	width: 24px;
+	height: 21px;
+	background: url(../img/shop/icon-wechatpay.png) no-repeat;
+}
+.checked .label-pay-type-checked{
+	display: block;
+}
+.label-pay-type-checked{
+	width: 152px;
+	top: 62px;
+	left: 50%;
+	margin-left: -76px;
+	display: none;
+}
+.label-pay-type-checked:after,.label-pay-type-checked:before{
+	content: "";
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-bottom-color: #e5e5e5;
+	position: absolute;
+	cursor: default;
+	left: 50%;
+	margin-left: -10px;
+	top: -20px;
+}
+.label-pay-type-checked:after{
+	border-bottom-color: #fff;
+	top: -18px;
+}
+.label-pay-type-checked .qrcode{
+	margin: 30px 0 15px;
+}
+.label-pay-type-checked p{
+	line-height: 20px;
+}
+
+
+.box-pay{
+    width: 190px;
+    margin: 40px 0 70px;
+}
+.box-pay .text{
+    overflow: hidden;
+    line-height: 30px;
+}
+.total{
+    font-size: 30px;
+}
+.red{
+    color: #fb0404;
+}
+
+@media (max-width: 992px){
+	.form-group-pay-type label{
+		width: 190px;
+	}
+}
+@media (max-width: 768px){
+	.box-tip .pull-left{
+		float: initial !important;
+	}
+	.box-tip .icon-bag{
+		margin: 0 auto;
+	}
+	.box-tip .text {
+	    text-align: center;
+	}
+}
+@media (max-width: 556px){
+	.alipay .label-pay-type-checked{
+		top: 124px;
+	}
+}

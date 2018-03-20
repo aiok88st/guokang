@@ -1,0 +1,106 @@
+#forget {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%; }
+  #forget .forgetTitle {
+    font-size: 0.32rem;
+    margin: 0.65rem auto 1.2rem;
+    text-align: center; }
+  #forget .formBox {
+    width: 86.67%;
+    margin: 0 auto; }
+    #forget .formBox .formContent {
+      font-size: 0.22rem;
+      color: #555555;
+      line-height: 0.6rem; }
+    #forget .formBox ul li div.input {
+      width: 100%; }
+      #forget .formBox ul li div.input input {
+        display: block;
+        width: 85%;
+        margin-left: 5%;
+        border: 0px;
+        line-height: 0.8rem;
+        font-size: 0.24rem;
+        color: #555555; }
+    #forget .formBox ul li div.password {
+      margin-bottom: 0px; }
+    #forget .formBox ul li.liborder {
+      border: 1px solid #dddddd;
+      margin-bottom: 0.4rem;
+      position: relative; }
+    #forget .formBox .twoChoice {
+      margin: 0.5rem 0; }
+    #forget .formBox .tcLeft {
+      font-size: 0.22rem;
+      color: #555555;
+      text-indent: 0.4rem;
+      height: 0.3rem;
+      position: relative;
+      line-height: 0.3rem; }
+      #forget .formBox .tcLeft .checkBox {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 0.3rem;
+        height: 0.3rem;
+        border: 1px solid #c8c8c8; }
+        #forget .formBox .tcLeft .checkBox input {
+          display: block;
+          width: 100%;
+          height: 100%;
+          opacity: 0; }
+      #forget .formBox .tcLeft label {
+        margin-top: 1px; }
+      #forget .formBox .tcLeft .checkHas {
+        background: url(../img/yes.png) no-repeat center center;
+        background-size: 0.24rem; }
+    #forget .formBox .tcRight {
+      font-size: 0.22rem;
+      height: 0.3rem;
+      line-height: 0.3rem;
+      margin-top: 1px; }
+      #forget .formBox .tcRight a {
+        color: #555555; }
+    #forget .formBox ul li div.accountEr input {
+      width: 46%; }
+    #forget .formBox button {
+      width: 100%;
+      height: 0.8rem;
+      font-size: 0.26rem;
+      color: white;
+      display: block;
+      background-color: #0068b7;
+      border-radius: 5px; }
+    #forget .formBox .get {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 35%;
+      height: 0.6rem;
+      margin-top: 0.1rem;
+      color: #0068b7;
+      background-color: transparent;
+      border-left: 1px solid #dddddd;
+      border-radius: 0px; }
+    #forget .formBox .eye {
+      position: absolute;
+      top: 0.27rem;
+      height: 0.26rem;
+      right: 5%; }
+      #forget .formBox .eye img {
+        height: 100%; }
+    #forget .formBox ul li div.pwd input {
+      width: 79%; }
+
+.tips {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 0.22rem;
+  line-height: 0.4rem;
+  margin-top: 0.2rem;
+  text-align: justify; }
+
+/*# sourceMappingURL=forget.css.map */

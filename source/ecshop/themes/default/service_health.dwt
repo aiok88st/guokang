@@ -1,0 +1,235 @@
+﻿<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/serverSystem.css" />
+<style type="text/css">
+    #banner img{
+        padding-left: 50%;
+        margin-left: -960px;
+    }
+</style>
+<!--轮播图-->
+<div id="banner" align="center">
+    <img src="themes/default/image/ssBanner.jpg" />
+</div>
+<!--服务流程-->
+<div id="process">
+    <div class="w12">
+        <div class="titlel">
+            <ul>
+                <li>
+                    <p>保健标准体系</p>
+                </li>
+                <li>
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+        <div class="processImg">
+            <img src="themes/default/image/process.png" class="img-responsive" />
+        </div>
+    </div>
+</div>
+<div id="fit">
+    <div class="titlel">
+        <ul>
+            <li>
+                <p>健康管理中心</p>
+            </li>
+            <li>
+                <span></span>
+            </li>
+        </ul>
+    </div>
+    <div class="w12">
+        <div class="fixBox">
+            <div class="fbLeft floatl">
+                <img src="themes/default/image/fit01.jpg" />
+            </div>
+            <div class="fbRight floatl">
+                <ul>
+                    <li>
+                        <p></p>
+                    </li>
+                    <li>
+                        <p>国康健康管理中心（也称“国康康管家保健办”）依托国康健康集团整合的强大医疗资源，全国知名三甲医院知名权威专家定期莅临坐诊、专业指导。并且配置了由资深全科医生、高级营养师、运动康复师、理疗师和健康顾问组成的专业团队，为客户提供专业精准的慢性病管理、名中医调理、营养指导、运动康复、推拿理疗、健康跟踪干预等全面系统的健康管理服务。<br>
+                        国康健康管理中心配备了健康指标监测设备、瑞典心肺功能测试系统等设备，为客户提供科学精确的健康指标监测数据；积极引进意大利Mi-too筋膜床、阿基米悬吊系统、比利时短波治疗仪、美国跑台等先进运动康复设备，为客户提供专业优质的保健服务。 </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearl"></div>
+        </div>
+
+    </div>
+</div>
+<!--保健-->
+<div id="profect">
+    <div class="w12">
+        <div class="titlel">
+            <ul>
+                <li>
+                    <p>国康保健体系引领行业标准</p>
+                </li>
+                <li>
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+        <div class="proContent">
+            <p>国康参照国家卫生部慢性病管理规范，建立了亚健康管理体系、慢性病管理体系和家族病管理体系等保健体系，保健团队由国康全科医生、营养师、<br/>
+                运动师和理疗师组成，各学科保健专家定期指导服务过程，保证保健效果。保健团队从疾病防治、饮食、运动、康复理疗等方面系统为客户制定保健方案，并监督、<br/>
+                跟踪保健方案的实施效果。通过标准规范的保健管理体系，帮助客户改善亚健康状态，防止慢性病恶化和并发症的发生，降低家族性疾病发生的几率。</p>
+            <img src="themes/default/image/profect.jpg" />
+        </div>
+    </div>
+</div>
+<!--特点-->
+<div id="special" class="w12">
+    <div class="titlel">
+        <ul>
+            <li>
+                <p>国康服务特点</p>
+            </li>
+            <li>
+                <span></span>
+            </li>
+        </ul>
+    </div>
+    <div class="specailBox">
+        <div class="sBoxLeft floatl">
+            <ul>
+                <li>
+                    <img src="themes/default/image/fix03.png" />
+                </li>
+                <li>
+                    <p></p>
+                </li>
+                <li>
+                    <p>系统科学，专人管理</p>
+                </li>
+                <li>
+                    <img src="themes/default/image/fit06.jpg" />
+                </li>
+            </ul>
+        </div>
+        <div class="sBoxLeft floatl">
+            <ul>
+                <li>
+                    <img src="themes/default/image/fix04.png" />
+                </li>
+                <li>
+                    <p></p>
+                </li>
+                <li>
+                    <p>改善亚健康状态，防止慢性病恶化，预防家族病</p>
+                </li>
+                <li>
+                    <img src="themes/default/image/fit07.jpg" />
+                </li>
+            </ul>
+        </div>
+        <div class="sBoxLeft floatl">
+            <ul>
+                <li>
+                    <img src="themes/default/image/fix05.png" />
+                </li>
+                <li>
+                    <p></p>
+                </li>
+                <li>
+                    <p>实现“身心健康、基业长青”的双重目标病</p>
+                </li>
+                <li>
+                    <img src="themes/default/image/fit08.jpg" />
+                </li>
+            </ul>
+        </div>
+        <div class="clearl"></div>
+    </div>
+</div>
+
+<!--相关案例-->
+<div id="aboutCase">
+    <div class="w12">
+        <div class="titlel">
+            <ul>
+                <li>
+                    <p>案例</p>
+                </li>
+                <li>
+                    <p class="titleDetails">感谢国康让我回到健康，在你们的管理下，我的糖尿病不用吃药控制了，真是奇迹！</p>
+                </li>
+                <li>
+                    <span></span>
+                </li>
+            </ul>
+        </div>
+        <div class="acBox">
+            <div class="acLeft floatl">
+                <a href="###" class="acImgContent">
+                    <ul>
+                        <li>
+                            <img src="themes/default/image/fit09.jpg" />
+                        </li>
+                        <li>
+                            <p>在成为国康会员短短4个月日子里，全科医生和健康助理专业细致、耐心周到服务深深打动了姚先生，他被服务过程中国康会员尊享首长般的待遇和快捷高效、敬业精神所感动。全科医生团队在为姚先生进行详细信息采集后，对总体健康状况给予全面评估，并且设计了个性化体检方案，体检过程中，健康管家全程陪同，体检结束后，全科医生又针对报告中异常指标为姚先生进行了详细解读，同时就饮食、睡眠、运动方面出具了相应的指导意见。</p>
+                        </li>
+                    </ul>
+                </a>
+                <a href="###" class="acImgContent">
+                    <ul>
+                        <li>
+                            <img src="themes/default/image/fit11.jpg" />
+                        </li>
+                        <li>
+                            <p>姚先生非常配合，按时服药、饮食控制、坚持运动。经过4个多月坚持不懈地努力，姚先生的很多不良生活习惯得到明显改善，各项检验指标有了显著好转，体重由原来的88kg减到68kg；空腹血糖由原来的7.37mmol/L降至6.03mmol/L；餐后血糖由原来的8.84mmol/L降至7.42mmol/L；脂肪肝的检测结果明显好转，精神状态饱满，面色红润，对待事物的态度趋于乐观，原有疲乏无力感觉明显消失。</p>
+                        </li>
+                    </ul>
+                </a>
+            </div>
+            <div class="acMiddle floatl">
+                <div class="acBox">
+                    <div class="acCircle">
+                        <div></div>
+                    </div>
+                    <div class="acCircle">
+                        <div></div>
+                    </div>
+                </div>
+                <div class="acBox">
+                    <div class="acCircle">
+                        <div></div>
+                    </div>
+                    <div class="acCircle">
+                        <div></div>
+                    </div>
+                    <div class="smCircle"></div>
+                </div>
+            </div>
+            <div class="acRight floatr">
+                <a href="###" class="acImgContent">
+                    <ul>
+                        <li>
+                            <img src="themes/default/image/fit10.jpg" />
+                        </li>
+                        <li>
+                            <p>由于姚先生空腹血糖及餐后血糖均显著异常。国康先后安排了北京协和医院内分泌科向红丁教授、李文慧主任、李光伟主任等知名糖尿病专家为其看诊，在改变现有生活方式的基础上，给予药物干预。其后，国康的全科医生、营养运动顾问、健康管家定期以电话、短信等方式对姚先生饮食、运动、睡眠等生活方式进行提醒、督导及跟踪随访。并且给予一定的心理疏导。</p>
+                        </li>
+                    </ul>
+                </a>
+                <a href="###" class="acImgContent">
+                    <ul>
+                        <li>
+                            <img src="themes/default/image/fit12.jpg" />
+                        </li>
+                        <li>
+                            <p>姚先生在前不久国康北京分公司举办的一场沙龙活动中表示，“是国康让我回到了健康，找到了自信！自己是国康精心缔造出来的优质成果”！并愿意终身为国康做一名健康宣传者。</p>
+                        </li>
+                    </ul>
+                </a>
+            </div>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="themes/default/script/serverSystem.js" ></script>

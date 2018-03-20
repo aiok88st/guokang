@@ -13,6 +13,7 @@
  * $Id: init.php 17217 2011-01-19 06:29:08Z liubo $
 */
 require_once(str_replace('/admin/includes','/includes',str_replace('\\', '/', dirname(__FILE__))) . '/safety.php');
+
 if (!defined('IN_ECS'))
 {
     die('Hacking attempt');

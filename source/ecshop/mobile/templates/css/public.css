@@ -1,0 +1,182 @@
+.box {
+  width: 94.67%;
+  margin: 0 auto; }
+
+#headers {
+  text-align: center;
+  font-size: 0.32rem;
+  line-height: 0.9rem;
+  width: 100%;
+  background-color: #333333;
+  color: white;
+  position: relative; }
+  #headers .returnBack {
+    position: absolute;
+    left: 2.665%;
+    top: 0;
+    height: 100%;
+    width: 2.4%;
+    background: url(../img/rBtn.png) no-repeat center center;
+    background-size: 100%; }
+  #headers .moreNav {
+    position: absolute;
+    right: 2.665%;
+    top: 0;
+    width: 4%;
+    height: 100%;
+    background: url(../img/threeMore.png) no-repeat center center;
+    background-size: 100%; }
+
+.blueBtn {
+  display: block;
+  height: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #0068b7;
+  background-color: #0068b7;
+  margin: 0 auto;
+  font-size: 0.26rem;
+  color: white; }
+
+.rayBtn {
+  display: block;
+  height: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #e4e4e4;
+  background-color: transparent;
+  margin: 0 auto;
+  font-size: 0.26rem;
+  color: #555555; }
+
+header {
+  height: 1.0rem;
+  background-color: white;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column; }
+  header .mNav {
+    position: absolute;
+    left: 2.665%;
+    top: 0;
+    width: 4.53%;
+    height: 100%;
+    background: url(../img/moreicon.png) no-repeat center center;
+    background-size: 100%; }
+  header .pCenter {
+    position: absolute;
+    right: 2.665%;
+    top: 0;
+    width: 4.53%;
+    height: 100%;
+    background: url(../img/person.png) no-repeat center center;
+    background-size: 100%; }
+  header > img {
+    width: 24%;
+    margin: 0 auto; }
+
+.p1 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden; }
+
+.p2 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden; }
+
+.p3 {
+  word-break: break-all;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden; }
+
+
+#doctor {
+  width: 92%;
+  margin: 0 auto; }
+  #doctor .doctor {
+    width: 98%;
+    margin: 0 auto;
+    }
+    .dtBox p {
+      font-size: 0.4rem;
+      color: #000000;
+      line-height: 1rem; }
+    .dtBox a {
+      display: block;
+      margin-top: 0.2rem;
+      line-height: 0.8rem;
+      color: #555555;
+      font-size: 0.26rem; }
+.bottom-top{
+  border-top: 1px solid #cecece ;
+}
+.mb05{
+  margin-bottom: 0.5rem;
+}
+.w92{
+  width: 92%;
+  margin: 0 auto;
+}
+.title1{
+  font-size: 0.4rem !important;
+}
+.title2{
+  font-size: 0.28rem !important;
+}
+.title3{
+  font-size: 0.24rem !important;
+}
+.title4{
+  font-size: 0.23rem !important;
+}
+footer {
+  background-color: #333333;
+  padding: 0.4rem 0 0; }
+  footer .footLink {
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #484848; }
+    footer .footLink a {
+      display: block;
+      width: 50%;
+      line-height: 0.5rem;
+      font-size: 0.26rem;
+      color: white;
+      text-indent: 0.2rem; }
+  footer .erAndPhone {
+    border-bottom: 1px solid #484848; }
+    footer .erAndPhone .erBox {
+      width: 2rem;
+      height: 2rem;
+      margin: 0 auto;
+      margin-top: 0.6rem;
+      background-color: #dddddd; }
+    footer .erAndPhone .tellphone {
+      text-align: center;
+      font-size: 0.4rem;
+      line-height: 1.0rem;
+      color: white; }
+  footer .copy {
+    width: 100%;
+    font-size: 0.15rem;
+    color: #6e6e6e;
+    line-height: 0.4rem;
+    padding: 0.25rem 0; }
+    footer .copy p {
+      text-indent: 0.1rem; }
+
+/*# sourceMappingURL=public.css.map */

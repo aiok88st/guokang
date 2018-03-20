@@ -1,0 +1,123 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+{if $article.cat_id eq 45}
+<link rel="stylesheet" href="themes/default/scss/caseDetails.css" />
+
+<style>
+
+	#banner .w12{
+		margin-left: 0;
+	}
+
+</style>
+{else /}
+<link rel="stylesheet" href="themes/default/scss/newsDetails.css?v=1" />
+
+{/if}
+<link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
+<style>
+    #banner img{
+        width: 100%;
+        height: 400px;
+    }
+
+	.content{
+		padding: 10px;
+	}
+	.content a{
+		display: inline;
+	}
+</style>
+		<!--集团简介-->
+		<div id="banner" align="center">
+
+			{insert name='ads' id=6 num=1}
+			{if $article.cat_id eq 45}
+			<div class="partner">
+				<div class="w12">
+					<div class="pnLeft floatl" style="margin-right: 100px">
+						<img src="{$article.file_url}" style="height: auto"/>
+					</div>
+					<div class="pfnRight floatl">
+						<ul>
+							<li>
+								<p style="font-size: 40px;line-height: 50px">{$article.title}</p>
+							</li>
+							<li>
+								{$article.description|wrap}
+							</li>
+						</ul>
+					</div>
+					<div class="clearl"></div>
+				</div>
+			</div>
+			{else /}
+			<div class="brBox">
+				<div class="w12">
+					<ul>
+						<li>
+							<p style="font-weight: 900">{$article.title}</p>
+							<p style="font-size: 14px;padding-top:24px; width:800px">{$article.description}</p>
+						</li>
+						<li>
+
+							<p>日期：{$article.add_time}</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			{/if}
+		</div>
+        <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+		<div id="mainContent">
+			<div class="w12">
+				<div class="leftContent floatl">
+					<div class="article">
+						<div class="fullContent">
+
+							<div class="content">
+								{$article.content}
+							</div>
+                        </div>
+						<div class="nextPrev">
+                            <!-- {if $prev_article neq ''} -->
+							<a href="{$prev_article.url}" class="floatl">
+								<img src="themes/default/image/leftBtn.png" class="floatl"/>
+								<p  class="floatl">上一篇：{$prev_article.title}</p>
+							</a>
+                            <!-- {else} -->
+                            <a href="javascript:;" class="floatl">
+                                <img src="themes/default/image/leftBtn.png" class="floatl"/>
+                                <p class="floatl">No More</p>
+                            </a>
+                            <!-- {/if} -->
+
+
+                            <!-- {if $next_article neq ''} -->
+							<a href="{$next_article.url}" class="floatr">
+								<p class="floatl">下一篇：{$next_article.title}</p>
+								<img src="themes/default/image/rightBtn.png" class="floatl"/>
+							</a>
+                            <!-- {else} -->
+                            <a href="javascript:;" class="floatr">
+                                <p class="floatl">No More</p>
+                                <img src="themes/default/image/rightBtn.png" class="floatl"/>
+                            </a>
+                            <!-- {/if} -->
+
+							<div class="clearBoth"></div>
+						</div>
+					</div>
+
+					{insert name='comments' type=1 id=$id}
+				</div>
+				<div class="rightNavs floatl">
+                    <!-- #BeginLibraryItem "/library/news_right.lbi" --><!-- #EndLibraryItem -->
+                    <!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+				</div>
+				<div class="clearl"></div>
+			</div>
+
+		</div>
+<script type="text/javascript" src="themes/default/script/news.js?v=2" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

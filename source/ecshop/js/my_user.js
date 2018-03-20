@@ -44,6 +44,8 @@ function register_vcode_result(result){
         Ajax('user.php?act=ajax_validate_sms', {"mobile":regPhone}, register_sms, 'POST', 'JSON');
         $('.mobile').text(regPhone);
     }else{
+        var v=Math.random();
+        $('.captchaimg').attr('src','captcha.php?v='+v);
         layer.msg('验证码错误');
     }
 
@@ -146,11 +148,15 @@ function login_succ(res) {
 function rep_validate_code(){
     var userAccount = $("#userAccount").val();
     if(!validatePhone(userAccount)||validateEmail(userAccount)){
-        layer.msg(res.content);
+        layer.msg('请输入注册的手机号码');
+        return false;
+    }
+    var captcha=$('#regCode').val();
+    if(!captcha){
+        layer.msg('请输入验证码');
         return false;
     }
 
-    var captcha=$('#regCode').val();
     var filter = new Object;
     filter.code    = captcha;
     Ajax('user.php?is_ajax=1&act=ajax_validate_vcode', filter, rep_validate_code_result, 'GET', 'JSON');
@@ -173,7 +179,7 @@ function rep_send_sms(res){
         $(".step-1").hide();
         $(".step-2").show();
         $("#showPhone").text(encryptPhone(userAccount));
-
+        $('#username').val(userAccount);
         var html="重新发送(<span id='wagetTime'>120</span>)";
         $('#btn-getCode').html(html).attr('disabled','disabled').addClass("disabled");
         if(waget==120){
@@ -189,28 +195,24 @@ function rep_send_sms(res){
             },1000);
         }
     }else{
-        layer.msg(res.content);
+
+
+        layer.msg(res.content,function(){
+            if(res.url){
+                window.location.href=res.url;
+            }
+        });
     }
 }
 
 
 //提交短信验证码
-$(".btn-next-2").on("click",function(){
-    var msgCode = $("#msgCode").val();
-    if(validateCode(msgCode)){
-//				$.ajax({
-//					type: "POST",
-//					async: false,
-//					cache: false,
-//					url: "xxx",
-//					data: {},
-//					success: function(data) {
-        $(".step-2").hide();
-        $(".step-3").show();
-//					}
-//				});
-    }else{
-        alert("请输入正确的短信验证码！");
+function check_sms_form(){
+    var $mscode=$('#msgCode').val();
+    if(!$mscode){
+        layer.msg("请填写验证码");
+        return false;
     }
-});
+    return true;
+}
 /*找回密码end*/

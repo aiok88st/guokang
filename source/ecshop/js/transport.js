@@ -225,7 +225,7 @@ var Transport =
         self.onComplete();
       }
 
-      alert(this.filename + "/run() error:" + ex.description);
+      // alert(this.filename + "/run() error:" + ex.description);
     }
   },
 

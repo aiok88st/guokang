@@ -1,0 +1,157 @@
+<!-- $Id: article_list.htm 16783 2009-11-09 09:59:06Z liuhui $ -->
+
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+<div class="form-div">
+    <form action="javascript:;" name="searchForm" >
+         标签名称<input type="text" name="keyword" id="keyword" />
+        <input type="submit" value="添加标签" class="button" onclick="submits()"/>
+    </form>
+    <script type="text/javascript">
+        function submits(){
+
+            var title=document.getElementById('keyword').value;
+            Ajax.call('goods_tag.php?act=add',{"name":title,"act":"add"}, submit_sun, "POST", "JSON", false);
+            return false;
+        }
+        function submit_sun(res){
+            if(res.code==1){
+                window.location.reload();
+            }else{
+                alert(res.msg);
+            }
+        }
+    </script>
+</div>
+
+<form method="POST" action="goods_tag.php?act=batch_remove" name="listForm">
+    <!-- start cat list -->
+    <div class="list-div" id="listDiv">
+        {/if}
+        <table cellspacing='1' cellpadding='3' id='list-table'>
+            <tr>
+                <th width="50">
+                    <input onclick='listTable.selectAll(this, "checkboxes")' type="checkbox">
+                    <a href="javascript:listTable.sort('id'); "></a>
+                </th>
+                <th><a href="javascript:listTable.sort('title'); "></a>标签名称</th>
+
+                <th>{$lang.handler}</th>
+            </tr>
+            {foreach from=$tag_list item=list}
+            <tr>
+                <td><span><input name="checkboxes[]" type="checkbox" value="{$list.id}" ></span></td>
+                <td class="first-cell">
+                    <span onclick="javascript:listTable.edit(this, 'edit_name', {$list.id})">{$list.name|escape:html}</span>
+                </td>
+                <td align="center" nowrap="true">
+                    <span>
+                 <a href="javascript:;" onclick="listTable.remove({$list.id}, '{$lang.drop_confirm}')" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16"></a></span>
+                </td>
+            </tr>
+            {foreachelse}
+            <tr><td class="no-records" colspan="10">没有相关标签</td></tr>
+            {/foreach}
+            <tr>&nbsp;
+                <td align="right" nowrap="true" colspan="8">{include file="page.htm"}</td>
+            </tr>
+        </table>
+
+        {if $full_page}
+    </div>
+
+    <div>
+        <!--<input type="hidden" name="act" value="batch" />-->
+        <!--<select name="type" id="selAction" onchange="changeAction()">-->
+            <!--<option value="0">请选择</option>-->
+            <!--<option value="remove">删除</option>-->
+        <!--</select>-->
+
+        <a onclick="submit()" href="javascript:;" style="width: 50px;display: block;padding: 5px;border: 1px solid #ccc;background-color: #fff;margin-top: 10px">
+            批量删除
+        </a>
+        <!--<input type="submit" value="{$lang.button_submit}" id="btnSubmit" onclick="submit()" name="btnSubmit" class="button" disabled="true" />-->
+    </div>
+</form>
+<!-- end cat list -->
+<script type="text/javascript" language="JavaScript">
+
+    onload = function()
+    {
+        // 开始检查订单
+        startCheckOrder();
+    }
+    /**
+     * @param: bool ext 其他条件：用于转移分类
+     */
+    function confirmSubmit(frm, ext)
+    {
+        if (frm.elements['type'].value == 'button_remove')
+        {
+            return confirm(drop_confirm);
+        }
+        else if (frm.elements['type'].value == 'not_on_sale')
+        {
+            return confirm(batch_no_on_sale);
+        }
+        else if (frm.elements['type'].value == 'move_to')
+        {
+            ext = (ext == undefined) ? true : ext;
+            return ext && frm.elements['target_cat'].value != 0;
+        }
+        else if (frm.elements['type'].value == '')
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+
+    function submit() {
+
+        var id=document.getElementsByName('checkboxes[]');
+
+        var value = new Array();
+        for(var i = 0; i < id.length; i++){
+            if(id[i].checked)
+                value.push(id[i].value);
+        }
+        if(!value){
+            alert('请选择要操作的数据');
+            return false;
+        }
+
+
+        Ajax.call('goods_tag.php?act=remove_all',value, remove_sun, "POST", "JSON", false);
+        return false;
+
+    }
+    function remove_sun(res) {
+        if(res.code){
+            window.location.reload();
+        }else{
+            alert(res.msg);
+        }
+    }
+    function changeAction(obj)
+    {
+
+    }
+
+    /* 搜索文章 */
+    function searchArticle()
+    {
+        listTable.filter.keyword = Utils.trim(document.forms['searchForm'].elements['keyword'].value);
+        listTable.filter.cat_id = parseInt(document.forms['searchForm'].elements['cat_id'].value);
+        listTable.filter.page = 1;
+        listTable.loadList();
+    }
+
+    {/literal}
+</script>
+{include file="pagefooter.htm"}
+{/if}

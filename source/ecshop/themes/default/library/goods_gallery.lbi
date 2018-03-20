@@ -1,0 +1,78 @@
+<!-- {if $pictures}-->
+<style type="text/css">
+    .gallery .swiper-slide{
+        width: 520px;
+    }
+    .gallery .swiper-slide .galleryBox{
+        width: 480px;
+        height: 480px;
+        margin: 0 auto;
+        overflow: hidden;
+        line-height: 480px;
+    }
+    .gallery .swiper-button-prev{
+        width: 41px;
+        height: 69px;
+        top: 42% !important;
+        background: url('./themes/default/image/index.png') no-repeat -84px 50%;
+    }
+    .gallery .swiper-button-prev:hover{
+        background-position: 0px 50%;
+    }
+
+    .gallery .swiper-button-next{
+        width: 41px;
+        height: 69px;
+        top: 42% !important;
+        background: url('./themes/default/image/index.png') no-repeat -123px 50%;
+    }
+    .gallery .swiper-button-next:hover{
+        background-position: -41px 50%;
+    }
+    .gallery .swiper-pagination-bullet{
+        width: 28px;
+        height: 2px;
+        background-color: #666;
+        border-radius: 0;
+    }
+    .gallery .swiper-pagination-bullet-active{
+        background-color: #333;
+    }
+</style>
+<div class="clearfix">
+
+    <div class="gallery">
+        <div class="swiper-container swiper-container-gallery" style="height: 520px">
+            <div class="swiper-wrapper" >
+                <!-- {foreach from=$pictures item=picture}-->
+                <div class="swiper-slide">
+                    <div class="galleryBox">
+                        <img src="{if $picture.img_original}{$picture.img_original}{else}{$picture.img_url}{/if}" alt="{$goods.goods_name}" />
+                    </div>
+                </div>
+                <!--{/foreach}-->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        var mySwiper = new Swiper('.swiper-container-gallery', {
+            loop: true,
+            pagination: '.swiper-pagination',
+            paginationClickable :true,
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            autoplayDisableOnInteraction : true,
+            autoplay:5000,
+            onInit: function(swiper){
+
+            }
+        });
+    })
+</script>
+
+<!-- {/if}-->

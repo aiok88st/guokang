@@ -63,6 +63,7 @@ elseif ($_REQUEST['act'] == 'query')
 /*------------------------------------------------------ */
 elseif ($_REQUEST['act'] == 'add')
 {
+
     /* 权限判断 */
     admin_priv('article_cat');
 
@@ -102,9 +103,16 @@ elseif ($_REQUEST['act'] == 'insert')
         }
     }
 
+    include_once(ROOT_PATH . '/includes/cls_image.php');  /*必须加上*/
+    $imge=new cls_image($_CFG['cat_thumb']);
 
-    $sql = "INSERT INTO ".$ecs->table('article_cat')."(cat_name, cat_type, cat_desc,keywords, parent_id, sort_order, show_in_nav)
-           VALUES ('$_POST[cat_name]', '$cat_type',  '$_POST[cat_desc]','$_POST[keywords]', '$_POST[parent_id]', '$_POST[sort_order]', '$_POST[show_in_nav]')";
+
+    if($_FILES['cat_thumb']['error']==0){
+        $cat_thumb  = $imge->upload_image($_FILES['cat_thumb'],'article_cat'); // 原始图片
+    }
+
+    $sql = "INSERT INTO ".$ecs->table('article_cat')."(cat_thumb,cat_name, cat_type, cat_desc,keywords, parent_id, sort_order, show_in_nav, cat_link)
+           VALUES ('$cat_thumb','$_POST[cat_name]', '$cat_type',  '$_POST[cat_desc]','$_POST[keywords]', '$_POST[parent_id]', '$_POST[sort_order]', '$_POST[show_in_nav]', '$_POST[cat_link]')";
     $db->query($sql);
 
     if($_POST['show_in_nav'] == 1)
@@ -135,7 +143,7 @@ elseif ($_REQUEST['act'] == 'edit')
     /* 权限判断 */
     admin_priv('article_cat');
 
-    $sql = "SELECT cat_id, cat_name, cat_type, cat_desc, show_in_nav, keywords, parent_id,sort_order FROM ".
+    $sql = "SELECT cat_id, cat_name, cat_type, cat_desc, show_in_nav, keywords, parent_id,sort_order,cat_link,cat_thumb FROM ".
            $ecs->table('article_cat'). " WHERE cat_id='$_REQUEST[id]'";
     $cat = $db->GetRow($sql);
 
@@ -163,6 +171,9 @@ elseif ($_REQUEST['act'] == 'edit')
         $select .= htmlspecialchars($var['cat_name']) . '</option>';
     }
     unset($options);
+
+
+
     $smarty->assign('cat',         $cat);
     $smarty->assign('cat_select',  $select);
     $smarty->assign('ur_here',     $_LANG['articlecat_edit']);
@@ -193,7 +204,24 @@ elseif ($_REQUEST['act'] == 'update')
         $_POST['parent_id'] = 0;
     }
 
-    $row = $db->getRow("SELECT cat_type, parent_id FROM " . $ecs->table('article_cat') . " WHERE cat_id='$_POST[id]'");
+    $row = $db->getRow("SELECT cat_type, parent_id,cat_thumb FROM " . $ecs->table('article_cat') . " WHERE cat_id='$_POST[id]'");
+
+    include_once(ROOT_PATH . '/includes/cls_image.php');  /*必须加上*/
+
+
+    $imge=new cls_image($_CFG['cat_thumb']);
+
+
+    if($_FILES['cat_thumb']['error']==0){
+        if($row['cat_thumb']){
+            unlink($row['cat_thumb']);
+        }
+
+        $cat_thumb  = $imge->upload_image($_FILES['cat_thumb'],'article_cat'); // 原始图片
+    }else{
+        $cat_thumb=$row['cat_thumb'];
+    }
+
     $cat_type = $row['cat_type'];
     if ($cat_type == 3 || $cat_type ==4)
     {
@@ -202,6 +230,7 @@ elseif ($_REQUEST['act'] == 'update')
 
     /* 检查设定的分类的父分类是否合法 */
     $child_cat = article_cat_list($_POST['id'], 0, false);
+
     if (!empty($child_cat))
     {
         foreach ($child_cat as $child_data)
@@ -209,6 +238,7 @@ elseif ($_REQUEST['act'] == 'update')
             $catid_array[] = $child_data['cat_id'];
         }
     }
+
     if (in_array($_POST['parent_id'], $catid_array))
     {
         sys_msg(sprintf($_LANG['parent_id_err'], stripslashes($_POST['cat_name'])), 1);
@@ -235,15 +265,21 @@ elseif ($_REQUEST['act'] == 'update')
         }
     }
 
-    $dat = $db->getOne("SELECT cat_name, show_in_nav FROM ". $ecs->table('article_cat') . " WHERE cat_id = '" . $_POST['id'] . "'");
-    if ($exc->edit("cat_name = '$_POST[cat_name]', cat_desc ='$_POST[cat_desc]', keywords='$_POST[keywords]',parent_id = '$_POST[parent_id]', cat_type='$cat_type', sort_order='$_POST[sort_order]', show_in_nav = '$_POST[show_in_nav]'",  $_POST['id']))
+
+    $dat = $db->getRow("SELECT cat_name, show_in_nav FROM ". $ecs->table('article_cat') . " WHERE cat_id = '" . $_POST['id'] . "'");
+
+    if ($exc->edit("cat_thumb ='$cat_thumb' ,cat_name = '$_POST[cat_name]', cat_desc ='$_POST[cat_desc]', keywords='$_POST[keywords]',parent_id = '$_POST[parent_id]', cat_type='$cat_type', sort_order='$_POST[sort_order]', show_in_nav = '$_POST[show_in_nav]', cat_link = '$_POST[cat_link]'",  $_POST['id']))
     {
+
+
         if($_POST['cat_name'] != $dat['cat_name'])
         {
             //如果分类名称发生了改变
             $sql = "UPDATE " . $ecs->table('nav') . " SET name = '" . $_POST['cat_name'] . "' WHERE ctype = 'a' AND cid = '" . $_POST['id'] . "' AND type = 'middle'";
+
             $db->query($sql);
         }
+
         if($_POST['show_in_nav'] != $dat['show_in_nav'])
         {
             if($_POST['show_in_nav'] == 1)
@@ -276,6 +312,7 @@ elseif ($_REQUEST['act'] == 'update')
         $link[0]['href'] = 'articlecat.php?act=list';
         $note = sprintf($_LANG['catedit_succed'], $_POST['cat_name']);
         admin_log($_POST['cat_name'], 'edit', 'articlecat');
+
         clear_cache_files();
         sys_msg($note, 0, $link);
 

@@ -140,6 +140,7 @@ class smtp
 
         if ($this->is_connected())
         {
+
             //  服务器是否需要验证
             if ($this->auth)
             {

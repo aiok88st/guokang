@@ -1,0 +1,19 @@
+ <div class="text">
+        <span class="pull-left">邮费</span>
+        <span class="pull-right">
+             <span class="">¥ {$total.shipping_fee}元</span>
+        </span>
+</div>
+ <!-- {if $total.tax gt 0} 税 -->
+ <div class="text">
+     <span class="pull-left">{$lang.tax}</span>
+     <span class="pull-right">
+             <span class="">{$total.tax_formated}</span>
+        </span>
+ </div>
+ <!-- {/if} -->
+<div class="text">
+        <span class="pull-left">应付</span>
+        <span class="pull-right">
+        <span class="total red">{$total.amount_formated}</span>
+</span>

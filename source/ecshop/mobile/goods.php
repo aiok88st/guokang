@@ -66,6 +66,8 @@ foreach ($cat_array as $key => $cat_data)
     $cat_array[$key]['cat_name'] = encode_output($cat_data['cat_name']);
     $cat_str .= "<a href='category.php?c_id={$cat_data['cat_id']}'>" . encode_output($cat_data['cat_name']) . "</a>-&gt;";
 }
+
+var_dump($cat_array);
 $smarty->assign('cat_array', $cat_array);
 
 
@@ -75,7 +77,7 @@ $smarty->assign('specification',       $properties['spe']);  // 商品规格
 
 $comment = assign_comment($goods_id, 0);
 $smarty->assign('comment', $comment);
-$smarty->display('goods.html');
+//$smarty->display('goods.html');
 
 /**
  * 获得指定商品的各会员等级对应的价格

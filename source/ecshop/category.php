@@ -75,8 +75,91 @@ setcookie('ECS[display]', $display, gmtime() + 86400 * 7, NULL, NULL, NULL, TRUE
 $cache_id = sprintf('%X', crc32($cat_id . '-' . $display . '-' . $sort  .'-' . $order  .'-' . $page . '-' . $size . '-' . $_SESSION['user_rank'] . '-' .
     $_CFG['lang'] .'-'. $brand. '-' . $price_max . '-' .$price_min . '-' . $filter_attr_str));
 
+//分类ID
+$cid = $_REQUEST['cid']?$_REQUEST['cid']:0;
+//二级分类ID
+$aid = $_REQUEST['aid']?$_REQUEST['aid']:0;
+
 if (!$smarty->is_cached('category.dwt', $cache_id))
 {
+    //分类
+    $sql = 'SELECT cat_id, cat_name2, cat_name, filter_attr FROM  ecs_category WHERE is_show = 1 AND parent_id=0 ORDER BY sort_order ASC';
+    $catList = $db->getAll($sql);
+    $smarty->assign('catList',    $catList);
+    if($cid != 0){
+        $sql = 'SELECT cat_id, cat_name2, cat_name, filter_attr FROM  ecs_category WHERE is_show = 1 AND parent_id= '.$cid.' ORDER BY sort_order ASC';
+        $cList = $db->getAll($sql);
+        $smarty->assign('cList',    $cList);
+    }
+
+    //最新新闻
+    $new = get_new_news_article(17);
+    $smarty->assign('new', $new);
+
+
+    //产品
+    /* 获得产品总数 */
+    $size   = 7;
+    if($cid == 0){
+        //面包屑
+        $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="javascript:;">产品中心</a></li>';
+
+        $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1");
+        $pager = get_pager('category', array('id'=>2,'cid'=>$cid), $count, $page,$size);
+        $sqls = 'SELECT is_real,shop_price,tag_id,goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+            ' FROM ' .$GLOBALS['ecs']->table('goods') .
+            ' WHERE is_on_sale = 1'.
+            ' ORDER BY sort_order ASC, add_time DESC'.
+            ' limit '.$pager[start] . ',' .$pager[size];
+    }else{
+        $cat = get_cat_info($cid);   // 获得分类的相关信息
+        if($aid == 0){
+            //面包屑
+            $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="category.php?id=2">产品中心 &gt;</a></li><li><a href="javascript:;">'.$cat['cat_name'].'</a></li>';
+
+            $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1 AND cat_id=".$cid);
+            $pager = get_pager('category', array('id'=>2,'cid'=>$cid), $count, $page,$size);
+            $sqls = 'SELECT is_real,shop_price,tag_id,goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+                ' FROM ' .$GLOBALS['ecs']->table('goods') .
+                ' WHERE is_on_sale = 1 AND cat_id=' . $cid .
+                ' ORDER BY sort_order ASC, add_time DESC'.
+                ' limit '.$pager[start] . ',' .$pager[size];
+        }else{
+            //面包屑
+            $cat2 = get_cat_info($aid);   // 获得分类的相关信息
+            $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="category.php?id=2">产品中心 &gt;</a></li><li><a href="category.php?id=2&cid='.$cid.'">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">'.$cat2['cat_name'].'</a></li>';
+
+            $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1 AND cat_id=".$aid);
+            $pager = get_pager('category', array('id'=>2,'cid'=>$cid,'aid'=>$aid), $count, $page,$size);
+            $sqls = 'SELECT is_real,tag_id,goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+                ' FROM ' .$GLOBALS['ecs']->table('goods') .
+                ' WHERE is_on_sale = 1 AND cat_id=' . $aid .
+                ' ORDER BY sort_order ASC, add_time DESC'.
+                ' limit '.$pager[start] . ',' .$pager[size];
+        }
+
+    }
+
+    $data = $db->getAll($sqls);
+    foreach($data as $k=>$v){
+        if(!empty($v['tag_id'])){
+            $sql='SELECT * FROM `ecs_goods_tag` WHERE id IN ('.$v['tag_id'].')';
+            $data[$k]['attr_value'] = $db->getAll($sql);
+        }
+
+    }
+    if(empty($data)){
+        $data = '';
+    }
+    assign_template('c', array($cat_id));
+    $smarty->assign('cid', $cid);
+    $smarty->assign('aid', $aid);
+    $smarty->assign('pager', $pager);
+    $smarty->assign('g_list', $data);
+    $smarty->assign('url_html', $url_html);
+
+
+
     /* 如果页面没有被缓存则重新获取页面的内容 */
 
     $children = get_children($cat_id);
@@ -85,8 +168,12 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
 
     if (!empty($cat))
     {
-        $smarty->assign('keywords',    htmlspecialchars($cat['keywords']));
-        $smarty->assign('description', htmlspecialchars($cat['cat_desc']));
+        if(!empty($cat['keywords'])){
+            $smarty->assign('keywords',    htmlspecialchars($cat['keywords']));
+        }
+        if(!empty($cat['description'])){
+            $smarty->assign('description', htmlspecialchars($cat['description']));
+        }
         $smarty->assign('cat_style',   htmlspecialchars($cat['style']));
     }
     else
@@ -325,8 +412,6 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
         }
     }
 
-    assign_template('c', array($cat_id));
-
     $position = assign_ur_here($cat_id, $brand_name);
     $smarty->assign('page_title',       $position['title']);    // 页面标题
     $smarty->assign('ur_here',          $position['ur_here']);  // 当前位置
@@ -389,15 +474,17 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
             $goodslist[] = array();
         }
     }
+
+
     $smarty->assign('goods_list',       $goodslist);
     $smarty->assign('category',         $cat_id);
     $smarty->assign('script_name', 'category');
 
-    assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
-    assign_dynamic('category'); // 动态内容
+    //assign_pager('category',            $cat_id, $count, $size, $sort, $order, $page, '', $brand, $price_min, $price_max, $display, $filter_attr_str); // 分页
+    assign_dynamic('produce'); // 动态内容
 }
 
-$smarty->display('category.dwt', $cache_id);
+$smarty->display('produce.dwt', $cache_id);
 
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTION
@@ -412,7 +499,7 @@ $smarty->display('category.dwt', $cache_id);
  */
 function get_cat_info($cat_id)
 {
-    return $GLOBALS['db']->getRow('SELECT cat_name, keywords, cat_desc, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
+    return $GLOBALS['db']->getRow('SELECT cat_name,description, keywords, cat_desc, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
         " WHERE cat_id = '$cat_id'");
 }
 
@@ -445,7 +532,7 @@ function category_get_goods($children, $brand, $min, $max, $ext, $size, $page, $
     }
 
     /* 获得商品列表 */
-    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
+    $sql = 'SELECT g.tag_id,g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " .
                 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .

@@ -623,6 +623,7 @@ function load_config()
         {
             $arr['integrate_code'] = 'ecshop'; // 默认的会员整合插件为 ecshop
         }
+
         write_static_cache('shop_config', $arr);
     }
     else
@@ -631,6 +632,7 @@ function load_config()
     }
 
     return $arr;
+
 }
 
 /**
@@ -875,6 +877,11 @@ function get_children($cat = 0)
 function get_article_children ($cat = 0)
 {
     return db_create_in(array_unique(array_merge(array($cat), array_keys(article_cat_list($cat, 0, false)))), 'cat_id');
+}
+
+function get_doctor_children ($cat = 0)
+{
+    return db_create_in(array_unique(array_merge(array($cat), array_keys(doctor_cat_list($cat, 0, false)))), 'cat_id');
 }
 
 /**
@@ -1701,6 +1708,17 @@ function build_uri($app, $params, $append = '', $page = 0, $keywords = '', $size
             }
 
             break;
+        case 'brand_news_detail':
+            if (empty($aid))
+            {
+                return false;
+            }
+            else
+            {
+                $uri = $rewrite ? 'brand_news_detail-' . $aid : 'brand_news_detail.php?id=' . $aid;
+            }
+
+            break;
         case 'group_buy':
             if (empty($gbid))
             {
@@ -2012,6 +2030,112 @@ function article_cat_list($cat_id = 0, $selected = 0, $re_type = true, $level = 
         foreach ($options AS $key => $value)
         {
             $options[$key]['url'] = build_uri('article_cat', array('acid' => $value['cat_id']), $value['cat_name']);
+        }
+        return $options;
+    }
+}
+
+/**
+ * 获得指定专家分类下的子分类的数组
+ *
+ * @access  public
+ * @param   int     $cat_id     分类的ID
+ * @param   int     $selected   当前选中分类的ID
+ * @param   boolean $re_type    返回的类型: 值为真时返回下拉列表,否则返回数组
+ * @param   int     $level      限定返回的级数。为0时返回所有级数
+ * @return  mix
+ */
+function doctor_cat_list($cat_id = 0, $selected = 0, $re_type = true, $level = 0)
+{
+    static $res = NULL;
+
+    if ($res === NULL)
+    {
+        $data = read_static_cache('doctor_cat_pid_releate');
+        if ($data === false)
+        {
+            $sql = "SELECT c.*, COUNT(s.cat_id) AS has_children, COUNT(a.doctor_id) AS doctor_num ".
+                ' FROM ' . $GLOBALS['ecs']->table('doctor_cat') . " AS c".
+                " LEFT JOIN " . $GLOBALS['ecs']->table('doctor_cat') . " AS s ON s.parent_id=c.cat_id".
+                " LEFT JOIN " . $GLOBALS['ecs']->table('doctor') . " AS a ON a.cat_id=c.cat_id".
+                " GROUP BY c.cat_id ".
+                " ORDER BY parent_id, sort_order ASC";
+            $res = $GLOBALS['db']->getAll($sql);
+            write_static_cache('doctor_cat_pid_releate', $res);
+        }
+        else
+        {
+            $res = $data;
+        }
+    }
+
+    if (empty($res) == true)
+    {
+        return $re_type ? '' : array();
+    }
+
+    $options = article_cat_options($cat_id, $res); // 获得指定分类下的子分类的数组
+
+    /* 截取到指定的缩减级别 */
+    if ($level > 0)
+    {
+        if ($cat_id == 0)
+        {
+            $end_level = $level;
+        }
+        else
+        {
+            $first_item = reset($options); // 获取第一个元素
+            $end_level  = $first_item['level'] + $level;
+        }
+
+        /* 保留level小于end_level的部分 */
+        foreach ($options AS $key => $val)
+        {
+            if ($val['level'] >= $end_level)
+            {
+                unset($options[$key]);
+            }
+        }
+    }
+
+    $pre_key = 0;
+    foreach ($options AS $key => $value)
+    {
+        $options[$key]['has_children'] = 1;
+        if ($pre_key > 0)
+        {
+            if ($options[$pre_key]['cat_id'] == $options[$key]['parent_id'])
+            {
+                $options[$pre_key]['has_children'] = 1;
+            }
+        }
+        $pre_key = $key;
+    }
+
+    if ($re_type == true)
+    {
+        $select = '';
+        foreach ($options AS $var)
+        {
+            $select .= '<option value="' . $var['cat_id'] . '" ';
+            $select .= ' cat_type="' . $var['cat_type'] . '" ';
+            $select .= ($selected == $var['cat_id']) ? "selected='ture'" : '';
+            $select .= '>';
+            if ($var['level'] > 0)
+            {
+                $select .= str_repeat('&nbsp;', $var['level'] * 4);
+            }
+            $select .= htmlspecialchars(addslashes($var['cat_name'])) . '</option>';
+        }
+
+        return $select;
+    }
+    else
+    {
+        foreach ($options AS $key => $value)
+        {
+            $options[$key]['url'] = build_uri('doctor_cat', array('acid' => $value['cat_id']), $value['cat_name']);
         }
         return $options;
     }
@@ -2947,6 +3071,7 @@ function test_api()
                              array_keys($headers),
                              $headers);
 
+
     $req = curl_init($api_url);
     curl_setopt($req, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($req, CURLOPT_SSL_VERIFYHOST, false);
@@ -3003,6 +3128,98 @@ function get_h5_api_host()
     }
 }
 
+/**
+ *  获取最新新闻
+ * @param   string  $product
+ *  @return  array
+ */
+function get_new_news_article($parent_id){
+    $sql = 'SELECT cat_id, cat_name, parent_id FROM  ecs_article_cat WHERE parent_id = '.$parent_id.' ORDER BY sort_order ASC';
+    $catlist = $GLOBALS['db']->getAll($sql);
+    $uid = '';
+    foreach($catlist as $k=>$v){
+        $uid .= $v['cat_id'].',';
+    }
+    $sqls = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id' .
+        ' FROM ' .$GLOBALS['ecs']->table('article') .
+        ' WHERE is_open = 1 AND cat_id in (' . rtrim($uid, ',') .
+        ') ORDER BY add_time DESC'.
+        ' limit 5';
+    $data = $GLOBALS['db']->getAll($sqls);
+    foreach($data as $k=>$v){
+        if(mb_strlen($v['title'])>13){
+            $data[$k]['title'] = mb_substr($v['title'],0,13,'utf-8').'...';
+        }
+        if(mb_strlen($v['description'])>16){
+            $data[$k]['description'] = mb_substr($v['description'],0,16,'utf-8').'...';
+        }
+        $data[$k]['add_time'] = date('m-d', $v['add_time']);
+    }
+    return $data;
+}
+/**
+ *  获取最新新闻2
+ * @param   string  $product
+ *  @return  array
+ */
+function get_new_news_article2($parent_id,$wh,$limit=5){
+    $where="`parent_id`=$parent_id";
+    if($wh){
+        $where .=" AND ".$wh;
+    }
 
+    $sql = 'SELECT cat_id, cat_name, parent_id FROM  ecs_article_cat WHERE '.$where.' ORDER BY sort_order ASC';
+    $catlist = $GLOBALS['db']->getAll($sql);
+    $uid = '';
+    foreach($catlist as $k=>$v){
+        $uid .= $v['cat_id'].',';
+    }
+    $sqls = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id' .
+        ' FROM ' .$GLOBALS['ecs']->table('article') .
+        ' WHERE is_open = 1 AND cat_id in (' . rtrim($uid, ',') .
+        ') ORDER BY article_type DESC,article_id DESC ,add_time DESC'.
+        ' limit '.$limit;
+    $data = $GLOBALS['db']->getAll($sqls);
+    foreach($data as $k=>$v){
+        if(mb_strlen($v['title'])>13){
+            $data[$k]['title'] = mb_substr($v['title'],0,13,'utf-8').'...';
+        }
+        if(mb_strlen($v['description'])>16){
+            $data[$k]['description'] = mb_substr($v['description'],0,16,'utf-8').'...';
+        }
+        $data[$k]['add_time'] = date('m-d', $v['add_time']);
+    }
+    return $data;
+}
+
+//省市区
+function get_region($pid,$type){
+    $sql = 'SELECT region_id, parent_id, region_name, region_type' .
+        ' FROM ' .$GLOBALS['ecs']->table('region') .
+        ' WHERE parent_id = '.$pid.' AND region_type =' .$type;
+    $data = $GLOBALS['db']->getAll($sql);
+    return $data;
+}
+//省市区
+function get_region_info($id){
+    $sql = 'SELECT region_id, parent_id, region_name, region_type' .
+        ' FROM ' .$GLOBALS['ecs']->table('region') .
+        ' WHERE region_id = '.$id;
+    $data = $GLOBALS['db']->getRow($sql);
+    return $data;
+}
+
+/**递归无限分类**/
+function tree($list,$parent_id){
+    $tree=array();
+    foreach ($list as $key=>$value){
+        if($value['parent_id']==$parent_id ){
+             $value['child']=tree($list,$value['id']);
+             $tree[]=$value;
+       }
+    }
+    return $tree;
+}
+/**递归构建html无限分类**/
 
 ?>

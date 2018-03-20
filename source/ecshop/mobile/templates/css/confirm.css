@@ -1,0 +1,239 @@
+body {
+  background-color: #F4F4F4; }
+
+#pay .addressBox {
+  display: block;
+  width: 100%;
+  padding: 0.2rem 0 0.2rem;
+  background: url(../img/return.png) no-repeat 95.335% center;
+  background-size: 2%;
+  background-color: #f4f4f4; }
+  #pay .addressBox .address {
+    width: 82%;
+    margin-left: 2.665%; }
+    #pay .addressBox .address .arLeft, #pay .addressBox .address .arRight {
+      font-size: 0.28rem;
+      color: #555555;
+      line-height: 0.6rem; }
+    #pay .addressBox .address .arBottom {
+      font-size: 0.26rem;
+      color: #888888;
+      line-height: 0.36rem;
+      text-align: justify;
+      margin: 0.2rem 0 0.3rem; }
+  #pay .addressBox > img {
+    width: 100%; }
+#pay .invoices {
+  background-color: white;
+  width: 100%;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.2rem; }
+  #pay .invoices .iInput p {
+    font-size: 0.26rem;
+    color: #555555;
+    line-height: 0.6rem; }
+    #pay .invoices .iInput p span {
+      color: #f81200; }
+  #pay .invoices .iInput input {
+    font-size: 0.26rem;
+    width: 100%;
+    border: 1px solid #e4e4e4;
+    height: 0.7rem;
+    display: block;
+    text-indent: 0.2rem; }
+
+.ptitle {
+  line-height: 0.9rem;
+  font-size: 0.26rem;
+  color: #333333;
+  border-bottom: 1px solid #e4e4e4; }
+
+.pTwoBtn {
+  padding: 0.4rem 0 0.2rem; }
+  .pTwoBtn button {
+    width: 28%;
+    line-height: 0.7rem;
+    color: #555555;
+    background-color: transparent;
+    border: 1px solid #e4e4e4;
+    border-radius: 5px;
+    display: block;
+    margin-right: 4.2%;
+    font-size: 0.26rem; }
+  .pTwoBtn .cBtn {
+    border-color: #0068b7;
+    color: #0068b7; }
+
+.payMethods {
+  background-color: white;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.2rem; }
+  .payMethods .pTwoBtn {
+    padding: 0.4rem 0 0rem; }
+  .payMethods .mtdBox {
+    width: 100%;
+    position: relative;
+    padding-top: 0.2rem; }
+    .payMethods .mtdBox > p {
+      position: absolute;
+      left: 0.2rem;
+      top: 0.33rem;
+      font-size: 0.26rem;
+      line-height: 0.8rem;
+      color: #888888; }
+    .payMethods .mtdBox > img {
+      width: 100%; }
+
+.payList {
+  background-color: white;
+  margin-bottom: 0.2rem; }
+  .payList .listChild {
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #e4e4e4; }
+  .payList .listChild:nth-last-child(1) {
+    border-bottom: 0px; }
+  .payList .lcLeft {
+    width: 24%; }
+    .payList .lcLeft > img {
+      width: 100%; }
+  .payList .lcRight {
+    margin-left: 5.6%;
+    width: 70.4%;
+    position: relative; }
+    .payList .lcRight ul li p {
+      font-size: 0.26rem;
+      line-height: 0.26rem;
+      color: #555555; }
+    .payList .lcRight ul li:nth-child(2) p {
+      color: #f81200;
+      font-weight: bold;
+      margin: 0.3rem 0 0; }
+    .payList .lcRight span {
+      font-size: 0.26rem;
+      position: absolute;
+      top: 0;
+      right: 0;
+      color: #888888;
+      line-height: 0.26rem; }
+
+.message {
+  background-color: white;
+  margin-bottom: 0.2rem;
+  padding-bottom: 0.4rem; }
+
+.messageBox .mbInput {
+  margin-top: 0.4rem; }
+  .messageBox .mbInput .mbLeft {
+    width: 18%;
+    font-size: 0.26rem;
+    position: relative; }
+    .messageBox .mbInput .mbLeft p {
+      text-align-last: justify;
+      line-height: 0.7rem;
+      color: #555555; }
+    .messageBox .mbInput .mbLeft span {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      line-height: 0.7rem;
+      text-align: left;
+      text-align-last: left; }
+  .messageBox .mbInput .mbRight {
+    width: 77%;
+    margin-left: 5%;
+    font-size: 0.26rem; }
+    .messageBox .mbInput .mbRight > div {
+      width: 100%;
+      margin-left: -2px;
+      border: 1px solid #e4e4e4;
+      position: relative;
+      height: 100%; }
+      .messageBox .mbInput .mbRight > div p {
+        width: 90%;
+        height: 100%;
+        margin-left: 5%;
+        line-height: 0.7rem;
+        font-size: 0.26rem;
+        color: #888888; }
+      .messageBox .mbInput .mbRight > div select {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: 0; }
+    .messageBox .mbInput .mbRight .moreR {
+      background: url(../img/return.png) no-repeat 95% center;
+      background-size: 2.8%; }
+    .messageBox .mbInput .mbRight button {
+      width: 36%;
+      line-height: 0.55rem;
+      color: #555555;
+      background-color: transparent;
+      border: 1px solid #e4e4e4;
+      border-radius: 5px;
+      display: block;
+      margin-right: 4.2%;
+      font-size: 0.26rem;
+      margin-top: 0.0525rem; }
+    .messageBox .mbInput .mbRight button:nth-child(1) {
+      margin-left: -1px; }
+    .messageBox .mbInput .mbRight .cBtn {
+      border-color: #0068b7;
+      color: #0068b7; }
+    .messageBox .mbInput .mbRight > .clearl {
+      height: 0;
+      border: 0; }
+    .messageBox .mbInput .mbRight input {
+      background-color: transparent;
+      height: 100%;
+      width: 90%;
+      margin-left: 5%;
+      display: block;
+      font-size: 0.26rem;
+      border: 0; }
+
+.details {
+  background-color: white;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.2rem; }
+  .details .messageBox .mbInput .mbLeftp p {
+    line-height: 0.4rem;
+    padding: 0.075rem 0; }
+  .details .messageBox ul li:nth-child(1) .mbInput {
+    margin: 0.2rem 0 0rem; }
+  .details .messageBox ul li .mbInput {
+    margin-top: 0; }
+  .details .messageBox .mbInput .mbLeftp span {
+    line-height: 0.5rem; }
+  .details .messageBox .mbInput .mbRightp p {
+    line-height: 0.4rem;
+    padding: 0.075rem 0;
+    color: #333333;
+    margin-left: 0.2rem; }
+
+.money {
+  background-color: white;
+  margin-bottom: 0.2rem; }
+  .money .mnyBox {
+    line-height: 0.9rem;
+    font-size: 0.26rem;
+    color: #333333;
+    border-bottom: 1px solid #e4e4e4; }
+    .money .mnyBox .box p:nth-child(1) {
+      color: #888888; }
+    .money .mnyBox .box .redM {
+      color: #f81200;
+      font-weight: bold;
+      font-size: 0.28rem; }
+
+.crBtn {
+  background-color: white;
+  padding: 0.3rem 0; }
+  .crBtn button {
+    width: 86.67%; }
+  .crBtn button:nth-child(1) {
+    margin-bottom: 0.2rem; }
+
+/*# sourceMappingURL=confirm.css.map */

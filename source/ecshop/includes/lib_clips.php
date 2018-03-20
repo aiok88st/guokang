@@ -595,13 +595,17 @@ function get_user_default($user_id)
 {
     $user_bonus = get_user_bonus();
 
-    $sql = "SELECT pay_points,mobile_phone,sex,`name`,v_email, user_money, credit_line, last_login, is_validated FROM " .$GLOBALS['ecs']->table('users'). " WHERE user_id = '$user_id'";
+    $sql = "SELECT pay_points,mobile_phone,sex,v_email, user_money, credit_line, last_login, is_validated,`open_face`,`name` FROM " .$GLOBALS['ecs']->table('users'). " WHERE user_id = '$user_id'";
     $row = $GLOBALS['db']->getRow($sql);
+
+
+
 
     $info = array();
     $info['mobile_phone']=$row['mobile_phone'];
     $info['name']=$row['name'];
     $info['v_email']=$row['v_email'];
+    $info['open_face']=$row['open_face'];
 
     $info['username']  = stripslashes($_SESSION['user_name']);
     $info['shop_name'] = $GLOBALS['_CFG']['shop_name'];

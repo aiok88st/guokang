@@ -1,0 +1,536 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<link rel="stylesheet" href="themes/default/scss/shop.css?v=2" />
+<link rel="stylesheet" href="themes/default/scss/produceDetails.css" />
+{* 包含脚本文件 *}
+{insert_scripts files='transportNew.js,utils.js'}
+{insert_scripts files='common.js'}
+
+<style>
+	.noneAr{
+		height: 70px;
+		line-height: 70px;
+		text-align: center;
+	}
+</style>
+		<!--商品上部-->
+		<div id="shopOne">
+			<!--定位导航-->
+			<div id="topNav">
+				<div class="topNav" style="z-index: 999">
+					<div class="w12">
+						<p>{$goods.goods_name}</p>
+						<div class="rightNav">
+							<ul>
+								<li>
+									<a href="goods.php?id={$goods.goods_id}" class="aActive">概述</a>
+								</li>
+								<li>
+									<a href="#part1" >服务详情</a>
+								</li>
+								<li>
+									<a href="#part2">案例</a>
+								</li>
+								<!--<li>-->
+									<!--<a href="#part3">理赔服务</a>-->
+								<!--</li>-->
+								<li>
+									<a href="#part4">常见问题</a>
+								</li>
+								<li>
+									<a href="#part5">评价详情</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="w14">
+				<div class="floatl soLeft">
+					<!--相册 START-->
+					<!-- #BeginLibraryItem "/library/goods_gallery.lbi" --><!-- #EndLibraryItem -->
+					<!--相册 END-->
+				</div>
+				<div class="floatl soRight">
+					<!--{if $insurance eq 1}-->
+					<form class="layui-form toubao">
+						<div class="nameBox">
+							<ul>
+								<li>
+									<p class="soTitle">{$goods.goods_name}</p>
+								</li>
+								<li>
+									<p class="soContent">{$goods.goods_brief}</p>
+								</li>
+								<li style="margin-top: 20px">
+									<input type="search" name="name" lay-verify="required" placeholder="请输入您的姓名"/>
+
+
+								</li>
+							</ul>
+						</div>
+						<div class="sexBox mar40">
+							<div class="sexBoxl floatl">
+								<p>请选择性别</p>
+							</div>
+							<div class="sexBoxr floatl">
+								<div class="layui-form">
+									<!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+									<div class="layui-form-item">
+										<div class="layui-input-block">
+											<input type="radio" name="gender" value="1" title="男" checked="checked">
+											<input type="radio" name="gender" value="2" title="女">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearl"></div>
+						</div>
+						<div class="phoneBox mar40">
+							<input type="search" name="mobile" lay-verify="phone" placeholder="请输入您的联系电话"/>
+						</div>
+						<div class="selectBox mar40">
+							<div class="layui-form">
+								<div class="layui-input-block">
+									<select name="demand" lay-verify="required">
+										<option value="">请选择您的需求</option>
+										<!--{foreach from=$policy_type item=item}-->
+										<option value="{$item}" {if $item eq "保险"}checked{/if}>{$item}</option>
+										<!--{/foreach}-->
+									</select>
+								</div>
+							</div>
+						</div>
+
+						<div class="btnBox mar40">
+							<input type="hidden" name="goods_name" value="{$goods.goods_name}">
+							<button class="btn" lay-submit lay-filter="policy">马上呼叫您的保险经纪人</button>
+						</div>
+						<div class="tips mar40">
+							<p>目前已有<span>10000000+</span>人提交投保表单</p>
+						</div>
+
+					</form>
+					<script type="text/javascript">
+                        layui.use(['form','layer'], function(){
+                            var form = layui.form;
+                            var layer=layui.layer;
+
+                            //监听提交
+                            form.on('submit(policy)', function(data){
+                                var postData=data.field;
+                                $.ajax({
+                                    url:'message.php?act=policy',
+                                    type:'POST',
+                                    dataType:'JSON',
+                                    data:postData,
+                                    success:function (res) {
+                                        if(res.code==0){
+                                            layer.msg(res.msg);
+                                        }else{
+                                            massges('知道了','提交成功',res.msg)
+                                        }
+                                    }
+                                });
+                                return false;
+                            });
+                        });
+					</script>
+					<!--{else /}-->
+					<form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" >
+						<ul>
+							<li>
+								<p class="soTitle">{$goods.goods_name}</p>
+							</li>
+							<li>
+								<p class="soContent">{$goods.goods_brief}</p>
+							</li>
+
+							<li>
+
+
+							</li>
+
+
+							<li>
+								<div class="labelBox">
+									<!--{foreach from=$goods_tag item=vv}-->
+									<a href="javascript:;" class="floatl">{$vv.name}</a>
+									<!--{/foreach}-->
+
+									<div class="clearl"></div>
+								</div>
+							</li>
+							<li>
+								<p class="money"><font id="ECS_GOODS_AMOUNT"></font><span><del>{$goods.market_price}</del></span></p>
+							</li>
+							<li>
+								<!-- {* 开始循环所有可选属性 *} -->
+
+								<!-- {foreach from=$specification item=spec key=spec_key} -->
+
+								<div class="forWho">
+									<div class="fwTitle">
+										<p>{$spec.name}</p>
+									</div>
+
+									<div class="forBtn">
+										<!-- {if $spec.attr_type eq 1} -->
+
+										<!-- {foreach from=$spec.values item=value key=key} -->
+										<div for="spec_value_{$value.id}" class="floatl">
+										  <input type="radio" name="spec_{$spec_key}" value="{$value.id}" autocomplete="off" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} class="hide"/>
+
+										  <button type="button" class="{if $key eq 0}forActive{/if}"  date-id="{$value.id}" date-price="{$value.price}"  onclick="changePrice2(this,'radio')">{$value.label}</button>
+										</div>
+										<!--{/foreach}-->
+
+										<!-- {else /} -->
+
+										<!-- {foreach from=$spec.values item=value key=key} -->
+										<div for="spec_value_{$value.id}" class="floatl">
+											<input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" autocomplete="off" class="hide"/>
+
+											<button type="button"  date-id="{$value.id}" date-price="{$value.price}" onclick="changePrice2(this,'checkbox')">{$value.label}</button>
+										</div>
+										<!--{/foreach}-->
+										<input type="hidden" name="spec_list" value="{$key}" />
+										<!-- {/if} -->
+										<div class="clearl"></div>
+									</div>
+
+
+								</div>
+								<input type="hidden" name="spec_list" value="{$spec_key}" />
+								<!-- {/foreach} -->
+								<!-- {* 结束循环可选属性 *} -->
+							</li>
+							<li>
+								<div class="number">
+									<div class="nbTitle">
+										<p>购买数量</p>
+									</div>
+									<div class="nbBtn">
+										<button type="button" class="floatl reduce" disabled="disabled">
+											<span></span>
+										</button>
+										<p class="floatl">1</p>
+										<input type="hidden" name="number" id="number" value="1">
+										<button type="button" class="floatl increase"></button>
+									</div>
+
+									<div class="clearl"></div>
+								</div>
+							</li>
+							<li>
+								<div class="twoBtn">
+									<a href="javascript:addToCart1({$goods.goods_id});" class="floatl">立即购买</a>
+									<a href="javascript:addToCartNew({$goods.goods_id});" class="floatl aBlue">加入购物车</a>
+									<div class="clearl"></div>
+								</div>
+							</li>
+						</ul>
+					</form>
+					<!--{/if}-->
+
+					<div style="height: 20px"></div>
+				</div>
+				<div class="clearl"></div>
+			</div>
+		</div>
+		<div id="part1" class="w14">
+
+			<div class="pTitle">
+				<p>服务详情</p>
+			</div>
+			<div>
+                {$goods.goods_desc}
+			</div>
+		</div>
+
+		<div id="part2" class="w14">
+
+			<div class="pTitle">
+				<p>案例</p>
+			</div>
+			<div class="part2">
+				<!-- {if $goods_article_list} -->
+                <!--{foreach from=$goods_article_list item=vo}-->
+				<div class="floatl" onclick="window.location.href='article.php?id={$vo.article_id}'">
+					<ul>
+						<li>
+							<div class="ptImg">
+								<img src="{$vo.file_url}" />
+							</div>
+						</li>
+						<li>
+							<p>{$vo.title}</p>
+						</li>
+					</ul>
+				</div>
+                <!--{/foreach}-->
+				<!-- {else /} -->
+				<div class="noneAr">暂无相关案例</div>
+
+				<!-- {/if} -->
+				<div class="clearl"></div>
+			</div>
+		</div>
+
+
+
+		<div id="part4" class="w14">
+
+			{if $problem}
+			<div class="pTitle">
+				<p>常见问题</p>
+			</div>
+			<div class="problemBox">
+
+                <!--{foreach from=$problem item=vo}-->
+				<a href="###" class="floatl">
+					<div class="pbTitle">
+						<p>{$vo.title}</p>
+					</div>
+					<div class="pbContent">
+                        <p>{$vo.content}</p>
+                    </div>
+				</a>
+                <!--{/foreach}-->
+
+
+				<div class="clearl"></div>
+			</div>
+			{/if}
+
+		</div>
+		<div id="part5" class="w14">
+			<div class="pTitle">
+				<p>评价详情</p>
+			</div>
+			<div class="pointBox" style="margin-bottom: 10px">
+				{if $comment}
+				<div class="pointTop">
+					<ul>
+						<li>
+							<p>{$c4}<span>%</span></p>
+						</li>
+						<li>
+							<p>购买后满意</p>
+						</li>
+						<li>
+							<p>{$cc}名用户投票</p>
+						</li>
+					</ul>
+				</div>
+				<div class="ppBox">
+
+                    <!--{foreach from=$comment item=vo}-->
+					<div class="ppChild">
+						<div class="ppLeft floatl">
+                            <!-- {if $vo.user.open_face} -->
+							<img src="{$vo.user.open_face}" />
+                            <!-- {else} -->
+                            <img src="themes/default/image/user.png" />
+                            <!-- {/if} -->
+						</div>
+						<div class="ppMiddle floatl">
+							<ul>
+								<li>
+									<p class="ppName">
+										<!--{if $vo.user.name}-->
+										{$vo.user.name}
+										<!--{else}-->
+										匿名用户
+										<!--{/if}-->
+									</p>
+								</li>
+								<li>
+									<p class="ppContent">{$vo.content}</p>
+								</li>
+								<li>
+
+                                    <!--{foreach from=$vo.re_comment item=vv}-->
+									<div class="elsePoint">
+										<div class="epBox">
+											<div class="floatl epLeft">
+												<img src="themes/default/img/headerImg.jpg" />
+											</div>
+											<div class="floatl epRight">
+												<p>{$vv.content}</p>
+											</div>
+											<div class="clearl"></div>
+										</div>
+									</div>
+                                    <!--{/foreach}-->
+
+								</li>
+							</ul>
+						</div>
+						<div class="ppRight floatl">
+							<div class="starBox">
+                                <!-- {if $vo.comment_rank eq 1} -->
+								<img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {elseif $vo.comment_rank eq 2} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {elseif $vo.comment_rank eq 3} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {elseif $vo.comment_rank eq 4} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {else} -->
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <img src="themes/default/image/star.png" class="floatr"/>
+                                <!-- {/if} -->
+
+								<div class="clearr"></div>
+							</div>
+							<div class="ppTime">
+								<p>{$vo.add_time}</p>
+							</div>
+						</div>
+						<div class="clearl"></div>
+					</div>
+                    <!--{/foreach}-->
+
+
+				</div>
+                <!-- {if $m neq 1} -->
+				<div class="lookMore">
+					<a href="goods.php?id={$goods.goods_id}&over=1&m=1#part5">查看更多</a>
+				</div>
+                <!-- {/if} -->
+				{else /}
+				<div class="ppBox" style="border: none;text-align: center;">
+					<div class="ppChild" style="font-size: 16px">
+						暂时还没有评论
+					</div>
+				</div>
+
+				{/if}
+			</div>
+		</div>
+<script type="text/javascript">
+    var goods_id = {$goods_id};
+    var goodsattr_style = {$cfg.goodsattr_style|default:1};
+    var gmt_end_time = {$promote_end_time|default:0};
+    {foreach from=$lang.goods_js item=item key=key}
+    var {$key} = "{$item}";
+    {/foreach}
+    var goodsId = {$goods_id};
+    var now_time = {$now_time};
+
+    $(window).scroll(function(){
+
+        if($(this).scrollTop()>66)
+        {
+            $('.topNav').css('position','fixed');
+            $('.topNav').css('top','55px');
+        }else{
+            $('.topNav').css('position','absolute');
+            $('.topNav').css('top','auto');
+        }
+    });
+//    function changePrice(obj) {
+//        var shop_price=parseFloat({$goods.shop_price});
+//		var price=$(obj).attr('date-price');
+//        var price2=shop_price+parseFloat(price);
+//        $('#shop_price').text(price2.toFixed(2));
+//    }
+    /**
+     * 点选可选属性或改变数量时修改商品价格的函数
+     */
+
+    function changePrice()
+    {
+        var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+
+        var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+
+        Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+        return false;
+    }
+	function changePrice2(obj,type) {
+        if(type=="radio"){
+            $(obj).addClass('forActive');
+
+            $(obj).prev('input').prop("checked",true);
+            $(obj).parent().siblings('div').children('button').removeClass('forActive');
+            $(obj).parent().siblings('div').children('button').prop("checked",false);
+		}else{
+
+            if($(obj).hasClass('forActive')){
+                $(obj).removeClass('forActive');
+                $(obj).prev('input').prop("checked",false);
+			}else{
+                $(obj).addClass('forActive');
+                $(obj).prev('input').prop("checked",true);
+			}
+
+		}
+        var attr = getSelectedAttributes(document.forms['ECS_FORMBUY']);
+        var qty = document.forms['ECS_FORMBUY'].elements['number'].value;
+
+        Ajax.call('goods.php', 'act=price&id=' + goodsId + '&attr=' + attr + '&number=' + qty, changePriceResponse, 'GET', 'JSON');
+        return false;
+
+    }
+    /**
+     * 接收返回的信息
+     */
+    function changePriceResponse(res)
+    {
+        if (res.err_msg.length > 0)
+        {
+            alert(res.err_msg);
+        }
+        else
+        {
+            document.forms['ECS_FORMBUY'].elements['number'].value = res.qty;
+
+            if (document.getElementById('ECS_GOODS_AMOUNT'))
+                document.getElementById('ECS_GOODS_AMOUNT').innerHTML = res.result;
+        }
+    }
+
+
+    $(function(){
+        changePrice();
+
+        //增加减少
+        $('.increase').click(function(){
+            var n = parseInt($('.nbBtn').find('p').text());
+            n++;
+            $('.reduce').removeAttr('disabled');
+            $('.reduce').find('span').css('border-color','#333333');
+            $('.nbBtn').find('p').text(n);
+            $('#number').val(n);
+            changePrice();
+        });
+        $('.reduce').click(function(){
+            var n = parseInt($('.nbBtn').find('p').text());
+            n--;
+            if(n==0)
+            {
+                $('.reduce').attr('disabled','disabled');
+                $('.reduce').find('span').css('border-color','#cfcfcf');
+            }
+            $('.nbBtn').find('p').text(n);
+            $('#number').val(n);
+            changePrice();
+        });
+
+	})
+</script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+

@@ -1,0 +1,52 @@
+<!-- $Id: articlecat_list.htm 17020 2010-01-29 10:18:24Z liuhui $ -->
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<form method="post" action="" name="listForm">
+    <!-- start ad position list -->
+    <div class="list-div" id="listDiv">
+        {/if}
+
+        <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+            <tr>
+                <th width="80">类型名称</th>
+                <th width="50">排序</th>
+                <th width="800">可选属性值</th>
+                <th width="50">{$lang.handler}</th>
+            </tr>
+            {if $lists}
+            {foreach from=$lists item=item}
+            <tr align="center" class="" id="item_{$item.id}">
+                <td align="left" class="first-cell nowrap" valign="top" >
+                    <span onclick="listTable.edit(this, 'edit_cat_name', {$item.id})">{$item.name}</span>
+                </td>
+                <td>
+                    <span onclick="listTable.edit(this, 'edit_cat_list_order', {$item.id})">{$item.list_order}</span>
+                </td>
+                <td>{$item.attr}</td>
+                <td  align="right" class="nowrap" valign="top">
+                    <a href="doctor.php?act=cat_add&id={$item.id}&type={$item.type}">{$lang.edit}</a>
+                    |
+                    <a href="javascript:;" onclick="listTable.remove({$item.id}, '{$lang.drop_confirm}')" title="{$lang.remove}">{$lang.remove}</a>
+
+                </td>
+            </tr>
+            {/foreach}
+            {else /}
+            <tr>
+               <td colspan="3">暂无分类</td>
+            </tr>
+            {/if}
+
+            <tr>&nbsp;
+                <td align="right" nowrap="true" colspan="8">{include file="page2.htm"}</td>
+            </tr>
+        </table>
+        {if $full_page}
+
+    </div>
+</form>
+
+{include file="pagefooter.htm"}
+{/if}

@@ -1,0 +1,37 @@
+<!--{if $new_article_list}-->
+<div class="rnBox">
+
+
+    <div class="rnTop">
+        <p>{$cat_name}</p>
+        {if $more_url}
+        <a href="{$more_url}"><img src="themes/default/image/moreLink.png"/></a>
+        {else /}
+        <a href="article_cat-6.html"><img src="themes/default/image/moreLink.png"/></a>
+        {/if}
+    </div>
+    <div class="rnBottom">
+
+        <!--{foreach from=$new_article_list item=vo}-->
+        <!--{if $vo.url}-->
+        <a href="{$vo.url}" class="newsBox">
+        <!--{else}-->
+            <a href="article-{$vo.article_id}.html" class="newsBox">
+        <!--{/if}-->
+
+            <!--{if $vo.file_url}-->
+            <div class="nsLeft floatl" style="width: 60px;height: 60px;overflow: hidden">
+                <img src="{$vo.file_url}" onerror="this.src='themes/default/img/develop.jpg'" style="width: 100%"/>
+            </div>
+            <!--{/if}-->
+            <div class="nsRight floatl">
+                <p>{$vo.title}</p>
+                <p>{$vo.description}</p>
+            </div>
+            <div class="clearl"></div>
+        </a>
+        <!--{/foreach}-->
+
+    </div>
+</div>
+<!--{/if}-->

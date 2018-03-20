@@ -1,0 +1,383 @@
+.pb30 {
+    padding-bottom: 30px;
+}
+
+.rows {
+    padding: 20px 0;
+    overflow: hidden;
+}
+
+.btn {
+    border-radius: 23px;
+    font-size: 16px;
+}
+
+.btn:focus, .btn:active {
+    outline: none;
+}
+
+.form-control {
+    border-radius: 0;
+    border-color: #e5e5e5;
+    color: #888;
+    font-size: 15px;
+}
+
+.btn-primary {
+    background: #0068b7;
+}
+.main-bg-right{
+    padding-top: 0 !important;
+}
+.main .order-row {
+    background: #fff;
+    padding: 0 37px;
+    margin-bottom: 20px;
+}
+
+.main .order-row .col-left {
+    width: 120px;
+    margin: 8px 0 20px;
+}
+
+.box-address, .btn-addAddress {
+    width: 258px;
+    height: 168px;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    margin-right: 15px;
+}
+
+.box-address {
+    display: table;
+}
+
+.box-address.active {
+    border-color: #0068b7;
+}
+
+.box-address .middle {
+    vertical-align: middle;
+    display: table-cell;
+}
+
+.box-address .btn-edit {
+    width: 14px;
+    height: 14px;
+    background: url(../img/shop/icon-edit.png) no-repeat;
+    position: absolute;
+    right: 20px;
+    bottom: 18px;
+    cursor: pointer;
+}
+
+.btn-addAddress {
+    line-height: 128px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.btn-addAddress .icon-add {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: url(../img/shop/icon-add.png) no-repeat;
+    vertical-align: text-bottom;
+}
+
+.add-new-address {
+    display: none;
+}
+
+.add-new-address .btn {
+    width: 197px;
+}
+
+.add-new-address .btn-cancel {
+    border: 0;
+    background: #f8f8f8;
+    color: #888888;
+}
+
+.add-new-address .form-group {
+    margin: 0 15px 15px 0;
+}
+
+.list-checkbox {
+    margin-bottom: 25px;
+}
+
+.list-checkbox label {
+    cursor: pointer;
+}
+
+.list-checkbox label .icon-checkbox {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: url(../img/shop/icon-checkbox.png) no-repeat;
+    vertical-align: bottom;
+    margin-right: 10px;
+}
+
+.list-checkbox label .icon-checkbox.checked {
+    background-position-y: -24px;
+}
+
+.list-checkbox input {
+    display: none;
+}
+
+.list-checkbox-1 label {
+    margin-right: 180px;
+}
+
+.col-input input {
+    width: 440px;
+    height: 42px;
+}
+
+.pay-type label, .policyHolder-type-input label, .form-group-sex label {
+    display: inline-block;
+    width: 226px;
+    height: 42px;
+    margin-right: 15px;
+    border: 1px solid #e5e5e5;
+    cursor: pointer;
+    line-height: 42px;
+    text-align: center;
+    font-weight: normal;
+
+}
+
+.pay-type label.checked, .policyHolder-type-input label.checked, .form-group-sex label.checked {
+    border-color: #0068b7;
+}
+
+.pay-type input, .policyHolder-type-input input, .form-group-sex input {
+    display: none;
+}
+
+.col-list {
+    line-height: 125px;
+}
+
+.col-list.pull-left {
+    margin-right: 100px;
+}
+
+.col-list-pic {
+    width: 204px;
+    height: 125px;
+    overflow: hidden;
+}
+
+.col-list-pic img {
+    width: 204px;
+}
+
+.policMsg .col-right {
+    width: 100%;
+    max-width: 560px;
+    margin-bottom: 20px;
+}
+
+.policMsg .col-sm-2 {
+    padding: 12px 0;
+    font-weight: normal;
+}
+
+.policMsg .form-group-sex {
+    margin: 0 0 15px;
+}
+
+.policMsg .label-sex {
+    width: 223px;
+}
+
+.policMsg .label-sex-2 {
+    margin-right: 0;
+}
+
+.policMsg .form-control-static {
+    line-height: 30px;
+}
+
+#policStartDate {
+    width: 234px;
+}
+
+.color-lightblue {
+    color: #0068b7;
+    font-weight: bold;
+}
+
+.last-row {
+    min-width: 246px;
+}
+
+.last-row .text {
+    margin-bottom: 24px;
+}
+
+.last-row .box-pay {
+    width: 190px;
+}
+
+.last-row .box-pay .text {
+    overflow: hidden;
+    line-height: 30px;
+}
+
+.last-row .fontSize24 {
+    font-size: 24px;
+}
+
+.last-row .total {
+    font-size: 25px;
+}
+
+.last-row .red {
+    color: #fb0404;
+}
+
+.btn-wrap {
+    clear: both;
+    margin-bottom: 20px;
+}
+
+.btn-wrap .btn-gotoPay, .btn-wrap .btn-back {
+    width: 170px;
+    border-radius: 23px;
+}
+
+.btn-wrap .btn-gotoPay {
+    background: #2b65b1;
+}
+
+.btn-wrap .btn-back {
+    background: #fff;
+    margin-right: 15px;
+}
+
+.order-comfirm .col-left {
+    font-size: 18px;
+}
+
+.order-comfirm .policMsg .col-sm-2 {
+    padding: 0;
+}
+
+.order-comfirm .policMsg .form-control-static {
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    min-height: auto;
+}
+
+.order-comfirm .policMsg .col-right {
+    margin-bottom: 0;
+}
+
+@media (max-width: 992px) {
+    .box-address {
+        margin-bottom: 15px;
+    }
+    .list-checkbox-1 label {
+        margin-right: 40px;
+    }
+    .col-list.fl {
+        margin-right: 60px;
+    }
+}
+
+@media (max-width: 768px) {
+    .policMsg .col-sm-2 {
+        padding: 12px 15px 0;
+    }
+    .col-list {
+        line-height: 50px;
+    }
+    .col-list-pic {
+        width: 100%;
+    }
+    .col-input input {
+        width: 100%;
+    }
+    .box-address, .btn-addAddress {
+        width: 245px;
+    }
+    .btn-wrap .btn-gotoPay, .btn-wrap .btn-back {
+        width: 110px;
+    }
+}
+.pay-type i{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 9px;
+    position: relative;
+    top: -2px;
+}
+.icon-alipay{
+    width: 25px;
+    height: 25px;
+    background: url(../img/shop/icon-alipay.png) no-repeat;
+}
+
+.icon-wechatpay{
+    width: 24px;
+    height: 21px;
+    background: url(../img/shop/icon-wechatpay.png) no-repeat;
+
+}
+.detail_title{
+    font-size: 25px !important;
+    font-weight: 900;
+}
+.rows1{
+    border-bottom: 1px solid #e5e5e5;
+}
+.rows1_t{
+    line-height: 45px;
+}
+.order_status{
+    font-size: 18px;
+    line-height: 65px;
+}
+.schedule{
+    width: 100%;
+    height: 25px;
+    line-height: 25px;
+    background-color: #999999;
+    color: #fff;
+    margin: 0 auto;
+}
+.schedule .select{
+    background-color: #2b65b1;
+}
+.schedule—time{
+    width: 100%;
+}
+.schedule—time{
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #999999;
+    margin: 0 auto;
+}
+.schedule .item,.schedule—time .item{
+    width: 25%;
+    text-align: center;
+}
+.goods_list{
+    margin-bottom: 5px;
+}
+.cancel_order .schedule{
+    width: 50% !important;
+}
+.cancel_order .item{
+    width: 50% !important;
+}
+.cancel_order .schedule—time{
+    width: 50% !important;
+}

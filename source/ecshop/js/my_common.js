@@ -3,9 +3,14 @@
 /*
 *
 * */
-function Ajax(url,params,callback,transferMode,responseType,asyn){
+function Ajax(url,params,callback,transferMode,responseType,asyn,has_json){
     var async=asyn?true:false;
-    var datas=JSON.stringify(params);
+    if(has_json){
+        var datas=JSON.stringify(params);
+    }else{
+        var datas=params;
+    }
+
     $.ajax({
         url:url,
         type:transferMode,
@@ -28,7 +33,6 @@ function Ajax(url,params,callback,transferMode,responseType,asyn){
 }
 function AjaxP(url,params,callback,transferMode,responseType,asyn){
     var async=asyn?true:false;
-
     $.ajax({
         url:url,
         type:transferMode,
@@ -49,3 +53,38 @@ function AjaxP(url,params,callback,transferMode,responseType,asyn){
         }
     })
 }
+
+/*
+* 获取表单
+* */
+function my_from() {
+    var from=$('.my_from');
+    var data={};
+    from.find('input').each(function(){
+        var type=$(this).attr('type');
+        switch (type)
+        {
+            case "text":
+            case "hidden":
+                var name = $(this).attr('name');
+                data[name]=$(this).val();
+        }
+    });
+    from.find('select').each(function () {
+        var name = $(this).attr('name');
+        data[name]=$(this).val();
+    });
+    from.find('textarea').each(function(){
+        var name = $(this).attr('name');
+        data[name]=$(this).val();
+    });
+    return JSON.stringify(data);
+}
+
+/*
+* 数组转json字符串
+* */
+function datetoJSONString () {
+
+
+};

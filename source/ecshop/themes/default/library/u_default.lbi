@@ -1,0 +1,88 @@
+<div class="col-xs-12 col-sm-10">
+    <div class="main-bg-right">
+        <div class="row main-bg-right-title">
+            <div class="col-sm-4 divRelative">
+
+                <small>{$greetings}</small>
+
+                <p class="fontSize24">{$info.username}</p>
+                <a href="user.php?act=profile">修改个人信息 ></a>
+            </div>
+
+            <div class="col-sm-4">
+                <p>姓    名：
+                    {if $info.name}
+                    {$info.name}
+                    {else /}
+                    未设置
+                    {/if}
+                </p>
+                <p>性    别：  男</p>
+            </div>
+            <div class="col-sm-4">
+                <p>绑定手机： {$info.mobile_phone}</p>
+                {if $info.v_email eq 1}
+                <p>绑定邮箱： {$info.email}</p>
+                {else /}
+                <p>绑定邮箱：未绑定</p>
+                {/if}
+            </div>
+
+        </div>
+        <div class="row main-bg-right-content">
+
+            <div class="col-sm-6 col-xs-12 order-list">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="themes/default/img/icon04.png" alt="">
+                    </div>
+                    <div class="media-body .divRelative">
+                        <p class="wordsMiddle">
+                            <span>待支付的订单 ：{$order_status.o1}</span><br/>
+                            <a href="user.php?act=order_list&type=1">查看待支付订单></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 order-list">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="themes/default/img/icon05.png" alt="">
+                    </div>
+                    <div class="media-body .divRelative">
+                        <p class="wordsMiddle">
+                            <span>待收货订单 ：{$order_status.o2}</span><br/>
+                            <a href="user.php?act=order_list&type=2">查看待收货订单></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 order-list">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="themes/default/img/icon06.png" alt="">
+                    </div>
+                    <div class="media-body .divRelative">
+                        <p class="wordsMiddle">
+                            <span>待评价的商品 ：{$order_status.o3}</span><br/>
+                            <a href="user.php?act=commont_order&type=1">查看待评价订单></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12 order-list">
+                <div class="media">
+                    <div class="media-left">
+                        <img src="themes/default/img/icon07.png" alt="">
+                    </div>
+                    <div class="media-body .divRelative">
+                        <p class="wordsMiddle">
+                            <span>已完成的订单 ：{$order_status.o4}</span><br/>
+                            <a href="user.php?act=order_list&type=3">查看已完成付订单></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

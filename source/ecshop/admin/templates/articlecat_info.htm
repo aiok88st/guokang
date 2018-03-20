@@ -1,7 +1,7 @@
 <!-- $Id: articlecat_info.htm 16752 2009-10-20 09:59:38Z wangleisvn $ -->
 {include file="pageheader.htm"}
 <div class="main-div">
-<form method="post" action="articlecat.php" name="theForm"  onsubmit="return validate()">
+<form method="post" action="articlecat.php" enctype="multipart/form-data" name="theForm"  onsubmit="return validate()">
 <table cellspacing="1" cellpadding="3" width="100%">
   <tr>
     <td class="label">{$lang.cat_name}</td>
@@ -34,6 +34,16 @@
         <img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.cat_keywords}</td>
     <td><input type="text" name="keywords" maxlength="60" size="50" value="{$cat.keywords|escape}" />
     <br /><span class="notice-span" {if $help_open}style="display:block" {else} style="display:none" {/if} id="notice_keywords">{$lang.notice_keywords}</span>
+    </td>
+  </tr>
+  <tr>
+    <td class="label">链接</td>
+    <td><input type="text" name="cat_link" maxlength="100" size = "30" value="{$cat.cat_link|escape}" /></td>
+  </tr>
+  <tr>
+    <td class="label">分类图片</td>
+    <td>
+      <input type="file" name="cat_thumb" size="35" />
     </td>
   </tr>
   <tr>

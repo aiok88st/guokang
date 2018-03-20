@@ -1,0 +1,190 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+{insert_scripts files='my_common.js'}
+<div class="point">
+<link rel="stylesheet" type="text/css" href="themes/default/css/evaluate.css">
+<style type="text/css">
+    .navbar-nav{
+        display: inline;
+    }
+    .navbar-nav a{
+        display: inline;
+    }
+</style>
+<!-- 第三导航条 -->
+<nav class='third-nav'>
+    <div class="container">
+        <p class="nav navbar-nav">
+            <a href="/">首页</a> ><a href="user.php">用户中心</a> ><a href="user.php?act=commont_order">未评价订单</a> ><a href="javascript:;">评价</a>
+        </p>
+    </div>
+</nav>
+<!-- 中部内容 -->
+<div class="container main-bg">
+
+    <div class="paddingAll">
+        <div class="my-order-img pull-left">
+            <img src="{$order.goods_img}" alt="" onerror="this.src='themes/default/img/develop.jpg'">
+        </div>
+        <div class="pull-left divTable">
+            <p>
+                <span>{$order.goods_name}</span>
+
+            </p>
+        </div>
+        <div class="pull-right divTable">
+            <p>
+                <span>¥ {$order.goods_price} x{$order.goods_number}</span>
+            </p>
+
+        </div>
+    </div>
+    <hr/>
+    <div class="paddingAll">
+        <!--{if !$comment}-->
+        <form class="form-horizontal my_from" action="javascript:;" onsubmit="submitComment(this)" method="post">
+
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label text-left">订单评价：</label>
+                <div class="col-sm-10 star-bg form-control-static">
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label text-left">订单评价：</label>
+                <div class="col-sm-10 form-control-static">
+                    <textarea class="evaluate-text" name="content" maxlength="500" placeholder='欢迎你给予真实的评价！（你还可以输入500个字符）'></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="hidden" name="rank" value="5">
+
+                <input type="hidden" name="enabled_captcha" value="0">
+                <input type="hidden" name="email" value="{$user_info.email}">
+                <input type="hidden" name="type" value="0">
+                <input type="hidden" name="id" value="{$order.goods_id}">
+                <input type="hidden" name="rec_id" value="{$order.rec_id}">
+
+                <input type="hidden" name="user_id" value="{$user_info.user_id}">
+                <button type="submit" class="btn btn-primary btn-evaluate pull-right">发表评论</button>
+            </div>
+
+        </form>
+
+        <script type="text/javascript">
+
+            $(function(){
+                /*点击星星评价*/
+                $('.star-bg a').click(function(){
+                    var _this = $(this).index();
+                    $('.star-bg a .y-star').hide();
+                    for(var i = 0;i<_this+1;i++){
+                        $('.star-bg a').eq(i).find('.y-star').show();
+                        $('[name="comment_rank"]').val(i+1);
+                    }
+                })
+
+            })
+            function submitComment(obj){
+                <!--{if $user_info}-->
+                var data=my_from();
+                AjaxP('comment.php',{
+                    "cmt":JSON.stringify(data)
+                },function(res){
+                    if(res.error==0){
+                        massges('知道了','系统提示',res.message,function(){
+                            window.location.reload();
+                        });
+                    }else{
+                        massges('知道了','系统提示',res.message);
+                    }
+                },"POST","JSON");
+                <!--{else}-->
+                massges('去登录','系统提示','请先登录',function(){
+                    window.open("user.php");
+                });
+                <!--{/if}-->
+            }
+        </script>
+        <!--{else}-->
+        <style type="text/css">
+            .y-star{
+                display: none;
+            }
+        </style>
+        <form class="form-horizontal" action="javascript:;" onsubmit="submitComment(this)" method="post">
+
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label text-left">订单评价：</label>
+                <div class="col-sm-10 star-bg form-control-static">
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                    <a href="javascript:;">
+                        <img src="themes/default/img/n-star.png" alt="">
+                        <img src="themes/default/img/y-star.png" alt="" class="y-star">
+                    </a>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-2 control-label text-left">订单评价：</label>
+                <div class="col-sm-10 form-control-static">
+                    {$comment.content}
+                </div>
+            </div>
+
+            <div class="form-group">
+
+
+            </div>
+
+        </form>
+        <script type="text/javascript">
+            function submitComment(){
+                return false;
+            }
+            $(function(){
+                var _this={$comment.comment_rank};
+                for(var i = 0;i<_this;i++){
+                    $('.star-bg a').eq(i).find('.y-star').show();
+
+                }
+            })
+        </script>
+        <!--{/if}-->
+    </div>
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

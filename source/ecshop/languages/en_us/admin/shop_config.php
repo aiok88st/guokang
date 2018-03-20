@@ -399,7 +399,7 @@ $_LANG['cfg_range']['upload_size_limit']['4096'] = '4MB';
 $_LANG['cfg_range']['visit_stats']['on'] = 'Open';
 $_LANG['cfg_range']['visit_stats']['off'] = 'Off';
 
-$_LANG['rewrite_confirm_apache'] ="The function of URL rewrite request your Web Server to must be Apache, and enable rewrite module. \\nPlease confirm the htaccess.txt file has already named .htaccess.";
+$_LANG['rewrite_confirm_apache'] ="The function of URL rewrite request your Web Server to must be Apache, and enable rewrite module. \\nPlease confirm the .htaccess file has already named .htaccess.";
 $_LANG['rewrite_confirm_iis'] ="The function of URL rewrite request your Web Server to must be installed IIS, and enable ISAPI Rewrite module. \\nIf you are using a commercial version of ISAPI Rewrite, please confirm whether you have httpd.txt rename the file to httpd.ini.If you are using a free version of ISAPI Rewrite, please confirm whether you have httpd.txt and copy the contents of the document to the ISAPI Rewrite installation directory httpd.ini.";
 $_LANG['gzip_confirm'] ="The GZip function needs your server support zlib expand database. \\nIf your found junk after open the Gzip page, may be your server has already openned Gzip, you needn\'t open again in the ECSHOP.";
 $_LANG['retain_original_confirm'] = 'If you do not retain the image of goods, in the "image batch processing"\\n will not be re-generated image of the product does not contain a picture.\\n Please use this feature carefully!';

@@ -241,6 +241,7 @@ function send_mail($name, $email, $subject, $content, $type = 0, $notification=f
      */
     else
     {
+
         /* 邮件的头部信息 */
         $content_type = ($type == 0) ?
             'Content-Type: text/plain; charset=' . $charset : 'Content-Type: text/html; charset=' . $charset;
@@ -303,6 +304,7 @@ function send_mail($name, $email, $subject, $content, $type = 0, $notification=f
             else
             {
                 $err_msg = $smtp->error_msg();
+
                 if (empty($err_msg))
                 {
                     $GLOBALS['err']->add('Unknown Error');
@@ -776,6 +778,17 @@ function make_semiangle($str)
 function compile_str($str)
 {
     $arr = array('<' => '＜', '>' => '＞','"'=>'”',"'"=>'’');
+
+    return strtr($str, $arr);
+}
+/**
+ * 反过滤输出
+ *
+ * @access      public
+ * @return      string
+ */
+function rts_elipmoc($str){
+    $arr = array('＜' => '<', '＞' => '>','”'=>'"',"’"=>'\'');
 
     return strtr($str, $arr);
 }
@@ -1263,6 +1276,7 @@ function read_static_cache($cache_name)
         return $result[$cache_name];
     }
     $cache_file_path = ROOT_PATH . '/temp/static_caches/' . $cache_name . '.php';
+
     if (file_exists($cache_file_path))
     {
         include_once($cache_file_path);
@@ -1293,7 +1307,38 @@ function write_static_cache($cache_name, $caches)
     $content = "<?php\r\n";
     $content .= "\$data = " . var_export($caches, true) . ";\r\n";
     $content .= "?>";
-    file_put_contents($cache_file_path, $content, LOCK_EX);
-}
 
+    file_put_contents($cache_file_path, $content, LOCK_EX);
+
+}
+/*
+ * 换行
+ * */
+function wrap($text){
+    $ts=explode("\r\n",$text);
+    if(count($ts)<=1)$ts=explode("\n",$text);
+    if(count($ts)<=1)$ts=explode("\r",$text);
+
+    $html="";
+    foreach ($ts as $v){
+        $html .='<p>'.$v.'</p>';
+    }
+    return $html;
+};
+//转换成整数
+function my_intval($text){
+    return intval($text);
+}
+//把商品属性转换成自己想要的
+function goods_attr($attr){
+    $attrs=explode("\n",$attr);
+
+    foreach ($attrs as $key=>$value){
+        $pry='/^(.+?):(.+?)\[(.+?)\]/is';
+        preg_match($pry, $value, $match);
+        if(!empty($match[2])){
+            echo '<span class="list-label">'.$match[2].'</span>';
+        }
+    }
+}
 ?>

@@ -31,7 +31,41 @@ function addToCart(goodsId, parentId)
   goods.number   = number;
   goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
 
-  Ajax.call('flow.php?step=add_to_cart', 'goods=' + goods.toJSONString(), addToCartResponse, 'POST', 'JSON');
+  Ajax.call('flow.php?step=add_to_cart', 'goods=' + objToJSONString(goods), addToCartResponse, 'POST', 'JSON');
+}
+
+/* *
+ * 添加商品到购物车
+ */
+function addToCartNew(goodsId, parentId)
+{
+    var goods        = new Object();
+    var spec_arr     = new Array();
+    var fittings_arr = new Array();
+    var number       = 1;
+    var formBuy      = document.forms['ECS_FORMBUY'];
+    var quick		   = 0;
+
+    // 检查是否有商品规格
+    if (formBuy)
+    {
+        spec_arr = getSelectedAttributes(formBuy);
+
+        if (formBuy.elements['number'])
+        {
+            number = formBuy.elements['number'].value;
+        }
+
+        quick = 1;
+    }
+
+    goods.quick    = quick;
+    goods.spec     = spec_arr;
+    goods.goods_id = goodsId;
+    goods.number   = number;
+    goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
+
+    Ajax.call('flow.php?step=add_to_cart', 'goods=' + objToJSONString(goods), addToCartResponse, 'POST', 'JSON');
 }
 
 /**
@@ -49,6 +83,73 @@ function repurchase(order_id) {
   }, 'POST', 'JSON');
 }
 
+//立即购买
+function addToCart1(goodsId, parentId)
+{
+    var goods        = new Object();
+    var spec_arr     = new Array();
+    var fittings_arr = new Array();
+    var number       = 1;
+    var formBuy      = document.forms['ECS_FORMBUY'];
+    var quick     = 0;
+
+    // 检查是否有商品规格
+    if (formBuy)
+    {
+        spec_arr = getSelectedAttributes(formBuy);
+
+        if (formBuy.elements['number'])
+        {
+            number = formBuy.elements['number'].value;
+        }
+
+        quick = 1;
+    }
+
+    goods.quick    = quick;
+    goods.spec     = spec_arr;
+    goods.goods_id = goodsId;
+    goods.number   = number;
+    goods.parent   = (typeof(parentId) == "undefined") ? 0 : parseInt(parentId);
+
+    Ajax.call('flow.php?step=add_to_cart1', 'goods=' +objToJSONString(goods), addToCartResponse1, 'POST', 'JSON');
+}
+
+function addToCartResponse1(result)
+{
+    if(result.error==-1){
+        location.href = 'user.php';
+    }else if(result.error > 0){
+        // 如果需要缺货登记，跳转
+        if (result.error == 2)
+        {
+            if (confirm(result.message))
+            {
+                location.href = 'user.php?act=add_booking&id=' + result.goods_id + '&spec=' + result.product_spec;
+            }
+        }
+        // 没选规格，弹出属性选择框
+        else if (result.error == 6)
+        {
+            openSpeDiv(result.message, result.goods_id, result.parent);
+        }
+        else
+        {
+            alert(result.message);
+        }
+    }
+    else
+    {
+        var cartInfo = document.getElementById('ECS_CARTINFO');
+        var cart_url = 'flow.php?step=cart';
+        if (cartInfo)
+        {
+            cartInfo.innerHTML = result.content;
+        }
+        location.href = cart_url;
+
+    }
+}
 /**
  * 获得选定的商品属性
  */
@@ -81,7 +182,9 @@ function addToCartResponse(result)
   if (result.error > 0)
   {
     // 如果需要缺货登记，跳转
-    if (result.error == 2)
+      if(result.error==-1){
+          location.href = 'user.php';
+      }else if(result.error == 2)
     {
       if (confirm(result.message))
       {

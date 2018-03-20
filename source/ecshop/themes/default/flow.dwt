@@ -1,0 +1,546 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+
+<style type="text/css">
+    a{
+        color: #000;
+    }
+</style>
+{insert_scripts files='transportNew.js,common.js,shopping_flow.js?v=1'}
+
+<script type="text/javascript">
+    var cartList = [];
+    {foreach from=$lang.password_js item=item key=key}
+    var {$key} = "{$item}";
+    {/foreach}
+</script>
+<!-- {if $step eq "cart"} -->
+{insert_scripts files='showdiv.js'}
+<link rel="stylesheet" type="text/css" href="themes/default/css/cart.css">
+<div class="container main">
+    <!--{if $goods_list}-->
+    <div class="cartList">
+        <form id="formCart" name="formCart" method="post" action="flow.php">
+            <div class="row border-bottom list-header">
+                <h4>购物车</h4>
+
+            </div>
+            <ul class="list-unstyled">
+
+                <!-- {foreach from=$goods_list item=goods} -->
+
+                <script type="text/javascript">
+                    var data={
+                        isChecked:false,
+                        prize:parseFloat('{$goods.goods_price}'),
+                        amount:parseInt('{$goods.goods_number}')
+                    }
+                    cartList.push(data);
+                </script>
+                <li class="row border-bottom">
+                    <div class="col-lg-2">
+                        <div class="row">
+                            <div class="pull-left form-group list-checkbox">
+                                <!--<label for="product1">-->
+
+                                <!--</label>-->
+                                <!--<input id="product1" type="checkbox" value="0">-->
+                            </div>
+                            <div class="pull-left pic">
+                                <img src="{$goods.goods_thumb}"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 list-msg">
+                        <div class="row border-bottom">
+
+                            <div class="pull-left list-msg-name">
+                                <a href="goods.php?id={$goods.goods_id}" target="_blank">{$goods.goods_name}</a>
+                            </div>
+                            <div class="pull-left text-center list-msg-prize"><span class="product-prize">
+                                {$goods.subtotal}
+                            </span>
+                            </div>
+                            <div class="pull-left list-msg-num">
+                                <div class="input-group">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default input-lg border-unright btn-reduce" type="button" onclick="showdiv(this)">-</button>
+                                        </span>
+                                    <input type="text" name="goods_number[{$goods.rec_id}]" id="goods_number_{$goods.rec_id}"
+                                           onchange="showdiv(this)"
+                                           class="form-control input-lg border-unright border-unleft input-amount" autocomplete="off" value="{$goods.goods_number}">
+                                    <span class="input-group-btn">
+                                            <button class="btn btn-default input-lg border-unleft btn-add" type="button" onclick="showdiv(this)">+</button>
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="pull-right list-msg-delet">
+                                <a href="javascript:if (confirm('{$lang.drop_goods_confirm}')) location.href='flow.php?step=drop_goods&amp;id={$goods.rec_id}'; " class="f6">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true" title="删除订单"></span>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            {$goods.goods_attr|goods_attr}
+                        </div>
+                    </div>
+                </li>
+                <!-- {/foreach} -->
+            </ul>
+            <div class="row list-footer" style="text-align: right">
+                <input type="button" value="{$lang.clear_cart}" class="bnt_blue_1" onclick="location.href='flow.php?step=clear'" />
+                <input name="submit" type="submit" class="bnt_blue_1" value="{$lang.update_cart}" />
+            </div>
+            <div class="row list-footer">
+
+
+                <div class="pull-left btn-keepShopping">
+                    <p onclick="window.location.href='./'">
+                        <span class="icon-cart"></span>
+                        <span>继续购物</span>
+                    </p>
+                </div>
+                <div class="pull-right box-pay">
+                    <div class="text"><span class="pull-left">
+                        应付</span><span class="pull-right"><span class="fontSize24 red"></span> <span class="total red">
+                        {$shopping_money}
+                    </span></span>
+                    </div>
+                    <a href="flow.php?step=checkout" class="btn btn-primary btn-lg pull-right btn-gotoPay"><small>去结算</small></a>
+                </div>
+            </div>
+        <input type="hidden" name="step" value="update_cart" />
+        </form>
+    </div>
+    <!--{else /}-->
+    <div class="emptyCart" style="display: block">
+        <p class="text-center">亲，您的购物车里还没有物品哦</p>
+        <a href="./" class="btn btn-primary btn-lg" role="button">去逛逛</a>
+    </div>
+
+    <!--{/if}-->
+</div>
+
+
+<script src="themes/default/js/utils.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+    $(function(){
+
+
+        // 勾选订单
+        $(".list-checkbox label").on("click",function(){
+            var self = $(this);
+            var index = self.index(".list-checkbox label");
+            if(self.hasClass("checked")){
+                self.removeClass("checked");
+                cartList[index].isChecked = false;
+            }else{
+                self.addClass("checked");
+                cartList[index].isChecked = true;
+            }
+            setTotal();
+            //			console.log(cartList)
+        })
+
+        // 订单产品数量减少
+        $('.btn-reduce').on("click",function(){
+            var self = $(this);
+            var oInput = self.parent().siblings(".input-amount");
+            var index = self.index('.btn-reduce');
+            var amount = oInput.val();
+            amount--;
+            if (amount<=1) {
+                amount = 1;
+            }
+            oInput.val(amount);
+            cartList[index].amount = amount;
+            var meney='¥'+(cartList[index].prize*amount).toFixed(2)+'元';
+            self.parents(".list-msg-num").siblings(".list-msg-prize").children(".product-prize").text(meney);
+            setTotal();
+
+        });
+        // 订单产品数量增加
+        $('.btn-add').on("click",function(){
+            var self = $(this);
+            var oInput = self.parent().siblings(".input-amount");
+            var index = self.index('.btn-add');
+            var amount = oInput.val();
+            amount++;
+            oInput.val(amount);
+            cartList[index].amount = amount;
+            var meney='¥'+(cartList[index].prize*amount).toFixed(2)+'元';
+            self.parents(".list-msg-num").siblings(".list-msg-prize").children(".product-prize").text(meney);
+            setTotal();
+            showdiv(self);
+        });
+        // 直接修改订单产品数量
+        $(".input-amount").on("change",function(){
+            var self = $(this);
+            var amount = parseInt(self.val());
+
+            if(typeof amount !='number'){
+                alert("请输入数字！");
+
+                return;
+            }
+            var index = self.index(".input-amount");
+            cartList[index].amount = amount;
+            var meney='¥'+(cartList[index].prize*amount).toFixed(2)+'元';
+            self.parents(".list-msg-num").siblings(".list-msg-prize").children(".product-prize").text(meney);
+            setTotal();
+        });
+        //设置应付总额
+        function setTotal(){
+            var total = 0;
+            for(var i=0;i<cartList.length;i++){
+                if(cartList[i].isChecked){
+                    total += (cartList[i].prize * cartList[i].amount);
+                    console.log(total)
+                }
+            }
+            $(".total").text(total.toFixed(2));
+        }
+        //去结算
+    })
+</script>
+
+<!-- {/if} -->
+
+<!-- {if $step eq "checkout"} -->
+<link rel="stylesheet" type="text/css" href="themes/default/css/order_details.css">
+<!--<link rel="stylesheet" type="text/css" href="themes/default/lib/css/layui.css">-->
+<script type="text/javascript" src="themes/default/lib/layui.js"></script>
+{insert_scripts files='region.js,utils.js'}
+<script type="text/javascript">
+    region.isAdmin = false;
+    {foreach from=$lang.flow_js item=item key=key}
+    var {$key} = "{$item}";
+    {/foreach}
+
+    {literal}
+    onload = function() {
+        if (!document.all)
+        {
+            document.forms['theForm'].reset();
+        }
+    }
+    {/literal}
+</script>
+<div class="container main">
+    <div class="row order-row">
+
+        <!--  产品信息   -->
+        <div class="rows policList">
+
+            <div class="pull-left col-left">产品信息</div>
+            <div class="pull-left col-right">
+                <!-- {foreach from=$goods_list item=goods} -->
+                <div>
+                    <div class="pull-left col-list col-list-pic">
+                        <img class="product-pic" src="{$goods.goods_thumb}"/>
+                    </div>
+                    <div class="pull-left col-list product-name">
+                        <a href="goods.php?id={$goods.goods_id}" target="_blank">
+                            {$goods.goods_name}
+                        </a>
+                    </div>
+                    <div class="pull-left col-list">
+                        {$goods.formated_goods_price}
+                        x {$goods.goods_number}</div>
+                    <div class="pull-right col-list">
+                        {$goods.formated_subtotal}
+                    </div>
+                </div>
+                <!--{/foreach}-->
+
+            </div>
+        </div>
+
+        <!-- 配送信息  -->
+        <div class="rows border-top pb30">
+            <div class="pull-left col-left">收货信息</div>
+            <a href="javascript:;" name="addres"></a>
+            <div class="pull-left col-right">
+
+                <!-- {foreach from=$consignee_list item=consignee key=sn} -->
+                <!--{if $consignee.name}-->
+                <div {if $default_address neq $consignee.address_id}onclick=set_addr("{$consignee.address_id}"){/if} class="pull-left pr box-address {if $default_address eq $consignee.address_id}active{/if}" style="margin-top: 5px;">
+                    <div class="middle">
+                        <p><span class="ad-name">{$consignee.name}</span> <span class="ad-phone">{$consignee.mobile}</span></p>
+                        <p class="ad-address">{$consignee.province_name} {$consignee.city_name} {$consignee.district_name} {$consignee.address}</p>
+                    </div>
+                    <div class="btn-edit" onclick="open_url({$consignee.address_id})"></div>
+                </div>
+
+                <!--{else /}-->
+                <div class="pull-left pr btn-addAddress" style="margin-top: 5px;">
+                    <p><span class="icon-add"></span> 添加新地址 </p>
+                </div>
+                <!--{/if}-->
+                <!--{/foreach}-->
+                <input type="hidden" id="addres_id" name="addres_id" value="$default_address">
+            </div>
+        </div>
+    </div>
+
+<form action="flow.php?step=done" method="post" name="theForm" id="theForm" onsubmit="return checkOrderForm(this)">
+    <div class="row order-row">
+        <!-- {if $inv_content_list} 能否开发票 -->
+        <!--  电子发票   -->
+        <div class="rows">
+            <div class="pull-left col-left">电子发票</div>
+            <div class="pull-left col-right">
+                <!-- {if $inv_type_list} -->
+                <input type="hidden" name="need_inv" value="{$order.need_inv}" id="ECS_NEEDINV">
+                <div>
+                    <!-- {foreach from=$inv_type_list item=item key=key} -->
+                    <div class="pull-left form-group list-checkbox" style="margin-right: 30px;">
+                        <label for="personal_{$key}"><span class="icon-checkbox  {if $order.inv_type eq $item}checked{/if}"></span>{$item}</label>
+                        <input id="personal_{$key}" class="invoice-type" type="radio" name="inv_type" {if $order.inv_type eq $item}checked{/if} value="{$item}">
+                    </div>
+                    <!--{/foreach}-->
+
+                </div>
+                 <!--{/if}-->
+
+                <div class="col-input">
+                    <input class="form-control input-lg" id="invoiceText" name="inv_payee" type="text" value="" placeholder="发票抬头" style="color: #000"/>
+                </div>
+            </div>
+        </div>
+        <!--{/if}-->
+        <!--  支付方式   -->
+        <div class="rows border-top">
+            <div class="pull-left col-left">支付方式</div>
+            <div class="pull-left col-right">
+                <input type="hidden" name="payment" value="{$order.pay_id}">
+                <!-- {foreach from=$payment_list item=payment} -->
+                <!-- 循环支付方式 -->
+                {if $payment.pay_code!='yunqi'}
+                <div class="pull-left form-group pay-type" isCod="{$payment.pay_code}" onclick="selectPayment({$payment.pay_id})">
+                    <label {if $order.pay_id eq $payment.pay_id}class="checked"{/if} for="payOnLine_{$payment.pay_id}">{$payment.pay_name}</label>
+                    <input id="payOnLine_{$payment.pay_id}" type="radio" name="payment" value="{$payment.pay_id}" {if $order.pay_id eq $payment.pay_id}checked{/if}>
+                </div>
+                {else /}
+
+                <div class="pull-left form-group pay-type" isCod="{$payment.pay_code}" onclick="selectPayment({$payment.pay_id})">
+                    {if ($order.pay_id eq $payment.pay_id) or !$order.pay_id}
+                    <label class="checked" for="alipay">
+                    {else}
+                        <label for="alipay">
+                    {/if}
+
+                    <i class="icon-alipay"></i>支付宝
+                    </label>
+                    <input id="alipay" class="pay-type-input" type="radio" name="yunqi_paymethod" value="alipay" {if ($order.pay_id eq $payment.pay_id) or !$order.pay_id}checked{/if}>
+                </div>
+                <div class="pull-left form-group pay-type" isCod="{$payment.pay_code}" onclick="selectPayment({$payment.pay_id})">
+                    <label for="wxpay"><i class="icon-wechatpay"></i>微信支付</label>
+                    <input id="wxpay" class="pay-type-input" type="radio" name="yunqi_paymethod" value="wxpay">
+                </div>
+                <div style="display: none">
+                    <input id="payOnLine_yunqi" type="radio" name="payment" value="{$payment.pay_id}" {if ($order.pay_id eq $payment.pay_id) or !$order.pay_id}checked{/if}>
+                </div>
+
+                {/if}
+                <!-- {/foreach} 循环支付方式 -->
+            </div>
+        </div>
+    </div>
+    <!--  保单总额   -->
+    <div class="row order-row">
+        <div class="rows">
+            <div class="pull-right last-row">
+                <input type="hidden" name="shipping" value="{$shipping_list[0].shipping_id}">
+                <script type="text/javascript">
+                    $(function(){
+                        selectShipping({$shipping_list[0].shipping_id});
+                    });
+
+                </script>
+                <div class="pull-right box-pay" id="ECS_ORDERTOTAL">
+
+                <!-- #BeginLibraryItem "/Library/order_total.lbi" --><!-- #EndLibraryItem -->
+                </div>
+            </div>
+            </div>
+            <div class="pull-right btn-wrap">
+                <button type="submit" class="btn btn-primary btn-lg pull-right btn-gotoPay"><small>去结算</small></button>
+                <input type="hidden" name="step" value="done" />
+            </div>
+        </div>
+    </div>
+</form>
+    <script type="text/javascript">
+
+        layui.use(['layer','element'],
+            function() {
+                layer = layui.layer;
+            });
+        function open_url(id){
+            var url='flow.php?step=consignee';
+            if(id){
+                url +='&addres_id='+id
+            }
+            layer.open({
+                type: 2,
+                area: ['800px', '500px'],
+                shade:0.6,
+                title: '编辑地址',
+                content:url
+
+            });
+        }
+        function changeNeedInv2(invType)
+        {
+
+            return false;
+        }
+
+        function set_addr(id) {
+            window.location.href="flow.php?step=set_attr&addres_id="+id;
+        }
+        $(function(){
+            //添加新地址
+            $(".btn-addAddress").on("click",function(){
+                open_url();
+            });
+
+            $('.box-address').on('click',function(){
+//                $(this).addClass('active');
+//                var addres_id=$(this).attr('data-id');
+//                window.location.href="flow.php?step=set_attr&addres_id="+addres_id;
+//
+//                $('#addres_id').val(addres_id);
+//                $(this).siblings().removeClass('active');
+            })
+
+            // 勾选订单
+            $(".list-checkbox label").on("click",function(){
+                var self = $(this);
+                var index = self.index(".list-checkbox label");
+                $(".icon-checkbox").removeClass("checked") && self.children(".icon-checkbox").addClass("checked");
+                $('.list-checkbox input[type="radio"]').removeAttr('checked') && $(this).siblings("input").attr('checked', 'checked');
+
+                var needInv    =  1;
+                $('#ECS_NEEDINV').val(1) ;
+                var invPayee   =  '';
+                var invContent =  '';
+                var invType=$(this).next('input').val();
+                Ajax.call('flow.php?step=change_needinv', 'need_inv=' + needInv + '&inv_type=' + encodeURIComponent(invType) + '&inv_payee=' + encodeURIComponent(invPayee) + '&inv_content=' + encodeURIComponent(invContent), orderSelectedResponse, 'GET');
+            });
+            // 选择支付方式
+            $(".pay-type label").on("click",function(){
+                var self = $(this);
+                var index = self.index(".pay-type label");
+                $(".pay-type label").removeClass("checked") && self.addClass("checked");
+                $('.pay-type input[type="radio"]').removeAttr('checked') && $(this).siblings("input").attr('checked', 'checked');
+
+                var isCod=$(this).parent().attr('isCod');
+                if(isCod=="yunqi"){
+                    $('#payOnLine_yunqi').prop('checked', true)
+                }else{
+                    $('#payOnLine_yunqi').prop('checked',false)
+                }
+            })
+        })
+
+    </script>
+
+</div>
+<!--{/if}-->
+
+<!-- {if $step eq "done"} -->
+
+<link rel="stylesheet" type="text/css" href="themes/default/css/pay.css">
+<!-- 订单提交成功 -->
+<div class="container main">
+    <div class="box-tip center-block">
+        <div class="pull-left icon-bag"></div>
+        <div class="pull-left text">
+            <p class="fontSize24">订单已提交，{$order.pay_name}</p>
+            <p class="fontSize16 color-gray">在我的订单查看订单详情</p>
+        </div>
+    </div>
+    <div class="rows border-bottom">
+        <div class="pull-right box-pay">
+            <div class="text"><span class="pull-left">应付</span><span class="pull-right"><span class="total red">{$total.amount_formated}</span></span></div>
+            <!-- {if $pay_online} -->
+            <div class="btn-wrap">
+                {$pay_online}
+            </div>
+            <!-- {/if} -->
+
+        </div>
+
+
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            $('.btn-gotoPay').on('click',function(){
+                massges2('发起支付','请在新打开的页面进行支付，支付完成前请不要关闭该窗口');
+            })
+        })
+        function massges2(title,center){
+            var body=document.getElementsByTagName("body")[0];
+            var bomb=document.createElement('div');
+            bomb.className="bomb tips-cancle";
+
+
+            var bomb_conent=document.createElement('div');
+            bomb_conent.className="bomb-conent";
+            /*关闭按钮start */
+            var span=document.createElement('span');
+            span.className="close";
+            span.innerHTML="x";
+            span.addEventListener("click",function(){
+                body.removeChild(bomb);
+            });
+            bomb_conent.appendChild(span);
+            /* 关闭按钮end */
+            /*提示tile*/
+            var h3=document.createElement('h3');
+            h3.className="text-center";
+            if(!title){
+                h3.innerHTML="消息提示";
+            }else{
+                h3.innerHTML=title;
+            }
+            bomb_conent.appendChild(h3);
+            /*提示title end*/
+            bomb_conent.appendChild(document.createElement('hr'));
+
+            /*提示内容*/
+            var p=document.createElement('p');
+            p.className="words2 text-center";
+            p.innerHTML=center;
+            bomb_conent.appendChild(p);
+
+            but=document.createElement('div');
+            but.className='btn-wrap';
+            var but1=document.createElement('button');
+            but1.className="btn btn-primary";
+            but1.innerHTML="支付完成";
+            but1.addEventListener("click",function(){
+               window.location.href='user.php?act=order_list';
+            });
+
+            var but2=document.createElement('button');
+            but2.className="btn btn-default";
+            but2.innerHTML="支付遇到问题";
+            but2.addEventListener("click",function(){
+                body.removeChild(bomb);
+            });
+            but.appendChild(but1);
+            but.appendChild(but2);
+
+            bomb_conent.appendChild(but);
+            /*按钮end*/
+            bomb.appendChild(bomb_conent);
+            bomb.style.display="block";
+            body.appendChild(bomb);
+        }
+    </script>
+</div>
+<!--{/if}-->

@@ -21,6 +21,7 @@ require_once(ROOT_PATH . '/includes/lib_order.php');
 /*------------------------------------------------------ */
 if ($_REQUEST['act'] == '')
 {
+
     $smarty->assign('shop_url', urlencode($ecs->url()));
     $smarty->display('index.htm');
 }
@@ -82,7 +83,6 @@ elseif ($_REQUEST['act'] == 'calculator')
 {
     $smarty->display('calculator.htm');
 }
-
 /*------------------------------------------------------ */
 //-- 左边的框架
 /*------------------------------------------------------ */
@@ -101,6 +101,7 @@ elseif ($_REQUEST['act'] == 'menu')
 
     foreach ($modules AS $key => $val)
     {
+
         $menus[$key]['label'] = $_LANG[$key];
         if (is_array($val))
         {
@@ -177,6 +178,8 @@ elseif ($_REQUEST['act'] == 'clear_cache')
 elseif ($_REQUEST['act'] == 'main')
 {
     //开店向导第一步
+
+
     if(isset($_SESSION['shop_guide']) && $_SESSION['shop_guide'] === true)
     {
         unset($_SESSION['shop_guide']);//销毁session
@@ -212,10 +215,13 @@ elseif ($_REQUEST['act'] == 'main')
     }
 
     $open_basedir = ini_get('open_basedir');
+
     if (!empty($open_basedir))
     {
         /* 如果 open_basedir 不为空，则检查是否包含了 upload_tmp_dir  */
+
         $open_basedir = str_replace(array("\\", "\\\\"), array("/", "/"), $open_basedir);
+
         $upload_tmp_dir = ini_get('upload_tmp_dir');
 
         if (empty($upload_tmp_dir))
@@ -238,12 +244,14 @@ elseif ($_REQUEST['act'] == 'main')
     }
 
     $result = file_mode_info('../cert');
+
     if ($result < 2)
     {
         $warning[] = sprintf($_LANG['not_writable'], 'cert', $_LANG['cert_cannt_write']);
     }
 
     $result = file_mode_info('../' . DATA_DIR);
+
     if ($result < 2)
     {
         $warning[] = sprintf($_LANG['not_writable'], 'data', $_LANG['data_cannt_write']);
@@ -251,6 +259,7 @@ elseif ($_REQUEST['act'] == 'main')
     else
     {
         $result = file_mode_info('../' . DATA_DIR . '/afficheimg');
+
         if ($result < 2)
         {
             $warning[] = sprintf($_LANG['not_writable'], DATA_DIR . '/afficheimg', $_LANG['afficheimg_cannt_write']);
@@ -282,6 +291,7 @@ elseif ($_REQUEST['act'] == 'main')
     }
 
     $result = file_mode_info('../images');
+
     if ($result < 2)
     {
         $warning[] = sprintf($_LANG['not_writable'], 'images', $_LANG['images_cannt_write']);
@@ -302,6 +312,7 @@ elseif ($_REQUEST['act'] == 'main')
     }
 
     $result = file_mode_info('../temp/backup');
+
     if ($result < 2)
     {
         $warning[] = sprintf($_LANG['not_writable'], 'images', $_LANG['tpl_backup_cannt_write']);
@@ -313,13 +324,17 @@ elseif ($_REQUEST['act'] == 'main')
     }
     clearstatcache();
 
-
     //版本检查
     $release_url = VERSION_UTF8;
-    $_content = file_get_contents($release_url);
+
+    $_content = file_get_contents('http://update.shopex.com.cn/version/program/ECShop/ecshop_version_list.txt');
+
     $version_all = array_filter(explode("\n",$_content));
+
     $app_version = get_appserver_verison();
+
     $h5_version = get_h5_version();
+
     foreach($version_all as $v){
         $item = json_decode($v,1);
         if($item['date']>intval(RELEASE)){
@@ -1361,4 +1376,5 @@ function get_h5_version(){
     $content = file_get_contents(ROOT_PATH.'h5/version.txt');
     return str_replace(array('.','v'),'',$content);
 }
+
 ?>

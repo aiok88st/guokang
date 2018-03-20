@@ -1,0 +1,32 @@
+.page-form{
+    text-align: center;
+}
+#pager span{
+    display: inline-block;
+    width: 49px;
+    line-height: 49px;
+    text-align: center;
+    font-size: 18px;
+    color: #333333;
+    background-color: #f5f5f5;
+}
+#pager a{
+    display: inline-block;
+    width: 49px;
+    line-height: 49px;
+    text-align: center;
+    font-size: 18px;
+    color: #333333;
+    background-color: #f5f5f5;
+    margin-left: 2px;
+}
+#pager .page_now{
+    background-color: #056dbb;
+    color: white;
+}
+#pager .next{
+    width: 90px;
+}
+#pager .prev{
+    width: 90px;
+}

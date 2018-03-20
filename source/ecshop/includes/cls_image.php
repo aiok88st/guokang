@@ -108,14 +108,15 @@ class cls_image
             return false;
         }
 
-        /* 允许上传的文件类型 */
-        $allow_file_types = '|GIF|JPG|JEPG|PNG|BMP|SWF|';
-        if (!check_file_type($upload['tmp_name'], $img_name, $allow_file_types))
-        {
-            $this->error_msg = $GLOBALS['_LANG']['invalid_upload_image_type'];
-            $this->error_no  =  ERR_INVALID_IMAGE_TYPE;
-            return false;
-        }
+//        /* 允许上传的文件类型 */
+//        $allow_file_types = '|GIF|JPG|JEPG|PNG|BMP|SWF|';
+//
+//        if (!check_file_type($upload['tmp_name'], $img_name, $allow_file_types))
+//        {
+//            $this->error_msg = $GLOBALS['_LANG']['invalid_upload_image_type'];
+//            $this->error_no  =  ERR_INVALID_IMAGE_TYPE;
+//            return false;
+//        }
 
         if ($this->move_file($upload, $img_name))
         {

@@ -115,12 +115,17 @@ if ($_REQUEST['act']=='reply')
                " WHERE goods_id = '$comment_info[id_value]'";
         $id_value = $db->getOne($sql);
     }
-    else
+    elseif($comment_info['comment_type'] == 1)
     {
         $sql = "SELECT title FROM ".$ecs->table('article').
                " WHERE article_id='$comment_info[id_value]'";
         $id_value = $db->getOne($sql);
+    }else{
+
+        $sql= "SELECT `name` FROM ".$GLOBALS['ecs']->table('expert'). " WHERE id='$comment_info[id_value]'";
+        $id_value = $db->getOne($sql);
     }
+
 
     /* 模板赋值 */
     $smarty->assign('msg',          $comment_info); //评论信息
@@ -355,9 +360,19 @@ function get_comment_list()
 
     while ($row = $GLOBALS['db']->fetchRow($res))
     {
-        $sql = ($row['comment_type'] == 0) ?
-            "SELECT goods_name FROM " .$GLOBALS['ecs']->table('goods'). " WHERE goods_id='$row[id_value]'" :
-            "SELECT title FROM ".$GLOBALS['ecs']->table('article'). " WHERE article_id='$row[id_value]'";
+        switch ($row['comment_type']){
+            case 0:
+                $sql= "SELECT goods_name FROM " .$GLOBALS['ecs']->table('goods'). " WHERE goods_id='$row[id_value]'";
+                break;
+            case 1:
+                $sql= "SELECT title FROM ".$GLOBALS['ecs']->table('article'). " WHERE article_id='$row[id_value]'";
+                break;
+            case 3:
+                $sql= "SELECT `name` FROM ".$GLOBALS['ecs']->table('expert'). " WHERE id='$row[id_value]'";
+
+                break;
+        }
+
         $row['title'] = $GLOBALS['db']->getOne($sql);
 
         /* 标记是否回复过 */

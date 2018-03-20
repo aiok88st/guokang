@@ -130,23 +130,41 @@ $_LANG['gram'] = '克';
 $_LANG['kilogram'] = '千克';
 
 /* 菜单分类部分 */
-$_LANG['01_certificate_manage'] = '云服务中心';
+$_LANG['00_certificate_manage'] = '云服务中心';
+
 $_LANG['02_cat_and_goods'] = '商品管理';
-$_LANG['03_promotion'] = '促销管理';
-$_LANG['04_order'] = '订单管理';
-$_LANG['05_banner'] = '广告管理';
-$_LANG['06_stats'] = '报表统计';
-$_LANG['07_content'] = '文章管理';
-$_LANG['08_members'] = '会员管理';
-$_LANG['09_others'] = '杂项管理';
-$_LANG['10_priv_admin'] = '权限管理';
-$_LANG['11_system'] = '系统设置';
-$_LANG['12_template'] = '模板管理';
-$_LANG['13_backup'] = '数据库管理';
-$_LANG['14_sms'] = '短信管理';
-$_LANG['15_rec'] = '推荐管理';
-$_LANG['16_email_manage'] = '邮件群发管理';
+
+
+
+$_LANG['04_promotion'] = '促销管理';
+$_LANG['05_order'] = '订单管理';
+$_LANG['06_banner'] = '广告管理';
+$_LANG['07_stats'] = '报表统计';
+$_LANG['08_content'] = '文章管理';
+$_LANG['09_members'] = '会员管理';
+$_LANG['10_others'] = '杂项管理';
+$_LANG['11_priv_admin'] = '权限管理';
+$_LANG['12_system'] = '系统设置';
+$_LANG['13_template'] = '模板管理';
+$_LANG['14_backup'] = '数据库管理';
+$_LANG['15_sms'] = '短信管理';
+$_LANG['16_rec'] = '推荐管理';
+$_LANG['17_email_manage'] = '邮件群发管理';
 $_LANG['18_lead_manage'] = '移动版管理';
+
+/* 网站留言管理 */
+$_LANG['01_massge'] = '网站留言管理';
+$_LANG['01_policy'] = '极速投保';
+$_LANG['02_apply'] = '免费申请';
+
+
+/* 专家管理 */
+$_LANG['07_doctor'] = '核心团队';
+$_LANG['01_doctorcat_1'] = '团队类型';
+$_LANG['02_doctorcat_2'] = '团队分类';
+$_LANG['03_doctor_list'] = '团队列表';
+
+
 
 /* 商品管理 */
 $_LANG['01_goods_list'] = '商品列表';
@@ -157,6 +175,9 @@ $_LANG['05_comment_manage'] = '用户评论';
 $_LANG['06_goods_brand_list'] = '商品品牌';
 $_LANG['07_brand_add'] = '添加品牌';
 $_LANG['08_goods_type'] = '商品类型';
+
+$_LANG['09_goods_tag'] = '商品标签';
+
 $_LANG['09_attribute_list'] = '商品属性';
 $_LANG['10_attribute_add'] = '添加属性';
 $_LANG['11_goods_trash'] = '商品回收站';
@@ -164,7 +185,7 @@ $_LANG['12_batch_pic'] = '图片批量处理';
 $_LANG['13_batch_add'] = '商品批量上传';
 $_LANG['15_batch_edit'] = '商品批量修改';
 $_LANG['16_goods_script'] = '生成商品代码';
-$_LANG['17_tag_manage'] = '标签管理';
+$_LANG['17_tag_manage'] = '会员商品标签';
 $_LANG['18_product_list'] = '货品列表';
 $_LANG['52_attribute_add'] = '编辑属性';
 $_LANG['53_suppliers_goods'] = '供货商商品管理';

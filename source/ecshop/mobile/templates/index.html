@@ -1,79 +1,293 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ECShop_mobile</title>
-</head>
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/index.css?v=1" />
+<!--<link rel="stylesheet" href="templates/lib/css/layui.mobile.css">-->
+<script type="text/javascript" src="templates/lib/layui.js"></script>
+<!--banner-->
+<div id="banner">
+    <div class="swiper-container swiper-container-index">
+        <div class="swiper-wrapper">
+            {insert name='ads' id=10 num=3}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!--四个选择 对接完首页加上链接 -->
+    <div class="fourA">
+        <a href="###" class="floatl">
+            <img src="templates/img/fimg1.png" />
+            <p>了解国康</p>
+        </a>
+        <a href="###" class="floatl">
+            <img src="templates/img/fimg2.png" />
+            <p>产品中心</p>
+        </a>
+        <a href="###" class="floatl">
+            <img src="templates/img/fimg3.png" />
+            <p>服务体系</p>
+        </a>
+        <a href="###" class="floatl">
+            <img src="templates/img/fimg4.png" />
+            <p>TOP500选择</p>
+        </a>
+        <div class="clearl"></div>
+    </div>
+</div>
+<!--满足-->
+<div id="cj">
+    <div class="cjTitle">
+        <p>满足您使用的各种场景</p>
+    </div>
+    <div class="cjDetail">
+        <p>国康健康是更懂您企业员工高效秘密的平台。<br/>在多种行业为行业冠军提供最适合的完整健康解决方案。<br/>助力您的企业飞跃发展。</p>
+    </div>
+    <div class="swiper-container swiper-container-cj">
+        <div class="swiper-wrapper">
 
-<body>
+            {foreach from=$case_list item=item}
+            <div class="swiper-slide">
+                <div class="cjBox">
+                    <div class="cjChild">
+                        <div class="cjTop">
+                            <img src="../{$item.file_url_wap}" onerror="this.src='../themes/default/img/develop.jpg'"/>
+                            <div>
+                                <p>{$item.title}</p>
+                            </div>
+                        </div>
 
-<p align='left'>
-{if $user_name}
-    [<a href='user.php?act=user_center'>用户中心</a>]&nbsp;[<a href='user.php?act=logout'>退出</a>]<br/>
-{else}
-    ［<a href='user.php?act=login'>登录</a>］&nbsp;［<a href='user.php?act=register'>免费注册</a>］<br/>
-{/if}
-<img src='{$wap_logo|default:../images/wap_logo.png}' alt='LOGO' /><br/>
+                    </div>
+                </div>
+            </div>
+            {/foreach}
+        </div>
+    </div>
+    <!--产品-->
+    <div class="goods">
+        <div class="cjbBox">
+            <p class="floatl">国康服务</p>
+            <a href="###" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
 
-<form name="searchForm" method="get" action="search.php">
- <input name="keywords" type="text" />
- <input type="submit" value="商品搜索"/>
-</form>
-{if $searchkeywords}
- 热门搜索 ：
- {foreach from=$searchkeywords item=val}
- <a href="search.php?keywords={$val|escape:url}">{$val}</a>
- {/foreach}
-{/if}
-<br/>--------------<br/>
-{if $best_num > 0}
-[精品推荐]&gt;&gt;<a href='goods_list.php?type=best'>更多</a><br/>
-  {foreach from=$best_goods item=best_data}
-      <a href='goods.php?id={$best_data.id}'>{$best_data.name}</a>[{$best_data.shop_price}]<br/>
-  {/foreach}
-{/if}
-<br/>--------------<br/>
-{if $promote_num > 0}
-[促销商品]&gt;&gt;<a href='goods_list.php?type=promote'>更多</a><br/>
-  {foreach from=$promote_goods item=promote_data}
-      <a href='goods.php?id={$promote_data.id}'>{$promote_data.name}</a>[{$promote_data.shop_price}]<br/>
-  {/foreach}
-{/if}
-<br/>--------------<br/>
-{if $hot_num > 0}
-[热门商品]&gt;&gt;<a href='goods_list.php?type=hot'>更多</a><br/>
-  {foreach from=$hot_goods item=hot_data}
-      <a href='goods.php?id={$hot_data.id}'>{$hot_data.name}</a>[{$hot_data.shop_price}]<br/>
-  {/foreach}
-{/if}
-<br/>--------------<br/>
-&gt;&gt;商品分类&gt;&gt;<a href='cat_all.php'>更多</a><br/><br/>
+        <div class="swiper-container swiper-container-goods">
 
-{foreach from=$pcat_array item=pcat_data}
-<a href='category.php?c_id={$pcat_data.id}'>{$pcat_data.name}</a>|&nbsp;&nbsp;
-{foreach from=$pcat_data['cat_id'] item=cat_data name=foo}
-{if $smarty.foreach.foo.iteration <= 3}
-<a href='category.php?c_id={$cat_data.id}'>{$cat_data.name}</a>
-{/if}
-{/foreach}
-&nbsp;&nbsp;<a href='cat_all.php'>...更多</a><br/>
-{/foreach}
-<br/>--------------<br/>
-{if $brand_array}
-品牌专区&gt;&gt;<a href='brands.php'>更多</a><br/>
-{foreach from=$brand_array item=brand_data}
-<a href='brands.php?b_id={$brand_data.brand_id}'>{$brand_data.brand_name}</a><br/>
-{/foreach}
-{/if}
-<br/>--------------<br/>
-[站内资讯]&gt;&gt;<a href='article.php'>更多</a><br/>
-{if $article_array}
-{foreach from=$article_array item=article_data}
-<a href='article.php?act=detail&amp;a_id={$article_data.article_id}'>{$article_data.title}</a><br/>
-{/foreach}
-{/if}
-{$footer}
-</p>
 
+            <div class="swiper-wrapper">
+
+                {foreach from=$goods_list item=item key=key}
+                {if $key eq 0}
+                <div class="swiper-slide">
+                    <div class="cjBottom">
+                        <div class="cjList">
+                {/if}
+                 {if $key%3 eq 0 and $key!=0}
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="cjBottom">
+                        <div class="cjList">
+                 {/if}
+                            <div class="cjl">
+                                <div class="cjImg">
+                                    <img src="../{$item.goods_thumb}" onerror="this.src='../themes/default/img/develop.jpg'"/>
+                                </div>
+                                <div class="cjContent">
+                                    <p class="title2">{$item.goods_name}</p>
+                                    <p class="p1 title3">
+                                        {if $item.goods_desc}
+                                        {$item.goods_desc}
+                                        …
+                                        {/if}
+                                    </p>
+                                </div>
+                            </div>
+
+
+                 {if $key+1 eq $last_goods}
+
+                        </div>
+                    </div>
+                </div>
+                {/if}
+                {/foreach}
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+<!--医生-->
+<div id="doctor">
+    <div class="doctor bottom-top">
+        <div class="dtBox">
+            <p class="floatl">国康名医团队</p>
+            <a href="###" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
+        <div class="mb05">
+            <ul>
+                {foreach from=$expert_list item=item key=key}
+                <li>
+                    <a href="">
+                        <div class="face">
+                            <img src="../{$item.}" onerror="this.src='../themes/default/img/develop.jpg'" alt="">
+                        </div>
+                        <div class="title title3">
+                            {$item.name} <span class="post">{$item.job}</span>
+                        </div>
+                        <div class="desc">
+                            {$item.unit}
+                        </div>
+                    </a>
+                </li>
+                {/foreach}
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--行业标杆客户-->
+<div id="client" class="w92">
+    <div class="bottom-top">
+        <div class="dtBox">
+            <p class="floatl">行业标杆客户</p>
+            <a href="###" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+    <div class="content mb05">
+        <ul>
+            {foreach from=$article_list item=item key=key}
+            <li>
+                <a href="article.php?id={$item.article_id}">
+                    <img src="../{$item.file_url}" alt="{$item.title}" onerror="this.src='../themes/default/img/develop.jpg'">
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+</div>
+<!--新闻咨询-->
+<div id="news">
+    <div class="bottom-top w92">
+        <div class="dtBox">
+            <p class="floatl">新闻资讯</p>
+            <a href="###" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+    <div class="nav w92">
+        <ul class="news_cat">
+            {foreach from=$new_cat item=item key=key}
+            <li class="title3 {if $key eq 0}select{/if}" data-id="{$item.cat_id}">{$item.cat_name}</li>
+            {/foreach}
+
+
+            <li class="clear"></li>
+        </ul>
+
+    </div>
+    {foreach from=$news_list item=item key=key}
+    <div class="swiper-container swiper-container-new swiper-container-new-{$item.cat_id}" {if $key neq 0}style="display: none"{/if}>
+        <div class="swiper-wrapper">
+            {foreach from=$item.list item=item2 key=key2}
+            {if $key2 eq 0}
+            <div class="swiper-slide" style="width: 95%">
+                {/if}
+                {if $key2%3 eq 0 and $key2!=0}
+            </div>
+            <div class="swiper-slide" style="width: 95%">
+                {/if}
+                <div class="newsbox">
+                    <a href="">
+                        <div class="floatl text">
+                            <div class="title title3">{$item2.title}</div>
+                            <div class="add_time title4">{$item2.add_time|dataDay} {$item.cat_name}</div>
+                        </div>
+                        <div class="floatl thumb">
+                            <img src="../{$item2.file_url}" alt="" onerror="this.src='../themes/default/img/develop.jpg'">
+                        </div>
+                    </a>
+                </div>
+
+            {if $key2+1 eq $item.count}
+            </div>
+            {/if}
+            {/foreach}
+        </div>
+    <script type="text/javascript">
+        $(function(){
+             var swipernews = new Swiper('.swiper-container-new-{$item.cat_id}', {
+                 onInit: function(swiper){
+
+                 }
+             });
+        })
+    </script>
+    </div>
+    {/foreach}
+</div>
+<!--表单提交-->
+<div id="apply">
+    <img src="templates/images/index-apply.png" alt="">
+    <div class="content">
+        <div class="title1">免费申请体验私人医生服务</div>
+        <form class="layui-form" action="">
+            <div class="item from-item-1">
+                <input type="text" name="username" class="layui-input" placeholder="请输入您的姓名">
+                <input type="text" name="mobile" class="layui-input" placeholder="请输入您的电话">
+                <div class="clear"></div>
+            </div>
+            <div class="item">
+                <input type="text" name="company" class="layui-input" placeholder="请输入您的单位名称">
+            </div>
+            <div class="item">
+                <input type="text" name="position" class="layui-input" placeholder="请输入您的职位">
+            </div>
+            <div class="item">
+                <input type="submit" class="title2" value="免费申请" lay-submit lay-filter="*">
+            </div>
+
+        </form>
+        <script>
+            layui.use('form', function(){
+                var form = layui.form;
+                form.on('submit(*)', function(data){
+                    layer.load(2);
+                    $.ajax({
+                        url:'../message.php?act=apply',
+                        type:'POST',
+                        dataType:'JSON',
+                        data:data.field,
+                        success:function(res){
+                            layer.closeAll();
+                            layer.msg(res.msg);
+                        },
+                        error:function () {
+                            layer.closeAll();
+                            layer.msg('提交失败');
+
+                        }
+                    });
+
+                    return false;
+                });
+              ;
+            });
+        </script>
+        <div class="apply-text title4">
+            请方向填写，您的信息将被加密保护 <br/>
+            符合条件者，可成为特邀体验会员
+        </div>
+    </div>
+</div>
+{include file="/library/page_footer.html"}
+
+<script type="text/javascript" src="templates/js/index.js?v=1" ></script>
 </body>
 </html>
+

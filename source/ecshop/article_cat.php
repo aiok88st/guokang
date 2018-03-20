@@ -56,8 +56,23 @@ $page   = !empty($_REQUEST['page'])  && intval($_REQUEST['page'])  > 0 ? intval(
 /* 获得页面的缓存ID */
 $cache_id = sprintf('%X', crc32($cat_id . '-' . $page . '-' . $_CFG['lang']));
 
-if (!$smarty->is_cached('article_cat.dwt', $cache_id))
+if (!$smarty->is_cached('news.dwt', $cache_id))
 {
+    //分类
+    $sql = 'SELECT cat_id, cat_name, parent_id FROM  ecs_article_cat WHERE parent_id = 17 ORDER BY sort_order ASC';
+    $catlist = $db->getAll($sql);
+    $smarty->assign('catlist',           $catlist);
+    $smarty->assign('cat_id',    $cat_id);
+    //面包屑
+    $cat = get_cat_info($cat_id);
+    $url_html = '<li><a href="./index.html">首页 &gt;</a></li><li><a href="article_cat-6.html">新闻资讯 &gt;</a></li><li><a href="javascript:;">'.$cat['cat_name'].'</a></li>';
+    $smarty->assign('url_html', $url_html);
+    //最新新闻
+    $new = get_new_news_article(17);
+    $smarty->assign('new', $new);
+
+
+
     /* 如果页面没有被缓存则重新获得页面的内容 */
 
     assign_template('a', array($cat_id));
@@ -90,45 +105,47 @@ if (!$smarty->is_cached('article_cat.dwt', $cache_id))
     $smarty->assign('description', htmlspecialchars($meta['cat_desc']));
 
     /* 获得文章总数 */
-    $size   = isset($_CFG['article_page_size']) && intval($_CFG['article_page_size']) > 0 ? intval($_CFG['article_page_size']) : 20;
+    $size   = 7;
     $count  = get_article_count($cat_id);
-    $pages  = ($count > 0) ? ceil($count / $size) : 1;
-
-    if ($page > $pages)
-    {
-        $page = $pages;
-    }
-    $pager['search']['id'] = $cat_id;
-    $keywords = '';
-    $goon_keywords = ''; //继续传递的搜索关键词
-
-    /* 获得文章列表 */
-    if (isset($_REQUEST['keywords']))
-    {
-        $keywords = addslashes(htmlspecialchars(urldecode(trim($_REQUEST['keywords']))));
-        $pager['search']['keywords'] = $keywords;
-        $search_url = substr(strrchr($_POST['cur_url'], '/'), 1);
-
-        $smarty->assign('search_value',    stripslashes(stripslashes($keywords)));
-        $smarty->assign('search_url',       $search_url);
-        $count  = get_article_count($cat_id, $keywords);
-        $pages  = ($count > 0) ? ceil($count / $size) : 1;
-        if ($page > $pages)
-        {
-            $page = $pages;
+    $pager = get_pager('article_cat', array('id'=>$cat_id), $count, $page,$size);
+    $smarty->assign('pager', $pager);
+    $sql = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id' .
+        ' FROM ' .$GLOBALS['ecs']->table('article') .
+        ' WHERE is_open = 1 AND cat_id=' . $cat_id .
+        ' ORDER BY article_type DESC, article_id DESC'.
+        ' limit '.$pager[start] . ',' .$pager[size];
+    $data = $db->getAll($sql);
+    foreach($data as $k=>$v){
+        if(mb_strlen($v['title'])>20){
+            $data[$k]['title'] = mb_substr($v['title'],0,20,'utf-8').'...';
         }
-
-        $goon_keywords = urlencode($_REQUEST['keywords']);
+        if(mb_strlen($v['description'])>100){
+            $data[$k]['description'] = mb_substr($v['description'],0,100,'utf-8').'...';
+        }
+        $data[$k]['add_time'] = explode('-',date($GLOBALS['_CFG']['date_format'], $v['add_time']));
     }
-    $smarty->assign('artciles_list',    get_cat_articles($cat_id, $page, $size ,$keywords));
-    $smarty->assign('cat_id',    $cat_id);
-    /* 分页 */
-    assign_pager('article_cat', $cat_id, $count, $size, '', '', $page, $goon_keywords);
+    $smarty->assign('artciles_list',    $data);
+
+
     assign_dynamic('article_cat');
 }
 
 $smarty->assign('feed_url',         ($_CFG['rewrite'] == 1) ? "feed-typearticle_cat" . $cat_id . ".xml" : 'feed.php?type=article_cat' . $cat_id); // RSS URL
 
-$smarty->display('article_cat.dwt', $cache_id);
+$smarty->display('news.dwt', $cache_id);
+
+
+/**
+ * 获得分类的信息
+ *
+ * @param   integer $cat_id
+ *
+ * @return  void
+ */
+function get_cat_info($cat_id)
+{
+    return $GLOBALS['db']->getRow('SELECT cat_id, cat_name, parent_id FROM ' . $GLOBALS['ecs']->table('article_cat') .
+        " WHERE cat_id = '$cat_id'");
+}
 
 ?>
