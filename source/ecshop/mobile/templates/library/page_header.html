@@ -11,29 +11,34 @@
     <meta content="telephone=no" name="format-detection"/>
     <link rel="stylesheet" href="templates/css/swiper-3.4.2.min.css" />
     <link rel="stylesheet" href="templates/css/reset.css" />
-    <link rel="stylesheet" href="templates/css/public.css?v=1" />
+    <link rel="stylesheet" href="templates/css/public.css?v=2" />
 
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="templates/js/rem.js" ></script>
     <script type="text/javascript" src="templates/js/swiper-3.4.2.min.js" ></script>
     <script type="text/javascript">
         var img_link='templates/';
+        var root_url='http://www.guokan.cnm/';
     </script>
 
 </head>
 <body>
+<div class="wrap">
 <header class="nav">
+
     <button class="mNav" isOpen = false></button>
-    <button class="pCenter"></button>
+    <button class="pCenter" onclick="window.location.href='user.php'"></button>
     <img src="templates/img/logo.png" onclick="window.location.href='/mobile'"/>
     <div class="secondNav">
         <ul>
             <li>
-                <a href="mobile/">首页</a>
+                <a href="/">首页</a>
             </li>
             {foreach name=nav_middle_list from=$middle item=nav}
             <li>
-
+                {if $nav.id eq 5 or $nav.id eq 16 or $nav.id eq 13}
+                    <a class="none" href="/{$nav.wap_url}">{$nav.name}</a>
+                {else}
                 <a
                    {if $nav.child}
                     class="navMore"
@@ -53,13 +58,11 @@
 
                 </ul>
                 {/if}
+                {/if}
             </li>
             {/foreach}
 
-            <li class="navSearch" style="display: none">
-                <input type="text" placeholder="您在找什么？"/>
-                <button class="shBtn">搜索</button>
-            </li>
+
         </ul>
         <div class="zw"></div>
     </div>

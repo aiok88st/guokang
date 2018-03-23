@@ -1,0 +1,27 @@
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/aboutUs.css">
+<link rel="stylesheet" href="templates/css/index.css">
+<link rel="stylesheet" href="templates/lib/css/layui.css">
+
+<style>
+    .content-mes{
+        height: auto !important;
+        font-size: 0.3rem !important;
+        line-height: 0.5rem;
+    }
+</style>
+{include file="/library/know_nav.html"}
+<!--内容-->
+<div class="content">
+    <div class="content-title">{$data.title}</div>
+    <div class="content-mes">
+        {$data.content}
+    </div>
+
+    {include file="/library/desc_fx.html"}
+</div>
+
+{include file="/library/page_footer.html"}
+<script type="text/javascript" src="templates/js/news.js" ></script>
+</body>
+</html>

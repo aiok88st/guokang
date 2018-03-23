@@ -1,0 +1,65 @@
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/sortCase.css" />
+<script type="text/javascript" src="templates/lib/layui.js"></script>
+<div id="banner">
+    <img src="templates/img/sortCase00.png" />
+</div>
+<!--商城选择-->
+<div id="newsChoice">
+    <div class="box">
+        {include file="/library/case_nav.html"}
+    </div>
+</div>
+<div id="sortList">
+    <div class="sortBox box">
+        {foreach from=$case_list item=item}
+        <a href="article.php?id={$item.article_id}" class="sort">
+            <img src="/{$item.file_url_wap}" onerror="this.src='/themes/default/img/develop.jpg'"/>
+            <div>
+                <p>{$item.title}</p>
+            </div>
+        </a>
+        {/foreach}
+
+    </div>
+<!--    <div class="getMore">-->
+<!--        <a href="###">没有更多~</a>-->
+<!--    </div>-->
+</div>
+
+{include file="/library/page_footer.html"}
+
+<script type="text/javascript">
+    layui.use('flow', function(){
+        var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+        var flow = layui.flow;
+        flow.load({
+            elem: '#sortList' //指定列表容器
+            ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+                var lis = [];
+                var pages=page+1;
+                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                $.get('ajax.php?act=article&cat_id=42&page='+pages, function(res){
+                    //假设你的列表返回在data集合中
+                    var list=res.list;
+                    var html='';
+                    for(item in list){
+                        html +='<a href="article.php?id='+list[item].article_id+'" class="sort">';
+                        html +='<img src="/'+list[item].file_url_wap+'" onerror="this.src=\'/themes/default/img/develop.jpg\'"/>';
+                        html +='<div><p>';
+                        html +=list[item].title;
+                        html +='</p></div>';
+                        html +='</a>';
+                    }
+                    $('.sortBox').append(html);
+                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                    next(lis.join(''), pages < res.pages);
+                },'JSON');
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

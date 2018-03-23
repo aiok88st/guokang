@@ -1,22 +1,42 @@
+<style type="text/css">
+    .erBox{
+        background: none;
+    }
+    .erBox img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<!--回到顶部按钮-->
+<a id="top" href="###"><img class="top" src="templates/img/top.png" alt=""></a>
 <footer>
     <div class="box">
         <div class="footLink">
-            <a href="###" class="floatl">产品中心</a>
-            <a href="###" class="floatl">名医团队</a>
-            <a href="###" class="floatl">新闻资讯</a>
-            <a href="###" class="floatl">强大的医院网络</a>
-            <a href="###" class="floatl">行业解决方案</a>
-            <a href="###" class="floatl">服务体系</a>
-            <a href="###" class="floatl">500强企业的选择</a>
-            <a href="###" class="floatl">了解国康</a>
+            <a href="/mobile/goods_list.php?cat_id=2#cat" class="floatl">产品中心</a>
+            <a href="/mobile/expert.php?cat_id=34&eid=1" class="floatl">找名医</a>
+            <a href="/mobile/news.php?cat_id=6&nav=41" class="floatl">新闻资讯</a>
+            <a href="/mobile/expert.php?cat_id=53&eid=7" class="floatl">找三甲医院</a>
+            <a href="/mobile/case.php" class="floatl">行业解决方案</a>
+            <a href="/mobile/service.php?cat_id=56" class="floatl">服务体系</a>
+
+            <a href="/mobile/case.php?act=company" class="floatl">500强企业的选择</a>
+            <a href="/mobile/know.php" class="floatl">了解国康</a>
             <div class="clearl"></div>
         </div>
         <div class="erAndPhone">
-            <div class="erBox">
-
+            <div style="width: 80%;margin: 0 auto">
+                <div class="erBox" style="float: left;margin-right: 0.2rem;">
+                    <img src="{$shop_weibo}" alt="">
+                </div>
+                <div class="erBox" style="float: left;">
+                    <img src="{$shop_weixin}" alt="">
+                </div>
+                <div class="clear"></div>
             </div>
+
             <div class="tellphone">
-                <p>400-6788-511</p>
+                <a href="tel:{$service_phone}" style="color: #fff">{$service_phone}</a>
+
             </div>
         </div>
         <div class="copy">
@@ -25,4 +45,5 @@
         </div>
     </div>
 </footer>
-<script type="text/javascript" src="templates/js/public.js" ></script>
+</div>
+<script type="text/javascript" src="templates/js/public.js?v=3" ></script>

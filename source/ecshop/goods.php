@@ -247,17 +247,6 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
                 ' ORDER BY add_time DESC limit 10';
         }
         $comment = $db->getAll($sql);
-        $sql="select count(*) num from ".$GLOBALS['ecs']->table('comment').' where status = 1 AND comment_type = 0 AND parent_id=0 AND id_value =' .$goods['goods_id'];
-        $cc=$db->getOne($sql);
-        $smarty->assign('cc',$cc);
-
-        $sql="select count(*) num from ".$GLOBALS['ecs']->table('comment').' where status = 1 AND comment_type = 0 AND parent_id=0 AND comment_rank>=4 AND id_value =' .$goods['goods_id'];
-        $c4=$db->getOne($sql);
-
-        $a=floor((100*$c4)/$cc);
-
-        $smarty->assign('c4',$a);
-
         foreach($comment as $k=>$v){
             $comment[$k]['add_time'] = date($GLOBALS['_CFG']['date_format'], $v['add_time']);
             //回复
@@ -267,11 +256,9 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
                 ' ORDER BY add_time';
             $comment[$k]['re_comment'] = $db->getAll($sql1);
             //会员
-            $sql2='SELECT user_name,name, user_id, open_face FROM  ecs_users WHERE user_id = '.$v['user_id'];
-
+            $sql2='SELECT user_name, user_id, open_face FROM  ecs_users WHERE user_id = '.$v['user_id'];
             $comment[$k]['user'] = $GLOBALS['db']->getRow($sql2);
         }
-
         $smarty->assign('m',              $m);
         $smarty->assign('comment',              $comment);
 //        var_dump($m);exit;

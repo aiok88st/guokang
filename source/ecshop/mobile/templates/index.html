@@ -1,5 +1,5 @@
 {include file="/library/page_header.html"}
-<link rel="stylesheet" href="templates/css/index.css?v=1" />
+<link rel="stylesheet" href="templates/css/index.css?v=2" />
 <!--<link rel="stylesheet" href="templates/lib/css/layui.mobile.css">-->
 <script type="text/javascript" src="templates/lib/layui.js"></script>
 <!--banner-->
@@ -12,19 +12,19 @@
     </div>
     <!--四个选择 对接完首页加上链接 -->
     <div class="fourA">
-        <a href="###" class="floatl">
+        <a href="/mobile/know.php" class="floatl">
             <img src="templates/img/fimg1.png" />
             <p>了解国康</p>
         </a>
-        <a href="###" class="floatl">
+        <a href="/mobile/goods_list.php?cat_id=4#cat" class="floatl">
             <img src="templates/img/fimg2.png" />
             <p>产品中心</p>
         </a>
-        <a href="###" class="floatl">
+        <a href="/mobile/service.php?cat_id=56" class="floatl">
             <img src="templates/img/fimg3.png" />
             <p>服务体系</p>
         </a>
-        <a href="###" class="floatl">
+        <a href="/mobile/case.php?act=company" class="floatl">
             <img src="templates/img/fimg4.png" />
             <p>TOP500选择</p>
         </a>
@@ -63,7 +63,7 @@
     <div class="goods">
         <div class="cjbBox">
             <p class="floatl">国康服务</p>
-            <a href="###" class="floatr">查看全部</a>
+            <a href="/mobile/goods_list.php?cat_id=2#cat" class="floatr">查看全部</a>
             <div class="clearBoth"></div>
         </div>
 
@@ -71,7 +71,6 @@
 
 
             <div class="swiper-wrapper">
-
                 {foreach from=$goods_list item=item key=key}
                 {if $key eq 0}
                 <div class="swiper-slide">
@@ -87,22 +86,19 @@
                         <div class="cjList">
                  {/if}
                             <div class="cjl">
-                                <div class="cjImg">
-                                    <img src="../{$item.goods_thumb}" onerror="this.src='../themes/default/img/develop.jpg'"/>
-                                </div>
-                                <div class="cjContent">
-                                    <p class="title2">{$item.goods_name}</p>
-                                    <p class="p1 title3">
-                                        {if $item.goods_desc}
-                                        {$item.goods_desc}
-                                        …
-                                        {/if}
-                                    </p>
-                                </div>
+                                <a href="/mobile/goods.php?id={$item.goods_id}">
+                                    <div class="cjImg">
+                                        <img src="/{$item.goods_thumb}" onerror="this.src='/themes/default/img/develop.jpg'"/>
+                                    </div>
+                                    <div class="cjContent">
+                                        <p class="title2">{$item.goods_name}</p>
+                                        <p class="p1 title3">
+                                            {$item.goods_brief}
+                                        </p>
+                                    </div>
+                                </a>
                             </div>
-
-
-                 {if $key+1 eq $last_goods}
+                 {if $key eq $last_goods}
 
                         </div>
                     </div>
@@ -111,29 +107,27 @@
                 {/foreach}
 
             </div>
+            </div>
         </div>
     </div>
-
-
-
 </div>
 <!--医生-->
 <div id="doctor">
     <div class="doctor bottom-top">
         <div class="dtBox">
             <p class="floatl">国康名医团队</p>
-            <a href="###" class="floatr">查看全部</a>
+            <a href="/mobile/expert.php?cat_id=34&eid=1" class="floatr">查看全部</a>
             <div class="clearBoth"></div>
         </div>
         <div class="mb05">
             <ul>
                 {foreach from=$expert_list item=item key=key}
                 <li>
-                    <a href="">
+                    <a href="/mobile/expert.php?act=desc&id={$item.id}">
                         <div class="face">
-                            <img src="../{$item.}" onerror="this.src='../themes/default/img/develop.jpg'" alt="">
+                            <img src="{$item.thumb}" onerror="this.src='../themes/default/img/develop.jpg'" alt="">
                         </div>
-                        <div class="title title3">
+                        <div class="title title4">
                             {$item.name} <span class="post">{$item.job}</span>
                         </div>
                         <div class="desc">
@@ -153,7 +147,7 @@
     <div class="bottom-top">
         <div class="dtBox">
             <p class="floatl">行业标杆客户</p>
-            <a href="###" class="floatr">查看全部</a>
+            <a href="/mobile/case.php?act=company" class="floatr">查看全部</a>
             <div class="clearBoth"></div>
         </div>
     </div>
@@ -176,12 +170,12 @@
     <div class="bottom-top w92">
         <div class="dtBox">
             <p class="floatl">新闻资讯</p>
-            <a href="###" class="floatr">查看全部</a>
+            <a href="/mobile/news.php?cat_id=6&nav=41" class="floatr">查看全部</a>
             <div class="clearBoth"></div>
         </div>
     </div>
-    <div class="nav2 w92">
-        <ul class="news_cat">
+    <div class="news_nav w92">
+        <ul class="">
             {foreach from=$new_cat item=item key=key}
             <li class="title3 {if $key eq 0}select{/if}" data-id="{$item.cat_id}">{$item.cat_name}</li>
             {/foreach}
@@ -191,8 +185,9 @@
         </ul>
 
     </div>
-    {foreach from=$news_list item=item key=key}
-    <div class="swiper-container swiper-container-new swiper-container-new-{$item.cat_id}" {if $key neq 0}style="display: none"{/if}>
+    <div>
+        {foreach from=$news_list item=item key=key}
+        <div class="swiper-container swiper-container-new swiper-container-new-{$item.cat_id}" {if $key neq 0}style="display: none"{/if}>
         <div class="swiper-wrapper">
             {foreach from=$item.list item=item2 key=key2}
             {if $key2 eq 0}
@@ -203,7 +198,7 @@
             <div class="swiper-slide" style="width: 95%">
                 {/if}
                 <div class="newsbox">
-                    <a href="">
+                    <a href="/mobile/news.php?act=desc&id={$item2.article_id}">
                         <div class="floatl text">
                             <div class="title title3">{$item2.title}</div>
                             <div class="add_time title4">{$item2.add_time|dataDay} {$item.cat_name}</div>
@@ -214,22 +209,24 @@
                     </a>
                 </div>
 
-            {if $key2+1 eq $item.count}
+                {if $key2+1 eq $item.count}
             </div>
             {/if}
             {/foreach}
         </div>
-    <script type="text/javascript">
-        $(function(){
-             var swipernews = new Swiper('.swiper-container-new-{$item.cat_id}', {
-                 onInit: function(swiper){
+        <script type="text/javascript">
+            $(function(){
+                var swipernews = new Swiper('.swiper-container-new-{$item.cat_id}', {
+                    onInit: function(swiper){
 
-                 }
-             });
-        })
-    </script>
+                    }
+                });
+            })
+        </script>
     </div>
     {/foreach}
+    </div>
+
 </div>
 <!--表单提交-->
 <div id="apply">
@@ -237,7 +234,7 @@
     <div class="content">
         <div class="title1">免费申请体验私人医生服务</div>
         <form class="layui-form" action="">
-            <div class="item from-item-1">
+            <div class="item from-item-1" style="margin-top: 0">
                 <input type="text" name="username" class="layui-input" placeholder="请输入您的姓名">
                 <input type="text" name="mobile" class="layui-input" placeholder="请输入您的电话">
                 <div class="clear"></div>
@@ -258,6 +255,7 @@
                 var form = layui.form;
                 form.on('submit(*)', function(data){
                     layer.load(2);
+                    console.log(data.field);
                     $.ajax({
                         url:'../message.php?act=apply',
                         type:'POST',
@@ -276,7 +274,7 @@
 
                     return false;
                 });
-              ;
+
             });
         </script>
         <div class="apply-text title4">

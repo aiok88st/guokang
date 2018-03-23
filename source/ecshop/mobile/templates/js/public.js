@@ -42,5 +42,15 @@ $(function(){
 			$('.navMore').next('ul').stop().slideUp(500);
 			$('.navMore').css('background-image','url('+img_link+'img/add.png)');
 		}
+        if($(document).scrollTop()>400){
+            $('#top').show()
+        }else{
+            $('#top').hide()
+        }
 	});
+    $('#top').click(function () {
+        $('html,body').animate({
+            scrollTop: 0
+        }, 500);
+    })
 });

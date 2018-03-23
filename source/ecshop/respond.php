@@ -53,8 +53,6 @@ if(empty($pay_code))
 if (empty($pay_code))
 {
     $msg = $_LANG['pay_not_exist'];
-
-
 }
 else
 {
@@ -88,15 +86,7 @@ else
             include_once($plugin_file);
 
             $payment = new $pay_code();
-            if(@$payment->respond()){
-                $msg =$_LANG['pay_success'];
-                $smarty->assign('pay_success', 1);   // 页面标题
-            }else{
-                $msg=$_LANG['pay_fail'];
-            }
-
-
-//            $msg     = (@$payment->respond()) ? $_LANG['pay_success'] : $_LANG['pay_fail'];
+            $msg     = (@$payment->respond()) ? $_LANG['pay_success'] : $_LANG['pay_fail'];
         }
         else
         {

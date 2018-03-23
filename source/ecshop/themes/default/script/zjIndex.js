@@ -39,7 +39,7 @@ $(function(){
 	//新闻区域切换
 	$('.pfrNav li').click(function(){
 		var index =parseInt($(this).children('a').attr('index'));
-		var offset=140;
+		var offset=132;
 		var this_index=$(this).index();
 		var left=this_index*offset;
 		$('.newList').eq(this_index).show().siblings().hide();

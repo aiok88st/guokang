@@ -1,5 +1,5 @@
-<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <link rel="stylesheet" href="themes/default/scss/video-js.css" />
 <link rel="stylesheet" href="themes/default/scss/zjindex.css?v=2" />
 <style type="text/css">
@@ -26,7 +26,7 @@
 						<div class="nameBox">
 							<ul>
 								<li>
-									<p>极速投保</p>
+									<p>极速管家</p>
 								</li>
 								<li>
 									<input type="search" name="name" lay-verify="required" placeholder="请输入您的姓名"/>
@@ -61,16 +61,15 @@
 										<!--{foreach from=$policy_type item=item}-->
 										<option value="{$item}">{$item}</option>
 										<!--{/foreach}-->
-
 									</select>
 								</div>
 							</div>
 						</div>
 						<div class="btnBox">
-							<button class="btn" lay-submit lay-filter="policy">马上呼叫您的保险经纪人</button>
+							<button class="btn" lay-submit lay-filter="policy">马上呼叫您的健康规划师</button>
 						</div>
 						<div class="tips">
-							<p>目前已有<span>10000000+</span>人提交投保表单</p>
+							<p>目前已有<span>10010181</span>人申请使用服务</p>
 						</div>
 					</form>
 				</div>
@@ -527,7 +526,7 @@
 						<ul>
 							<!--{foreach from=$new_cat item=item}-->
 							<li>
-								<a href="javascript:;" index="{$item.cat_id}">{$item.cat_name}</a>
+								<a index="{$item.cat_id}">{$item.cat_name}</a>
 							</li>
 							<!--{/foreach}-->
 						</ul>

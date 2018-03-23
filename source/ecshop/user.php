@@ -158,7 +158,7 @@ if ($action == 'default')
     $o4=$model->table($ecs->table('order_info'))
     ->where("`user_id`=".$user_id." AND `shipping_status`=2")
     ->count();
-        
+
     $order_status=[
         'o1'=>$o1,
         'o2'=>$o2,

@@ -1,4 +1,3 @@
-
 <div class="page whitePage" align="center">
     <ul>
         <!-- {if $pager.page_count neq 1} -->

@@ -1,0 +1,95 @@
+body {
+  background-color: #f4f4f4; }
+
+#head {
+  width: 100%;
+  display: block; }
+
+.head {
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: #0068b7;
+  display: block; }
+  .head .box {
+    position: relative; }
+  .head .headImg {
+    width: 1.1rem;
+    height: 1.1rem;
+    overflow: hidden;
+    border-radius: 50%; }
+    .head .headImg > img {
+      width: 100%; }
+  .head .headRight {
+    position: absolute;
+    top: 0rem;
+    left: 23.95%;
+    width: 76.5%;
+    height: 100%; }
+    .head .headRight .hr {
+      color: #ffffff;
+      font-size: 0.26rem;
+      line-height: 0.5rem; }
+      .head .headRight .hr p {
+        display: inline-block;
+        position: relative; }
+      .head .headRight .hr .vip::after {
+        content: "";
+        position: absolute;
+        left: 105%;
+        top: 50%;
+        margin-top: -0.136rem;
+        width: 0.4rem;
+        height: 0.2706rem;
+        background: url(../img/vip.png) no-repeat left top;
+        background-size: 100%; }
+    .head .headRight .hrBox .floatl {
+      width: 35%;
+      font-size: 0.22rem;
+      line-height: 0.34rem;
+      color: white; }
+    .head .headRight .hrBox .floatl:nth-child(2n) {
+      width: 65%; }
+  .head .edit {
+    position: absolute;
+    top: -0.25rem;
+    right: 0;
+    width: 4.5%; }
+    .head .edit > img {
+      width: 100%; }
+
+.link {
+  border-bottom: 1px solid #e4e4e4;
+  background-color: white; }
+  .link a {
+    width: 94.67%;
+    margin: 0 auto;
+    font-size: 0.26rem;
+    display: block;
+    color: #555555;
+    line-height: 0.9rem; }
+  .link p {
+    font-size: 0.26rem;
+    color: #0068b7;
+    width: 94.67%;
+    margin: 0 auto;
+    margin-top: 0.15rem;
+    line-height: 0.9rem; }
+
+.linkWhite {
+  background-color: transparent; }
+
+.linkNoBorder {
+  border: none; }
+
+.myAward {
+  margin: 0.2rem 0;
+  background-color: white; }
+  .myAward a {
+    width: 94.67%;
+    margin: 0 auto;
+    font-size: 0.26rem;
+    display: block;
+    color: #f91200;
+    line-height: 0.9rem; }
+
+/*# sourceMappingURL=personal.css.map */

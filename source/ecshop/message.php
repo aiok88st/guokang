@@ -17,6 +17,7 @@ define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
 
+
 if (empty($_CFG['message_board']))
 {
     show_message($_LANG['message_board_close']);
@@ -253,7 +254,7 @@ if ($action == 'act_add_message')
     }else{
         echo json_encode([
             'code'=>0,
-            'msg'=>'提交失败'
+            'msg'=>'提交成功'
         ]);
         exit;
     }

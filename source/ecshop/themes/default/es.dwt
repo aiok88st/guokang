@@ -1,0 +1,349 @@
+﻿<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/server.css" />
+<link rel="stylesheet" href="themes/default/scss/knowZero.css?v=2" />
+<link rel="stylesheet" href="themes/default/scss/sort.css?v=2" />
+<style type="text/css">
+
+    #banner img{
+        padding-left: 50%;
+        margin-left: -960px;
+    }
+	.options {
+    background: url(themes/default/image/es04.jpg) center center no-repeat;
+    background-size: cover;
+    height: 480px;
+    position: relative;}
+
+	.banxin {
+    width: 1200px;
+    margin: 0 auto;
+}
+.optionsBox>h3 {
+    font-size: 32px;
+    color: #333;
+    height: 64px;
+	line-height: 40px;
+    margin-bottom: 50px;
+}
+.optionsBox1>h3 {
+    font-size: 32px;
+    color: #333;
+    height: 64px;
+	line-height: 40px;
+    margin-bottom: 50px;
+}
+.optionsBox>h4 {
+    font-size: 16px;
+    color: #333;
+    line-height: 26px;
+    margin-bottom: 20px;
+}
+.optionsBox>.item {
+    color: #666;
+    width: 520px;
+}
+	.options1 {
+    background: url(themes/default/image/es03.jpg) center center no-repeat;
+    height: 627px;
+    position: relative;}
+	.optionsBox {
+    padding-top: 100px;
+    position: relative;
+    z-index: 10;
+	}
+	.options2 {
+    background: url(themes/default/image/es05.jpg) center center no-repeat;
+    background-size: cover;
+    height: 480px;
+    position: relative;}
+	.optionsBox {
+    padding-top: 100px;
+    position: relative;
+    z-index: 10;
+	}	
+	.options3 {
+    background: url(themes/default/image/es06.jpg) center center no-repeat;
+    background-size: cover;
+    height: 480px;
+    position: relative;}
+	.options4 {
+    background: url(themes/default/image/es07.jpg) center center no-repeat;
+    height: 587px;
+    position: relative;}
+	.optionsBox {
+    padding-top: 100px;
+    position: relative;
+    z-index: 10;
+	}
+	.optionsBox1 {
+    padding-top: 120px;
+    position: relative;
+    z-index: 10;
+	padding-left:650px;
+	}
+</style>
+
+
+
+
+
+<!--专业分诊体系-->
+<div id="partTwo">
+	<div class="options1">
+	</div>
+
+    <div class="partTwo">
+        <div class="w12">
+<!--             <div class="titlel" style="padding-top: 144px;">
+                <ul>
+                    <li>
+                        <p style="line-height:50px;">国康健康管家企业版<br/>成就健康幸福团队</p>
+						<p></p>
+                    </li>
+                    <li>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="pwTop" style="margin-bottom:100px;">
+                <p style="line-height:22px;">新一代可靠性强的企业员工健康福利平台，<br/>为企业员工解决看病难，耗时间长，员工幸福感低等问题。<br/>帮助企业实现高效沉淀，解决员工的后顾之忧，提高企业的运营效率。</p>
+            </div> -->
+            <div class="pwBottom" style="padding:0px; margin-top: 510px;">
+                <div class="floatl" style="height: 240px;">
+                    <div class="pwImgBox"></div>
+                    <div class="pwTitle">
+                        <p>企业专属服务</p>
+                    </div>
+                    <div class="pwContent">
+                        <p style="line-height:22px;">为企业管理团队全程 VIP 健康专属服务，为企业员工节省时间,提高员工幸福与满意度。</p>
+                    </div>
+                </div>
+                <div class="floatl" style="height: 240px;">
+                    <div class="pwImgBox"></div>
+                    <div class="pwTitle">
+                        <p>确保数据安全</p>
+                    </div>
+                    <div class="pwContent">
+                        <p style="line-height:22px;">业内首家通过ISO 27001国际信息安全认证的健康管理公司，将“客户信息安全”放在首位，让客户安心就医，从容看诊。</p>
+                    </div>
+                </div>
+                <div class="floatl" style="height: 240px;">
+                    <div class="pwImgBox"></div>
+                    <div class="pwTitle">
+                        <p>省心省力提高效率</p>
+                    </div>
+                    <div class="pwContent">
+                        <p style="line-height:22px;">为您的团队解决一切烦顼事务，节省大量看病时间，提升企业效率。</p>
+                    </div>
+                </div>
+                <div class="clearl"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-carousel" id="test1">
+  <div carousel-item>
+		<div>
+			<div class="options">
+				<div class="optionsBox banxin">
+					<h3>减少员工发生大病时<br/>企业的操劳与无助</h3>
+					<div class="item">
+						<p>国康企业版能快速为企业管理团队解决名医看诊需求，给团队一站式的就医体验，包括诊前策划、诊中陪同、诊后关怀等服务。
+						为企业团队提供一站式的员工健康福利，节省大量看病时间，帮助员工解决后顾之忧。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="options2">
+				<div class="optionsBox1 banxin">
+					<h3>省去企业自建医疗绿色通道和<br/>医务室的麻烦与成本</h3>
+					<div class="item">
+						<p>国康企业版能快速为企业管理团队解决名医看诊需求，给团队一站式的就医体验，包括诊前策划、诊中陪同、诊后关怀等服务。
+						为企业提供一站式的员工健康福利，节省大量看病时间，帮助员工解决后顾之忧。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="options3">
+				<div class="optionsBox banxin">
+					<h3>节省大量看病时间和病假事假<br/>
+						提升企业运营效率和人力资源效率
+					</h3>
+
+					<div class="item">
+						<p>国康企业版能快速为企业管理团队解决名医看诊需求，给团队一站式的就医体验，包括诊前策划、诊中陪同、诊后关怀等服务。
+							为企业提供一站式的员工健康福利，节省大量看病时间，帮助员工解决后顾之忧。
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+	<!--LOGO-->
+<div id="logo" style="padding-top:80px; background-color: #f5f5f5;">
+			<div class="logoTitle">
+				<ul>
+					<li>
+                <p style="font-size: 32px; line-height: 40px;">超过500+大型企业选择国康健康企业版<br/>国康正在为各行各业提供专业健康解决方案</p>
+					</li>
+					<li>
+						<span></span>
+					</li>
+				</ul>
+			</div>
+			<div class="companyLogo w12" style="padding-top:30px;">
+
+								<a href="article-143.html" class="floatl" style="background-image: url('data/article/1518153632856561743.jpg')"></a>
+								<a href="article-144.html" class="floatl" style="background-image: url('data/article/1518239994872944012.jpg')"></a>
+								<a href="article-145.html" class="floatl" style="background-image: url('data/article/1518153565578069356.jpg')"></a>
+								<a href="article-146.html" class="floatl" style="background-image: url('data/article/1518240047919320825.jpg')"></a>
+								<a href="article-147.html" class="floatl" style="background-image: url('data/article/1518240067683865461.jpg')"></a>
+								<a href="article-148.html" class="floatl" style="background-image: url('data/article/1518240093408932510.jpg')"></a>
+								<a href="article-149.html" class="floatl" style="background-image: url('data/article/1518240116258724858.jpg')"></a>
+								<a href="article-150.html" class="floatl" style="background-image: url('data/article/1518240140511894382.jpg')"></a>
+								<a href="article-151.html" class="floatl" style="background-image: url('data/article/1518240278841967228.jpg')"></a>
+								<a href="article-152.html" class="floatl" style="background-image: url('data/article/1518240298641597519.jpg')"></a>
+								<a href="article-153.html" class="floatl" style="background-image: url('data/article/1518240327722226452.jpg')"></a>
+								<a href="article-154.html" class="floatl" style="background-image: url('data/article/1518240363316159949.jpg')"></a>
+								<a href="article-155.html" class="floatl" style="background-image: url('data/article/1518240378492528028.jpg')"></a>
+								<a href="article-156.html" class="floatl" style="background-image: url('data/article/1518240403839649187.jpg')"></a>
+								<a href="article-157.html" class="floatl" style="background-image: url('data/article/1518240419182787789.jpg')"></a>
+								<a href="article-158.html" class="floatl" style="background-image: url('data/article/1518240433352229686.jpg')"></a>
+								<a href="article-159.html" class="floatl" style="background-image: url('data/article/1518240451619286338.jpg')"></a>
+								<a href="article-160.html" class="floatl" style="background-image: url('data/article/1518240484526165935.jpg')"></a>
+								<a href="article-320.html" class="floatl" style="background-image: url('data/article/1518240500735113283.jpg')"></a>
+								<a href="article-322.html" class="floatl" style="background-image: url('data/article/1518240518276917329.jpg')"></a>
+								<a href="article-323.html" class="floatl" style="background-image: url('data/article/1518240536659670951.jpg')"></a>
+								<a href="article-340.html" class="floatl" style="background-image: url('data/article/1518240555529839471.jpg')"></a>
+								<a href="article-349.html" class="floatl" style="background-image: url('data/article/1518240569859542361.jpg')"></a>
+								<a href="article-491.html" class="floatl" style="background-image: url('data/article/1518240583084354175.jpg')"></a>
+								<a href="article-320.html" class="floatl" style="background-image: url('data/article/1518240500735113283.jpg')"></a>								
+				<div class="clearl"></div>
+			</div>
+</div>
+
+
+			<div class="options4">
+				<div class="optionsBox banxin">
+
+				</div>
+			</div>
+
+	<!--平台特色-->
+<div id="advantage">
+			<div class="titlel" style="padding-top: 30px;">
+				<ul>
+					<li>
+						<p style="font-size: 32px; margin-top:50px;">国康企业版特色及优势</p>
+					</li>
+				</ul>
+			</div>
+			<div class="advantage w12" style="padding-bottom: 80px;">
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519605569890177156.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">强大名医平台，数万专家的支持</p>
+						<p class="advbottom">国康链接了海内外优质的医疗体系，整合了全国550+三甲医院近万名顶级专家的优质资源，构建了一个全球深度就医转诊网络。</p>
+					</div>
+				</div>
+				
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519606139038762117.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">行业标准的服务流程</p>
+						<p class="advbottom">秉承“爱与温暖，专业科学”理念，为客户家庭配备资深私人医生与专属健康管家，为客户提供医疗事务全程协调，预防亚健康和慢性病等指导，及时排除客户健康隐患，让医疗体验变得温暖舒心。</p>
+					</div>
+				</div>
+				
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519606149633879792.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">训练有素的服务团队</p>
+						<p class="advbottom">国康健康组建了由资深家庭风险规划师、全科医生、健康管家、营养师、中医理疗师等权威专业人士组成的强大队伍，作为国康体系运作的主力军，为给客户提供最专业医疗健康服务提供了强有力的保证。</p>
+					</div>
+				</div>
+				
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519606181567435972.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">行业领先的数据安全体系</p>
+						<p class="advbottom">作为业内首批通过ISO 27001国际信息安全认证的企业，国康企业版向来重视企业内部信息管理规范，将“客户信息安全”放在首位，多方面措施落实客户信息安全保障。让客户安心就医，从容看诊。</p>
+					</div>
+				</div>
+				
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519608709583781447.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">全年无休的服务体系</p>
+						<p class="advbottom">健康管理行业最佳呼叫中心：全年7X24小时不间断服务受理、专业分诊、健康咨询。专属健康管家全面负责会员及其家属的健康问题，7X24小时响应服务，夜间急诊陪同。</p>
+					</div>
+				</div>
+				
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519608729432180872.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">解决方案和最佳实践数据库</p>
+						<p class="advbottom">国康12年来为500多家大型企业的管理团队提供服务，包括互联网、银行、信托、保险等行业，积累了丰富的私人医生健康管理服务经验。这些案例实践对于服务其他的企业团队有很大的参考价值。</p>
+					</div>
+				</div>
+				
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519608740603759193.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">强大的项目管理能力</p>
+						<p class="advbottom">国康建立了严格规范的项目管理制度，有效保证项目服务有效使用率及客户满意度。被招商银行评价为“最省心的一家供应商”。</p>
+					</div>
+				</div>
+				
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="data/article/1519608750838392093.jpg">
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">权威的健康资讯和知识管理系统</p>
+						<p class="advbottom">国康建立了中国健康管理行业最具规模的健康研究院，与国内外一流的大学和医疗机构合作研发，在疾病管理、慢性病管理、健康养生等方面 形成了深厚的知识积累。</p>
+					</div>
+				</div>
+				
+				<div class="clearl"></div>
+			</div>
+</div>
+
+
+<!--免费申请-->
+<!-- #BeginLibraryItem "/library/qypt.lbi" --><!-- #EndLibraryItem -->
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="themes/default/script/server.js" ></script>
+<script>
+layui.use('carousel', function(){
+  var carousel = layui.carousel;
+  //建造实例
+  carousel.render({
+    elem: '#test1'
+    ,width: '100%' //设置容器宽度
+    ,arrow: 'none' //始终显示箭头
+	,height: '480px'
+    //,anim: 'updown' //切换动画方式
+  });
+});
+</script>

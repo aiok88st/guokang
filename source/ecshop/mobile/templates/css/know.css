@@ -71,3 +71,32 @@
       text-align: center; }
 
 /*# sourceMappingURL=know.css.map */
+.know_banner .content{
+    position: absolute;
+    color: #fff;
+    top: 26%;
+  left: 10%;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+  line-height: 0.4rem;
+}
+.wIm .floatl{
+  width: 43% !important;
+  float: left !important;
+  height: auto !important;
+  padding: 0 0.2rem !important;
+  margin-top:0 !important;
+}
+.wIm .floatl .waImg{
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  margin: 0 auto !important;
+}
+.wIm ul li:last-child p{
+  text-align: center !important;
+  color: #8c8c8c !important;
+  margin-top: 0.1rem !important;
+  line-height: 0.3rem !important;
+  width: 100% !important;
+}

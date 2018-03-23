@@ -92,6 +92,8 @@ class Model{
             $sql .=" ORDER BY ".$this->order;
         }
         $sql .=" LIMIT 1";
+
+
         $this->sql=$sql;
         $res=$GLOBALS['db']->getRow($sql);
         $this->cache_rm();
@@ -249,8 +251,10 @@ class Model{
         if($this->order){
             $sql .=" ORDER BY ".$this->order;
         }
+
         $start=($page-1)*$size;
         $sql .=" LIMIT ".$start.','.$size;
+
         $this->sql=$sql;
 
         $lists=$GLOBALS['db']->getAll($sql);

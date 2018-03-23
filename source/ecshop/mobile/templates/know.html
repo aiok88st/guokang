@@ -1,0 +1,303 @@
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/know.css" />
+<link rel="stylesheet" href="templates/css/index.css?v=3" />
+<!--<link rel="stylesheet" href="templates/lib/css/layui.mobile.css">-->
+<script type="text/javascript" src="templates/lib/layui.js"></script>
+<!--banner-->
+<!--商城选择-->
+{include file="/library/know_nav.html"}
+<div id="banner">
+    <div class="know_banner">
+        <img src="templates/images/know.jpg" alt="">
+        <div class="content">
+            <p class="title2">
+                会员制特权健康和保险服务商
+            </p>
+            <p class="title4" style="margin-top: 0.2rem">
+                中国领先的保险和医疗保健服务商 国康健康引领健康行业新标准
+            </p>
+        </div>
+    </div>
+</div>
+<!--满足-->
+<div id="cj">
+    <div class="cjTitle">
+        <p>
+            {$cat32.cat_name}
+
+        </p>
+    </div>
+    <div class="cjDetail">
+        <!--{foreach from=$cat32.cat_desc item=vo}-->
+        <p>{$vo}</p>
+        <!--{/foreach}-->
+
+    </div>
+    <div class="wIm">
+        {$cat32_info.content}
+
+        <div class="clear"></div>
+    </div>
+    <!--产品-->
+    <div class="goods">
+        <div class="cjbBox">
+            <p class="floatl">我们能做什么</p>
+            <a href="/mobile/goods_list.php?cat_id=2#cat" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
+
+        <div class="swiper-container swiper-container-goods">
+            <div class="swiper-wrapper">
+                {foreach from=$goods_list item=item key=key}
+                {if $key eq 0}
+                <div class="swiper-slide">
+                    <div class="cjBottom">
+                        <div class="cjList">
+                            {/if}
+                            {if $key%3 eq 0 and $key!=0}
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="cjBottom">
+                        <div class="cjList">
+                            {/if}
+                            <div class="cjl">
+                                <a href="/mobile/goods.php?id={$item.goods_id}">
+                                    <div class="cjImg">
+                                        <img src="/{$item.goods_thumb}" onerror="this.src='/themes/default/img/develop.jpg'"/>
+                                    </div>
+                                    <div class="cjContent">
+                                        <p class="title2">{$item.goods_name}</p>
+                                        <p class="p1 title3">
+                                            {$item.goods_brief}
+                                        </p>
+                                    </div>
+                                </a>
+
+                            </div>
+                            {if $key eq $last_goods}
+
+                        </div>
+                    </div>
+                </div>
+                {/if}
+                {/foreach}
+
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--行业标杆客户-->
+<div id="client" class="w92">
+    <div class="bottom-top">
+        <div class="dtBox">
+            <p class="floatl">正在服务的企业</p>
+            <a href="/mobile/case.php?act=company" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+    <div class="content mb05">
+        <ul>
+            {foreach from=$article_list item=item key=key}
+            <li>
+                <a href="article.php?id={$item.article_id}&act=desc">
+                    <img src="/{$item.file_url}" alt="{$item.title}" onerror="this.src='/themes/default/img/develop.jpg'">
+                </a>
+            </li>
+            {/foreach}
+        </ul>
+        <div class="clear"></div>
+    </div>
+
+</div>
+
+<!--医生-->
+<div id="doctor">
+    <div class="doctor bottom-top">
+        <div class="dtBox">
+            <p class="floatl">我们的特聘名医</p>
+            <a href="/mobile/expert.php?cat_id=34&eid=1" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
+        <div class="mb05">
+            <ul>
+                {foreach from=$expert_list item=item key=key}
+                <li>
+                    <a href="/mobile/expert.php?act=desc&id={$item.id}">
+                        <div class="face">
+                            <img src="{$item.thumb}" onerror="this.src='/themes/default/img/develop.jpg'" alt="">
+                        </div>
+                        <div class="title title4">
+                            {$item.name} <span class="post">{$item.job}</span>
+                        </div>
+                        <div class="desc">
+                            {$item.unit}
+                        </div>
+                    </a>
+                </li>
+                {/foreach}
+
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!---->
+<div id="web">
+    <div class="webTitle">
+        <p>我们的服务经验和网络</p>
+    </div>
+    <div class="webBox">
+        <img src="templates/img/know00.png" />
+        <div class="pBox pBox1">
+            <p>1200000+</p>
+            <p>累计服务人次</p>
+        </div>
+        <div class="pBox pBox2">
+            <p>100+</p>
+            <p>可服务的城市</p>
+        </div>
+    </div>
+</div>
+<div id="Authentication">
+    <div class="authentication">
+        <div class="title">获得众多合规认证</div>
+    </div>
+    <div class="ati">
+        <a href="###" class="floatl">
+            <img src="templates/img/know01.png" />
+            <p>ISO 27001</p>
+        </a>
+        <a href="###" class="floatl">
+            <img src="templates/img/know02.png" />
+            <p>ISO 27001</p>
+        </a>
+        <a href="###" class="floatl">
+            <img src="templates/img/know03.png" />
+            <p>ISO 27001</p>
+        </a>
+        <div class="clearl"></div>
+    </div>
+</div>
+<!--新闻咨询-->
+<div id="news">
+    <div class="bottom-top w92">
+        <div class="dtBox">
+            <p class="floatl">我们的最新动态</p>
+            <a href="/mobile/news.php?cat_id=6&nav=41" class="floatr">查看全部</a>
+            <div class="clearBoth"></div>
+        </div>
+    </div>
+    <div class="news_nav w92">
+        <ul class="">
+            {foreach from=$new_cat item=item key=key}
+            <li class="title3 {if $key eq 0}select{/if}" data-id="{$item.cat_id}">{$item.cat_name}</li>
+            {/foreach}
+            <li class="clear"></li>
+        </ul>
+    </div>
+    <div>
+    {foreach from=$news_list item=item key=key}
+    <div class="swiper-container swiper-container-new swiper-container-new-{$item.cat_id}" {if $key neq 0}style="display: none"{/if}>
+    <div class="swiper-wrapper">
+        {foreach from=$item.list item=item2 key=key2}
+        {if $key2 eq 0}
+        <div class="swiper-slide" style="width: 95%">
+            {/if}
+            {if $key2%3 eq 0 and $key2!=0}
+        </div>
+        <div class="swiper-slide" style="width: 95%">
+            {/if}
+            <div class="newsbox">
+                <a href="/mobile/news.php?act=desc&id={$item2.article_id}">
+                    <div class="floatl text">
+                        <div class="title title3">{$item2.title}</div>
+                        <div class="add_time title4">{$item2.add_time|dataDay} {$item.cat_name}</div>
+                    </div>
+                    <div class="floatl thumb">
+                        <img src="/{$item2.file_url}" alt="" onerror="this.src='/themes/default/img/develop.jpg'">
+                    </div>
+                </a>
+            </div>
+
+            {if $key2+1 eq $item.count}
+        </div>
+        {/if}
+        {/foreach}
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            var swipernews = new Swiper('.swiper-container-new-{$item.cat_id}', {
+                onInit: function(swiper){
+
+                }
+            });
+        })
+    </script>
+</div>
+{/foreach}
+</div>
+</div>
+<!--表单提交-->
+<div id="apply">
+    <img src="templates/images/index-apply.png" alt="">
+    <div class="content">
+        <div class="title1">免费申请体验私人医生服务</div>
+        <form class="layui-form" action="">
+            <div class="item from-item-1" style="margin-top: 0">
+                <input type="text" name="username" class="layui-input" placeholder="请输入您的姓名">
+                <input type="text" name="mobile" class="layui-input" placeholder="请输入您的电话">
+                <div class="clear"></div>
+            </div>
+            <div class="item">
+                <input type="text" name="company" class="layui-input" placeholder="请输入您的单位名称">
+            </div>
+            <div class="item">
+                <input type="text" name="position" class="layui-input" placeholder="请输入您的职位">
+            </div>
+            <div class="item">
+                <input type="submit" class="title2" value="免费申请" lay-submit lay-filter="*">
+            </div>
+
+        </form>
+        <script>
+            layui.use('form', function(){
+                var form = layui.form;
+                form.on('submit(*)', function(data){
+                    layer.load(2);
+                    $.ajax({
+                        url:root_url+'message.php?act=apply',
+                        type:'POST',
+                        dataType:'JSON',
+                        data:data.field,
+                        success:function(res){
+                            layer.closeAll();
+                            layer.msg(res.msg);
+                        },
+                        error:function () {
+                            layer.closeAll();
+                            layer.msg('提交失败');
+
+                        }
+                    });
+
+                    return false;
+                });
+                ;
+            });
+        </script>
+        <div class="apply-text title4">
+            请方向填写，您的信息将被加密保护 <br/>
+            符合条件者，可成为特邀体验会员
+        </div>
+    </div>
+</div>
+{include file="/library/page_footer.html"}
+
+<script type="text/javascript" src="templates/js/index.js?v=5" ></script>
+<script type="text/javascript" src="templates/js/news.js" ></script>
+</body>
+</html>
+

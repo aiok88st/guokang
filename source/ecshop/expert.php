@@ -76,12 +76,14 @@ if($act==''){
 
 
      $prev=$model->table($ecs->table('expert'))
-         ->where("`cat_id`=".$data['cat_id'].' AND (`list_order` < '.$data['list_order'].' OR `id` > '.$data['id'].')')
+         ->where("`cat_id`=".$data['cat_id'].' AND `list_order` < '.$data['list_order'].'')
          ->field('id,name,job')
+         ->order('list_order asc,id desc')
          ->find();
      $next=$model->table($ecs->table('expert'))
-         ->where("`cat_id`=".$data['cat_id'].' AND (`list_order` > '.$data['list_order'].' OR `id` < '.$data['id'].')')
+         ->where("`cat_id`=".$data['cat_id'].' AND `list_order` > '.$data['list_order'].'')
          ->field('id,name,job')
+         ->order('list_order asc,id desc')
          ->find();
      if($prev){
          $smarty->assign('prev_article',[

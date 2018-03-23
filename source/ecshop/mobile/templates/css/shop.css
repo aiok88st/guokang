@@ -95,5 +95,13 @@ body {
     display: block;
     width: 100%;
     color: #999999; }
+.layui-flow-more {
+  color: #999999;
+  width: 100%;
+  font-size: 0.22rem;
+  line-height: 1.0rem;
+  background-color: #f4f4f4;
+  text-align: center; }
+
 
 /*# sourceMappingURL=shop.css.map */

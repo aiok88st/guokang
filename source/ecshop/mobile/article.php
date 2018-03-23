@@ -16,8 +16,10 @@
 define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
-
-$act = !empty($_GET['act']) ? $_GET['act'] : '';
+require(ROOT_PATH . 'includes/lib_model.php');
+$model=new Model;
+assign_template();
+$act = !empty($_GET['act']) ? $_GET['act'] : 'desc';
 if (!function_exists("htmlspecialchars_decode"))
     {
         function htmlspecialchars_decode($string, $quote_style = ENT_COMPAT)
@@ -27,24 +29,61 @@ if (!function_exists("htmlspecialchars_decode"))
     }
 
 /* 文章详细 */
-if ($act == 'detail')
+if ($act == 'desc')
 {
-    $a_id = !empty($_GET['a_id']) ? intval($_GET['a_id']) : '';
+    $a_id = !empty($_GET['id']) ? intval($_GET['id']) : '';
     if ($a_id > 0)
     {
-        $article_row = $db->getRow('SELECT title, content FROM ' . $ecs->table('article') . ' WHERE article_id = ' . $a_id . ' AND cat_id > 0 AND is_open = 1');
+        $article_row = $db->getRow('SELECT * FROM ' . $ecs->table('article') . ' WHERE article_id = ' . $a_id . ' AND cat_id > 0 AND is_open = 1');
         if (!empty($article_row))
         {
+
+
+            $smarty->assign('page_title',     htmlspecialchars($article_row['title']));    // 页面标题
+            $smarty->assign('keywords',     htmlspecialchars($article_row['keywords']));
+            if(!empty($article_row['desc'])){
+                $smarty->assign('description',     htmlspecialchars($data['desc']));
+            }
+
             $article_row['title'] = encode_output($article_row['title']);
             $replace_tag = array('<br />' , '<br/>' , '<br>' , '</p>');
             $article_row['content'] = htmlspecialchars_decode(encode_output($article_row['content']));
             $article_row['content'] = str_replace($replace_tag, '{br}' , $article_row['content']);
             $article_row['content'] = strip_tags($article_row['content']);
             $article_row['content'] = str_replace('{br}' , '<br />' , $article_row['content']);
-            $smarty->assign('article_data', $article_row);
+
+            //上一篇，下一篇
+
+            $prev=$model->table($ecs->table('article'))
+
+                ->where('`cat_id`='.$article_row['cat_id'].' and `article_id` > '.$article_row['article_id'].'')
+                ->field('article_id,title')
+                ->order('article_type DESC, article_id DESC')
+                ->find();
+
+            $next=$model->table($ecs->table('article'))
+                ->where('`cat_id`='.$article_row['cat_id'].' and `article_id` > '.$article_row['article_id'].'')
+                ->field('article_id,title')
+                ->order('article_type DESC, article_id DESC')
+                ->find();
+            if($prev){
+                $smarty->assign('prev_article',[
+                    'title'=>$prev['name'].'&nbsp;'.$prev['job'],
+                    'url'=>'mobile/news.php?act=desc&id='.intval($prev['article_id'])
+                ]);
+            }
+
+            if($next){
+                $smarty->assign('next_article',[
+                    'title'=>$next['name'].'&nbsp;'.$next['job'],
+                    'url'=>'mobile/news.php?act=desc&id='.intval($next['article_id'])
+                ]);
+            }
+
+            $smarty->assign('data', $article_row);
         }
     }
-    $smarty->display('article.html');
+    $smarty->display('article_desc.html');
 }
 
 /* 文章列表 */

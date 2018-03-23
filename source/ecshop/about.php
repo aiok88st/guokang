@@ -65,7 +65,7 @@ if($catid == 14){
         /* 如果页面没有被缓存则重新获得页面的内容 */
         assign_template('a', array($catid));
         $position = assign_ur_here($article['cat_id'], $article['title']);
-        $smarty->assign('page_title',   $position['title']);    // 页面标题
+        $smarty->assign('page_title',   $position['title'].'_国康私人医生集团');    // 页面标题
         $smarty->assign('ur_here',      $position['ur_here']);  // 当前位置
 
         $smarty->assign('categories',           get_categories_tree(0)); // 分类树
@@ -77,8 +77,8 @@ if($catid == 14){
         $smarty->assign('hot_goods',            get_recommend_goods('hot'));
         $smarty->assign('promotion_goods',      get_promote_goods());
         $smarty->assign('promotion_info', get_promotion_info());
-        $smarty->assign('keywords',    htmlspecialchars($meta['keywords']));
-        $smarty->assign('description', htmlspecialchars($meta['cat_desc']));
+            $smarty->assign('keywords',     '_国康私人医生集团');
+            $smarty->assign('description',  '_国康私人医生集团');
 
         /* 获得文章总数 */
         $size   = 12;
@@ -113,7 +113,9 @@ if($catid == 14){
 
     assign_template('a', $catlist);
     $position = assign_ur_here(31, $res[0]['cat_name']);
-    $smarty->assign('page_title',  $position['title']);    // 页面标题
+    $smarty->assign('page_title',  $position['title'].'_国康私人医生集团');    // 页面标题
+	$smarty->assign('keywords',     '私人医生,家庭医生,国康简介,关于国康,健康管理公司,私人医生服务,私人健康顾问,健康保险,养老保险');
+    $smarty->assign('description',  '国康私人医生健康管理集团是中国领先的私人医生健康管理服务机构.提供私人医生,企业健康福利,亚健康管理,家庭健康顾问,健康保险,养老保险,健康管家等健康医疗服务.国康推出的私人医生诊所+三甲医院转诊的服务体系,有效的解决了客户看病难,服务差,误诊高,亚健康,缺保健等问题.');
 
     assign_dynamic($tpl);
     /**我们是谁:分类ID，32**/
@@ -161,7 +163,7 @@ if($catid == 14){
     $cat34=get_article_cat(36);
     $smarty->assign('cat36',$cat34);
     /**合作企业**/
-    $bs2=$model->table($ecs->table('article'))->where('`cat_id`=45')->limit(24)->select();
+    $bs2=$model->table($ecs->table('article'))->where('`cat_id`=45')->limit(24)->select(1);
 
     $bs2_count=count($bs2);
     $smarty->assign('bs2_count',$bs2_count);
@@ -170,19 +172,16 @@ if($catid == 14){
 
     /**国康能干啥 END**/
     /**专家团队**/
-    $expert=$model->table($ecs->table('expert'))->limit(10)->select();
+    $expert=$model->table($ecs->table('expert'))->where("cat_id IN (1)")->limit(10)->select();
     $smarty->assign('expert',$expert);
     /**专家团队end**/
-
     /**最新动态**/
     $news=$model->table($ecs->table('article'))->where("cat_id IN (6,46)")->order('title,file_url,description,add_time')->limit(3)->select();
-
     foreach ($news as $key=>$value){
         $news[$key]['addTime']=date('Y-m-d',$value['add_time']);
         $news[$key]['addDay']=date('d',$value['add_time']);
         $news[$key]['addMoth']=date('Y-m',$value['add_time']);
     }
-
     $smarty->assign('news',$news);
     /**最新动态end**/
     $smarty->display('knowZero.dwt', $cache_id);
@@ -249,7 +248,9 @@ if($catid == 14){
 
 
         $position = assign_ur_here($article['cat_id'], $article['title']);
-        $smarty->assign('page_title',   $position['title']);    // 页面标题
+        $smarty->assign('page_title',   $position['title'].'_国康私人医生集团');    // 页面标题
+		$smarty->assign('keywords',     htmlspecialchars($article['keywords']));
+        $smarty->assign('description', htmlspecialchars($article['description']));
         $smarty->assign('ur_here',      $position['ur_here']);  // 当前位置
         $smarty->assign('comment_type', 1);
 

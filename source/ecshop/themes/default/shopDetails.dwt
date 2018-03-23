@@ -108,9 +108,9 @@
 							<input type="hidden" name="goods_name" value="{$goods.goods_name}">
 							<button class="btn" lay-submit lay-filter="policy">马上呼叫您的保险经纪人</button>
 						</div>
-						<div class="tips mar40">
+<!-- 						<div class="tips mar40">
 							<p>目前已有<span>10000000+</span>人提交投保表单</p>
-						</div>
+						</div> -->
 
 					</form>
 					<script type="text/javascript">

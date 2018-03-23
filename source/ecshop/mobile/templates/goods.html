@@ -1,0 +1,175 @@
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/productDetails.css">
+<script type="text/javascript" src="templates/lib/layui.js"></script>
+<style type="text/css">
+    .cjImg{
+        height: 1.2rem;
+    }
+    .wrapList{
+        font-size: 0.3rem;
+    }
+</style>
+<!--购物车购买栏-->
+<div class="bottomBar" style="display: none">
+    <img src="templates/img/bottomBar_icon.png">
+    <div class="buyBus">加入购物车</div>
+    <div class="buy selectBar">立即购买</div>
+</div>
+
+    <div class="firstList">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {foreach from=$pictures item=item}
+                <div class="swiper-slide">
+                    <img src="/{$item.img_url}" />
+                </div>
+                {/foreach}
+            </div>
+        </div>
+        <div class="info">
+            <div class="name">{$goods_info.goods_name}</div>
+            <p class="intro">{$goods_info.goods_brief}</p>
+            <div class="pric">
+                <div class="price">
+                    <div style="display: inline-block;">
+                        {$goods_info.shop_price}元
+                    </div>
+
+                    <div class="oldPrice" style="position: static;display: inline-block;">
+                    &nbsp;&nbsp;市场价：<span>{$goods_info.market_price}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--概述 案例 评价-->
+    <div class="secondList" id="secondList">
+        <div class="tabList">
+            <div class="tab"><div class="select">概述</div></div>
+            <div class="tab"><div>案例</div></div>
+            <div class="tab"><div>评价</div></div>
+        </div>
+        <div class="wrapList" style="display: block;">
+            {$goods_info.goods_desc}
+        </div>
+        <div class="wrapList" >
+            <div id="newsList">
+                <div class="cjBottom">
+                    <div class="cjList">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapList">
+
+            {if $comment}
+            <div class="title3" style="width: 100%;text-align: center;line-height: 1.2rem">
+                暂时没有评价
+            </div>
+<!--            <div class="good">-->
+<!---->
+<!--                <div class="pers">{$c4}%</div>-->
+<!--                <div class="good-left">-->
+<!--                    <span class="left-span1">购买后满意</span>-->
+<!--                    <span>{$cc}名用户投票</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="comment-content">-->
+<!--                <div class="con-info">-->
+<!--                    <div class="head">-->
+<!--                        <img src="img/head.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="wrap">-->
+<!--                        <div class="commentName">方新雄</div>-->
+<!--                        <p class="commentInfo">国康服务很好，我很感动!</p>-->
+<!--                        <div class="commentTime">2018-02-22</div>-->
+<!--                        <div class="relay-img">-->
+<!--                            <img src="img/img11.png" alt="">-->
+<!--                            <img src="img/img11.png" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="commentReply">-->
+<!--                            <div class="reply-name">官方回复：</div>-->
+<!--                            <div class="reply-info">谢谢支持！</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="con-info">-->
+<!--                    <div class="head">-->
+<!--                        <img src="img/head.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="wrap">-->
+<!--                        <div class="commentName">方新雄</div>-->
+<!--                        <p class="commentInfo">国康服务很好，我很感动!</p>-->
+<!--                        <div class="commentTime">2018-02-22</div>-->
+<!--                        <div class="commentReply">-->
+<!--                            <div class="reply-name">官方回复：</div>-->
+<!--                            <div class="reply-info">谢谢支持！</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            {else}
+            <div class="title3" style="width: 100%;text-align: center;line-height: 1.2rem">
+                暂时没有评价
+            </div>
+            {/if}
+        </div>
+
+    </div>
+{include file="/library/page_footer.html"}
+
+<script type="text/javascript">
+    $(function(){
+        $('.tabList .tab').on('click',function(){
+            var index=$(this).index();
+            $('.wrapList').hide();
+            $('.wrapList').eq(index).show();
+            $('.tab .select').removeClass('select');
+            $(this).children().addClass('select');
+        })
+    })
+    layui.use('flow', function(){
+        var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+        var flow = layui.flow;
+        flow.load({
+            elem: '#newsList' //指定列表容器
+            ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+                var lis = [];
+                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                $.get('ajax.php?act=goods_article&goods_id={$goods_info.goods_id}&page='+page, function(res){
+                    //假设你的列表返回在data集合中
+                    var list=res.list;
+                    var html='';
+                    if(list.length>=1){
+                        for(item in list){
+                            if(list[item].article_id){
+                                html +='<a href="/mobile/article.php?id='+list[item].article_id+'" class="cjl">';
+                                html +=' <div class="cjImg">';
+                                html +='<img src="/'+list[item].file_url+'" onerror="this.src=\'/themes/default/img/develop.jpg\'"/>';
+                                html +='  </div>';
+                                html +='<div class="cjContent">';
+                                html +=' <p>'+list[item].title+'</p>';
+                                html +=' <p class="p1">'+list[item].add_time+'&nbsp;&nbsp;国康健康</p>';
+                                html +=' </div>';
+                                html +='</a>';
+                            }
+
+                        }
+                    }
+
+                    $('.cjList').append(html);
+                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                    next(lis.join(''), page < res.pages);
+                },'JSON');
+            }
+        });
+
+    });
+
+</script>
+</body>
+</html>

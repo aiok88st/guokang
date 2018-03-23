@@ -30,7 +30,7 @@ if($act==''){
         $cat=$model->table($cat)->where('`cat_id`=41')->field('cat_name,keywords,cat_desc')->find();
 
         if(!empty($cat['keywords'])){
-            $smarty->assign('page_title',     htmlspecialchars($cat['keywords']));    // 页面标题
+            $smarty->assign('page_title',     htmlspecialchars($cat['cat_name'].'_中国领先的健康养老保险和医疗保健服务商-国康健康管理服务有限公司'));    // 页面标题
             $smarty->assign('keywords',     htmlspecialchars($cat['keywords']));
             $smarty->assign('description',     htmlspecialchars($cat['cat_desc']));
         }

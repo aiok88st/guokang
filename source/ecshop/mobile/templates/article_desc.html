@@ -1,0 +1,28 @@
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/serviceSystemDetails.css?v=2">
+<style>
+    .content-mes{
+        height: auto !important;
+        font-size: 0.3rem !important;
+        line-height: 0.5rem;
+    }
+</style>
+
+<div class="content">
+    <div class="title">
+        <img src="templates/img/ssd.png" alt="">
+        <div class="title-name">{$data.title}</div>
+        <p>{$data.desc}</p>
+    </div>
+    <div class="content-mes">
+        {$data.content}
+    </div>
+    {include file="/library/desc_fx.html"}
+</div>
+{include file="/library/comment.html"}
+
+{include file="/library/page_footer.html"}
+
+
+</body>
+</html>

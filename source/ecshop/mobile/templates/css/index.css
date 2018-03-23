@@ -143,8 +143,8 @@
 
   }
 #doctor ul li .face{
-  width: 1.4rem;
-  height: 1.4rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
   margin: 0 auto;
 }
@@ -186,12 +186,12 @@
   height: 100%;
 }
 /*新闻资讯*/
-#news .nav2{
+#news .news_nav{
     width: 92%;
     overflow-x:scroll ;
     -webkit-overflow-scrolling: touch;
 }
-#news .nav2 ul li{
+#news .news_nav ul li{
   width: 1.4rem;
   height:0.56rem;
   line-height:0.56rem ;
@@ -202,22 +202,23 @@
   border-radius:0.35rem ;
   margin-right: 10px;
 }
-#news .nav2 ul{
+#news .news_nav ul{
     width: 570px;
 }
-#news .nav2 ul .select{
+#news .news_nav ul .select{
     background-color:#056dbb ;
     border-color: #056dbb;
     color: #fff;
 }
-#news .nav2 ul .clear{display: none}
+#news .news_nav ul .clear{display: none}
 .newsbox{
     height: 1.5rem;
     margin-top: 0.4rem;
     margin-left: 0.2rem;
 }
 .swiper-container-new{
-    height: 6.6rem;
+    height: auto;
+    padding-bottom: 0.5rem;
     overflow: visible;
 }
 .swiper-container-new .swiper-slide{
@@ -273,8 +274,8 @@
 }
 #apply .content .title1{
     width: 100%;
-    height: 2rem;
-    line-height: 2rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
     color: #fff;
     text-align: center;
 }
@@ -310,4 +311,30 @@
     text-align:  center;
     line-height: 0.3rem;
 }
+
+
+#newsChoice {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: scroll;
+    background: #ffffff;
+    border-bottom: 1px solid #dcdcdc; }
+#newsChoice a {
+    display: block;
+    font-size: 0.24rem;
+    color: #333333;
+    line-height: 0.9rem;
+    margin-right: 0.4rem;
+    position: relative; }
+#newsChoice a:nth-last-child(2) {
+    margin-right: 0px; }
+#newsChoice .ncActive {
+    color: #0068b7; }
+#newsChoice .ncActive::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: "";
+    width: 100%;
+    border-bottom: 2px solid #0068b7; }
+
 /*# sourceMappingURL=index.css.map */

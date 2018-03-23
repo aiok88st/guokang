@@ -43,7 +43,7 @@ $smarty->assign('case_list',$case_list);
 /*国康服务 (goods)*/
 $goods_list=$model->table($ecs->table('goods'))
     ->order('is_best desc')
-    ->field('goods_name,goods_id,goods_thumb,goods_desc')
+    ->field('goods_name,goods_id,goods_thumb,goods_brief,goods_desc')
     ->limit(9)
     ->select();
 foreach ($goods_list as $key=>$value){

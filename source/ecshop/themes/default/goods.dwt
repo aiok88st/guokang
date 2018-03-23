@@ -12,18 +12,18 @@
                                 <li>
                                     <a href="goods-{$goods_id}.html" class="aActive">概述</a>
                                 </li>
-                                <li>
-                                    <a href="goods-{$goods_id}-over.html#part1">服务详情</a>
-                                </li>
-                                <li>
-                                    <a href="goods-{$goods_id}-over.html#part2">案例</a>
-                                </li>
 
                                 <li>
-                                    <a href="goods-{$goods_id}-over.html#part4">常见问题</a>
+                                    <a href="#part2">产品优势</a>
                                 </li>
                                 <li>
-                                    <a href="goods-{$goods_id}-over.htmlpart6">评价详情</a>
+                                    <a href="#part3">购买后能获得什么</a>
+                                </li>
+                                <li>
+                                    <a href="#part4">服务流程</a>
+                                </li>
+                                <li>
+                                    <a href="#server">服务案例</a>
                                 </li>
                                 <li>
                                     <button onclick="window.location.href='goods-{$goods_id}-over.html'">立即购买</button>
@@ -44,7 +44,7 @@
 		{/if}
 
 		{if $ov.point}
-		<section class="imgContent">
+		<section class="imgContent" id="part2">
 			<div class="swiper">
 				<div class="swiper-container swiper-container-top">
 					<div class="swiper-wrapper ">
@@ -95,7 +95,7 @@
 		</section>
 		{/if}
 		{if $ov.get}
-		<section class="imgContent imgContentBottom">
+		<section class="imgContent imgContentBottom" id="part3">
 			<div class="swiper">
 				<div class="swiper-container swiper-container-bottom">
 					<div class="swiper-wrapper">
@@ -146,7 +146,7 @@
 		</section>
 		{/if}
 		{if $ov.contrast}
-		<section class="onlyImg section4" style="height:auto;">
+		<section id="part4" class="onlyImg section4" style="height:auto;">
 			<img src=".{$ov.contrast}"/>
 		</section>
 		{/if}
