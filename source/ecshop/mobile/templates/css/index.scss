@@ -1,0 +1,184 @@
+$color6:#666666;
+#banner{
+    .swiper-slide img{
+        width: 100%;
+    }
+    .swiper-pagination-bullet {
+        width: 0.6rem;
+        height: 2px;
+    }
+    .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: -2px;
+    }
+}
+.fourA{
+    a{
+        background-color: #efefef;
+        display: block;
+        width: 25%;
+        img{
+            height: 0.4rem;
+            margin: 0 auto;
+            padding-top: 0.3rem;
+        }
+        p{
+            text-align: center;
+            font-size: 0.22rem;
+            padding: 0.2rem 0 0.3rem;
+            color: $color6;
+        }
+    }
+    a:nth-child(2n){
+        background-color: #f4f4f4;
+    }
+}
+#cj{
+    padding: 0.6rem  0 0;
+    overflow-x: hidden;
+    .cjTitle{
+        line-height: 0.9rem;
+        font-size: 0.34rem;
+        text-align: center;
+        color:#000000;
+    }
+    .cjDetail{
+        line-height: 0.28rem;
+        font-size: 0.2rem;
+        text-align: center;
+        color:#888888;
+        margin-bottom: 0.4rem;
+    }
+    .swiper-container{
+        width: 92%;
+        margin: 0 auto;
+        overflow: visible;
+    }
+    .cjBox{
+        width: 97%;
+        margin: 0 auto;
+    }
+    .cjChild{
+        .cjTop{
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            >img{
+                width: 100%;
+            }
+            >div{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                display: -webkit-flex;
+                -webkit-align-items: center;
+                -webkit-justify-content: center;
+                -webkit-flex-direction: column;
+                font-size: 0.28rem;
+                color: white;
+            }
+        }
+        .cjBottom{
+            width: 100%;
+            margin: 0 auto;
+            padding-bottom: 0.6rem;
+            .cjbBox{
+                margin-top: 0.4rem;
+                border-top:1px solid #cecece ;
+                p{
+                    font-size: 0.4rem;
+                    color: #000000;
+                    line-height: 1rem;
+                }
+                a{
+                    display: block;
+                    margin-top: 0.2rem;
+                    line-height: 0.8rem;
+                    color: #555555;
+                    font-size: 0.26rem;
+                }
+            }
+            .cjl{
+                width: 100%;
+                position: relative;
+                margin: 0.4rem 0 0;
+            }
+            .cjl:nth-child(1){
+                margin-top: 0px;
+            }
+            .cjl:nth-last-child(1){
+                .cjContent::after{
+                    display: none;
+                }
+            }
+            .cjImg{
+                width: 19%;
+                >img{
+                    width: 100%;
+                }
+            }
+            .cjContent{
+                position: absolute;
+                top: 0;
+                left: 22%;
+                width: 78%;
+                height: 100%;
+                line-height: 0.38rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                display: -webkit-flex;
+                -webkit-align-items: center;
+                -webkit-justify-content: center;
+                -webkit-flex-direction: column;
+                p:nth-child(1){
+                    width: 100%;
+                    font-size: 0.28rem;
+                    color: #000000;
+                }
+                p:nth-child(2){
+                    font-size: 0.2rem;
+                    color: #888888;
+                }
+            }
+            .cjContent::after{
+                content: "";
+                position: absolute;
+                bottom: -0.2rem;
+                left:0;
+                width: 100%;
+                border-bottom: 1px solid #cecece;
+            }
+        }
+    }
+}
+#doctor{
+    width: 92%;
+    margin: 0 auto;
+    .doctor{
+        width: 98%;
+        margin: 0 auto;
+        border-top:1px solid #cecece;
+        p {
+            font-size: 0.4rem;
+            color: #000000;
+            line-height: 1rem;
+        }
+        
+        a {
+            display: block;
+            margin-top: 0.2rem;
+            line-height: 0.8rem;
+            color: #555555;
+            font-size: 0.26rem;
+        }
+    }
+}

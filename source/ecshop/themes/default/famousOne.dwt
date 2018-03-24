@@ -5,9 +5,13 @@
 <link rel="stylesheet" href="themes/default/scss/page.css" />
 <style>
 	#banner img{
-		width: 100%;
+		width: 1920px;
 		height: 400px;
+
+		/*padding-left: 50%;*/
+		/*margin-left: -960px;*/
 	}
+
     #mainContent .leftContent .plRight p{
         text-indent: 0px;
     }
@@ -20,8 +24,8 @@
 <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
 
 <!--类型选择-->
-<div id="typeList" class="w12">
-    <div class="typeList">
+<div id="typeList" class="w12" style="display: none">
+    <div class="typeList" style="margin-bottom: 0">
         <div class="tlLeft floatl">
             <p>分类</p>
         </div>
@@ -44,7 +48,7 @@
 				<div class="leftContent floatl noBord">
 
                     <!--{foreach from=$artciles_list item=vo}-->
-					<div class="planBox" onclick="javascript:window.location.href='brand_news_detail.php?id={$vo.article_id}'">
+					<div class="planBox" onclick="javascript:window.location.href='brand_news_detail-{$vo.article_id}.html'">
 						<div class="plLeft floatl">
 							<img src="{$vo.file_url}" />
 						</div>

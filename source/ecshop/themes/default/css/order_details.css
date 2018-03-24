@@ -149,7 +149,7 @@
   line-height: 42px;
   text-align: center;
   font-weight: normal;
-  color: #888;
+
 }
 
 .pay-type label.checked, .policyHolder-type-input label.checked, .form-group-sex label.checked {
@@ -215,7 +215,7 @@
 }
 
 .last-row {
-  width: 246px;
+  min-width: 246px;
 }
 
 .last-row .text {
@@ -236,7 +236,7 @@
 }
 
 .last-row .total {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .last-row .red {
@@ -312,4 +312,23 @@
   .btn-wrap .btn-gotoPay, .btn-wrap .btn-back {
     width: 110px;
   }
+}
+.pay-type i{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 9px;
+  position: relative;
+  top: -2px;
+}
+.icon-alipay{
+  width: 25px;
+  height: 25px;
+  background: url(../img/shop/icon-alipay.png) no-repeat;
+}
+
+.icon-wechatpay{
+  width: 24px;
+  height: 21px;
+  background: url(../img/shop/icon-wechatpay.png) no-repeat;
+
 }

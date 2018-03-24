@@ -17,6 +17,7 @@ define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
 
+
 if (empty($_CFG['message_board']))
 {
     show_message($_LANG['message_board_close']);
@@ -98,9 +99,7 @@ if ($action == 'act_add_message')
     {
         $err->show($_LANG['message_list_lnk'], 'message.php');
     }
-}
-
-if ($action == 'default')
+}elseif ($action == 'default')
 {
     assign_template();
     $position = assign_ur_here(0, $_LANG['message_board']);
@@ -131,6 +130,135 @@ if ($action == 'default')
     $smarty->assign('msg_lists', $msg_lists);
     $smarty->assign('pager', $pager);
     $smarty->display('message_board.dwt');
+}elseif($action == 'policy'){
+    $ip=real_ip();
+    $info=filters($_POST);
+    if(isset($_SESSION['last_post']) && $_SESSION['last_post']+120 >=time()){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'您的操作太频繁了'
+        ]);
+        exit;
+    }
+    if(!preg_match("/^1[34578]{1}\d{9}$/",$info['mobile'])){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'手机号码格式错误'
+        ]);
+        exit;
+    }
+    if(!$info['name']){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'请填写姓名'
+        ]);
+        exit;
+    }
+    if(!$info['demand']){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'请选择您的需求项'
+        ]);
+        exit;
+    }
+    $data=[
+        'ip'=>$ip,
+        'add_time'=>time(),
+        'name'=>$info['name'],
+        'mobile'=>$info['mobile'],
+        'gender'=>$info['gender'],
+        'demand'=>$info['demand'],
+    ];
+    if(isset($info['goods_name'])){
+        $data['goods_name']=$info['goods_name'];
+    }
+    include_once(ROOT_PATH . '/includes/lib_model.php');
+    $model=new Model();
+    $res=$model->table($ecs->table('policy'))->insert($data);
+
+
+    if($res){
+        $_SESSION['last_post']=time();
+        echo json_encode([
+            'code'=>1,
+            'msg'=>'提交成功，保险经纪人会尽快与您联系。'
+        ]);
+        exit;
+    }else{
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'提交成功'
+        ]);
+        exit;
+    }
+}elseif($action == 'apply'){
+    $ip=real_ip();
+    $info=filters($_POST);
+    if(isset($_SESSION['last_apply']) && $_SESSION['last_apply']+120 >=time()){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'您的操作太频繁了'
+        ]);
+        exit;
+    }
+    if(!preg_match("/^1[34578]{1}\d{9}$/",$info['mobile'])){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'手机号码格式错误',
+        ]);
+        exit;
+    }
+    if(!$info['username']){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'请输入姓名',
+        ]);
+        exit;
+    }
+    if(!$info['company']){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'请输入公司名称',
+        ]);
+        exit;
+    }
+    if(!$info['position']){
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'请输入职位',
+        ]);
+        exit;
+    }
+
+    $data=[
+        'ip'=>$ip,
+        'add_time'=>time(),
+        'username'=>$info['username'],
+        'mobile'=>$info['mobile'],
+        'company'=>$info['company'],
+        'position'=>$info['position'],
+    ];
+
+    include_once(ROOT_PATH . '/includes/lib_model.php');
+    $model=new Model();
+    $res=$model->table($ecs->table('apply'))->insert($data);
+
+
+    if($res){
+        $_SESSION['last_apply']=time();
+        echo json_encode([
+            'code'=>1,
+            'msg'=>'提交成功，我们会尽快与您联系。'
+        ]);
+        exit;
+    }else{
+        echo json_encode([
+            'code'=>0,
+            'msg'=>'提交成功'
+        ]);
+        exit;
+    }
+
 }
 
 /**

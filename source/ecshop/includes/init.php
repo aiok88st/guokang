@@ -13,6 +13,7 @@
  * $Id: init.php 17217 2011-01-19 06:29:08Z liubo $
 */
 require_once(dirname(__FILE__) . '/safety.php');
+
 if (!defined('IN_ECS'))
 {
     die('Hacking attempt');
@@ -160,6 +161,8 @@ if(isset($_SERVER['PHP_SELF']))
 {
     $_SERVER['PHP_SELF']=htmlspecialchars($_SERVER['PHP_SELF']);
 }
+
+
 if (!defined('INIT_NO_SMARTY'))
 {
     header('Cache-control: private');
@@ -303,7 +306,24 @@ else
 {
     ob_start();
 }
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 
+$uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile)/i";
+
+
+if(($ua == '' || preg_match($uachar, $ua))&& !strpos(strtolower($_SERVER['REQUEST_URI']),'wap'))
+{
+    $Loaction = 'mobile/';
+    $act=isset($_GET['act'])?  trim($_GET['act']):'';
+
+    if (!empty($Loaction) && $act!='apply')
+    {
+        ecs_header("Location: $Loaction\n");
+
+        exit;
+    }
+
+}
 //定义路径
-$smarty->assign('home', 'themes/default');
+//$smarty->assign('home', 'themes/default');
 ?>

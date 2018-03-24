@@ -105,8 +105,8 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
         $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="javascript:;">产品中心</a></li>';
 
         $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1");
-        $pager = get_pager('category.php', array('id'=>2,'cid'=>$cid), $count, $page,$size);
-        $sqls = 'SELECT goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+        $pager = get_pager('category', array('id'=>2,'cid'=>$cid), $count, $page,$size);
+        $sqls = 'SELECT is_real,shop_price,tag_id,goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
             ' FROM ' .$GLOBALS['ecs']->table('goods') .
             ' WHERE is_on_sale = 1'.
             ' ORDER BY sort_order ASC, add_time DESC'.
@@ -118,8 +118,8 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
             $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="category.php?id=2">产品中心 &gt;</a></li><li><a href="javascript:;">'.$cat['cat_name'].'</a></li>';
 
             $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1 AND cat_id=".$cid);
-            $pager = get_pager('category.php', array('id'=>2,'cid'=>$cid), $count, $page,$size);
-            $sqls = 'SELECT goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+            $pager = get_pager('category', array('id'=>2,'cid'=>$cid), $count, $page,$size);
+            $sqls = 'SELECT is_real,shop_price,tag_id,goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
                 ' FROM ' .$GLOBALS['ecs']->table('goods') .
                 ' WHERE is_on_sale = 1 AND cat_id=' . $cid .
                 ' ORDER BY sort_order ASC, add_time DESC'.
@@ -130,8 +130,8 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
             $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="category.php?id=2">产品中心 &gt;</a></li><li><a href="category.php?id=2&cid='.$cid.'">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">'.$cat2['cat_name'].'</a></li>';
 
             $count  = $db->getOne("SELECT COUNT(*) FROM " . $ecs->table('goods') . " WHERE  is_on_sale = 1 AND cat_id=".$aid);
-            $pager = get_pager('category.php', array('id'=>2,'cid'=>$cid,'aid'=>$aid), $count, $page,$size);
-            $sqls = 'SELECT goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
+            $pager = get_pager('category', array('id'=>2,'cid'=>$cid,'aid'=>$aid), $count, $page,$size);
+            $sqls = 'SELECT is_real,tag_id,goods_id, cat_id, goods_name, market_price, member_price, vip_price, goods_img, goods_brief' .
                 ' FROM ' .$GLOBALS['ecs']->table('goods') .
                 ' WHERE is_on_sale = 1 AND cat_id=' . $aid .
                 ' ORDER BY sort_order ASC, add_time DESC'.
@@ -142,12 +142,16 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
 
     $data = $db->getAll($sqls);
     foreach($data as $k=>$v){
-        $sql='SELECT goods_attr_id, goods_id, attr_id, attr_value, attr_price FROM  ecs_goods_attr WHERE goods_id = '.$v['goods_id'];
-        $data[$k]['attr_value'] = $db->getAll($sql);
+        if(!empty($v['tag_id'])){
+            $sql='SELECT * FROM `ecs_goods_tag` WHERE id IN ('.$v['tag_id'].')';
+            $data[$k]['attr_value'] = $db->getAll($sql);
+        }
+
     }
     if(empty($data)){
         $data = '';
     }
+    assign_template('c', array($cat_id));
     $smarty->assign('cid', $cid);
     $smarty->assign('aid', $aid);
     $smarty->assign('pager', $pager);
@@ -164,8 +168,12 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
 
     if (!empty($cat))
     {
-        $smarty->assign('keywords',    htmlspecialchars($cat['keywords']));
-        $smarty->assign('description', htmlspecialchars($cat['cat_desc']));
+        if(!empty($cat['keywords'])){
+            $smarty->assign('keywords',    htmlspecialchars($cat['keywords']));
+        }
+        if(!empty($cat['description'])){
+            $smarty->assign('description', htmlspecialchars($cat['description']));
+        }
         $smarty->assign('cat_style',   htmlspecialchars($cat['style']));
     }
     else
@@ -404,8 +412,6 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
         }
     }
 
-    assign_template('c', array($cat_id));
-
     $position = assign_ur_here($cat_id, $brand_name);
     $smarty->assign('page_title',       $position['title']);    // 页面标题
     $smarty->assign('ur_here',          $position['ur_here']);  // 当前位置
@@ -468,6 +474,8 @@ if (!$smarty->is_cached('category.dwt', $cache_id))
             $goodslist[] = array();
         }
     }
+
+
     $smarty->assign('goods_list',       $goodslist);
     $smarty->assign('category',         $cat_id);
     $smarty->assign('script_name', 'category');
@@ -491,7 +499,7 @@ $smarty->display('produce.dwt', $cache_id);
  */
 function get_cat_info($cat_id)
 {
-    return $GLOBALS['db']->getRow('SELECT cat_name, keywords, cat_desc, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
+    return $GLOBALS['db']->getRow('SELECT cat_name,description, keywords, cat_desc, style, grade, filter_attr, parent_id FROM ' . $GLOBALS['ecs']->table('category') .
         " WHERE cat_id = '$cat_id'");
 }
 
@@ -524,7 +532,7 @@ function category_get_goods($children, $brand, $min, $max, $ext, $size, $page, $
     }
 
     /* 获得商品列表 */
-    $sql = 'SELECT g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
+    $sql = 'SELECT g.tag_id,g.goods_id, g.goods_name, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, " .
                 'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' .
             'FROM ' . $GLOBALS['ecs']->table('goods') . ' AS g ' .

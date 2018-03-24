@@ -1,0 +1,15 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" type="text/css" href="themes/default/css/cart.css">
+<div class="container main">
+    <div class="pay-result">
+        <!--{if $pay_success eq 1}-->
+        <h4 class="text-center">付款成功</h4>
+        <!--{else /}-->
+        <h4 class="text-center">付款失败</h4>
+        <!--{/if}-->
+        <p class="text-center">{$message}</p>
+        <a href="/" class="btn btn-primary btn-lg" role="button">继续逛逛</a>
+    </div>
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

@@ -1,23 +1,57 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ECShop_mobile</title>
-</head>
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/doctor.css" />
+<script type="text/javascript" src="templates/lib/layui.js"></script>
+<!--banner-->
+<div id="banner">
+    {if $banner}
+    <img src="/{$banner}" />
+    {/if}
+</div>
+<div id="doctorList">
+    <div class="cjBottom">
+        <div class="cjList">
 
-<body>
-<p align='left'>
-{if $article_data}
-    {$article_data.title}<br/>
-    --------------<br/>
-    {$article_data.content}<br/>
-{else}
-    错误地址<br/>
-{/if}
---------------<br/>
-<a href="javascript:history.back(-1)">回上一页</a><br/>
-<a href='index.php'>返回首页</a>
-{$footer}
-</p>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    layui.use('flow', function(){
+        var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+        var flow = layui.flow;
+        flow.load({
+            elem: '#doctorList' //指定列表容器
+            ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+                var lis = [];
+                var pages=page;
+                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                $.get('ajax.php?act=article&cat_id={$cat_id}&page='+pages, function(res){
+                    //假设你的列表返回在data集合中
+                    var list=res.list;
+                    var html='';
+                    for(item in list){
+                        html +='<a href="article.php?act=desc&id='+list[item].article_id+'" class="cjl">';
+                        html +='<div class="cjImg">';
+                        html +='<img src="/'+list[item].file_url+'" onerror="this.src=\'/themes/default/img/develop.jpg\'"/>';
+                        html +='</div>';
+                        html +='<div class="cjContent">';
+                        html +='<p>'+list[item].title+'</p>';
+                        html +=' <div class="cjbBottom">';
+                        html +='<p class="p2">'+list[item].description+'</p>';
+                        html +='</div>';
+                        html +='</div></a>';
+                    }
+                    $('.cjList').append(html);
+                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                    next(lis.join(''), pages < res.pages);
+                },'JSON');
+            }
+        });
+
+    });
+</script>
+{include file="/library/page_footer.html"}
 </body>
 </html>

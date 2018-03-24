@@ -95,6 +95,7 @@ class ecshop extends integrate
             $post_username = $username;
         }
 
+
         if ($password === null)
         {
             $sql = "SELECT " . $this->field_id .

@@ -1,0 +1,140 @@
+$black:#555555;
+$blue:#0068b7;
+$f4:#f4f4f4;
+body{
+    background: $f4;
+}
+#banner{
+    width: 100%;
+    >img{
+        width: 100%;
+    }
+}
+.getMore{
+    width: 100%;
+    font-size: 0.22rem;
+    line-height: 1.0rem;
+    background-color: $f4;
+    text-align: center;
+    a{
+        display: block;
+        width: 100%;
+        color: #999999;
+    }
+}
+#newsChoice{
+   overflow-x: scroll;
+   -webkit-overflow-scrolling: scroll;
+   background: #ffffff;
+   border-bottom: 1px solid #dcdcdc;
+   font-size: 0.3rem;
+    a{
+        display: block;
+        font-size: 0.24rem;
+        color: #333333;
+        line-height: 0.9rem;
+        margin-right: 0.4rem;
+        position: relative;
+        display: inline-block;
+    }
+    a:nth-last-child(1){
+        margin-right: 0px;
+    }
+    .ncActive{
+        color: $blue;
+    }
+    .ncActive::after{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        content: "";
+        width: 100%;
+        border-bottom: 2px solid $blue;
+    }
+}
+#doctorList{
+    background: white;
+    width: 100%;
+}
+.cjBottom {
+    width: 89.33%;
+    margin: 0 auto;
+    padding:0.2rem 0 0.5rem;
+    
+    .cjbBox {
+        
+        p {
+            font-size: 0.4rem;
+            color: #000000;
+            line-height: 1rem;
+        }
+    }
+    .cjl {
+        display: block;
+        width: 100%;
+        position: relative;
+        margin: 0.4rem 0 0;
+    }
+    .cjl:nth-child(1) {
+        margin-top: 0px;
+    }
+    .cjl:nth-last-child(1) {
+        .cjContent::after {
+            display: none;
+        }
+    }
+    .cjImg {
+        width: 1.2rem;
+        height: 1.2rem;
+        overflow: hidden;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        display: -webkit-flex;
+        -webkit-align-items: center;
+        -webkit-justify-content: center;
+        -webkit-flex-direction: column;
+        >img {
+            width: 100%;
+        }
+    }
+    .cjContent {
+        position: absolute;
+        top: 0;
+        left: 26.2%;
+        width: 73.8%;
+        height: 100%;
+        line-height: 0.38rem;
+        p{
+            width: 100%;
+            font-size: 0.28rem;
+            color: #000000;
+            line-height: 0.6rem;
+            span{
+                font-size: 0.2rem;        
+            }
+        }
+        .cjbBottom{
+            position: absolute;
+            left: 0;
+            bottom: 0.1rem;
+            p{
+                line-height: 0.3rem;
+                font-size: 0.2rem;
+                color: #888888;
+                
+            }
+        }
+        
+    }
+    .cjContent::after {
+        content: "";
+        position: absolute;
+        bottom: -0.2rem;
+        left: 0;
+        width: 100%;
+        border-bottom: 1px solid #cecece;
+    }
+}

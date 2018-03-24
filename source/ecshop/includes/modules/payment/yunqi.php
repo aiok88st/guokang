@@ -118,7 +118,7 @@ class yunqi
         $def_url .= "<input type='hidden' name='notify_url' value='" . $param['notify_url'] . "' />";
         $def_url .= "<input type='hidden' name='sign' value='" . $param['sign'] . "' />";
         $def_url .= "<input type='hidden' name='client_id' value='" . $param['client_id'] . "' />";
-        $def_url .= "<input type='submit'  value='" . $GLOBALS['_LANG']['pay_button'] . "' />";
+        $def_url .= ' <button type="submit" class="btn btn-primary btn-lg pull-right btn-gotoPay"><small>去支付</small></button>';
         $def_url .= "</form></div></br>";
 
         return $def_url;
@@ -145,6 +145,7 @@ class yunqi
         //获取paid 判断是否为会员充值
         $is_recharge = strlen($_GET['order_no'])>8?'false':'true';
         $pay_id = get_order_id_by_sn($_GET['order_no'],$is_recharge);
+
 
         /* 检查支付的金额是否相符 */
         if (!check_money($pay_id, $_GET['amount']))

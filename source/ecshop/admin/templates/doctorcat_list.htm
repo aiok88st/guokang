@@ -10,120 +10,43 @@
 
         <table width="100%" cellspacing="1" cellpadding="2" id="list-table">
             <tr>
-                <th>科室分类名称</th>
-                <th>分类类型</th>
-                <th>描述</th>
-                <th>{$lang.sort_order}</th>
-                <th>是否显示在导航栏</th>
-                <th>{$lang.handler}</th>
+                <th width="80">类型名称</th>
+                <th width="50">排序</th>
+                <th width="800">可选属性值</th>
+                <th width="50">{$lang.handler}</th>
             </tr>
-            {foreach from=$articlecat item=cat}
-            <tr align="center" class="{$cat.level}" id="{$cat.level}_{$cat.cat_id}">
+            {if $lists}
+            {foreach from=$lists item=item}
+            <tr align="center" class="" id="item_{$item.id}">
                 <td align="left" class="first-cell nowrap" valign="top" >
-                    {if $cat.is_leaf neq 1}
-                    <img src="images/menu_minus.gif" id="icon_{$cat.level}_{$cat.cat_id}" width="9" height="9" border="0" style="margin-left:{$cat.level}em" onclick="rowClicked(this)" />
-                    {else}
-                    <img src="images/menu_arrow.gif" width="9" height="9" border="0" style="margin-left:{$cat.level}em" />
-                    {/if}
-                    <span><a href="doctor.php?act=list&amp;cat_id={$cat.cat_id}">{$cat.cat_name|escape}</a></span>
+                    <span onclick="listTable.edit(this, 'edit_cat_name', {$item.id})">{$item.name}</span>
                 </td>
-                <td class="nowrap" valign="top">
-                    {$cat.type_name|escape}
+                <td>
+                    <span onclick="listTable.edit(this, 'edit_cat_list_order', {$item.id})">{$item.list_order}</span>
                 </td>
-                <td align="left" valign="top">
-                    {$cat.cat_desc|escape}
-                </td>
-                <td width="10%" align="right" class="nowrap" valign="top"><span onclick="listTable.edit(this, 'edit_sort_order', {$cat.cat_id})">{$cat.sort_order}</span></td>
-                <td width="10%" class="nowrap" valign="top"><img src="images/{if $cat.show_in_nav eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_show_in_nav', {$cat.cat_id})" /></td>
-                <td width="24%" align="right" class="nowrap" valign="top">
-                    <a href="doctorcat.php?act=edit&amp;id={$cat.cat_id}">{$lang.edit}</a>
-                    {if $cat.cat_type neq 2 and $cat.cat_type neq 3 and $cat.cat_type neq 4}|
-                    <a href="javascript:;" onclick="listTable.remove({$cat.cat_id}, '{$lang.drop_confirm}')" title="{$lang.remove}">{$lang.remove}</a>
-                    {/if}
+                <td>{$item.attr}</td>
+                <td  align="right" class="nowrap" valign="top">
+                    <a href="doctor.php?act=cat_add&id={$item.id}&type={$item.type}">{$lang.edit}</a>
+                    |
+                    <a href="javascript:;" onclick="listTable.remove({$item.id}, '{$lang.drop_confirm}')" title="{$lang.remove}">{$lang.remove}</a>
+
                 </td>
             </tr>
             {/foreach}
-        </table>
+            {else /}
+            <tr>
+               <td colspan="3">暂无分类</td>
+            </tr>
+            {/if}
 
+            <tr>&nbsp;
+                <td align="right" nowrap="true" colspan="8">{include file="page2.htm"}</td>
+            </tr>
+        </table>
         {if $full_page}
+
     </div>
 </form>
-
-{literal}
-<script language="JavaScript">
-    <!--
-
-    onload = function()
-    {
-        // 开始检查订单
-        startCheckOrder();
-    }
-
-    var imgPlus = new Image();
-    imgPlus.src = "images/menu_plus.gif";
-
-    /**
-     * 折叠分类列表
-     */
-    function rowClicked(obj)
-    {
-        // 当前图像
-        img = obj;
-        // 取得上二级tr>td>img对象
-        obj = obj.parentNode.parentNode;
-        // 整个分类列表表格
-        var tbl = document.getElementById("list-table");
-        // 当前分类级别
-        var lvl = parseInt(obj.className);
-        // 是否找到元素
-        var fnd = false;
-        var sub_display = img.src.indexOf('menu_minus.gif') > 0 ? 'none' : (Browser.isIE) ? 'block' : 'table-row' ;
-        // 遍历所有的分类
-        for (i = 0; i < tbl.rows.length; i++)
-        {
-            var row = tbl.rows[i];
-            if (row == obj)
-            {
-                // 找到当前行
-                fnd = true;
-                //document.getElementById('result').innerHTML += 'Find row at ' + i +"<br/>";
-            }
-            else
-            {
-                if (fnd == true)
-                {
-                    var cur = parseInt(row.className);
-                    var icon = 'icon_' + row.id;
-                    if (cur > lvl)
-                    {
-                        row.style.display = sub_display;
-                        if (sub_display != 'none')
-                        {
-                            var iconimg = document.getElementById(icon);
-                            iconimg.src = iconimg.src.replace('plus.gif', 'minus.gif');
-                        }
-                    }
-                    else
-                    {
-                        fnd = false;
-                        break;
-                    }
-                }
-            }
-        }
-
-        for (i = 0; i < obj.cells[0].childNodes.length; i++)
-        {
-            var imgObj = obj.cells[0].childNodes[i];
-            if (imgObj.tagName == "IMG" && imgObj.src != 'images/menu_arrow.gif')
-            {
-                imgObj.src = (imgObj.src == imgPlus.src) ? 'images/menu_minus.gif' : imgPlus.src;
-            }
-        }
-    }
-    //-->
-</script>
-{/literal}
 
 {include file="pagefooter.htm"}
 {/if}

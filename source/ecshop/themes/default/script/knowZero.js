@@ -1,8 +1,8 @@
 $(function(){
 	var bannerLeft = $('#banner img').width();
-	$('#banner img').css('margin-left',-(bannerLeft-$(window).width())/2+'px');
-	$('#weDo>img').css('margin-left',-($('#weDo>img').width()-$(window).width())/2+'px');
-	$('#apply>img').css('margin-left',-($('#apply>img').width()-$(window).width())/2+'px');
+	// $('#banner img').css('margin-left',-(bannerLeft-$(window).width())/2+'px');
+	// $('#weDo>img').css('margin-left',-($('#weDo>img').width()-$(window).width())/2+'px');
+	// $('#apply>img').css('margin-left',-($('#apply>img').width()-$(window).width())/2+'px');
 	$(window).resize(function(){
 		var bannerLeft = $('#banner img').width();
 		$('#banner img').css('margin-left',-(bannerLeft-$(window).width())/2+'px');

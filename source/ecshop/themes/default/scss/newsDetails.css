@@ -22,7 +22,7 @@
         font-size: 14px;
         line-height: 24px;
         color: #888888;
-        margin-left: 60px; }
+        margin-left: 0px; }
 
 #knowNav {
   width: 100%;
@@ -57,11 +57,11 @@
       background-color: white;
       margin-bottom: 18px; }
     #mainContent .leftContent .fullContent {
-      padding: 40px 0 100px;
-      line-height: 30px;
+      padding: 20px;
+      line-height: 26px;
       font-size: 14px; }
       #mainContent .leftContent .fullContent p {
-        width: 92%;
+        width: 100%;
         margin: 0 auto; }
       #mainContent .leftContent .fullContent p:nth-child(1) {
         font-size: 30px;

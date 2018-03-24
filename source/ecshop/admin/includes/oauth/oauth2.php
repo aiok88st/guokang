@@ -17,6 +17,7 @@ class oauth2{
         $this->secret = $config['secret'];
         $this->site = $config['site'];
         $this->oauth = $config['oauth'];
+
         $this->__config = $config;
     }
 

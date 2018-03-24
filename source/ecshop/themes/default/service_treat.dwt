@@ -1,0 +1,374 @@
+﻿<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/server.css" />
+<style type="text/css">
+    #banner img{
+        padding-left: 50%;
+        margin-left: -960px;
+    }
+</style>
+
+
+
+
+<!--就医转诊服务体系-->
+<div id="part1" align="center">
+    <img src="themes/default/image/systemBanner.jpg" />
+    <div class="part1">
+        <div class="w12">
+            <div class="titlel">
+                <ul>
+                    <li>
+                        <p>就医转诊服务体系</p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="partOne" class="w12">
+    <div class="poTop">
+        <p>经过12年的就医服务经验积累，国康形成了行业最强大的，满意度最高的就医转诊体系，该体系由专业分诊体系、专家预约体系、专业陪诊体系、大病专案体系、档案系统组成，</p>
+        <p>涵盖全国3万多名各学科、各病种的专家，为客户提供防误诊误治、解决看病难、快速找名医、同一专家连续性看诊等服务，实现提升就诊治疗效率的目标。国康就医转诊服务体系</p>
+        <p>已经服务了近千家大中型企业，服务总量超过了100余万人次，误诊误治率为零（国内平均误诊误治率超过30%），国康就医转诊服务体系深得客户信赖。</p>
+    </div>
+        <img src="themes/default/image/20170503101113_0243.jpg" />
+</div>
+
+<!--专业分诊体系-->
+<div id="partTwo">
+    <img src="themes/default/image/server03.jpg" />
+    <div class="partTwo">
+        <div class="w12">
+            <div class="titlel">
+                <ul>
+                    <li>
+                        <p>专业分诊体系</p>
+                    </li>
+                    <li>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="pwTop">
+                <p>专业分诊体系是一套有关如何精准就医，高效看病的医学专业知识体系。</p>
+                <p>国康总结了12年就医服务的最佳实践，掌握了各三甲医院的特长，各名医的擅长以及各种重大疾病的国内外临床治疗路径。</p>
+                <p>专业分诊体系包括一般疾病分诊和重大疾病分诊。</p>
+            </div>
+            <div class="pwBottom">
+                <div class="floatl">
+                    <div class="pwImgBox"></div>
+                    <div class="pwTitle">
+                        <p>一般疾病分诊</p>
+                    </div>
+                    <div class="pwContent">
+                        <p>国康全科医生针对客户病情进行精确分诊，避免看错科室、浪费时间以及造成不必要的费用损失</p>
+                    </div>
+                </div>
+                <div class="floatl">
+                    <div class="pwImgBox"></div>
+                    <div class="pwTitle">
+                        <p>重大疾病分诊</p>
+                    </div>
+                    <div class="pwContent">
+                        <p>针对比较复杂的病情，安排三甲医院的专科医生对客户病情进行精确分诊，避免误诊误治以及为治疗时间争分夺秒，提高看诊效率。</p>
+                    </div>
+                </div>
+                <div class="floatl">
+                    <div class="pwImgBox"></div>
+                    <div class="pwTitle">
+                        <p>分诊知识库</p>
+                    </div>
+                    <div class="pwContent">
+                        <p>经过12年的就医服务经验以及病症案例形成了海量的分诊知识库，该知识库分诊词条超过百万条。</p>
+                    </div>
+                </div>
+                <div class="clearl"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--专家预约体系-->
+<div id="partThree">
+    <div class="titlel">
+        <ul>
+            <li>
+                <p>专家预约体系</p>
+            </li>
+            <li>
+                <span></span>
+            </li>
+        </ul>
+    </div>
+    <div class="ptTop">
+        <p>国康有一套完整的服务预约体系，涵盖550家以上三甲医院3万余名顶级专家，为客户提供名医绿色通道、知名专家上门服务、</p>
+        <p>推荐权威专家看诊、知名专家健康讲座服务、重大疾病等服务，为客户提供精准看诊，解决了百万余名客户看病难、环境差、</p>
+        <p>找不到名医、不能同一专家连续看诊以及健康知识匮乏等痛苦。</p>
+    </div>
+    <div class="ptSwiper w12">
+        <div class="swiper-container swiper-container-part3">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">名医绿色通道</p>
+                            </li>
+                            <li>
+                                <p>3万余名各学科、各病种的顶级专家为客户开通绿色就医通道，帮助客户获得更多更快的就医机会。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">推荐对症权威专家</p>
+                            </li>
+                            <li>
+                                <p>全国三甲医院3万余名顶级专家库，可根据客户病情快速匹配最适合、最权威的专家。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">国康康管家保健办名医一对一看诊</p>
+                            </li>
+                            <li>
+                                <p>权威专家在国康康管家保健办坐诊，让客户享有在舒适优雅的环境下与名医深度沟通病情，沟通时长保证在30分钟以上，从而告别2分钟内看诊模式。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">知名专家上门巡诊服务</p>
+                            </li>
+                            <li>
+                                <p>无需排队挂号、无需折腾，在家（或其他地点）即可轻松看名医。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">知名专家健康讲座服务</p>
+                            </li>
+                            <li>
+                                <p>各学科、各病种知名专家在全国各个城市为企业高管、员工大力宣传健康生活方式、疾病科普和安全用药常识。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pnBtn">
+            <div class="swiper-button-prev prevLeft"></div>
+            <div class="swiper-button-next nextRight"></div>
+        </div>
+    </div>
+</div>
+
+<!--专业陪诊体系-->
+<div id="partOne" class="w12">
+        <div class="w12">
+            <div class="titlel">
+                <ul>
+                    <li>
+                        <p>专业陪诊体系</p>
+                    </li>
+                    <li>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-bottom: 45px;color: #999999;text-align: center;font-size: 14px;">
+                <p>12年的服务经验形成对各三甲医院的环境、科室、就医注意事项、专家擅长等知识，<br>
+                客户通过微信、电话等方式预约专业陪诊服务，<br>
+                陪诊体系可提供安排号源、诊前沟通、就诊陪护、诊中关怀、取送检查报告、诊后关怀等服务，<br>
+                缓解客户在医院迷茫的就医处境。<br>
+                在康复期间国康安排客户与看诊医生进行一次电话沟通，全面追踪诊后情况，改善客户以及家属的就医体验。</p>
+            </div>
+            <div class="poBottom">
+                    <div class="floatl">
+                        <div class="pobox">
+                            <div class="poContent">
+                                <ul>
+                                    <li>
+                                        <p>健康助理陪同就医</p>
+                                    </li>
+                                    <li>
+                                        <p>27个省市550余家三甲医院3000余名护士以及超过450健康助理对各三甲医院就医流程熟悉，为客户提供全程陪同看诊服务，协助安排号源、诊前沟通、陪同检查、取药划价、解决在就医过程中遇到的各种问题，让客户省心更省力。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floatl">
+                        <div class="pobox">
+                            <div class="poContent">
+                                <ul>
+                                    <li>
+                                        <p>全科医生陪同就医</p>
+                                    </li>
+                                    <li>
+                                        <p>在医院10年以上临床经验的主治医师在医院陪同看诊，负责与主诊医师进行病情以及治疗方案的沟通，提高就诊治疗效率。</p><p>-</p><p>-</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearl"></div>
+            </div>
+        </div>
+</div>
+
+<!--大病专案体系-->
+<div id="partThree">
+    <div class="titlel">
+        <ul>
+            <li>
+                <p>大病专案体系</p>
+            </li>
+            <li>
+                <span></span>
+            </li>
+        </ul>
+    </div>
+    <div class="ptTop">
+        <p>国康整合了550余家三甲医院医疗资源，为客户提供安排名医会诊、快速响应机制，已完成超过10万例大病专案服务。<br>
+        汇集了各种疾病的治疗方案以及多种康复方案。<br>通过连接国外一流的肿瘤专家，形成了国内外治疗肿瘤疾病的知识库体系。<br>大病专案体系由权威专家团队与大病专案小组组成。</p>
+    </div>
+    <div class="ptSwiper w12">
+        <div class="swiper-container swiper-container-part3">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">权威专家团队会诊</p>
+                            </li>
+                            <li>
+                                <p>全国各学科擅长重疾的权威专家团队，针对客户病情做出评估并提供最佳治疗方案。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">大病专案小组</p>
+                            </li>
+                            <li>
+                                <p>由健康管家、大病专员、全科医生、项目经理等成员建立的快速响应专案小组。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">健康管家</p>
+                            </li>
+                            <li>
+                                <p>7x24小时在线随时接听客户需求，与客户保持持续沟通，积极响应客户并安排服务。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">大病专员</p>
+                            </li>
+                            <li>
+                                <p>处理客户在医院的一切医疗事务，包括联系专家、安排床位、协调手术时间、取药划价等等。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="pt3Box">
+                        <ul>
+                            <li>
+                                <p class="pt3Title">全科医生</p>
+                            </li>
+                            <li>
+                                <p>与主诊医生保持持续沟通联系，将客户病情以及需求和主诊医生准确传达，并给客户做出病情相关解答工作以及术后康复指导。</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pnBtn">
+            <div class="swiper-button-prev prevLeft"></div>
+            <div class="swiper-button-next nextRight"></div>
+        </div>
+    </div>
+</div>
+
+<!--专业陪诊体系-->
+<div id="partOne" class="w12">
+        <div class="w12">
+            <div class="titlel">
+                <ul>
+                    <li>
+                        <p>建立档案系统</p>
+                    </li>
+                    <li>
+                        <span></span>
+                    </li>
+                </ul>
+            </div>
+            <div style="margin-bottom: 45px;color: #999999;text-align: center;font-size: 14px;">
+                <p>国康电子健康档案已建立百万余人次就医案例，记录了从发病到治疗的过程，<br>包括各病种的治疗方案、专家推荐、药品使用、治疗费用等。</p>
+            </div>
+            <div class="poBottom">
+                    <div class="floatl">
+                        <div class="pobox">
+                            <div class="poContent">
+                                <ul>
+                                    <li>
+                                        <p>就医历史记录</p>
+                                    </li>
+                                    <li>
+                                        <p>建立了全国550余家医院内、外、妇、儿、五官、检验、放射等科室的就医记录，同时根据个人就医形成数据，分析个人身体健康指标管控疾病的复发风险，提前做健康管理计划。</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="floatl">
+                        <div class="pobox">
+                            <div class="poContent">
+                                <ul>
+                                    <li>
+                                        <p>大病治疗案例</p>
+                                    </li>
+                                    <li>
+                                        <p>已有肿瘤科、心血管内科、心胸外科、神经科、血液科、泌尿外科、肾内科、骨科、肝胆外科、耳鼻喉科、眼科等重大疾病的治疗案例。</p><p>-</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearl"></div>
+            </div>
+        </div>
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="themes/default/script/server.js" ></script>

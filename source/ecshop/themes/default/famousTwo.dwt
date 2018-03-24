@@ -3,21 +3,25 @@
 <link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
 <style>
 	#banner img{
-		width: 100%;
+		width: 1920px;
 		height: 400px;
+
 	}
 </style>
 
 		<!--集团简介-->
+
 		<div id="banner" align="center">
-            {insert name='ads' id=8 num=1}
+						<div class="" style="font-size:38px; font-weight:bold; color:#fff; text-align:left; padding-top:180px; height:400px;background:url('http://www.gkbroker.com/guokang/mall/data/afficheimg/1516346453340453827.jpg') no-repeat center; "><p class="w12">{$article.title}</p>
+		</div>
+            <!-- {insert name='ads' id=8 num=1 -->
 		</div>
 <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
 		<div id="mainContent">
 			<div class="w12">
 				<div class="leftContent floatl">
 					<div class="fullContent">
-                        <p>{$article.title}</p>
+                        <!-- <p>{$article.title}</p> -->
                         <p>{$article.content}</p>
                     </div>
 					<div class="nextPrev">

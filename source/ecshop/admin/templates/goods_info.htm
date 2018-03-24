@@ -1,8 +1,8 @@
 <!-- $Id: goods_info.htm 17126 2010-04-23 10:30:26Z liuhui $ -->
 {include file="pageheader.htm"}
-{insert_scripts files="../js/utils.js,selectzone.js,colorselector.js"}
+{insert_scripts files="../js/utils.js,../js/my_goods.js,selectzone.js,colorselector.js"}
 <script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
-<link href="../js/calendar/calendar.css" rel="stylesheet" type="text/css" />
+<link href="../js/calendar/calendar.css?v=2" rel="stylesheet" type="text/css" />
 
 {if $warning}
 <ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
@@ -15,14 +15,17 @@
     <!-- tab bar -->
     <div id="tabbar-div">
       <p>
-        <span class="tab-front" id="general-tab">{$lang.tab_general}</span><span
-        class="tab-back" id="detail-tab">{$lang.tab_detail}</span><span
-        class="tab-back" id="mix-tab">{$lang.tab_mix}</span>{if $goods_type_list}<span
-        class="tab-back" id="properties-tab">{$lang.tab_properties}</span>{/if}<span
-        class="tab-back" id="gallery-tab">{$lang.tab_gallery}</span><span
-        class="tab-back" id="linkgoods-tab">{$lang.tab_linkgoods}</span>{if $code eq ''}<span
-        class="tab-back" id="groupgoods-tab">{$lang.tab_groupgoods}</span>{/if}<span
-        class="tab-back" id="article-tab">{$lang.tab_article}</span>
+        <span class="tab-front" id="general-tab">产品基本属性</span>
+        <span class="tab-back" id="detail-tab">服务详情</span>
+        <span class="tab-back" id="mix-tab">{$lang.tab_mix}</span>
+        {if $goods_type_list}
+        <span class="tab-back" id="properties-tab">{$lang.tab_properties}</span>
+        {/if}
+        <span class="tab-back" id="gallery-tab">{$lang.tab_gallery}</span>
+        <span class="tab-back" id="linkgoods-tab">{$lang.tab_linkgoods}</span>
+        <span class="tab-back" id="groupgoods-tab" style="display: none">产品配件</span>
+        <!--关联文章-->
+        <span class="tab-back" id="article-tab">{$lang.tab_article}</span>
       </p>
     </div>
 
@@ -31,7 +34,7 @@
       <form enctype="multipart/form-data" action="" method="post" name="theForm" >
         <!-- 鏈€澶ф枃浠堕檺鍒 -->
         <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
-        <!-- 閫氱敤淇℃伅 -->
+        <!--基本信息-->
         <table width="90%" id="general-table" align="center">
           <tr>
             <td class="label">{$lang.lab_goods_name}</td>
@@ -63,7 +66,7 @@
                {$lang.require_field}
             </td>
           </tr>
-          <tr>
+          <tr style="display: none">
             <td class="label">{$lang.lab_other_cat}</td>
             <td>
               <input type="button" value="{$lang.add}" onclick="addOtherCat(this.parentNode)" class="button" />
@@ -72,7 +75,7 @@
               {/foreach}
             </td>
           </tr>
-          <tr>
+          <tr style="display: none">
             <td class="label">{$lang.lab_goods_brand}</td>
             <td><select name="brand_id" onchange="hideBrandDiv()" ><option value="0">{$lang.select_please}{html_options options=$brand_list selected=$goods.brand_id}</select>
               {if $is_add}
@@ -96,7 +99,7 @@
           </tr>
          {/if}
           <tr>
-            <td class="label">{$lang.lab_shop_price}</td>
+            <td class="label">商城售价</td>
             <td><input type="text" name="shop_price" value="{$goods.shop_price}" size="20" onblur="priceSetted()"/>
             <input type="button" value="{$lang.compute_by_mp}" onclick="marketPriceSetted()" />
             {$lang.require_field}</td>
@@ -115,8 +118,8 @@
           </tr>
           {/if}
 
-          <!--鍟嗗搧浼樻儬浠锋牸-->
-          <tr>
+          <!--商品优惠价格-->
+          <tr style="display: none">
             <td class="label"><a href="javascript:showNotice('volumePrice');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a>{$lang.lab_volume_price}</td>
             <td>
               <table width="100%" id="tbody-volume" align="center">
@@ -139,34 +142,23 @@
           </tr>
           <!--鍟嗗搧浼樻儬浠锋牸 end -->
 
-
-            <tr>
-                <td class="label">会员价：</td>
-                <td><input type="text" name="member_price" value="{$goods.member_price}" size="20" />
-                </td>
-            </tr>
-            <tr>
-                <td class="label">非会员价：</td>
-                <td><input type="text" name="no_member_price" value="{$goods.no_member_price}" size="20" />
-                </td>
-            </tr>
-            <tr>
-                <td class="label">贵宾价：</td>
-                <td><input type="text" name="vip_price" value="{$goods.vip_price}" size="20" />
-                </td>
-            </tr>
-            <tr>
-                <td class="label">返现金额：</td>
-                <td><input type="text" name="return_amount" value="{$goods.return_amount}" size="20" />
-                </td>
-            </tr>
-
           <tr>
             <td class="label">{$lang.lab_market_price}</td>
             <td><input type="text" name="market_price" value="{$goods.market_price}" size="20" />
               <input type="button" value="{$lang.integral_market_price}" onclick="integral_market_price()" />
             </td>
           </tr>
+
+            <tr>
+              <td class="label">商品标签</td>
+              <td>
+                {foreach from=$tag item=item}
+                <label>
+                  <input type="checkbox" name="tag_id[]" value="{$item.id}" {if in_array($item.id,$goods_tag_id)}checked{/if} >{$item.name}
+                </label>
+                {/foreach}
+              </td>
+            </tr>
             <tr>
                 <td class="label">顾客满意度：</td>
                 <td><input type="text" name="agree_num" value="{$goods.agree_num}" size="20" />
@@ -238,14 +230,14 @@
           </tr>
         </table>
 
-        <!-- 璇︾粏鎻忚堪 -->
+        <!--服务详情-->
         <table width="90%" id="detail-table" style="display:none">
           <tr>
             <td>{$FCKeditor}</td>
           </tr>
         </table>
 
-        <!-- 鍏朵粬淇℃伅 -->
+        <!--其他信息-->
         <table width="90%" id="mix-table" style="display:none" align="center">
           {if $code eq ''}
           <tr>
@@ -289,7 +281,7 @@
             <td class="label">{$lang.lab_goods_brief}</td>
             <td><textarea name="goods_brief" cols="40" rows="3">{$goods.goods_brief|escape}</textarea></td>
           </tr>
-          <tr>
+          <tr style="display: none">
             <td class="label">
             <a href="javascript:showNotice('noticeSellerNote');" title="{$lang.form_notice}"><img src="images/notice.gif" width="16" height="16" border="0" alt="{$lang.form_notice}"></a> {$lang.lab_seller_note} </td>
             <td><textarea name="seller_note" cols="40" rows="3">{$goods.seller_note}</textarea><br />
@@ -343,14 +335,14 @@
           </tr>
         </table>
 
-        <!-- 鍏宠仈鍟嗗搧 -->
+        <!-- 关联商品 -->
         <table width="90%" id="linkgoods-table" style="display:none" align="center">
           <!-- 鍟嗗搧鎼滅储 -->
           <tr>
             <td colspan="3">
               <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
               <select name="cat_id1"><option value="0">{$lang.all_category}{$cat_list}</select>
-              <select name="brand_id1"><option value="0">{$lang.all_brand}{html_options options=$brand_list}</select>
+              <!--<select name="brand_id1"><option value="0">{$lang.all_brand}{html_options options=$brand_list}</select>-->
               <input type="text" name="keyword1" />
               <input type="button" value="{$lang.button_search}"  class="button"
                 onclick="searchGoods(sz1, 'cat_id1','brand_id1','keyword1')" />
@@ -384,7 +376,6 @@
           </tr>
         </table>
 
-        <!-- 閰嶄欢 -->
         <table width="90%" id="groupgoods-table" style="display:none" align="center">
           <!-- 鍟嗗搧鎼滅储 -->
           <tr>
@@ -423,13 +414,20 @@
           </tr>
         </table>
 
-        <!-- 鍏宠仈鏂囩珷 -->
+        <!-- 关联文章 -->
         <table width="90%" id="article-table" style="display:none" align="center">
           <!-- 鏂囩珷鎼滅储 -->
           <tr>
             <td colspan="3">
               <img src="images/icon_search.gif" width="26" height="22" border="0" alt="SEARCH" />
               {$lang.article_title} <input type="text" name="article_title" />
+              &nbsp;&nbsp;
+              文章分类 
+              <select name="article_cat_id">
+                {foreach from=$art_cat_list item=v}
+                <option value="{$v.cat_id}">{$v.cat_name}</option>
+                {/foreach}
+              </select>
               <input type="button" value="{$lang.button_search}" onclick="searchArticle()" class="button" />
             </td>
           </tr>
@@ -465,7 +463,7 @@
           {if $code neq ''}
           <input type="hidden" name="extension_code" value="{$code}" />
           {/if}
-          <input type="button" value="{$lang.button_submit}" class="button" onclick="validate('{$goods.goods_id}')" />
+          <input type="submit" value="{$lang.button_submit}" class="button" onclick="validate('{$goods.goods_id}')" />
           <input type="reset" value="{$lang.button_reset}" class="button" />
         </div>
         <input type="hidden" name="act" value="{$form_act}" />
@@ -993,8 +991,10 @@
   function searchArticle()
   {
     var filters = new Object;
+    var cat_id = document.getElementsByName('article_cat_id')[0].value;
 
     filters.title = Utils.trim(elements['article_title'].value);
+    filters.cat_id =cat_id;
 
     sz3.loadOptions('get_article_list', filters);
   }

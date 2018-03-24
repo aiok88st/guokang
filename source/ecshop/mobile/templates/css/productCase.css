@@ -1,0 +1,204 @@
+.clearfloat:after{
+    content: '';
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+.clearfloat{
+    zoom: 1;
+}
+html{
+    font-size: 50px;
+}
+body{
+    width: 100%;
+    position: relative;
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+.bottomBar{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 8%;
+    background-color: #ffffff
+}
+.bottomBar img{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    margin-top: -0.25rem;
+    width: .5rem;
+    height: .5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.bottomBar div{
+    color: #666666;
+    float: right;
+    font-size: .25rem;
+    height: .65rem;
+    background-color: #f4f4f4;
+    -webkit-border-radius: 40%;
+    -moz-border-radius: 40%;
+    border-radius: .325rem;
+    text-align: center;
+    line-height: .65rem;
+    /*margin: .15rem .5rem 0 0;*/
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    margin-top: -0.3rem;
+}
+.bottomBar div.buyBus{
+    width: 2rem;
+    right: 32%;
+}
+.bottomBar div.buy{
+    width: 1.7rem;
+}
+.bottomBar div.selectBar{
+    background-color: #006fbb;
+    color: #FFFFFF;
+}
+.wrap{
+    height: 92%;
+    overflow-x: scroll;
+}
+.firstList{
+    width: 100%;
+    background-color: #fff;
+}
+.swiper-container{
+    width: 100%;
+    height: 5.9rem;
+}
+.swiper-container .swiper-wrapper .swiper-slide img{
+    width: 100%;
+}
+.firstList .info{
+    width: 100%;
+    height: 2rem;
+}
+.firstList .name{
+    font-size: 0.32rem;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+.firstList .intro{
+    font-size: 0.1rem;
+    color: #9f9f9f;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+.firstList .pric{
+    height: 0.5rem;
+    position: relative;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+.firstList .pric div{
+    float: left;
+}
+.firstList .price{
+    color: red;
+    font-size: 0.3rem;
+}
+.firstList .oldPrice{
+    color: #9f9f9f;
+    font-size: 0.2rem;
+    text-decoration: line-through;
+    position: absolute;
+    top: 0.1rem;
+    left: 1.2rem;
+}
+.secondList{
+    background-color: #fff;
+    width: 100%;
+    margin-top: 0.15rem;
+}
+.secondList .tabList{
+    width: 100%;
+    height: 0.8rem;
+}
+.secondList .tabList div{
+    float: left;
+    width: 33.3%;
+    height: 100%;
+    line-height: .8rem;
+    font-size: .22rem;
+    position: relative;
+}
+.secondList .tabList div div{
+    position: absolute;
+    left: 50%;
+    top: .38rem;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.secondList .tabList div div.select{
+    color: #0068b7;
+    border-bottom: .01rem solid #0068b7;
+}
+#newsList {
+    background: white;
+    width: 100%; }
+
+.cjBottom {
+    width: 89.33%;
+    margin: 0 auto;
+    padding: 0.2rem 0 0.5rem; }
+.cjBottom .cjbBox p {
+    font-size: 0.4rem;
+    color: #000000;
+    line-height: 1rem; }
+.cjBottom .cjl {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin: 0.4rem 0 0; }
+.cjBottom .cjl:nth-child(1) {
+    margin-top: 0px; }
+.cjBottom .cjl:nth-last-child(1) .cjContent::after {
+    display: none; }
+.cjBottom .cjImg {
+    width: 21.83%;
+    margin-left: 78.17%; }
+.cjBottom .cjImg > img {
+    width: 100%; }
+.cjBottom .cjContent {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 68.03%;
+    margin-left: 0.97%;
+    height: 100%;
+    line-height: 0.38rem; }
+.cjBottom .cjContent p:nth-child(1) {
+    width: 100%;
+    font-size: 0.24rem;
+    color: #000000; }
+.cjBottom .cjContent p:nth-child(2) {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 0.2rem;
+    color: #888888; }
+.cjBottom .cjContent::after {
+    content: "";
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #cecece; }
+.getMore {
+    width: 100%;
+    font-size: 0.22rem;
+    line-height: 1.0rem;
+    background-color: #f4f4f4;
+    text-align: center; }
+.getMore a {
+    display: block;
+    width: 100%;
+    color: #999999; }

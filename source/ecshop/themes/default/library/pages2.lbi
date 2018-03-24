@@ -1,0 +1,17 @@
+<div class="page whitePage" align="center">
+    <ul>
+        <!-- {if $pager.page_count neq 1} -->
+        <!--{foreach from=$pager.page_number key=key item=item}-->
+
+        <li>
+            <!-- {if $pager.page eq $key} -->
+            <a class="pageActive" href="javascript:;">{$key}</a>
+            <!-- {else} -->
+            <a href="{$item}">{$key}</a>
+            <!-- {/if} -->
+        </li>
+        <!--{/foreach}-->
+        <!-- {/if} -->
+
+    </ul>
+</div>

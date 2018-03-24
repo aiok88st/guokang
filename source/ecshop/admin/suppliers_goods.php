@@ -55,6 +55,7 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
     $smarty->assign('intro_list',   get_intro_list());
     $smarty->assign('lang',         $_LANG);
     $smarty->assign('list_type',    $_REQUEST['act'] == 'list' ? 'goods' : 'trash');
+
     $smarty->assign('use_storage',  empty($_CFG['use_storage']) ? 0 : 1);
 
     $goods_list = goods_list($_REQUEST['act'] == 'list' ? 0 : 1, ($_REQUEST['act'] == 'list') ? (($code == '') ? 1 : 0) : -1);

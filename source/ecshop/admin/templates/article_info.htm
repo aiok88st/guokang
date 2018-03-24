@@ -1,6 +1,8 @@
 <!-- $Id: article_info.htm 16780 2009-11-09 09:28:30Z sxc_shop $ -->
 {include file="pageheader.htm"}
 {insert_scripts files="../js/utils.js,selectzone.js,validator.js"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+<link href="../js/calendar/calendar.css?v=2" rel="stylesheet" type="text/css" />
 <!-- start goods form -->
 <div class="tab-div">
   <div id="tabbar-div">
@@ -8,6 +10,7 @@
       <span class="tab-front" id="general-tab">{$lang.tab_general}</span><span
       class="tab-back" id="detail-tab">{$lang.tab_content}</span><span
       class="tab-back" id="goods-tab">{$lang.tab_goods}</span>
+      <span class="tab-back" id="attr-tab">文章拓展属性</span>
     </p>
   </div>
 
@@ -49,11 +52,11 @@
       <td colspan="2"><input type="hidden" name="article_type" value="0" /><input type="hidden" name="is_open" value="1" /></td>
       </tr>
       {/if}
-      <tr>
+      <tr style="display: none">
         <td class="narrow-label">{$lang.author}</td>
         <td><input type="text" name="author" maxlength="60" value="{$article.author|escape}" /></td>
       </tr>
-      <tr>
+      <tr style="display: none">
         <td class="narrow-label">{$lang.email}</td>
         <td><input type="text" name="author_email" maxlength="60" value="{$article.author_email|escape}" /></td>
       </tr>
@@ -66,19 +69,43 @@
         <td><textarea name="description" id="description" cols="40" rows="5">{$article.description|escape}</textarea></td>
       </tr>
       <tr>
-        <td class="narrow-label">{$lang.external_links}</td>
+        <td class="narrow-label">文章链接</td>
         <td>
-            <input name="link_url" type="text" id="link_url" value="{if $article.link neq ''}{$article.link|escape}{else}http://{/if}" maxlength="60" />
+            <input name="new_url" type="text" id="new_url" value="{if $article.new_url neq ''}{$article.new_url|escape}{else}{/if}" maxlength="60" />
+            <span>不填则生成默认链接</span>
+        </td>
+      </tr>
+      <tr>
+        <td class="narrow-label">视频链接</td>
+        <td>
+            <input name="link_url" type="text" id="link_url" value="{if $article.link neq ''}{$article.link|escape}{else}{/if}" maxlength="60" />
             <span>腾讯、优酷视频链接</span>
         </td>
       </tr>
       <tr>
         <td class="narrow-label">封面图片</td>
-        <td><input type="file" name="file">
+        <td>
+          <input type="file" name="file">
           <span class="narrow-label">{$lang.file_url}
           <input name="file_url" type="text" value="{$article.file_url|escape}" size="30" maxlength="255" />
           </span></td>
       </tr>
+      <tr>
+        <td class="narrow-label">手机端封面</td>
+        <td>
+          <input type="file" name="file_url_wap">
+          <span class="narrow-label">{$lang.file_url}
+          <input name="file_url_wap" type="text" value="{$article.file_url_wap|escape}" size="30" maxlength="255" />
+          </span></td>
+      </tr>
+      <tr>
+        <td class="narrow-label">文章添加时间</td>
+        <td>
+          <input name="add_time" type="text" id="add_time" size="12" value='{$article.add_time|dateDay}' readonly="readonly" />
+          <input name="selbtn1" type="button" id="selbtn1" onclick="return showCalendar('add_time', '%Y-%m-%d', false, false, 'selbtn1');" value="{$lang.btn_select}" class="button"/>
+        </td>
+      </tr>
+
     </table>
 
     <table width="90%" id="detail-table" style="display:none">
@@ -125,6 +152,44 @@
         </td>
       </tr>
     </table>
+
+    <table width="90%" id="attr-table" style="display:none">
+      <tbody>
+      {if $attr}
+      <!--{foreach from=$attr item=vo key=key}-->
+        <tr>
+          <td>
+            {if $key eq 0}
+            <a href="javascript:;" onclick="addVolume()">[+]</a>
+            {else /}
+            <a href="javascript:;" onclick="removVolume(this)">[-]</a>
+            {/if}
+
+            <input type="hidden" name="attr_image[]" value="{$vo.thumb}">
+            属性标题 <input type="text" name="attr_title[]" value="{$vo.title}">
+            &nbsp; &nbsp;
+            属性描述
+            <textarea name="attr_desc[]"  cols="30" rows="5">{$vo.desc}</textarea>
+
+          </td>
+        </tr>
+      <!--{/foreach}-->
+      {else /}
+        <tr>
+          <td>
+            <a href="javascript:;" onclick="addVolume()">[+]</a>
+
+            属性标题 <input type="text" name="attr_title[]">
+            &nbsp; &nbsp;
+            属性描述
+            <textarea name="attr_desc[]"  cols="30" rows="5"></textarea>
+          </td>
+        </tr>
+      {/if}
+      </tbody>
+
+    </table>
+
     <div class="button-div">
       <input type="hidden" name="act" value="{$form_action}" />
       <input type="hidden" name="old_title" value="{$article.title}"/>
@@ -136,7 +201,10 @@
   </div>
 
 </div>
+
+
 <!-- end goods form -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script language="JavaScript">
 
 var articleId = {$article.article_id|default:0};
@@ -273,5 +341,27 @@ function catChanged()
 
   return true;
 }
+
+/*
+* 添加拓展属性
+* */
+function addVolume(){
+  var table=$('#attr-table');
+  var html ="<tr>";
+      html +="<td>";
+      html +='<a href="javascript:;" onclick="removVolume(this)">[-]</a>';
+      html +='&nbsp;属性名称 <input type="text" name="attr_title[]">';
+      html +='&nbsp;&nbsp;&nbsp;&nbsp;属性描述&nbsp;&nbsp;<textarea name="attr_desc[]" cols="30" rows="5"></textarea>';
+      html +="</td>";
+      html +="</tr>";
+
+    table.children('tbody').append(html);
+}
+function removVolume(obj) {
+    $(obj).parent().parent().remove();
+}
+
+
+
 </script>
 {include file="pagefooter.htm"}

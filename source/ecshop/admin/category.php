@@ -18,6 +18,9 @@ define('IN_ECS', true);
 require(dirname(__FILE__) . '/includes/init.php');
 $exc = new exchange($ecs->table("category"), $db, 'cat_id', 'cat_name');
 
+include_once(ROOT_PATH . '/includes/cls_image.php');  /*必须加上*/
+$imge=new cls_image($_CFG['cat_thumb']);
+
 /* act操作项的初始化 */
 if (empty($_REQUEST['act']))
 {
@@ -66,8 +69,6 @@ if ($_REQUEST['act'] == 'add')
     /* 权限检查 */
     admin_priv('cat_manage');
 
-
-
     /* 模板赋值 */
     $smarty->assign('ur_here',      $_LANG['04_category_add']);
     $smarty->assign('action_link',  array('href' => 'category.php?act=list', 'text' => $_LANG['03_category_list']));
@@ -109,7 +110,7 @@ if ($_REQUEST['act'] == 'insert')
     $cat['filter_attr']  = !empty($_POST['filter_attr'])  ? implode(',', array_unique(array_diff($_POST['filter_attr'],array(0)))) : 0;
 
     $cat['cat_recommend']  = !empty($_POST['cat_recommend'])  ? $_POST['cat_recommend'] : array();
-
+    $cat['cat_name3']=!empty($_POST['cat_name3'])     ? trim($_POST['cat_name3'])     : '';
     if (cat_exists($cat['cat_name'], $cat['parent_id']))
     {
         /* 同级别下不能有重复的分类名称 */
@@ -123,6 +124,10 @@ if ($_REQUEST['act'] == 'insert')
        $link[] = array('text' => $_LANG['go_back'], 'href' => 'javascript:history.back(-1)');
        sys_msg($_LANG['grade_error'], 0, $link);
     }
+    if($_FILES['thumb']['error']==0){
+        $cat['thumb']  = $imge->upload_image($_FILES['thumb'],'category'); // 原始图片
+    }
+
 
     /* 入库的操作 */
     if ($db->autoExecute($ecs->table('category'), $cat) !== false)
@@ -172,18 +177,25 @@ if ($_REQUEST['act'] == 'edit')
         foreach ($filter_attr AS $k => $v)
         {
             $attr_cat_id = $db->getOne("SELECT cat_id FROM " . $ecs->table('attribute') . " WHERE attr_id = '" . intval($v) . "'");
-            $filter_attr_list[$k]['goods_type_list'] = goods_type_list($attr_cat_id);  //取得每个属性的商品类型
-            $filter_attr_list[$k]['filter_attr'] = $v;
-            $attr_option = array();
 
-            foreach ($attr_list[$attr_cat_id] as $val)
-            {
-                $attr_option[key($val)] = current ($val);
+            $filter_attr_list[$k]['goods_type_list'] = goods_type_list($attr_cat_id);  //取得每个属性的商品类型
+
+            $filter_attr_list[$k]['filter_attr'] = $v;
+
+            $attr_option = array();
+//
+
+            if(!empty( $attr_list[$attr_cat_id])){
+                foreach ($attr_list[$attr_cat_id] as $val)
+                {
+                    $attr_option[key($val)] = current ($val);
+                }
+
+//
+                $filter_attr_list[$k]['option'] = $attr_option;
             }
 
-            $filter_attr_list[$k]['option'] = $attr_option;
         }
-
         $smarty->assign('filter_attr_list', $filter_attr_list);
     }
     else
@@ -259,9 +271,11 @@ if ($_REQUEST['act'] == 'update')
     $cat['sort_order']   = !empty($_POST['sort_order'])   ? intval($_POST['sort_order']) : 0;
     $cat['keywords']     = !empty($_POST['keywords'])     ? trim($_POST['keywords'])     : '';
     $cat['cat_desc']     = !empty($_POST['cat_desc'])     ? $_POST['cat_desc']           : '';
+    $cat['description']     = !empty($_POST['description'])     ? $_POST['description']           : '';
     $cat['measure_unit'] = !empty($_POST['measure_unit']) ? trim($_POST['measure_unit']) : '';
     $cat['cat_name']     = !empty($_POST['cat_name'])     ? trim($_POST['cat_name'])     : '';
     $cat['cat_name2']     = !empty($_POST['cat_name2'])     ? trim($_POST['cat_name2'])     : '';
+    $cat['cat_name3']     = !empty($_POST['cat_name3'])     ? trim($_POST['cat_name3'])     : '';
     $cat['is_show']      = !empty($_POST['is_show'])      ? intval($_POST['is_show'])    : 0;
     $cat['show_in_nav']  = !empty($_POST['show_in_nav'])  ? intval($_POST['show_in_nav']): 0;
     $cat['style']        = !empty($_POST['style'])        ? trim($_POST['style'])        : '';
@@ -278,6 +292,9 @@ if ($_REQUEST['act'] == 'update')
            $link[] = array('text' => $_LANG['go_back'], 'href' => 'javascript:history.back(-1)');
            sys_msg($_LANG['catname_exist'], 0, $link);
         }
+    }
+    if($_FILES['thumb']['error']==0){
+        $cat['thumb']  = $imge->upload_image($_FILES['thumb'],'category'); // 原始图片
     }
 
     /* 判断上级目录是否合法 */

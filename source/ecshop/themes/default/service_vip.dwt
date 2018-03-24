@@ -1,0 +1,107 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/server.css" />
+<style type="text/css">
+    #banner img{
+        padding-left: 50%;
+        margin-left: -960px;
+    }
+	body, html {
+    background-color: #fff;
+}
+</style>
+
+
+
+<!--就医转诊服务体系-->
+<p style="font-size:38px; font-weight:bold; color:#fff; text-align:center; height:537px;background:url('themes/default/image/systemBanner1.jpg') no-repeat center; "></p>
+<p style="font-size:38px; font-weight:bold; color:#fff; text-align:center; height:300px;background:url('themes/default/image/systemBanner6.jpg') no-repeat center; "></p>
+<hr>
+<div class="index-summary">
+	<div class="index-summary1" style="margin-top: 60px; "></div>
+	<div class="index-summary-txt" style="margin-left: 180px;">
+		<h3 class="index-summary-txt-title" style="margin-top: 60px;">国康私人医生会员体系＝类中央首长保健体系</h3>
+		<div class="div-clear">
+		</div>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;"> 中央首长保健制度是一个科学有效的最高级的医疗保健体系。为每一个保健对象都配备了专职的专业保健团队，长期、系统维护保健对象的身心健康，对中央首长群体保持身心健康起了重要作用。中国企业家群体对中国经济社会发展起了决定作用，然而他们的健康却没有一个有效的体系负责，导致企业家群体纷纷英年早逝。国康以服务企业家的健康为己任，经过13年的创业，打造了一个符合中央首长保健体系的深度健康关怀和管理体系。有效解决企业家（家庭）医疗保健面临的问题，让企业家保持身心健康，高效地投入到企业经营管理之中，同时也解决企业家家人及其高管团队的健康问题，实现企业家“基业长青、健康长寿”的梦想。
+		</span>
+	</div>
+</div>
+<hr>
+<div class="index-summary">
+	<div class="index-summary-txt">
+		<h3 class="index-summary-txt-title" style="margin-top: 60px;">西方家庭医生制度</h3>
+		<div class="div-clear"></div>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;">家庭医生在西方扮演“健康守门人”的角色，也叫全科医生，为会员开展日常保健服务，当会员有重大疾病问题时，协调三甲医院安排转诊服务。家庭医生制度既维护了会员（家庭）的健康，也建立了医疗服务的秩序和效率，国康借鉴这个成熟经验，培养了一批全科医生和健康管家，长期、系统地服务企业家家庭，是企业家家庭的健康守门人。</span>
+	</div>
+	<div class="index-summary2" style="margin-top: 0px; margin-left: 165px; margin-top: 75px;"></div>
+</div>
+<hr>
+<div class="index-summary">
+	<div class="index-summary3" style="margin-top: 60px; "></div>
+	<div class="index-summary-txt" style="margin-left: 180px;">
+		<h3 class="index-summary-txt-title" style="margin-top: 60px;">厚德经营、生命关爱、至尊服务</h3>
+		<div class="div-clear">
+		</div>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;"> 国康私人医生维护企业家团队的健康，对企业家以及家人的生命负责。国康要在医疗健康领域实现百年品牌的目标，就必须要有最高的道德标准。因此，国康贯彻“大爱利他”的经营哲学，立足于长远发展，处处为企业家的健康负责。中国医疗体系对企业家缺乏基本的价值认同和人格尊重，国康团结知名专家，在诊疗、保健服务中，给企业家深度关怀服务，使企业家（家人）受到应有的尊重。
+		</span>
+	</div>
+</div>
+<hr>
+<div class="index-summary">
+	<div class="index-summary-txt">
+		<h3 class="index-summary-txt-title" style="margin-top: 60px;">管理亚健康，防治慢性病</h3>
+		<div class="div-clear"></div>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;">世界卫生组织（WHO）全球调查显示，真正达到健康标准的人群只占5%，约20%的人是需要诊治的病人，其余75%的人处于亚健康状态。</span>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;">亚健康状况是慢性病的前期及开端。顺四时而适寒暑，以中西医结合的方式调节人体机能，是摆脱亚健康，防治慢性病的最佳选择。</span>
+	</div>
+	<div class="index-summary4" style="margin-top: 0px; margin-left: 165px; margin-top: 75px;"></div>
+</div>
+<hr>
+<div class="index-summary">
+	<div class="index-summary5" style="margin-top: 60px; "></div>
+	<div class="index-summary-txt" style="margin-left: 180px;">
+		<h3 class="index-summary-txt-title" style="margin-top: 60px;">个性化定制化服务项目</h3>
+		<div class="div-clear">
+		</div>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;"> 因为每个人的健康状况和价值观不同，对私人医生服务的具体需求也有不同。国康私人医生会员产品在通用会籍的基础上，可以根据会员疾病状况、生活方式、保健偏好以及家族状况定制相应的服务项目。
+		</span>
+	</div>
+</div>
+<hr>
+<div class="index-summary">
+	<div class="index-summary-txt">
+		<h3 class="index-summary-txt-title" style="margin-top: 60px;">隐私保密原则</h3>
+		<div class="div-clear"></div>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;">国康会员都是事业有成的企业家或者高管团队，其家庭信息、健康信息和疾病状况属于客户重要隐私。国康是诚信经营的企业，立足于和会员建立长期的信赖伙伴关系，保护会员隐私是国康的经营哲学之一。国康是业内首家通过27001信息安全认证的健康管理服务机构。国康承诺，绝不把会员个人健康信息用作其它商业用途，绝不泄漏会员健康信息。</span>
+	</div>
+	<div class="index-summary6" style="margin-top: 0px; margin-left: 165px; margin-top: 30px;"></div>
+	</div><hr>
+<div class="index-summary">
+	<div class="index-summary7" style="margin-top: 60px; "></div>
+	<div class="index-summary-txt" style="margin-left: 180px;">
+		<h3 class="index-summary-txt-title" style="margin-top: 60px;">国康私人医生会员体系=全面健康管理+健康风险保障</h3>
+		<div class="div-clear">
+		</div>
+		<span style="float: left; line-height: 20px; margin-top: 20px;font-size:14px;"> 国康为会员量身定制专属私人医生服务，为会员提供一站式、主动型、个体化的服务，不止使会员面对健康问题时放心、省心、安心，化解会员面对疾患时的无力感和不知所措；更重要的是，我们帮助会员将抵御性治疗转换为主动性管控，使会员能够以更好的生命状态去面对工作，享受生活。
+		</span>
+	</div>
+</div>
+<hr>
+	<div class="index-summary" style="padding-top:50px;">
+	<h3>国康私人医生服务价值</h3><p><br>
+(1)、私人医生温馨的服务，凸显您尊贵身份和生命价值。</br>
+(2)、专业私人医生服务，权威专家制定最佳治疗方案，科学管理慢性疾病。</br>
+(3)、为您节约就诊时间90%，私人医生团队时时守护您的健康。</br>
+(4)、专业策划，精准就医，降低误诊误治的风险。</br>
+(5)、特色医疗服务：可以提供专家非门诊时间看诊、专家上门服务。</br>
+(6)、强大的分诊体系，全国的名医服务平台，帮助定位全国最精准的医疗资源。</br>
+(7)、独有的私人医生管理体系、亚健康、慢性病管理体系。</br>
+(8)、专属健康管家全面负责会员及家属的健康问题，7X24小时响应服务，紧急就医、夜间急诊陪同等。
+</p>
+	</div>
+
+<br/>
+
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="themes/default/script/server.js" ></script>

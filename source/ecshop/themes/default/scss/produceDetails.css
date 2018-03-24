@@ -1,12 +1,18 @@
-section {
-  min-width: 1200px; }
-
 .navbar {
   margin-bottom: 0px; }
 
 .onlyImg > img {
-  height: 100%; }
-
+  width: 100%;
+  height: 100%;
+}
+.onlyImg{
+  position: relative;
+  background-repeat:no-repeat ;
+  background-size: cover;
+}
+.imgContent{
+	background-color:#fff;
+}
 .section1 button {
   width: 246px;
   height: 50px;
@@ -56,7 +62,9 @@ section {
       .imgContent .swiperContent .w12 .scBox {
         position: absolute;
         top: 50%;
-        margin-top: -110px; }
+        margin-top: -110px;
+        width: 40%;
+      }
     .imgContent .swiperContent .scBox p {
       font-size: 30px;
       color: #424242;
@@ -92,9 +100,10 @@ p {
   #server .serverTitle {
     text-align: center;
     font-size: 36px;
-    height: 15%; }
-  #server .serverTitle1 {
-    height: 10%; }
+    height: 80px;
+    line-height: 80px;
+  }
+
   #server .serverTop {
     height: 40%; }
     #server .serverTop img {
@@ -102,7 +111,8 @@ p {
       height: 100%;
       margin: 0 auto; }
   #server .serverBottom {
-    height: 35%; }
+    height: 120px;
+  }
     #server .serverBottom .w12 {
       height: 100%;
       position: relative; }
@@ -113,23 +123,32 @@ p {
         left: 0;
         margin-top: -60px; }
         #server .serverBottom .w12 .sBottomBox > div {
-          width: 400px; }
+          width: 400px;
+          overflow: hidden;
+        }
           #server .serverBottom .w12 .sBottomBox > div a {
             display: block;
             color: #757575;
             line-height: 24px; }
         #server .serverBottom .w12 .sBottomBox > div:nth-child(3n+2) {
-          text-align: center; }
+          /*text-align: center;*/
+        }
         #server .serverBottom .w12 .sBottomBox > div:nth-child(3n) {
-          text-align: right; }
+          /*text-align: right; */
+        }
 
 @media (min-width: 1440px) {
   .imgContent .swiperContent .scBox p {
-    font-size: 40px;
-    line-height: 60px; }
+    font-size: 32px;
+    line-height: 40px; }
 
   .imgContent .swiperContent .scBox .sTitle {
     font-size: 20px; } }
+.imgContent .swiperContent .scBox .sTitle p{
+  font-size: 12px;
+  line-height: 20px; 
+  width:520px;
+}
 #pageCircle {
   position: fixed;
   left: 20px;
@@ -148,5 +167,49 @@ p {
     margin-bottom: 19px; }
   #pageCircle ul li:nth-last-child(1) {
     margin-bottom: 0px; }
+.onlyImg{
+  position: relative;
+}
+.onlyImg .content{
+  position: absolute;
+  width: 100%;
+  height: 70%;
+  left: 0;
+  top: 15%;
+  font-size: 12px;
+
+  text-align: center;
+}
 
 /*# sourceMappingURL=produceDetails.css.map */
+/*个人添加*/
+
+@media screen and (max-width: 1920px) {
+  .onlyImg{
+    display: block;
+    height: 800px;
+	background: center;
+  }
+}
+/* @media screen and (max-width: 1660px) {
+  .onlyImg{
+    display: block;
+    width: 1660px;
+    height: 692px;
+  }
+}
+@media screen and (max-width: 1442px) {
+  .onlyImg{
+    display: block;
+    width: 1440px;
+    height: 600px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .onlyImg{
+    display: block;
+    width: 1200px;
+    height: 500px;
+  }
+} */

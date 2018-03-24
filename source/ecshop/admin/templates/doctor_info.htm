@@ -2,82 +2,111 @@
 {include file="pageheader.htm"}
 {insert_scripts files="../js/utils.js,selectzone.js,validator.js,../js/transport.js,../js/region.js,../js/shopping_flow.js"}
 <!-- start goods form -->
+<script type="text/javascript">
+    function attr_select(id,catId) {
+        var cat_id;
+        var eid=id?id:'';
+        if(catId){
+            cat_id=catId;
+        }else{
+            cat_id=document.getElementById('cat_id').value
+        }
+        if(cat_id!=0){
+
+            Ajax.call('doctor.php?act=attr_select&cat_id='+cat_id+'&eid='+eid,false, attr_sun, "GET", "html", false);
+        }
+    }
+    function attr_sun(res){
+        if(res==0){
+            alert('分类选择发生错误');
+        }else{
+            document.getElementById('attr').innerHTML=res;
+
+        }
+    }
+</script>
 <div class="tab-div">
     <div id="tabbar-div">
         <p>
-            <span class="tab-front" id="general-tab">通用信息</span><span
-                class="tab-back" id="detail-tab">内容简介</span>
+            <span class="tab-front" id="general-tab">通用信息</span>
+            <span class="tab-back" id="detail-tab">内容简介</span>
         </p>
     </div>
 
     <div id="tabbody-div">
         <form  action="doctor.php" method="post" enctype="multipart/form-data" name="theForm" onsubmit="return validate();">
             <table width="90%" id="general-table">
+                <tbody>
+                <tr id="cat_id_tr">
+                    <td class="narrow-label">所属分类</td>
+                    <td>
+                        <select name="cat_id" id="cat_id" required="required" onchange="attr_select()" autocomplete="off">
+                            <option value="0">--请选择分类--</option>
+                            {foreach from=$cat_list item=item}
+                            <option value="{$item.id|my_intval}" {if $item.id eq $doctor.cat_id}selected="selected"{/if}>{$item.cat_name}</option>
+                            {/foreach}
+                        </select>
+                        {$lang.require_field}
+                    </td>
+                </tr>
+                </tbody>
+
+                <tbody id="attr">
+
+                </tbody>
+                <tbody>
                 <tr>
                     <td class="narrow-label">专家名称</td>
-                    <td><input type="text" name="title" size ="40" maxlength="60" value="{$doctor.title|escape}" />{$lang.require_field}</td>
-                </tr>
-                <!-- {if $doctor.cat_id >= 0} -->
-                <tr>
-                    <td class="narrow-label">专家科室 </td>
-                    <td>
-                        <select name="doctor_cat" onchange="catChanged()">
-                            <option value="0">请选择...</option>
-                            {$cat_select}
-                        </select>
-                        {$lang.require_field}</td>
-                </tr>
-                <!-- {else} -->
-                <input type="hidden" name="doctor_cat" value="-1" />
-                <!-- {/if} -->
+                    <td><input type="text" name="name" id="name" required="required" size ="20" maxlength="20" value="{$doctor.name|escape}" />
+                        {$lang.require_field}
+                        <span class="notice-span" style="display:block">或医院名称</span>
+                    </td>
 
+                </tr>
                 <tr>
-                    <td class="narrow-label">所在省份</td>
+                    <td class="narrow-label">职称</td>
                     <td>
-                        <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities')" >
-                            <option value="0">-省份-</option>
-                            <!-- {foreach from=$shop_province_list item=province} -->
-                            <option value="{$province.region_id}" {if $doctor.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
-                            <!-- {/foreach} -->
-                        </select>
+                        <input type="text" name="job" id="job"  size="20" maxlength="20" value="{$doctor.job|escape}">
+                        <span class="notice-span" style="display:block">如：教授（或医院等级）</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="narrow-label">所在城市</td>
+                    <td class="narrow-label">职位</td>
                     <td>
-                        <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')">
-                            <option value="0">-城市-</option>
-                            <!-- {foreach from=$city_list item=city} -->
-                            <option value="{$city.region_id}" {if $consignee.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
-                            <!-- {/foreach} -->
-                        </select>
+                        <input type="text" name="position" id="position"  size="20" maxlength="20" value="{$doctor.position|escape}">
+                        {$lang.require_field}
+                        <span class="notice-span" style="display:block">如：主治师</span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="narrow-label">所在地区</td>
+                    <td class="narrow-label">所属单位</td>
                     <td>
-                        <select name="district" id="selDistricts">
-                        <option value="0">-地区-</option>
-                        <!-- {foreach from=$district_list item=district} -->
-                        <option value="{$district.region_id}" {if $consignee.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
-                        <!-- {/foreach} -->
-                        </select>
+                        <input type="text" name="unit" id="unit" size="20" maxlength="20" value="{$doctor.unit|escape}">
+                        {$lang.require_field}
+                        <span class="notice-span" style="display:block">如：北京协和医院</span>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="narrow-label">介绍</td>
-                    <td><textarea name="description" id="description" cols="40" rows="5">{$doctor.description|escape}</textarea></td>
-                </tr>
-
-                <tr>
-                    <td class="narrow-label">人物图片</td>
+                    <td class="narrow-label">专家照片</td>
                     <td><input type="file" name="file">
-                      <span class="narrow-label">或输入文件地址
+                        <span class="narrow-label">或输入文件地址
                       <input name="file_url" type="text" value="{$doctor.file_url|escape}" size="30" maxlength="255" />
                       </span>
                     </td>
                 </tr>
+                <tr>
+                    <td class="narrow-label">排序</td>
+                    <td>
+                        <input type="number" name="list_order" value="{if $doctor.list_order}{$doctor.list_order}{else}50{/if}">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="narrow-label">简介</td>
+                    <td><textarea name="desc" id="desc" cols="40" rows="5">{$doctor.desc|escape}</textarea></td>
+                </tr>
+                </tbody>
+
             </table>
 
             <table width="90%" id="detail-table" style="display:none">
@@ -85,12 +114,18 @@
             </table>
 
             <div class="button-div">
-                <input type="hidden" name="act" value="{$form_action}" />
-                <input type="hidden" name="old_title" value="{$doctor.title}"/>
-                <input type="hidden" name="id" value="{$doctor.doctor_id}" />
+                <input type="hidden" name="act" value="{$act}" />
+                {if $doctor.id}
+                <input type="hidden" name="id" value="{$doctor.id}" />
+                <script type="text/javascript">
+                    attr_select({$doctor.id|my_intval},{$doctor.cat_id});
+                </script>
+                {/if}
                 <input type="submit" value="{$lang.button_submit}" class="button"  />
                 <input type="reset" value="{$lang.button_reset}" class="button" />
+
             </div>
+
         </form>
     </div>
 
@@ -106,7 +141,7 @@
 
 <script language="JavaScript">
 
-    var articleId = {$doctor.doctor_id|default:0};
+
     var elements  = document.forms['theForm'].elements;
     var sz        = new SelectZone(1, elements['source_select'], elements['target_select'], '');
 
@@ -120,12 +155,11 @@
     function validate()
     {
         var validator = new Validator('theForm');
-        validator.required('title', '没有名称');
-        {/literal}
-        {if $doctor.cat_id >= 0}
-        validator.isNullOption('doctor_cat','没有分类');
-        {/if}
-        {literal}
+        validator.required('cat_id', '请选择分类');
+        validator.required('name', '请填写名称');
+
+//        validator.required('position', '请填写职位');
+//        validator.required('unit', '请填写所属单位');
 
         return validator.passed();
     }
@@ -240,5 +274,6 @@
 
         return true;
     }
+
 </script>
 {include file="pagefooter.htm"}

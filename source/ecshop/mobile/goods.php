@@ -39,8 +39,14 @@ $goods_info['market_price'] = encode_output($goods_info['market_price']);
 $goods_info['shop_price'] = encode_output($goods_info['shop_price']);
 $goods_info['shop_price_formated'] = encode_output($goods_info['shop_price_formated']);
 $goods_info['goods_number'] = encode_output($goods_info['goods_number']);
+
+
+$smarty->assign('pictures',            get_goods_gallery($goods_id));
+
 $smarty->assign('goods_info', $goods_info);
+
 $shop_price   = $goods_info['shop_price'];
+
 $smarty->assign('rank_prices',         get_user_rank_prices($goods_id, $shop_price));    // 会员等级价格
 $smarty->assign('footer', get_footer());
 
@@ -66,15 +72,66 @@ foreach ($cat_array as $key => $cat_data)
     $cat_array[$key]['cat_name'] = encode_output($cat_data['cat_name']);
     $cat_str .= "<a href='category.php?c_id={$cat_data['cat_id']}'>" . encode_output($cat_data['cat_name']) . "</a>-&gt;";
 }
+
 $smarty->assign('cat_array', $cat_array);
 
 
 $properties = get_goods_properties($goods_id);  // 获得商品的规格和属性
 $smarty->assign('specification',       $properties['spe']);  // 商品规格
 
+assign_template();
+$position = assign_ur_here();
 
-$comment = assign_comment($goods_id, 0);
-$smarty->assign('comment', $comment);
+$smarty->assign('page_title',      $position['title']);    // 页面标题
+$smarty->assign('ur_here',         $position['ur_here']);  // 当前位置
+$smarty->assign('keywords',           htmlspecialchars($goods_info['keywords']));
+$smarty->assign('description',        htmlspecialchars($goods_info['goods_brief']));
+
+//案例
+
+
+//评论
+$m = '';
+if(isset($_REQUEST['m']) && $_REQUEST['m'] == 1){
+    $sql = 'SELECT comment_id, comment_type, id_value, user_name, content, comment_rank, user_id, add_time' .
+        ' FROM ' .$GLOBALS['ecs']->table('comment') .
+        ' WHERE status = 1 AND comment_type = 0 AND parent_id=0 AND id_value =' .$goods_info['goods_id'].
+        ' ORDER BY add_time DESC';
+    $m = $_REQUEST['m'];
+}else{
+    $sql = 'SELECT comment_id, comment_type, id_value, user_name, content, comment_rank, user_id, add_time' .
+        ' FROM ' .$GLOBALS['ecs']->table('comment') .
+        ' WHERE status = 1 AND comment_type = 0 AND parent_id=0 AND id_value =' .$goods_info['goods_id'].
+        ' ORDER BY add_time DESC limit 10';
+}
+$comment = $db->getAll($sql);
+$sql="select count(*) num from ".$GLOBALS['ecs']->table('comment').' where status = 1 AND comment_type = 0 AND parent_id=0 AND id_value =' .$goods_info['goods_id'];
+$cc=$db->getOne($sql);
+$smarty->assign('cc',$cc);
+
+$sql="select count(*) num from ".$GLOBALS['ecs']->table('comment').' where status = 1 AND comment_type = 0 AND parent_id=0 AND comment_rank>=4 AND id_value =' .$goods_info['goods_id'];
+$c4=$db->getOne($sql);
+
+$a=floor((100*$c4)/$cc);
+
+$smarty->assign('c4',$a);
+
+foreach($comment as $k=>$v){
+    $comment[$k]['add_time'] = date($GLOBALS['_CFG']['date_format'], $v['add_time']);
+    //回复
+    $sql1 = 'SELECT comment_id, comment_type, id_value, user_name, content, add_time' .
+        ' FROM ' .$GLOBALS['ecs']->table('comment') .
+        ' WHERE  parent_id =' .$v['comment_id'].
+        ' ORDER BY add_time';
+    $comment[$k]['re_comment'] = $db->getAll($sql1);
+    //会员
+    $sql2='SELECT user_name,name, user_id, open_face FROM  ecs_users WHERE user_id = '.$v['user_id'];
+
+    $comment[$k]['user'] = $GLOBALS['db']->getRow($sql2);
+}
+
+$smarty->assign('m',              $m);
+$smarty->assign('comment',              $comment);
 $smarty->display('goods.html');
 
 /**
@@ -105,5 +162,42 @@ function get_user_rank_prices($goods_id, $shop_price)
     return $arr;
 }
 
+
+/**
+ * 获得指定商品的关联文章
+ *
+ * @access  public
+ * @param   integer     $goods_id
+ * @param   integer     $cat_id
+ * @return  void
+ */
+function get_linked_articles($goods_id,$cat_id=null)
+{
+    $where="g.article_id = a.article_id AND g.goods_id = '$goods_id' AND a.is_open = 1 ";
+
+    if(!empty($cat_id)){
+        $where .=" AND a.cat_id=".$cat_id." ";
+    }
+    $sql = 'SELECT a.article_id,a.description,a.content, a.title, a.file_url, a.open_type, a.add_time ' .
+        'FROM ' . $GLOBALS['ecs']->table('goods_article') . ' AS g, ' .
+        $GLOBALS['ecs']->table('article') . ' AS a ' .
+        "WHERE $where" .
+        'ORDER BY a.add_time DESC';
+    $res = $GLOBALS['db']->query($sql);
+
+    $arr = array();
+    while ($row = $GLOBALS['db']->fetchRow($res))
+    {
+        $row['url']         = $row['open_type'] != 1 ?
+            build_uri('article', array('aid'=>$row['article_id']), $row['title']) : trim($row['file_url']);
+        $row['add_time']    = local_date($GLOBALS['_CFG']['date_format'], $row['add_time']);
+        $row['short_title'] = $GLOBALS['_CFG']['article_title_length'] > 0 ?
+            sub_str($row['title'], $GLOBALS['_CFG']['article_title_length']) : $row['title'];
+
+        $arr[] = $row;
+    }
+
+    return $arr;
+}
 
 ?>

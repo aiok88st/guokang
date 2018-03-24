@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="themes/default/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="themes/default/css/public.css">
+    <link rel="stylesheet" type="text/css" href="themes/default/css/order_details.css">
+    <script type="text/javascript" src='themes/default/js/jquery-3.2.1.min.js'></script>
+    <script type="text/javascript" src='themes/default/js/bootstrap.min.js'></script>
+    {insert_scripts files='transportNew.js,common.js,shopping_flow.js'}
+    {insert_scripts files='region.js,utils.js'}
+</head>
+<body style="margin-top: 0">
+    <div class="container main" style="margin-top: 20px !important;">
+        <div class="row order-row">
+            <!--  添加新地址  -->
+            <div class="rows add-new-address" style="display: block">
+
+                <form action="flow.php" method="post" name="theForm" id="theForm">
+                    <div class="pull-left col-right">
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg" name="name" value="{$address.name}" id="newName" placeholder="姓名">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control input-lg" name="mobile" value="{$address.mobile}" id="newPhone" placeholder="电话">
+                            </div>
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group select-bg">
+                                <select id="newProvince" onchange="region.changed(this, 2, 'newCity')" name="province" class="form-control input-lg">
+
+                                    <option value="0">选择省份</option>
+                                    <!-- {foreach from=$province_list item=province} -->
+                                    <option value="{$province.region_id}" {if $address.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                                    <!-- {/foreach} -->
+                                </select>
+                            </div>
+                            <div class="form-group select-bg">
+                                <select id="newCity" name="city" onchange="region.changed(this, 3, 'newArea')" class="form-control input-lg">
+                                    <option value="0">选择市</option>
+
+                                    <!-- {foreach from=$city_list item=province} -->
+                                    <option value="{$province.region_id}" {if $address.city eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                                    <!-- {/foreach} -->
+                                </select>
+                            </div>
+                            <div class="form-group select-bg">
+                                <select id="newArea" name="district" class="form-control input-lg">
+                                    <option value="0">选择区</option>
+                                    <!-- {foreach from=$district_list item=province} -->
+                                    <option value="{$province.region_id}" {if $address.district eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                                    <!-- {/foreach} -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="address" id="newAddress" class="form-control input-lg" placeholder="详细地址 ">{$address.address}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <!--{if $default_address}-->
+                            <input type="checkbox" class="" id="duf" name="duf" value="1" {if $default_address eq $address.address_id}checked{/if} /> 设置为默认收获地址
+                            <!--{else}-->
+                            <input type="checkbox" class="" id="duf" name="duf" value="1" /> 设置为默认收获地址
+                            <!--{/if}-->
+                        </div>
+                        <div class="form-inline">
+                            <div class="form-group">
+
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="step" value="consignee" />
+                                <input type="hidden" name="act" value="checkout" />
+                                <input name="address_id" id="address_id" type="hidden" value="{$address.address_id}" />
+                                <input type="submit" class="btn btn-primary btn-lg btn-save" name="Submit"  value="保存" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <script type="text/javascript" src="themes/default/lib/layui.js"></script>
+                <script type="text/javascript">
+                    layui.use(['layer','element'],
+                        function() {
+                            layer = layui.layer;
+                        });
+                    $(".btn-save").on("click",function(){
+
+                        var name = $("#newName").val();
+                        var phone = $("#newPhone").val();
+                        var province = $("#newProvince").val();
+                        var city = $("#newCity").val();
+                        var area = $("#newArea").val();
+                        var address_id = $("#address_id").val();
+
+                        var addr = $("#newAddress").val();
+                        var duf=0;
+                        if($("#duf").is(':checked')){
+                            duf=$("#duf").val();
+                        }
+                        var msg = new Array();
+                        var err = false;
+                        if(!name){
+                            msg.push('姓名不能为空');
+                            err = true;
+                        }
+                        if (!Utils.isTel(phone))
+                        {
+                            err = true;
+                            msg.push('请填写正确的手机号码');
+                        }
+
+                        if (province==0)
+                        {
+                            err = true;
+                            msg.push('请选择省份');
+                        }
+                        if (city==0)
+                        {
+                            err = true;
+                            msg.push('请选择城市');
+                        }
+                        if (area==0)
+                        {
+                            err = true;
+                            msg.push('请选择地区');
+                        }
+                        if(!addr){
+                            err = true;
+                            msg.push('请填写收货地址');
+                        }
+                        if (err)
+                        {
+                            message = msg.join("\n");
+                            alert(message);
+                            return false;
+                        }
+                        layer.load(2);
+                        $.ajax({
+                            url: "flow.php?step=consignee&act=checkout",
+                            type:'POST',
+                            data:{
+                                name: name,
+                                mobile: phone,
+                                country: 1,
+                                province: province,
+                                city: city,
+                                district: area,
+                                address: addr,
+                                duf:duf,
+                                address_id:address_id
+                            },
+                            dataType:'JSON',
+                            success: function(res){
+                                parent.location.reload();
+                            }
+                        });
+                        return false;
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

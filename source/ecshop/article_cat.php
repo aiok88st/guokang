@@ -65,7 +65,7 @@ if (!$smarty->is_cached('news.dwt', $cache_id))
     $smarty->assign('cat_id',    $cat_id);
     //面包屑
     $cat = get_cat_info($cat_id);
-    $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="article_cat.php?id=6">新闻资讯 &gt;</a></li><li><a href="javascript:;">'.$cat['cat_name'].'</a></li>';
+    $url_html = '<li><a href="./index.html">首页 &gt;</a></li><li><a href="article_cat-6.html">新闻资讯 &gt;</a></li><li><a href="javascript:;">'.$cat['cat_name'].'</a></li>';
     $smarty->assign('url_html', $url_html);
     //最新新闻
     $new = get_new_news_article(17);
@@ -107,7 +107,7 @@ if (!$smarty->is_cached('news.dwt', $cache_id))
     /* 获得文章总数 */
     $size   = 7;
     $count  = get_article_count($cat_id);
-    $pager = get_pager('article_cat.php', array('id'=>$cat_id), $count, $page,$size);
+    $pager = get_pager('article_cat', array('id'=>$cat_id), $count, $page,$size);
     $smarty->assign('pager', $pager);
     $sql = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id' .
         ' FROM ' .$GLOBALS['ecs']->table('article') .

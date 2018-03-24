@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>{$page_title}</title>
+
+    <meta name="Keywords" content="{$keywords}" />
+    <meta name="Description" content="{$description}" />
+	<link rel="stylesheet" type="text/css" href="themes/default/css/bootstrap.css">
+
+	<script type="text/javascript" src='themes/default/js/utils.js'></script>
+
+
+	<script type="text/javascript" src='themes/default/js/jquery-3.2.1.min.js'></script>
+	<script type="text/javascript" src='themes/default/js/bootstrap.min.js'></script>
+	<script type="text/javascript" src='themes/default/lib/css/layui.css'></script>
+	<link rel="stylesheet" type="text/css" href="themes/default/css/login.css?v=1">
+	<script type="text/javascript" src='themes/default/lib/layui.js'></script>
+	<script type="text/javascript">
+        layui.use('layer', function(){
+            var layer = layui.layer;
+
+        });
+	</script>
+	{insert_scripts files='my_common.js,my_user.js'}
+</head>
+<body>
+
+	<!-- 顶部 -->
+	<div class="header">
+		<div class="container">
+			<a href="javascript:;"><img class="logo" src="themes/default/img/login/logo.png" alt=""></a>
+		</div>
+	</div>
+	<!-- 主体内容 -->
+
+
+
+	<div class="main container-fluid">
+		<div class="container">
+			<!-- {if $action neq 'sms_get_password'} -->
+
+			<!-- {if $action eq 'login'} -->
+			<div class="layer layer-login">
+				<h3>账号登录</h3>
+				<p class="loginErro"></p>
+				<form id="loginForm">
+					<input type="text" name="username" class="form-control input-lg" id="loginUser" placeholder="手机号/邮箱">
+					<input type="password" name="password" class="form-control input-lg" id="loginPwd" placeholder="密码">
+					<div class="checkbox">
+						<label>
+							<input id="autoLogin" type="checkbox" name="remember" value="1"><small>两周内自动登录</small>
+						</label>
+						<small><a class="btn-gotoFtPwd" href="user.php?act=sms_get_password">忘记密码？</a></small>
+					</div>
+					<button type="submit" class="btn btn-primary btn-block btn-lg btn-login" onclick="login_submit()">登录</button>
+					<a href="user.php?act=register" class="btn btn-default btn-block btn-lg btn-gotoReg">注册国康账号</a>
+				</form>
+			</div>
+			<!--{/if}-->
+			<!--{if $action eq 'register'}-->
+			<div class="layer">
+				<h3>注册国康账号</h3>
+
+					<div class="step1">
+						<input type="text" class="form-control input-lg" id="regPhone" placeholder="手机号">
+
+						<!-- 判断是否启用验证码{if $enabled_captcha} -->
+						<div>
+							<input type="text" name="captcha" class="form-control input-lg captcha floatleft" id="regCode" placeholder="请输入验证码">
+							<img src="captcha.php?v={$rand}" alt="captcha" class="floatleft captchaimg" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?v'+Math.random()" />
+							<div style="clear: both"></div>
+						</div>
+						<!--{/if}-->
+						<div class="checkbox">
+							<label>
+								<input id="isAgree" name="agreement" type="checkbox"><small>我已阅读并同意 <a href="javascript:;" onclick="open_msg()">《国康健康服务协议》</a></small>
+							</label>
+						</div>
+						<button type="submit" class="btn btn-primary btn-block btn-lg btn-reg" onclick="go_captcha()">注册</button>
+						<a href="user.php" class="btn btn-default btn-block btn-lg btn-backLogin">返回登录</a>
+					</div>
+					<div class="step2">
+						<p><small>验证码已发送至手机 <span class="mobile"></span></small></p>
+						<div class="sms_code_box">
+							<input type="text" name="sms_code" id="sms_code" class="form-control input-lg sms_code floatleft" placeholder="请输入短信验证码">
+							<button type="submit" class="btn btn-default btn-lg floatleft waget">重新发送</button>
+							<div style="clear: both"></div>
+						</div>
+						<div>
+							<input type="password" id="password1" name="password" class="form-control input-lg" placeholder="设置密码：6～16位字母和数字">
+						</div>
+						<div>
+							<input type="password" id="confirm_password" name="confirm_password" class="form-control input-lg " placeholder="再次输入密码">
+						</div>
+						<input name="act" type="hidden" value="act_register" >
+						<input type="hidden" name="back_act" value="{$back_act}" />
+						<button type="submit" class="btn btn-primary btn-block btn-lg btn-reg" onclick="do_register()">完成注册</button>
+
+					</div>
+
+			</div>
+			<!--{/if}-->
+			<!--{/if}-->
+		</div>
+	</div>
+	<!-- {if $action eq 'sms_get_password'} -->
+	<div class="forgotPwd container-fluid" style="display: block">
+		<div class="box">
+			<div class="logo"></div>
+			<h4>找回密码</h4>
+			<div class="wrap step-1" style="display: block;">
+				<p><small>请输入要找回的密码账号</small></p>
+				<form>
+					<input type="text" class="form-control input-lg" id="userAccount" placeholder="请输入注册手机号">
+					<div>
+						<input type="text" name="captcha" class="form-control input-lg captcha floatleft" id="regCode" placeholder="请输入验证码" style="margin-bottom: 0">
+						<img src="captcha.php?v={$rand}" alt="captcha" class="floatleft captchaimg" style="vertical-align: middle;cursor: pointer;" onClick="this.src='captcha.php?v'+Math.random()" />
+						<div style="clear: both"></div>
+					</div>
+					<a  type="button" class="btn btn-primary btn-block btn-lg btn-next-1" onclick="rep_validate_code()">下一步</a>
+				</form>
+			</div>
+			<div class="wrap step-2">
+				<p><small>验证吗已发送至手机 <span id="showPhone">137****9283</span></small></p>
+				<form class="form-inline" action="user.php" method="post" name="sms_repassword" onsubmit="return check_sms_form()">
+					<div class="form-group">
+						<div class="input-group">
+
+							<input type="text" class="form-control input-lg" name="sms_code" id="msgCode" placeholder="请输入短信验证码">
+							<span class="input-group-btn">
+								<a href="javascript:;" class="btn btn-default input-lg" id="btn-getCode" type="button">获取验证码</a>
+							</span>
+						</div>
+					</div>
+					<input type="hidden" name="act" value="sms_get_password" />
+					<input type="hidden" id="username" name="username" size="20" class="inputBg">
+					<button class="btn btn-primary btn-block btn-lg btn-next-2">下一步</button>
+				</form>
+				<p class="tip"><small>短信可能会延时，请耐心等待，如果长时间未收到短信，请120秒后重新获取。</small></p>
+			</div>
+
+		</div>
+	</div>
+	<!--{/if}-->
+	<!--*通过短信验证码重置密码 -->
+	<!--{if $action eq 'reset_password_rep'} -->
+	<div class="forgotPwd container-fluid" style="display: block">
+		<div class="box">
+			<div class="logo"></div>
+			<h4>找回密码</h4>
+
+			<div class="wrap step-3" style="display: block;">
+				<p><small>请设置密码</small></p>
+				<form action="user.php" method="post">
+					<div class="form-group">
+						<div class="input-group">
+							<input type="password" name="new_password" class="form-control input-lg" id="newPwd" placeholder="新密码(6-8位字母和数字组合)">
+							<div class="eye visible"></div>
+						</div>
+					</div>
+					<input type="password" name="confirm_password" class="form-control input-lg" id="confirmPwd" placeholder="请再次确认">
+					<input type="hidden" name="act" value="act_edit_password" />
+					<input type="hidden" name="uid" value="{$uid}" />
+
+					<button class="btn btn-primary btn-block btn-lg" id="btnSubmitNewPwd">完成</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!--{/if}-->
+	<!-- 备案信息 -->
+	<div class="record-bg">
+		<p class="record">Copyright © 2005-2017 guokang,All Rights Reserved. <br/>
+		<span class="gray">深圳市国康健康管理服务有限公司|深圳市国康保险经纪有限公司  © 版权所有   粤ICP备13080796号-2</span></p>
+	</div>
+
+
+	<script type="text/javascript">
+
+		//忘记密码
+		$(".btn-gotoFtPwd").on("click",function(){
+			$('.forgotPwd').show();
+			$("body").css('background',"#f7f7f7");
+		})
+		$(".btn-gotoReg").on("click",function(){
+			$('.layer-login').hide();
+			$('.layer-reg').show();
+		})
+		$(".btn-backLogin").on("click",function(){
+			$('.layer-reg').hide();
+			$('.layer-login').show();
+		})
+
+
+
+
+
+		//密码是否明文可见
+        switchPwd();
+		function switchPwd() {
+			var passwordeye = $('.eye');
+			var showPwd = $("#newPwd");
+			passwordeye.off('click').on('click', function() {
+				if(passwordeye.hasClass('visible')) {
+					passwordeye.removeClass('visible'); //密码不可见
+					showPwd.prop('type', 'password');
+				} else {
+					passwordeye.addClass('visible'); //密码可见
+					showPwd.prop('type', 'text');
+				};
+			});
+		}
+		function open_msg(){
+            layer.open({
+                type: 1,
+				title:"国康健康服务协议",
+                area:["500px","500px"],
+                content: $('#msg'),
+                btn:['同意']
+                ,yes: function(index, layero){
+                    layer.closeAll();
+                    $('#isAgree').attr('checked','checked');
+                    $('#msg').hide();
+                }
+            });
+
+        }
+
+	</script>
+</body>
+<div id="msg" style="padding: 5px 10px;display: none">
+	{$article.content}
+</div>
+</html>

@@ -1,0 +1,27 @@
+<!-- $Id: articlecat_info.htm 16752 2009-10-20 09:59:38Z wangleisvn $ -->
+{include file="pageheader.htm"}
+<div class="main-div">
+    <form method="post" action="policy.php" name="theForm"  onsubmit="return validate()">
+        <table cellspacing="1" cellpadding="3" width="100%">
+
+            <tr>
+                <td class="label">属性值</td>
+                <td>
+                    <textarea name="value" id="" cols="30" rows="10">{$data.value}</textarea>
+                    <span class="notice-span" style="display:block">一行代表一个值</span>
+                </td>
+            </tr>
+        </table>
+        <div class="button-div">
+            <input type="hidden" name="act" value="update_type">
+            <input type="submit" value="{$lang.button_submit}" class="button"  />
+            <input type="reset" value="{$lang.button_reset}" class="button" />
+        </div>
+    </form>
+</div>
+
+{literal}
+<script language="JavaScript">
+</script>
+{/literal}
+{include file="pagefooter.htm"}

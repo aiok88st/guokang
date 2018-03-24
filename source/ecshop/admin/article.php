@@ -119,7 +119,7 @@ if ($_REQUEST['act'] == 'insert')
     /* 权限判断 */
     admin_priv('article_manage');
 
-    /*检查是否重复*/
+//    /*检查是否重复*/
     $is_only = $exc->is_only('title', $_POST['title'],0, " cat_id ='$_POST[article_cat]'");
 
     if (!$is_only)
@@ -129,6 +129,7 @@ if ($_REQUEST['act'] == 'insert')
 
     /* 取得文件地址 */
     $file_url = '';
+
     if ((isset($_FILES['file']['error']) && $_FILES['file']['error'] == 0) || (!isset($_FILES['file']['error']) && isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != 'none'))
     {
         // 检查文件格式
@@ -142,6 +143,35 @@ if ($_REQUEST['act'] == 'insert')
         if ($res != false)
         {
             $file_url = $res;
+        }
+    }
+
+    $file_url_wap = '';
+
+    if ((isset($_FILES['file_url_wap']['error']) && $_FILES['file_url_wap']['error'] == 0) || (!isset($_FILES['file_url_wap']['error']) && isset($_FILES['file_url_wap']['tmp_name']) && $_FILES['file_url_wap']['tmp_name'] != 'none'))
+    {
+        // 检查文件格式
+        if (!check_file_type($_FILES['file_url_wap']['tmp_name'], $_FILES['file_url_wap']['name'], $allow_file_types))
+        {
+            sys_msg($_LANG['invalid_file']);
+        }
+
+        // 复制文件
+        $res = upload_article_file($_FILES['file_url_wap']);
+        if ($res != false)
+        {
+            $file_url_wap = $res;
+        }
+    }
+
+    $attr=[];
+    foreach ($_POST['attr_title'] as $key=>$value){
+        if($value){
+            $attr[$key]['title']=$value;
+
+        }
+        if($_POST['attr_desc'][$key]){
+            $attr[$key]['desc']=$_POST['attr_desc'][$key];
         }
     }
 
@@ -160,21 +190,41 @@ if ($_REQUEST['act'] == 'insert')
         $open_type = $_POST['FCKeditor1'] == '' ? 1 : 2;
     }
 
-    /*插入数据*/
-    $add_time = gmtime();
+//    /*插入数据*/
+    if(empty($_POST['add_time'])){
+        $add_time = gmtime();
+    }else{
+        $add_time=strtotime($_POST['add_time']);
+    }
+    if(empty($add_time)) $add_time = gmtime();
     if (empty($_POST['cat_id']))
     {
         $_POST['cat_id'] = 0;
     }
     $sql = "INSERT INTO ".$ecs->table('article')."(title, cat_id, article_type, is_open, author, ".
-                "author_email, keywords, content, add_time, file_url, open_type, link, description) ".
+                "author_email, keywords, content, add_time, file_url, open_type, link, description,new_url,file_url_wap) ".
             "VALUES ('$_POST[title]', '$_POST[article_cat]', '$_POST[article_type]', '$_POST[is_open]', ".
                 "'$_POST[author]', '$_POST[author_email]', '$_POST[keywords]', '$_POST[FCKeditor1]', ".
-                "'$add_time', '$file_url', '$open_type', '$_POST[link_url]', '$_POST[description]')";
+                "'$add_time', '$file_url', '$open_type', '$_POST[link_url]', '$_POST[description]','$_POST[new_url]','$file_url_wap')";
     $db->query($sql);
+
+
 
     /* 处理关联商品 */
     $article_id = $db->insert_id();
+
+    /* 插入文章属性 */
+    if(!empty($attr)){
+        $values="";
+        foreach ($attr as $key=>$value){
+            $values .="($article_id,'".$value['title']."','".$value['desc']."'),";
+        }
+        $values=trim($values,',');
+        $sql ="INSERT INTO ".$ecs->table('article_attr')." (`article_id`,`title`,`desc`) VALUES $values";
+        $db->query($sql);
+    }
+
+
     $sql = "UPDATE " . $ecs->table('goods_article') . " SET article_id = '$article_id' WHERE article_id = 0";
     $db->query($sql);
 
@@ -220,6 +270,11 @@ if ($_REQUEST['act'] == 'edit')
     $smarty->assign('action_link', array('text' => $_LANG['03_article_list'], 'href' => 'article.php?act=list&' . list_link_postfix()));
     $smarty->assign('form_action', 'update');
 
+    $sql="SELECT * FROM ".$ecs->table('article_attr')." WHERE `article_id`=".$_REQUEST[id];
+    $row=$db->getAll($sql);
+
+    $smarty->assign('attr',$row);
+
     assign_query_info();
     $smarty->display('article_info.htm');
 }
@@ -230,6 +285,8 @@ if ($_REQUEST['act'] =='update')
     admin_priv('article_manage');
 
     /*检查文章名是否相同*/
+
+
     $is_only = $exc->is_only('title', $_POST['title'], $_POST['id'], "cat_id = '$_POST[article_cat]'");
 
     if (!$is_only)
@@ -260,10 +317,47 @@ if ($_REQUEST['act'] =='update')
             $file_url = $res;
         }
     }
+    $file_url_wap = '';
+
+    if ((isset($_FILES['file_url_wap']['error']) && $_FILES['file_url_wap']['error'] == 0) || (!isset($_FILES['file_url_wap']['error']) && isset($_FILES['file_url_wap']['tmp_name']) && $_FILES['file_url_wap']['tmp_name'] != 'none'))
+    {
+        // 检查文件格式
+        if (!check_file_type($_FILES['file_url_wap']['tmp_name'], $_FILES['file_url_wap']['name'], $allow_file_types))
+        {
+            sys_msg($_LANG['invalid_file']);
+        }
+
+        // 复制文件
+        $res = upload_article_file($_FILES['file_url_wap']);
+        if ($res != false)
+        {
+            $file_url_wap = $res;
+        }
+    }
+
+
+    /*文章属性*/
+    $attr=[];
+    foreach ($_POST['attr_title'] as $key=>$value){
+        if($value){
+            $attr[$key]['title']=$value;
+        }
+        if($_POST['attr_desc'][$key]){
+            $attr[$key]['desc']=$_POST['attr_desc'][$key];
+        }
+    }
+
+    /*文章属性 end*/
 
     if ($file_url == '')
     {
         $file_url = $_POST['file_url'];
+    }
+
+
+    if ($file_url_wap == '')
+    {
+        $file_url_wap = $_POST['file_url_wap'];
     }
 
     /* 计算文章打开方式 */
@@ -283,9 +377,38 @@ if ($_REQUEST['act'] =='update')
     {
         @unlink(ROOT_PATH . $old_url);
     }
-
-    if ($exc->edit("title='$_POST[title]', cat_id='$_POST[article_cat]', article_type='$_POST[article_type]', is_open='$_POST[is_open]', author='$_POST[author]', author_email='$_POST[author_email]', keywords ='$_POST[keywords]', file_url ='$file_url', open_type='$open_type', content='$_POST[FCKeditor1]', link='$_POST[link_url]', description = '$_POST[description]'", $_POST['id']))
+    $sql = "SELECT file_url_wap FROM " . $ecs->table('article') . " WHERE article_id = '$_POST[id]'";
+    $old_url = $db->getOne($sql);
+    if ($old_url != '' && $old_url != $file_url_wap && strpos($old_url, 'http://') === false && strpos($old_url, 'https://') === false)
     {
+        @unlink(ROOT_PATH . $old_url);
+    }
+
+    if(empty($_POST['add_time'])){
+        $add_time = gmtime();
+    }else{
+        $add_time=strtotime($_POST['add_time']);
+    }
+    if(empty($add_time)) $add_time = gmtime();
+    if ($exc->edit("add_time=$add_time,new_url='$_POST[new_url]',title='$_POST[title]', cat_id='$_POST[article_cat]', article_type='$_POST[article_type]', is_open='$_POST[is_open]', author='$_POST[author]', author_email='$_POST[author_email]', keywords ='$_POST[keywords]', file_url ='$file_url', open_type='$open_type', content='$_POST[FCKeditor1]', link='$_POST[link_url]', description = '$_POST[description]',file_url_wap='$file_url_wap'", $_POST['id']))
+    {
+
+        /* 插入文章属性 */
+        if(!empty($attr)){
+
+            $sql="DELETE FROM ".$ecs->table('article_attr')." WHERE `article_id`=".$_POST['id'];
+            $db->query($sql);
+
+            $values="";
+            foreach ($attr as $key=>$value){
+                $values .="(".$_POST['id'].",'".$value['title']."','".$value['desc']."'),";
+            }
+
+            $values=trim($values,',');
+            $sql ="INSERT INTO ".$ecs->table('article_attr')." (`article_id`,`title`,`desc`) VALUES $values";
+            $db->query($sql);
+        }
+
         $link[0]['text'] = $_LANG['back_list'];
         $link[0]['href'] = 'article.php?act=list&' . list_link_postfix();
 
@@ -682,6 +805,27 @@ function get_articleslist()
 
 /* 上传文件 */
 function upload_article_file($upload)
+{
+    if (!make_dir("../" . DATA_DIR . "/article"))
+    {
+        /* 创建目录失败 */
+        return false;
+    }
+
+    $filename = cls_image::random_filename() . substr($upload['name'], strpos($upload['name'], '.'));
+    $path     = ROOT_PATH. DATA_DIR . "/article/" . $filename;
+
+    if (move_upload_file($upload['tmp_name'], $path))
+    {
+        return DATA_DIR . "/article/" . $filename;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function upload_article_file2($upload)
 {
     if (!make_dir("../" . DATA_DIR . "/article"))
     {

@@ -6,7 +6,7 @@
     <!-- 分类 -->
     <select name="cat_id"><option value="0">{$lang.goods_cat}</option>{$cat_list}</select>
     <!-- 品牌 -->
-    <select name="brand_id"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
+    <select name="brand_id" style="display: none"><option value="0">{$lang.goods_brand}</option>{html_options options=$brand_list}</select>
     <!-- 推荐 -->
     <select name="intro_type"><option value="0">{$lang.intro_type}</option>{html_options options=$intro_list selected=$smarty.get.intro_type}</select>
      {if $suppliers_exists eq 1}    

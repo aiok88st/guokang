@@ -141,3 +141,23 @@ p {
   margin-top: 25px; }
 
 /*# sourceMappingURL=expert.css.map */
+.typeList .more{
+  display: block;
+  line-height: 32px;
+  padding: 1px 8px;
+  color: #333333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.typeList .more p{
+  display: block;
+  width: 44px;
+  height: 32px;
+  background-image: url('../img/tb_icon2.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size:12px;
+}
+.typeList .more .p2{
+  background-image: url('../img/tb_icon1.png') !important;
+}

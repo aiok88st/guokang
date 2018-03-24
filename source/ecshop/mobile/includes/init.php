@@ -81,6 +81,7 @@ require(ROOT_PATH . 'includes/lib_main.php');
 require(ROOT_PATH . 'mobile/includes/lib_main.php');
 require(ROOT_PATH . 'includes/inc_constant.php');
 require(ROOT_PATH . 'includes/cls_error.php');
+require(ROOT_PATH . 'includes/lib_insert.php');
 
 /* 对用户传入的变量进行转义操作。*/
 if (!get_magic_quotes_gpc())
@@ -100,6 +101,8 @@ if (!get_magic_quotes_gpc())
 
 /* 创建 ECSHOP 对象 */
 $ecs = new ECS($db_name, $prefix);
+define('DATA_DIR', '../'.$ecs->data_dir());
+define('IMAGE_DIR', '../'.$ecs->image_dir());
 
 /* 初始化数据库类 */
 require(ROOT_PATH . 'includes/cls_mysql.php');
@@ -188,15 +191,33 @@ if (gzip_enabled())
     ob_start('ob_gzhandler');
 }
 
+$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+
+
+$uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile)/i";
+
+if(($ua == '' || !preg_match($uachar, $ua)) && !strpos(strtolower($_SERVER['REQUEST_URI']),'wap'))
+{
+    $Loaction = '../';
+
+    if (!empty($Loaction))
+    {
+        ecs_header("Location: $Loaction\n");
+
+        exit;
+    }
+
+}
+
 /* wap头文件 */
 //if (substr($_SERVER['SCRIPT_NAME'], strrpos($_SERVER['SCRIPT_NAME'], '/')) != '/user.php')
 //{}
 header("Content-Type:text/html; charset=utf-8");
 
-if (empty($_CFG['wap_config']))
-{
-    echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><title>ECShop_mobile</title></head><body><p align='left'>对不起,{$_CFG['shop_name']}暂时没有开启手机购物功能</p></body></html>";
-    exit();
-}
+//if (empty($_CFG['wap_config']))
+//{
+//    echo "<meta http-equiv='Content-Type' content='text/html; charset=utf-8' /><title>ECShop_mobile</title></head><body><p align='left'>对不起,{$_CFG['shop_name']}暂时没有开启手机购物功能</p></body></html>";
+//    exit();
+//}
 
 ?>

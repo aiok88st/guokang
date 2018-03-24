@@ -1,0 +1,30 @@
+<div id="newsChoice" class="bottom-top">
+    <div class="box">
+        <div class="newsBox">
+            <!--ncActive-->
+
+            <a href="/mobile/know.php" class="floatl {if $nav_id eq 26}ncActive{/if}">了解国康</a>
+            {foreach from=$cat_list item=item}
+            <a href="/{$item.wap_url}&v_id={$item.id}" class="floatl {if $nav_id eq $item.id}ncActive{/if}">
+                {if $item.id eq 26}
+                了解国康
+                {else}
+                {$item.name}
+                {/if}
+            </a>
+            {/foreach}
+            <div class="clearl"></div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                var w=$('.newsBox').children('a').eq(0).width();
+                var i=$('.newsBox').children('.ncActive').index();
+                console.log(i);
+                $('#newsChoice').animate({
+                    scrollLeft: w*i+'px'
+                }, 500);
+            })
+
+        </script>
+    </div>
+</div>

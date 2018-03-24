@@ -1,0 +1,152 @@
+<!-- ==绑定安全邮箱== -->
+<div class="bomb modfiy-mailbox-step1">
+
+    <div class="bomb-conent">
+        <span class='close'>x</span>
+        <h3 class="text-center">修改安全邮箱</h3>
+        <hr>
+        <img src="themes/default/img/mailbox-step1.png" alt="" class="img-responsive center-block custom-block3">
+        <form class="custom-form">
+            <div class="form-group h57">
+                <label for="">请输入新的安全邮箱地址</label>
+                <input type="text" name="new_email" class="form-control" placeholder='请输入邮箱'>
+            </div>
+            <div class="input-group h57">
+                <input type="text" name="email_captcha" class="form-control" placeholder='请输入验证码'>
+                <div class="input-group-addon"><img src="captcha.php?v={$rand}3" alt="" class="virCode" onClick="this.src='captcha.php?v='+Math.random()"></div>
+            </div>
+            <p class="text-danger custom-block2 error"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="error_text">您输入的验证码有误</span>
+            </p>
+
+            <button type="button" class="btn btn-primary custom-btn btn-modfiy-mailbox-step1">确定</button>
+
+        </form>
+    </div>
+</div>
+<div class="bomb modfiy-mailbox-step2">
+
+    <div class="bomb-conent">
+        <span class='close'>x</span>
+        <h3 class="text-center">修改安全邮箱</h3>
+        <hr>
+        <img src="themes/default/img/mailbox-step2.png" alt="" class="img-responsive center-block custom-block3">
+
+        <p class="words">
+            我们向  <i class='text-primary new_email'>guangkang@163.com</i> 发送了验证邮箱请输入邮箱中的验证码
+        </p>
+        <form class="custom-form">
+            <div class="input-group h57">
+                <input type="text" name="email_code" class="form-control" placeholder='请输入验证码'>
+                <div class="input-group-addon wget3">重新发送 (53)</div>
+            </div>
+
+            <p class="text-danger custom-block2 error"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="error_text">您输入的验证码有误</span>
+            </p>
+            <button type="button" class="btn btn-primary custom-btn btn-modfiy-mailbox-step2">下一步</button>
+        </form>
+    </div>
+
+</div>
+<div class="bomb modfiy-mailbox-step3">
+
+    <div class="bomb-conent">
+        <span class='close'>x</span>
+        <h3 class="text-center">修改安全邮箱</h3>
+        <hr>
+        <img src="themes/default/img/mailbox-step3.png" alt="" class="img-responsive center-block custom-block3">
+
+        <img src="themes/default/img/modify-success-icon2.png" alt="" class="img-responsive center-block custom-block">
+
+        <button type="button" class="btn btn-primary custom-btn btn-modfiy-mailbox-step3">返回我的账号</button>
+    </div>
+
+</div>
+
+<!-- ==绑定安全邮箱 end== -->
+
+<script type="text/javascript">
+    var waget3=120;
+    $(function(){
+        /*绑定邮箱*/
+        $('.btn-modifyMailbox').click(function(){
+            $('.modfiy-mailbox-step1').show();
+        });
+        $('.btn-modfiy-mailbox-step1').click(function(){
+            var email=$('[name="new_email"]').val();
+            var code=$('[name="email_captcha"]').val();
+
+            AjaxP('user.php?act=put_email', {"code":code,"email":email},function(res){
+                if(res.code==1){
+                    $('.new_email').text(email);
+                    $('.modfiy-mailbox-step1').hide();
+                    $('.modfiy-mailbox-step2').show();
+                    var html="重新发送(<span id='wagetTime3'>120</span>)";
+                    $('.wget3').attr('disabled','disabled').html(html);
+                    if(waget3==120){
+                        var wt=setInterval(function(){
+                            waget3--;
+                            if(waget3<=0){
+                                $('.wget3').html("获取验证码").attr('disabled',false).removeClass("disabled");
+                                clearInterval(wt);
+                                waget3=120;
+                            }else{
+                                $('#wagetTime3').text(waget3);
+                            }
+                        },1000);
+                    }
+                }else{
+                    $('.btn-modfiy-mailbox-step1').prev('.error').show().find('.error_text').text(res.msg);
+                }
+            } , 'POST', 'JSON');
+
+        });
+        $('.btn-modfiy-mailbox-step2').click(function(){
+            var email=$('[name="new_email"]').val();
+            var code=$('[name="email_code"]').val();
+
+            AjaxP('user.php?act=edit_email', {"code":code,"email":email},function(res){
+                if(res.code==1){
+                    $('.modfiy-mailbox-step2').hide();
+                    $('.modfiy-mailbox-step3').show();
+                }else{
+                    $('.btn-modfiy-mailbox-step2').prev('.error').show().find('.error_text').text(res.msg);
+                }
+            } , 'POST', 'JSON');
+
+
+        });
+        $('.btn-modfiy-mailbox-step3').click(function(){
+            window.location.reload();
+//            $('.modfiy-mailbox-step3').hide();
+        });
+        $('.wget3').on('click',function(){
+            if($(this).attr("disabled")==false){
+                var email=$('[name="new_email"]').val();
+                var code=$('[name="email_captcha"]').val();
+
+                AjaxP('user.php?act=put_email', {"code":code,"email":email},function(res){
+                    if(res.code==1){
+                        var html="重新发送(<span id='wagetTime3'>120</span>)";
+                        $('.wget3').attr('disabled','disabled').html(html);
+                        if(waget3==120){
+                            var wt=setInterval(function(){
+                                waget3--;
+                                if(waget3<=0){
+                                    $('.wget3').html("获取验证码").attr('disabled',false).removeClass("disabled");
+                                    clearInterval(wt);
+                                    waget3=120;
+                                }else{
+                                    $('#wagetTime3').text(waget3);
+                                }
+                            },1000);
+                        }
+                    }else{
+                        $('.btn-modfiy-mailbox-step2').prev('.error').show().find('.error_text').text(res.msg);
+                    }
+                } , 'POST', 'JSON');
+            }
+        })
+    })
+</script>

@@ -23,8 +23,7 @@ p {
     height: 138px;
     border: 2px solid #e5e5e5;
     border-radius: 50%;
-    margin: 0 auto;
-    background: url(../image/person.png) no-repeat center center; }
+    margin: 0 auto;}
   #weAre .waBox .floatl p {
     width: 225px;
     margin: 0 auto;
@@ -183,6 +182,10 @@ p {
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
   -webkit-transform: translate3d(0, -2px, 0);
   transform: translate3d(0, -2px, 0); }
+
+.companyLogo .more{
+  background-image: url(../image/moreCase.jpg); }
+}
 .companyLogo a:nth-last-child(2) {
   background-image: url(../image/moreCase.jpg); }
 

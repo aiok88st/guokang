@@ -1,0 +1,30 @@
+<div class="headerImg-bg">
+
+    {if $info['open_face']}
+    <a href="user.php"><img src="{$info.open_face}" alt="" class="img-circle"></a>
+
+    {else /}
+    <a href="user.php"><img src="themes/default/img/headerImg.jpg" alt="" class="img-circle"></a>
+
+    {/if}
+    <h4 class='text-center'>{$info.username}</h4>
+</div>
+<h3>个人中心</h3>
+<ul class="list-unstyled text-center">
+    <li><a href="user.php" class="btn-personalCenter {if $action eq 'default'}active{/if}">我的个人中心</a></li>
+    <!--<li><a href="javascript:;" class="btn-notice">消息通知</a></li>-->
+</ul>
+<h3>订单中心</h3>
+<ul class="list-unstyled text-center">
+    <li><a href="user.php?act=order_list" class="btn-myOrder {if $action eq 'order_list' or $action eq 'order_detail'}active{/if}">我的订单</a></li>
+    <li><a href="user.php?act=commont_order" class="btn-noEva {if $action eq 'commont_order' and $type neq 1}active{/if}">未评价订单</a></li>
+    <li><a href="user.php?act=commont_order&type=1" class="btn-alreadyEva {if $action eq 'commont_order' and $type eq 1}active{/if}">已评价订单</a></li>
+</ul>
+
+<h3>我的账户</h3>
+<ul class="list-unstyled text-center">
+    <li><a href="user.php?act=profile" class="btn-personalDate {if $action eq 'profile'}active{/if}">个人资料</a></li>
+    <li><a href="user.php?act=address_list" class="btn-address {if $action eq 'address_list'}active{/if}">收货地址</a></li>
+    <li><a href="user.php?act=user_set" class="btn-setting {if $action eq 'user_set'}active{/if}">账号设置</a></li>
+    <!--<li><a href="javascript:;" class="btn-reward">我的奖励金</a></li>-->
+</ul>

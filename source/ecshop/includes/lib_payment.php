@@ -160,12 +160,13 @@ function order_paid($log_id, $pay_status = PS_PAYED, $note = '')
             if ($pay_log['order_type'] == PAY_ORDER)
             {
                 /* 取得订单信息 */
-                $sql = 'SELECT order_id, user_id, order_sn, consignee, address, tel, shipping_id, extension_code, extension_id, goods_amount, order_amount, pay_id ' .
+                $sql = 'SELECT order_id, user_id, order_sn, consignee, address, tel, shipping_id, extension_code, extension_id, goods_amount, order_amount, pay_id, integral ' .
                     'FROM ' . $GLOBALS['ecs']->table('order_info') .
                     " WHERE order_id = '$pay_log[order_id]'";
                 $order    = $GLOBALS['db']->getRow($sql);
                 $order_id = $order['order_id'];
                 $order_sn = $order['order_sn'];
+                $user_id = $order['user_id'];
 
                 /* 修改订单状态为已付款 */
                 $sql = 'UPDATE ' . $GLOBALS['ecs']->table('order_info') .
@@ -197,6 +198,41 @@ function order_paid($log_id, $pay_status = PS_PAYED, $note = '')
 
                 /* 对虚拟商品的支持 */
                 $virtual_goods = get_virtual_goods($order_id);
+
+
+                /***************************获取订单关联商品（新添加的）*********************************************/
+                $sql = 'SELECT rec_id, order_id, goods_id, goods_name, goods_number,is_real' .
+                    'FROM ' . $GLOBALS['ecs']->table('order_goods') .
+                    " WHERE order_id = '$order_id'";
+                $order_goods    = $GLOBALS['db']->getRow($sql);
+                if($order_goods['is_real'] == 0){  //虚拟商品
+                    //商品数量*1年时间为到期时间
+                    $expire_time = date('Y-m-d H:i:s',strtotime('+'.$order_goods['goods_number'].'year'));
+//                    $expire_time = date('Y-m-d H:i:s',time()+300);
+                    //获取用户信息，是否可以购买
+                    $sql = 'SELECT user_id, rank_points, expire_time' .
+                        'FROM ' . $GLOBALS['ecs']->table('users') .
+                        " WHERE user_id = '$user_id'";
+                    $user    = $GLOBALS['db']->getRow($sql);
+                    if(time() > strtotime($user['expire_time'])){ //已经到期，可以购买，更新积分和到期时间
+                        /* 计算并发放积分 */
+                        $integral = integral_to_give($order);
+                        /* 更新用户信息 */
+                        $sql = "UPDATE " . $GLOBALS['ecs']->table('users') .
+                            " SET rank_points = " .$integral['rank_points'].
+                            " ,expire_time = '" .$expire_time.
+                            " WHERE user_id = '$user_id' LIMIT 1";
+                        $GLOBALS['db']->query($sql);
+                    }else{
+                        echo '您已经购买过会员产品';
+                        exit;
+                    }
+                }
+
+                /***************************获取订单关联商品（新添加的）结束*********************************************/
+
+
+
                 if (!empty($virtual_goods))
                 {
                     $msg = '';

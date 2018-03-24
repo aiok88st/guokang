@@ -222,6 +222,24 @@ elseif ($_REQUEST['act'] == 'drop_area')
     {
         make_json_error($db->error());
     }
+}elseif($_REQUEST['act']=="createJson"){
+    try{
+        include_once(ROOT_PATH . 'includes/lib_main.php');
+        $sql="SELECT * FROM ".$GLOBALS['ecs']->table("region")." WHERE `region_type`>0";
+        $result=$GLOBALS['db']->getAll($sql);
+        $result=tree_regions($result,1);
+        $filename="../json/region.json";
+        $res=file_put_contents($filename,json_encode($result));
+        if($res){
+            sys_msg('写入文件成功',0);
+        }else{
+            sys_msg('写入文件失败',1);
+        }
+    }catch (\Exception $e){
+        sys_msg($e->getMessage(),1);
+    }
+
+
 }
 
 
@@ -240,4 +258,6 @@ function new_region_id($region_id)
     }
     return $regions_id;
 }
+
+
 ?>

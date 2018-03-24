@@ -1,0 +1,85 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/expertDetails.css" />
+<style>
+    .content{
+        padding: 10px;
+    }
+</style>
+<div id="banner" align="center">
+    <img src="themes/default/image/expertdBanner.jpg" />
+    <div class="brBox">
+        <div class="w12">
+            <div class="brLeft floatl">
+                {if $data.thumb}
+                <img src=".{$data.thumb}" />
+                {/if}
+            </div>
+            <div class="brRight floatl">
+                <ul>
+                    <li>
+
+                        <p><span>{$data.name}</span>&nbsp;&nbsp;{$data.job}</p>
+                    </li>
+                    <li>
+                        <p>{$data.desc}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearl"></div>
+        </div>
+    </div>
+</div>
+<!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+<div id="mainContent">
+    <div class="w12">
+        <div class="leftContent floatl">
+            <div class="article">
+                <div class="fullContent">
+
+                    <div class="content">
+                        {$content}
+                    </div>
+                </div>
+                <div class="nextPrev">
+
+                    <!-- {if $prev_article neq ''} -->
+                    <a href="{$prev_article.url}" class="floatl">
+                        <img src="themes/default/image/leftBtn.png" class="floatl"/>
+                        <p  class="floatl">上一篇：{$prev_article.title}</p>
+                    </a>
+                    <!-- {else} -->
+                    <a href="javascript:;" class="floatl">
+                        <img src="themes/default/image/leftBtn.png" class="floatl"/>
+                        <p class="floatl">No More</p>
+                    </a>
+                    <!-- {/if} -->
+
+
+                    <!-- {if $next_article neq ''} -->
+                    <a href="{$next_article.url}" class="floatr">
+                        <p class="floatl">下一篇：{$next_article.title}</p>
+                        <img src="themes/default/image/rightBtn.png" class="floatl"/>
+                    </a>
+                    <!-- {else} -->
+                    <a href="javascript:;" class="floatr">
+                        <p class="floatl">No More</p>
+                        <img src="themes/default/image/rightBtn.png" class="floatl"/>
+                    </a>
+                    <!-- {/if} -->
+
+                    <div class="clearBoth"></div>
+                </div>
+            </div>
+
+            {insert name='comments' type=3 id=$id}
+        </div>
+        <div class="rightNavs floatl">
+            <!-- #BeginLibraryItem "/library/news_right.lbi" --><!-- #EndLibraryItem -->
+            <!-- #BeginLibraryItem "/library/praise_right.lbi" --><!-- #EndLibraryItem -->
+        </div>
+        <div class="clearl"></div>
+    </div>
+
+</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

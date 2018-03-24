@@ -111,9 +111,11 @@ function get_profile($user_id)
     $info  = array();
     $infos = array();
     $sql  = "SELECT user_name, birthday, sex, question, answer, rank_points, pay_points,user_money, user_rank,".
-             " msn, qq, office_phone, home_phone, mobile_phone, passwd_question, passwd_answer ".
+             " msn, qq, office_phone, home_phone, mobile_phone, passwd_question, passwd_answer , v_email,ID_type,".
+             " IDcard,name,province,city,district,open_face ".
            "FROM " .$GLOBALS['ecs']->table('users') . " WHERE user_id = '$user_id'";
     $infos = $GLOBALS['db']->getRow($sql);
+
     $infos['user_name'] = addslashes($infos['user_name']);
 
     $row = $user->get_profile_by_name($infos['user_name']); //获取用户帐号信息
@@ -178,6 +180,31 @@ function get_profile($user_id)
     $info['mobile_phone'] = $infos['mobile_phone'];
     $info['passwd_question'] = $infos['passwd_question'];
     $info['passwd_answer'] = $infos['passwd_answer'];
+    $info['v_email']=$infos['v_email'];
+
+    $info['username']=$infos['user_name'];
+    $info['name']=$infos['name'];
+
+    $info['open_face']=$infos['open_face'];
+    $info['IDcard']=$infos['IDcard'];
+    $info['ID_type']=$infos['ID_type'];
+    if($infos['province']){
+
+
+        $info['province']=get_region_info($infos['province'])['region_name'];
+    }else{
+        $info['province']="省";
+    }
+    if($infos['city']){
+        $info['city']=get_region_info($infos['city'])['region_name'];
+    }else{
+        $info['city']="市";
+    }
+    if($infos['district']){
+        $info['district']=get_region_info($infos['district'])['region_name'];
+    }else{
+        $info['district']="区";
+    }
 
     return $info;
 }
@@ -281,15 +308,22 @@ function add_bonus($user_id, $bouns_sn)
  * @param   int         $start          列表起始位置
  * @return  array       $order_list     订单列表
  */
-function get_user_orders($user_id, $num = 10, $start = 0)
+function get_user_orders($user_id, $num = 10, $start = 0,$where='')
 {
+
+    if(!empty($where)){
+        $w=$where;
+    }else{
+        $w='user_id = '.$user_id;
+    }
     /* 取得订单列表 */
     $arr    = array();
 
     $sql = "SELECT order_id, order_sn, order_status, shipping_status, pay_status, add_time, " .
            "(goods_amount + shipping_fee + insure_fee + pay_fee + pack_fee + card_fee + tax - discount - goods_discount_fee) AS total_fee ".
            " FROM " .$GLOBALS['ecs']->table('order_info') .
-           " WHERE user_id = '$user_id' ORDER BY add_time DESC";
+           " WHERE $where ORDER BY add_time DESC";
+
     $res = $GLOBALS['db']->SelectLimit($sql, $num, $start);
 
     while ($row = $GLOBALS['db']->fetchRow($res))
@@ -327,16 +361,35 @@ function get_user_orders($user_id, $num = 10, $start = 0)
             $row['handler'] = '<span style="color:#565656">'.$GLOBALS['_LANG']['os'][$row['order_status']] .'</span>';
         }
 
-        $row['shipping_status'] = ($row['shipping_status'] == SS_SHIPPED_ING) ? SS_PREPARING : $row['shipping_status'];
-        $row['order_status'] = $GLOBALS['_LANG']['os'][$row['order_status']] . ',' . $GLOBALS['_LANG']['ps'][$row['pay_status']] . ',' . $GLOBALS['_LANG']['ss'][$row['shipping_status']];
+        $row['cancel_order']=0;
+        $row['pay_order']=0;
+
+
+        if($row['shipping_status']==0 && $row['order_status']==0 && $row['pay_status'] == 0){
+            $row['cancel_order']=1;
+            $row['pay_order']=1;
+            $row['order_status_text']=$GLOBALS['_LANG']['os'][$row['order_status']] ;
+        }elseif($row['pay_status'] == 1){
+            $row['order_status_text']=$GLOBALS['_LANG']['ps'][$row['pay_status']] ;
+        }elseif($row['shipping_status']==1 || $row['shipping_status']==2){
+            $row['order_status_text']=$GLOBALS['_LANG']['ss'][$row['shipping_status']];
+        }else{
+            $row['order_status_text']=$GLOBALS['_LANG']['ss'][$row['shipping_status']];
+        }
+
+
 
         $arr[] = array('order_id'       => $row['order_id'],
                        'order_sn'       => $row['order_sn'],
                        'order_time'     => local_date($GLOBALS['_CFG']['time_format'], $row['add_time']),
-                       'order_status'   => $row['order_status'],
+                       'order_status'   => $row['order_status_text'],
                        'shipping_status'=> $row['shipping_status'],
                        'total_fee'      => price_format($row['total_fee'], false),
-                       'handler'        => $row['handler']);
+                       'handler'        => $row['handler'],
+                       'cancel_order'        => $row['cancel_order'],
+                       'pay_order'        => $row['pay_order'],
+
+        );
     }
 
     return $arr;
@@ -736,7 +789,7 @@ function get_order_detail($order_id, $user_id = 0)
     /* 确认时间 支付时间 发货时间 */
     if ($order['confirm_time'] > 0 && ($order['order_status'] == OS_CONFIRMED || $order['order_status'] == OS_SPLITED || $order['order_status'] == OS_SPLITING_PART))
     {
-        $order['confirm_time'] = sprintf($GLOBALS['_LANG']['confirm_time'], local_date($GLOBALS['_CFG']['time_format'], $order['confirm_time']));
+//        $order['confirm_time'] = sprintf($GLOBALS['_LANG']['confirm_time'], local_date($GLOBALS['_CFG']['time_format'], $order['confirm_time']));
     }
     else
     {
@@ -744,7 +797,7 @@ function get_order_detail($order_id, $user_id = 0)
     }
     if ($order['pay_time'] > 0 && $order['pay_status'] != PS_UNPAYED)
     {
-        $order['pay_time'] = sprintf($GLOBALS['_LANG']['pay_time'], local_date($GLOBALS['_CFG']['time_format'], $order['pay_time']));
+//        $order['pay_time'] = sprintf($GLOBALS['_LANG']['pay_time'], local_date($GLOBALS['_CFG']['time_format'], $order['pay_time']));
     }
     else
     {
@@ -752,12 +805,13 @@ function get_order_detail($order_id, $user_id = 0)
     }
     if ($order['shipping_time'] > 0 && in_array($order['shipping_status'], array(SS_SHIPPED, SS_RECEIVED)))
     {
-        $order['shipping_time'] = sprintf($GLOBALS['_LANG']['shipping_time'], local_date($GLOBALS['_CFG']['time_format'], $order['shipping_time']));
+//        $order['shipping_time'] = sprintf($GLOBALS['_LANG']['shipping_time'], local_date($GLOBALS['_CFG']['time_format'], $order['shipping_time']));
     }
     else
     {
         $order['shipping_time'] = '';
     }
+
 
     return $order;
 
@@ -1154,4 +1208,6 @@ function deleteRepeat($array){
     }
     return $array;
 }
+
+
 ?>

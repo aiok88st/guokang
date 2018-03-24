@@ -1,0 +1,140 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/sort.css?v=2" />
+		<div id="banner" align="center">
+			<img src="themes/default/image/sortBottom.jpg" />
+		</div>
+<!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+
+		<!--HRD-->
+		<div id="hrd" class="w12">
+			<!--{foreach from=$hrd_list item=v}-->
+
+			<div class="hrd floatl">
+				<div class="hrdTop">
+					<p>{$v.title}</p>
+					<p>{$v.description}</p>
+				</div>
+				<div class="hrdBottom">
+					{$v.content}
+				</div>
+			</div>
+			<!--{/foreach}-->
+
+			<div class="clearl"></div>
+		</div>
+		<!--解决方案-->
+<a href="" name="case_list"></a>
+		<div id="sort">
+
+			<div class="bigTitle">
+				<p class="bT">解决方案</p>
+				<p class="bC">国康健康是更懂您企业员工高效秘密的平台，在多种行业为行业冠军提供完整的健康解决方案</p>
+			</div>
+			<div class="sort">
+				<div class="w12">
+					<div class="sortBox">
+						<!--{foreach from=$case_list item=item}-->
+						<a href="article-{$item.article_id}.html" class="sortChild floatl">
+							<div class="mc" style="background-image: url('{$item.file_url}')"></div>
+							<div class="sortContent">
+								<ul>
+									<li>
+										<span></span>
+									</li>
+									<li>
+										<p>{$item.title}</p>
+									</li>
+								</ul>
+							</div>
+						</a>
+						<!--{/foreach}-->
+						<div class="clearl"></div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		<!--优势-->
+		<div id="advantage">
+			<div class="bigTitle">
+				<p class="bT">国康平台特色及优势</p>
+				<p class="bC">国康是一站式健康管理平台，您可以通过国康健康轻松便捷的找到好名医及做健康管理，并能在云端进行健康管理，让您的员工及企业更高效。</p>
+			</div>
+			<div class="advantage w12">
+				<!--{foreach from=$youshi_list item=item}-->
+
+				<div class="advChild floatl">
+					<div class="advImg">
+						<img src="{$item.file_url}" />
+					</div>
+					<div class="advContent">
+						<p style="font-size:16px;padding-bottom:10px;">{$item.title}</p>
+						<p class="advbottom">{$item.description}</p>
+					</div>
+				</div>
+				<!--{/foreach}-->
+
+				<div class="clearl"></div>
+			</div>
+		</div>
+		<!---->
+		<div id="case">
+			<img src="themes/default/image/sortbBottom.jpg" />
+			<div class="case">
+				<div class="w12">
+					<div class="caseTop">
+						<p>客户案例</p>
+					</div>
+					<!--{if $bs1}-->
+					<div class="caseMiddle">
+
+						<div class="cmLeft floatl">
+							<ul>
+								<li>
+									<p>{$bs1.title}</p>
+								</li>
+								<li>
+									<span></span>
+								</li>
+								<li>
+									<p>应用场景：{$bs1.keywords}</p>
+								</li>
+								<li>
+									{$bs1.description|wrap}
+								</li>
+							</ul>
+						</div>
+						<div class="cmRight floatr">
+							<!--{foreach from=$bs1_attr item=item}-->
+							<div class="cmrChild floatl">
+								<div class="percent">
+									<p>{$item.desc}</p>
+								</div>
+								<div class="cmrContent">
+									<p>{$item.title}</p>
+								</div>
+							</div>
+							<!--{/foreach}-->
+
+							<div class="clearl"></div>
+						</div>
+						<div class="clearBoth"></div>
+					</div>
+					<!--{/if}-->
+					<!--{if $bs2}-->
+					<div class="caseBottom">
+						<!--{foreach from=$bs2 item=item}-->
+						<a href="article-{$item.article_id}.html" class="floatl" style="background-image: url('./{$item.file_url}')"></a>
+						<!--{/foreach}-->
+						<!--{if $bs2_count gt 8}-->
+						<a href="case-company.html" class="floatl"></a>
+						<!--{/if}-->
+						<div class="clearl"></div>
+					</div>
+					<!--{/if}-->
+
+				</div>
+			</div>
+		</div>
+
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="themes/default/script/sort.js?v=5" ></script>

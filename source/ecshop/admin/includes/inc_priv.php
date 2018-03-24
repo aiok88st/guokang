@@ -25,6 +25,9 @@ if (!defined('IN_ECS'))
     $purview['05_comment_manage']    = 'comment_priv';
     $purview['06_goods_brand_list']  = 'brand_manage';
     $purview['08_goods_type']        = 'attr_manage';   //商品属性
+
+    $purview['09_goods_tag']        = 'goods_tag';
+
     $purview['11_goods_trash']       = array('goods_manage', 'remove_back');
     $purview['12_batch_pic']         = 'picture_batch';
     $purview['13_batch_add']         = 'goods_batch';
@@ -32,10 +35,16 @@ if (!defined('IN_ECS'))
     $purview['15_batch_edit']        = 'goods_batch';
     $purview['16_goods_script']      = 'gen_goods_script';
     $purview['17_tag_manage']        = 'tag_manage';
+
     $purview['50_virtual_card_list'] = 'virualcard';
     $purview['51_virtual_card_add']  = 'virualcard';
     $purview['52_virtual_card_change'] = 'virualcard';
     $purview['goods_auto']           = 'goods_auto';
+    //网站留言管理
+
+    $purview['01_massge']                    ='massge';
+//专家管理
+    $purview['07_doctor']                    ='doctor';
 
 //促销管理权限
     $purview['02_snatch_list']       = 'snatch_manage';

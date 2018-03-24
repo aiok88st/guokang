@@ -1,0 +1,395 @@
+{include file="pageheader.htm"}
+{insert_scripts files="../js/my_goods.js"}
+<script type="text/javascript" src="../js/calendar.php?lang={$cfg_lang}"></script>
+
+<link href="../js/calendar/calendar.css?v=2" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="../themes/default/lib/layui.js" ></script>
+
+<script charset="utf-8" src="../includes/kindeditor/kindeditor-all-min.js"></script>
+<script charset="utf-8" src="../includes/kindeditor/lang/zh-CN.js"></script>
+<style type="text/css">
+    .layui-upload-box{
+        margin-right: 10px;
+        position: relative;
+        display: block;
+        float: left;
+    }
+    .layui-upload-box .close{
+        position: absolute;
+        top: -5px;
+        right: -5px;
+    }
+    .layui-upload-box textarea{
+        width: 97% !important;
+    }
+    td{
+        padding: 10px;
+    }
+    .hide{
+        display: none;
+    }
+</style>
+{if $warning}
+<ul style="padding:0; margin: 0; list-style-type:none; color: #CC0000;">
+    <li style="border: 1px solid #CC0000; background: #FFFFCC; padding: 10px; margin-bottom: 5px;" >{$warning}</li>
+</ul>
+{/if}
+<div class="tab-div">
+    <!-- tab bar -->
+    <div id="tabbar-div">
+        <p>
+            <span class="tab-front" id="ad-tab">基本信息</span>
+            <span class="tab-back" id="point-tab">优点及卖点</span>
+            <span class="tab-back" id="get-tab">购买能得到什么</span>
+        </p>
+    </div>
+    <div id="tabbody-div">
+        <form enctype="multipart/form-data" class="layui-form" action="" method="post" name="theForm" >
+            <!--标题广告图-->
+            <table width="90%" id="ad-table" align="center">
+
+                <tr>
+                    <td width="100">广告图{$lang.require_field}</td>
+                    <td>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn layui-btn-primary hide" data-id="2" id="test2">点击上传</button>
+                            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                <div class="layui-upload-list" id="demo2">
+
+                                    {if $data.ads}
+                                    <div class="layui-upload-box">
+                                        <img src="..{$data.ads}" alt="" style="max-width: 200px" class="layui-upload-img">
+                                        <input type="hidden" name="ads" value="{$data.ads}"/>
+                                        <img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">
+                                    </div>
+                                    {/if}
+                                </div>
+                                <div style="clear: both"></div>
+                            </blockquote>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="100">广告文字描述{$lang.require_field}</td>
+                    <td>
+                        <div>
+                            <textarea id="ad_content" name="ad_content">{$data.ad_content}</textarea>
+                            <script>
+                                KindEditor.ready(function(K) {
+                                    window.editor = K.create('#ad_content',{
+                                        items:[
+                                            'selectall','justifyleft','justifycenter','justifyright','justifyfull',
+                                            'fontname','fontsize','forecolor','bold','italic'
+                                        ]
+                                    });
+                                });
+                            </script>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>前后对比{$lang.require_field}</td>
+                    <td>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn layui-btn-primary hide" data-id="3" id="test3">点击上传</button>
+                            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+
+                                <div class="layui-upload-list" id="demo3">
+                                    {if $data.contrast}
+                                    <div class="layui-upload-box">
+                                        <img src="..{$data.contrast}" alt="" style="max-width: 200px" class="layui-upload-img">
+                                        <input type="hidden" name="contrast" value="{$data.contrast}"/>
+                                        <img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">
+                                    </div>
+                                    {/if}
+                                </div>
+                                <div style="clear: both"></div>
+                            </blockquote>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>服务流程{$lang.require_field}</td>
+                    <td>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn layui-btn-primary hide" data-id="4" id="test4">点击上传</button>
+                            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+
+                                <div class="layui-upload-list" id="demo4">
+                                    {if $data.process}
+                                    <div class="layui-upload-box">
+                                        <img src="..{$data.process}" alt="" style="max-width: 200px" class="layui-upload-img">
+                                        <input type="hidden" name="process" value="{$data.process}"/>
+                                        <img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">
+                                    </div>
+                                    {/if}
+                                </div>
+                                <div style="clear: both"></div>
+                            </blockquote>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!--优点及卖点-->
+            <table width="90%" id="point-table" align="center" style="display: none">
+
+                <tr>
+                    <td>轮播图{$lang.require_field}</td>
+                    <td>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn layui-btn-primary hide" data-id="4" id="test5">多图上传</button>
+                            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                按住ctrl+鼠标左键可多图上传
+                                <div class="layui-upload-list" id="demo5">
+                                    {if $data.point}
+                                    {foreach from=$data.point item=vo key=key}
+                                    <div class="layui-upload-box">
+                                        <img src="..{$vo.img}" alt="" style="max-width: 200px" class="layui-upload-img">
+                                        <input type="hidden" name="point[{$key}][img]" value="{$vo.img}"/>
+                                        <img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">
+                                        <br />
+                                        <span>标题</span>
+                                        <br />
+                                       <textarea name="point[{$key}][title]" autocomplete="off" rows="3" >{$vo.title|escape}</textarea>
+                                        <br />
+                                        <span>简介</span>
+                                        <br />
+                                        <textarea name="point[{$key}][des]" autocomplete="off" rows="3">{$vo.des|escape}</textarea>
+                                    </div>
+                                    {/foreach}
+                                    {/if}
+                                </div>
+                                <div style="clear: both"></div>
+                            </blockquote>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!--能得到什么-->
+            <table width="90%" id="get-table" align="center" style="display: none">
+
+                <tr>
+                    <td>轮播图{$lang.require_field}</td>
+                    <td>
+                        <div class="layui-upload">
+                            <button type="button" class="layui-btn layui-btn-primary hide" data-id="4" id="test6">多图上传</button>
+                            <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                                按住ctrl+鼠标左键可多图上传
+                                <div class="layui-upload-list" id="demo6">
+                                    {if $data.get}
+                                    {foreach from=$data.get item=vo key=key}
+                                    <div class="layui-upload-box">
+                                        <img src="..{$vo.img}" alt="" style="max-width: 200px" class="layui-upload-img">
+                                        <input type="hidden" name="get[{$key}][img]" value="{$vo.img}"/>
+                                        <img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">
+                                        <br />
+                                        <span>标题</span>
+                                        <br />
+                                        <textarea name="get[{$key}][title]" autocomplete="off" rows="3">{$vo.title|escape}</textarea>
+                                        <br>
+                                        <span>简介</span>
+                                        <br>
+                                        <textarea name="get[{$key}][des]" autocomplete="off" rows="3">{$vo.des|escape}</textarea>
+                                    </div>
+                                    {/foreach}
+                                    {/if}
+                                </div>
+                                <div style="clear: both"></div>
+                            </blockquote>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+
+            <input type="hidden" name="MAX_FILE_SIZE" value="2097152" />
+
+            <input type="hidden" name="goods_id" value="{$goods_id|my_intval}" />
+            {if $over_id}
+            <input type="hidden" name="over_id" value="{$over_id|my_intval}" />
+            {/if}
+            {if $code neq ''}
+            <input type="hidden" name="extension_code" value="{$code}" />
+            {/if}
+
+            <input type="button" lay-submit lay-filter="over" value="{$lang.button_submit}" class="button"  />
+            <input type="reset" value="{$lang.button_reset}" class="button" />
+            <input type="hidden" name="act" value="{$form_act}" />
+
+        </form>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    var $;
+    layui.use(['upload','form'], function(){
+            $ = layui.jquery;
+            var upload = layui.upload;
+            var form = layui.form;
+        form.on('submit(over)', function(data){
+            editor.sync();
+            data.field.ad_content=$('#ad_content').val();
+
+            $.post("overview.php?act=update",data.field,function(res){
+                if(res.code==1){
+                    window.location.reload();
+                }else{
+                    alert(res.msg);
+                }
+            },"JSON");
+            return false;
+        });
+
+        upload.render({
+            elem: '#test2'
+            ,url: 'upload.php?act=upload'
+            ,field:"file"
+            ,accept:"images"
+            ,multiple: false
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+            }
+            ,done: function(res){
+                if(res.code==0){
+                    layui.msg(res.msg);
+                    return false;
+                }
+                var src=res.data.src;
+                var html = '<div class="layui-upload-box">';
+                html +='<img src="..'+ src +'" alt="" style="max-width: 200px" class="layui-upload-img">';
+                html +='<input type="hidden" name="ads" value="'+src+'"/>';
+                html +='<img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">';
+                html +='</div>';
+                $('#demo2').html(html);
+            }
+        });
+
+        upload.render({
+            elem: '#test3'
+            ,url: 'upload.php?act=upload'
+            ,field:"file"
+            ,accept:"images"
+            ,multiple: false
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+            }
+            ,done: function(res){
+                if(res.code==0){
+                    layui.msg(res.msg);
+                    return false;
+                }
+                var src=res.data.src;
+                var html = '<div class="layui-upload-box">';
+                html +='<img src="..'+ src +'" alt="" style="max-width: 200px" class="layui-upload-img">';
+                html +='<input type="hidden" name="contrast" value="'+src+'"/>';
+                html +='<img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">';
+                html +='</div>';
+                $('#demo3').html(html);
+            }
+        });
+
+
+        upload.render({
+            elem: '#test4'
+            ,url: 'upload.php?act=upload'
+            ,field:"file"
+            ,accept:"images"
+            ,multiple: false
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+            }
+            ,done: function(res){
+                if(res.code==0){
+                    layui.msg(res.msg);
+                    return false;
+                }
+                var src=res.data.src;
+                var html = '<div class="layui-upload-box">';
+                html +='<img src="..'+ src +'" alt="" style="max-width: 200px" class="layui-upload-img">';
+                html +='<input type="hidden" name="process" value="'+src+'"/>';
+                html +='<img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">';
+                html +='</div>';
+                $('#demo4').html(html);
+            }
+        });
+
+        upload.render({
+            elem: '#test5'
+            ,url: 'upload.php?act=upload'
+            ,field:"file"
+            ,accept:"images"
+            ,multiple: true
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+            }
+            ,done: function(res){
+                if(res.code==0){
+                    layui.msg(res.msg);
+                    return false;
+                }
+                var l=$('#demo5').find('.layui-upload-box').length;
+                var i=l;
+                var src=res.data.src;
+                var html = '<div class="layui-upload-box">';
+                html +='<img src="..'+ src +'" alt="" style="max-width: 200px" class="layui-upload-img">';
+                html +='<input type="hidden" name="point['+i+'][img]" value="'+src+'"/>';
+                html +='<img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">';
+                html +='<br>';
+                html +='<span>标题</span><br><textarea name="point['+i+'][title]" autocomplete="off" rows="3" ></textarea>';
+                html +='<br>';
+                html +='<span>简介</span><br><textarea name="point['+i+'][des]" autocomplete="off" rows="3"></textarea>';
+                html +='</div>';
+                $('#demo5').append(html);
+            }
+        });
+
+        upload.render({
+            elem: '#test6'
+            ,url: 'upload.php?act=upload'
+            ,field:"file"
+            ,accept:"images"
+            ,multiple: true
+            ,before: function(obj){
+                //预读本地文件示例，不支持ie8
+            }
+            ,done: function(res){
+                if(res.code==0){
+                    layui.msg(res.msg);
+                    return false;
+                }
+                var l=$('#demo6').find('.layui-upload-box').length;
+                var i=l;
+                var src=res.data.src;
+                var html = '<div class="layui-upload-box">';
+                html +='<img src="..'+ src +'" alt="" style="max-width: 200px" class="layui-upload-img">';
+                html +='<input type="hidden" name="get['+i+'][img]" value="'+src+'"/>';
+                html +='<img src="../themes/default/image/close.png" onclick="removeImg(this)" class="close">';
+                html +='<br>';
+                html +='<span>标题</span><br><textarea name="get['+i+'][title]" autocomplete="off" rows="3" ></textarea>';
+                html +='<br>';
+                html +='<span>简介</span><br><textarea name="get['+i+'][des]" autocomplete="off" rows="3"></textarea>';
+
+                html +='</div>';
+                $('#demo6').append(html);
+            }
+        });
+    });
+    function removeImg(obj) {
+        var url=$(obj).prev().val();
+        $.get('upload.php?act=del',{"url":url},function (res) {
+            if(res.code==1){
+                alert(res.msg);
+            }else if(res.code==0){
+                $(obj).parent().remove();
+            }
+        },"JSON");
+
+    }
+</script>
+{insert_scripts files="validator.js,tab.js"}
+
+{include file="pagefooter.htm"}

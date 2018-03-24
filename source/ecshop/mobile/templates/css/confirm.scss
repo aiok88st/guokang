@@ -1,0 +1,309 @@
+$black:#555555;
+$blue:#0068b7;
+$e4:#e4e4e4;
+$red:#f81200;
+$color8:#888888;
+body{
+    background-color: #F4F4F4;
+}
+#pay{
+    .addressBox{
+        display: block;
+        width: 100%;    
+        padding: 0.2rem 0 0.2rem;
+        background: url(../img/return.png) no-repeat 95.335% center;
+        background-size: 2%;
+        background-color: #f4f4f4;
+        .address{
+            width: 82%;
+            margin-left: 2.665%;
+            .arLeft,.arRight{
+                font-size: 0.28rem;
+                color: $black;
+                line-height: 0.6rem;
+            }
+            .arBottom{
+                font-size: 0.26rem;
+                color: #888888;
+                line-height: 0.36rem;
+                text-align: justify;
+                margin: 0.2rem 0 0.3rem;
+            }  
+        }
+        >img{
+                width: 100%;
+            }
+    }
+    .invoices{
+        background-color: white;
+        width: 100%;
+        padding-bottom: 0.4rem;
+        margin-bottom: 0.2rem;
+        .iInput{
+           p{
+               font-size: 0.26rem;
+               color: $black;
+               line-height: 0.6rem;
+               span{
+                   color: #f81200;
+               }
+               
+           }
+           input{
+                   font-size: 0.26rem;
+                   width: 100%;
+                   border: 1px solid $e4;
+                   height: 0.7rem;
+                   display: block;
+                   text-indent:0.2rem ;
+               }
+        }
+    }
+}
+.ptitle {
+    line-height: 0.9rem;
+    font-size: 0.26rem;
+    color: #333333;
+    border-bottom: 1px solid $e4;
+}
+
+.pTwoBtn {
+    padding: 0.4rem 0 0.2rem;
+    button {
+        width: 28%;
+        line-height: 0.7rem;
+        color: $black;
+        background-color: transparent;
+        border: 1px solid $e4;
+        border-radius: 5px;
+        display: block;
+        margin-right: 4.2%;
+        font-size: 0.26rem;
+    }
+    .cBtn {
+        border-color: $blue;
+        color: $blue;
+    }
+}
+.payMethods{
+    background-color: white;
+    padding-bottom: 0.4rem ;
+    margin-bottom: 0.2rem;
+    .pTwoBtn{
+        padding: 0.4rem 0 0rem;
+    }
+    .mtdBox{
+        width: 100%;
+        position: relative;
+        padding-top: 0.2rem;
+        >p{
+            position: absolute;
+            left: 0.2rem;
+            top: 0.33rem;
+            font-size: 0.26rem;
+            line-height:0.8rem ;
+            color: #888888;
+        }
+        >img{
+            width: 100%;
+        }
+    }
+}
+.payList{
+    background-color: white;
+    margin-bottom: 0.2rem;
+    .listChild{
+        padding: 0.3rem 0;
+        border-bottom: 1px solid $e4;
+    }
+    .listChild:nth-last-child(1){
+        border-bottom: 0px;
+    }
+    .lcLeft{
+        width: 24%;
+        >img{
+            width: 100%;
+        }
+    }
+    .lcRight{
+        margin-left: 5.6%;
+        width: 70.4%;
+        position: relative;
+        ul li{
+            p{
+                font-size: 0.26rem;
+                line-height: 0.26rem;
+                color: $black;
+            }
+        }
+        ul li:nth-child(2){
+            p{
+                color: $red;
+                font-weight: bold;
+                margin: 0.3rem 0 0;
+            }
+        }
+        span{
+            font-size: 0.26rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: $color8;
+            line-height: 0.26rem;
+        }
+    }
+}
+.message{
+    background-color: white;
+    margin-bottom: 0.2rem;
+    padding-bottom: 0.4rem;
+}
+.messageBox{
+    .mbInput{
+        margin-top: 0.4rem;
+        .mbLeft{
+            width: 18%;
+            font-size: 0.26rem;
+            position: relative;
+            p{
+                text-align-last: justify;
+                line-height: 0.7rem;
+                color: $black;
+            }
+            span{
+                position: absolute;
+                left: 100%;
+                top: 0;
+                line-height: 0.7rem;
+                text-align: left;
+                text-align-last: left;
+            }
+        }
+        .mbRight{
+            width: 77%;
+            margin-left: 5%;
+            font-size: 0.26rem;
+            >div{
+                width: 100%;
+                margin-left: -2px;
+                border: 1px solid $e4;
+                position: relative;
+                height: 100%;
+                p{
+                    width: 90%;
+                    height: 100%;
+                    margin-left: 5%;
+                    line-height: 0.7rem;
+                    font-size: 0.26rem;
+                    color: $color8;
+                }
+                select{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+                    opacity: 0;
+                }
+            }
+            .moreR{
+                background: url(../img/return.png)no-repeat 95% center;
+                background-size: 2.8%; 
+            }
+            button {
+                width: 36%;
+                line-height: 0.55rem;
+                color: $black;
+                background-color: transparent;
+                border: 1px solid $e4;
+                border-radius: 5px;
+                display: block;
+                margin-right: 4.2%;
+                font-size: 0.26rem;
+                margin-top: 0.0525rem;
+            }
+            button:nth-child(1){
+                margin-left: -1px;
+            }
+            .cBtn{
+                border-color: $blue;
+                color: $blue;
+            }
+            >.clearl{
+                height: 0;
+                border: 0;
+            }
+            input{
+//              line-height: 0.7rem;
+                background-color: transparent;
+                height: 100%;
+                width: 90%;
+                margin-left: 5%;
+                display: block;
+                font-size: 0.26rem;
+                border: 0;
+            }
+            
+        }
+    }
+}
+$l45:0.4rem;
+.details{
+    background-color: white;
+    padding-bottom: 0.2rem;
+    margin-bottom: 0.2rem;
+    .messageBox .mbInput .mbLeftp p{
+        line-height: $l45;
+        padding: 0.075rem 0;
+    }
+    .messageBox ul li:nth-child(1) .mbInput{
+        margin: 0.2rem 0 0rem;
+    }
+    .messageBox ul li .mbInput{
+        margin-top: 0;
+    }
+    .messageBox .mbInput .mbLeftp span{
+        line-height: 0.5rem;
+    }
+    .messageBox .mbInput .mbRightp p{
+        line-height: $l45;
+        padding: 0.075rem 0;
+        color: #333333;
+        margin-left: 0.2rem;
+    }
+}
+.money{
+    background-color: white;
+    margin-bottom: 0.2rem;
+    .mnyBox{
+        line-height: 0.9rem;
+        font-size: 0.26rem;
+        color: #333333;
+        border-bottom: 1px solid #e4e4e4;
+        .box{
+            p:nth-child(1){
+                color: #888888;
+            }
+            .redM{
+                color: $red;
+                font-weight: bold;
+                font-size: 0.28rem;
+            }
+        }
+        
+    }
+}
+.crBtn{
+    background-color: white;
+    padding: 0.3rem 0;
+    button{
+        width: 86.67%;
+        
+    }
+    button:nth-child(1){
+        margin-bottom: 0.2rem;
+    }
+}
+
+

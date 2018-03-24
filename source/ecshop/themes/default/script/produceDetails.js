@@ -1,22 +1,8 @@
 $(function(){
-	$('section').width($(window).width());
-	$('section').height($(window).height());
-	$('.section1').css('margin-left',-($('.section1').children('img').width()-$(window).width())/2+'px');
-	$('.section4').css('margin-left',-($('.section4').children('img').width()-$(window).width())/2+'px');
-	$('.scBox1').css('margin-top',-$('.scBox1').height()/2+'px');
-	$('#server .serverTitle p').css({'line-height':$('#server .serverTitle').height()/2+'px','padding-top':$('#server .serverTitle').height()/2+'px'});
-	$('#server .serverTitle1 p').css({'line-height':$('#server .serverTitle1').height()+'px','padding-top':0+'px'});
-	$(window).resize(function(){
-		$('section').width($(window).width());
-		$('section').height($(window).height());
-		$('.section1').css('margin-left',-($('.section1').children('img').width()-$(window).width())/2+'px');
-		$('.section4').css('margin-left',-($('.section4').children('img').width()-$(window).width())/2+'px');
-		$('.scBox1').css('margin-top',-$('.scBox1').height()/2+'px');
-		$('#server .serverTitle p').css({'line-height':$('#server .serverTitle').height()/2+'px','padding-top':$('#server .serverTitle').height()/2+'px'});
-		$('#server .serverTitle1 p').css({'line-height':$('#server .serverTitle1').height()+'px','padding-top':0+'px'});
-	});
+
+
 	var tLength = $('.swiperBtnTop').children('a').length;
-	console.log(tLength);
+
 	//实例化轮播图
 	var mySwiperTop = new Swiper('.swiper-container-top', {
 		loop: true,
@@ -25,17 +11,25 @@ $(function(){
 		autoplayDisableOnInteraction : true,
 //		autoplay:5000,
 		onInit: function(swiper){
-			
+            var sindex=swiper.activeIndex;
+            $('.swiperBtnTop').children('a').eq(sindex).find('img').attr('src','themes/default/image/swiperBtnActive.png');
+            $('.swiperBtnTop').children('a').eq(sindex).siblings('a').find('img').attr('src','themes/default/image/swiperBtn.png');
+
+            $('.point_title').eq(sindex).show();
+            $('.point_des').eq(sindex).show();
 		},
 		onSlideChangeEnd:function(swiper){
-			var sindex = swiper.activeIndex!=0?swiper.activeIndex%tLength-1:tLength-1;
-			$('.swiperBtnTop').children('a').eq(sindex).find('img').attr('src','image/swiperBtnActive.png');
-			$('.swiperBtnTop').children('a').eq(sindex).siblings('a').find('img').attr('src','image/swiperBtn.png');
+            var sindex=swiper.activeIndex;
+			$('.swiperBtnTop').children('a').eq(sindex).find('img').attr('src','themes/default/image/swiperBtnActive.png');
+			$('.swiperBtnTop').children('a').eq(sindex).siblings('a').find('img').attr('src','themes/default/image/swiperBtn.png');
+
+            $('.point_title').eq(sindex).show().siblings().hide();
+            $('.point_des').eq(sindex).show().siblings().hide();
 		}
 	});
 	$('.swiperBtnTop').children('a').click(function(){
 		var index = $(this).index();
-		mySwiperTop.slideTo(index+1);
+		mySwiperTop.slideTo(index);
 	});
 	var tLength = $('.swiperBtnBottom').children('a').length;
 	var mySwiperBottom = new Swiper('.swiper-container-bottom', {
@@ -45,16 +39,26 @@ $(function(){
 		autoplayDisableOnInteraction : true,
 //		autoplay:5000,
 		onInit: function(swiper){
+            var sindex = swiper.activeIndex;
+            $('.swiperBtnBottom').children('a').eq(sindex).find('img').attr('src','themes/default/image/swiperBtnActive.png');
+            $('.swiperBtnBottom').children('a').eq(sindex).siblings('a').find('img').attr('src','themes/default/image/swiperBtn.png');
+
+            $('.get_title').eq(sindex).show();
+            $('.get_des').eq(sindex).show();
+
 		},
 		onSlideChangeEnd:function(swiper){
-			var sindex = swiper.activeIndex!=0?swiper.activeIndex%tLength-1:tLength-1;
-			$('.swiperBtnBottom').children('a').eq(sindex).find('img').attr('src','image/swiperBtnActive.png');
-			$('.swiperBtnBottom').children('a').eq(sindex).siblings('a').find('img').attr('src','image/swiperBtn.png');
+			var sindex = swiper.activeIndex;
+			$('.swiperBtnBottom').children('a').eq(sindex).find('img').attr('src','themes/default/image/swiperBtnActive.png');
+			$('.swiperBtnBottom').children('a').eq(sindex).siblings('a').find('img').attr('src','themes/default/image/swiperBtn.png');
+
+            $('.get_title').eq(sindex).show().siblings().hide();
+            $('.get_des').eq(sindex).show().siblings().hide();
 		}
 	});
 	$('.swiperBtnBottom').children('a').click(function(){
 		var index = $(this).index();
-		mySwiperBottom.slideTo(index+1);
+		mySwiperBottom.slideTo(index);
 	});
 	var bodyNav = 121;
 	$(window).scroll(function(){

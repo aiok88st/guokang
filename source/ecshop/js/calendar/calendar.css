@@ -234,3 +234,8 @@ div.calendar {
 .calendar td.time span.active {
   background: url("active-bg.gif"); color: #fff;
 }
+
+/*常见问题*/
+.faq_table{
+  border-bottom: 1px solid #ccc;
+}

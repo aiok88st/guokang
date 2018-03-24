@@ -6,7 +6,7 @@
         <ul>
             <!--{foreach from=$catList item=vo}-->
             <li <!-- {if $cat_id eq $vo.cat_id} -->class="indexLiActive"<!-- {/if} -->>
-            <a href="{$vo.cat_link}&cat_id={$vo.cat_id}">{$vo.cat_name}</a>
+            <a href="{$vo.cat_link}-{$vo.cat_id}.html">{$vo.cat_name}</a>
             <span></span>
             </li>
             <!--{/foreach}-->

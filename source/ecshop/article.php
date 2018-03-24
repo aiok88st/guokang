@@ -17,6 +17,8 @@ define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
 
+include_once(dirname(__FILE__)  . '/includes/lib_model.php');
+$model=new Model;
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
@@ -42,13 +44,18 @@ $cache_id = sprintf('%X', crc32($_REQUEST['id'] . '-' . $_CFG['lang']));
 if (!$smarty->is_cached('newsDetails.dwt', $cache_id))
 {
     //最新新闻
-    $new = get_new_news_article(17);
-    $smarty->assign('new', $new);
+    $new = get_new_news_article2(17,'cat_id IN (6,46)');
+
     /* 文章详情 */
     $article = get_article_info($article_id);
     //面包屑
     $cat = get_cat_info($article['cat_id']);
-    $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="article_cat.php?id=6">新闻资讯 &gt;</a></li><li><a href="article_cat.php?id='.$cat['cat_id'].'">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">新闻详情</a></li>';
+
+
+
+    $url_html = '<li><a href="./index.html">首页 &gt;</a></li><li><a href="article_cat-6.html">新闻资讯 &gt;</a></li><li><a href="article_cat-'.$cat['cat_id'].'.html">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">新闻详情</a></li>';
+
+
     $smarty->assign('url_html', $url_html);
 
     if (empty($article))
@@ -86,8 +93,8 @@ if (!$smarty->is_cached('newsDetails.dwt', $cache_id))
     }
 
     $smarty->assign('article',      $article);
-    $smarty->assign('keywords',     htmlspecialchars($article['keywords']));
-    $smarty->assign('description', htmlspecialchars($article['description']));
+
+
 
     $catlist = array();
     foreach(get_article_parent_cats($article['cat_id']) as $k=>$v)
@@ -97,9 +104,14 @@ if (!$smarty->is_cached('newsDetails.dwt', $cache_id))
 
     assign_template('a', $catlist);
 
-    $position = assign_ur_here($article['cat_id'], $article['title']);
+
+    $smarty->assign('keywords',     htmlspecialchars($article['keywords']));
+    $smarty->assign('description', htmlspecialchars($article['description']));
+
+    $position = assign_ur_here2($article['cat_id'], $article['title']);
+
     $smarty->assign('page_title',   $position['title']);    // 页面标题
-    $smarty->assign('ur_here',      $position['ur_here']);  // 当前位置
+    $smarty->assign('url_html',      $position['ur_here']);  // 当前位置
     $smarty->assign('comment_type', 1);
 
     /* 相关商品 */
@@ -114,7 +126,7 @@ if (!$smarty->is_cached('newsDetails.dwt', $cache_id))
     if (!empty($next_article))
     {
         $next_article['title'] = mb_substr($next_article['title'],0,12,'utf-8').'...';
-        $next_article['url'] = build_uri('article', array('aid'=>$next_article['article_id']), $next_article['title']);
+        $next_article['url'] = build_uri('article', array('aid'=>$next_article['article_id']));
     }else{
         $next_article = '';
     }
@@ -125,12 +137,36 @@ if (!$smarty->is_cached('newsDetails.dwt', $cache_id))
     {
         $prev_article = $db->getRow("SELECT article_id, title FROM " .$ecs->table('article'). " WHERE article_id = $prev_aid");
         $prev_article['title'] = mb_substr($prev_article['title'],0,12,'utf-8').'...';
-        $prev_article['url'] = build_uri('article', array('aid'=>$prev_article['article_id']), $prev_article['title']);
+        $prev_article['url'] = build_uri('article', array('aid'=>$prev_article['article_id']));
     }else{
         $prev_article = '';
     }
     $smarty->assign('prev_article', $prev_article);
 
+    /*相关文章*/
+    $cat_id=$article['cat_id'];
+    $cat_name=$model->table($ecs->table('article_cat'))->where('cat_id='.$cat_id)->value('cat_name');
+
+
+
+
+    $new_article_list=$model->table($ecs->table('article'))->where('`cat_id`='.$cat_id)->order('article_id desc')->limit(6)->select();
+
+    $more=array(
+        42=>'case.html',
+
+    );
+
+    if($cat_id==42){
+        $smarty->assign('cat_name',$cat_name);
+        $smarty->assign('new_article_list',$new_article_list);
+    }else{
+        $smarty->assign('new_article_list', $new);
+    }
+
+    $more_url=$more[$cat_id]?$more[$cat_id]:'article_cat-6.html';
+    $smarty->assign('more_url',$more_url);
+    /*相关文章END*/
 
     assign_dynamic('article');
 }

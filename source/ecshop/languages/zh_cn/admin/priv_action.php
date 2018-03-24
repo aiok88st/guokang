@@ -26,6 +26,12 @@ $_LANG['db_manage'] = '数据库管理';
 $_LANG['sms_manage'] = '短信管理';
 $_LANG['lead_manage'] = '移动版管理';
 $_LANG['certificate_manage'] = '云服务中心';
+$_LANG['massge'] = '网站留言管理';
+
+//网站留言管理
+$_LANG['policy'] = '极速投保';
+$_LANG['policy_type'] = '极速投保需求编辑';
+$_LANG['apply'] = '免费申请';
 
 //商品管理部分的权限
 $_LANG['goods_manage'] = '商品添加/编辑';
@@ -36,7 +42,10 @@ $_LANG['attr_manage'] = '商品属性管理';
 $_LANG['brand_manage'] = '商品品牌管理';
 $_LANG['comment_priv'] = '用户评论管理';
 $_LANG['goods_type'] = '商品类型';
-$_LANG['tag_manage'] = '标签管理';
+
+$_LANG['goods_tag'] = '商品标签管理';
+
+$_LANG['tag_manage'] = '会员商品标签';
 $_LANG['goods_auto'] = '商品自动上下架';
 $_LANG['topic_manage'] = '专题管理';
 $_LANG['virualcard'] = '虚拟卡管理';
@@ -45,6 +54,9 @@ $_LANG['goods_export'] = '商品批量导出';
 $_LANG['goods_batch'] = '商品批量上传/修改';
 $_LANG['gen_goods_script'] = '生成商品代码';
 $_LANG['suppliers_goods'] = '供货商商品管理';
+
+$_LANG['doctor'] = '核心团队管理';
+
 
 //文章管理部分的权限
 $_LANG['article_cat'] = '文章分类管理';

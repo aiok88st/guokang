@@ -1,0 +1,131 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<link rel="stylesheet" href="themes/default/scss/expert.css?v=1" />
+<script type="text/javascript">
+    var attr=new Array();
+</script>
+
+<div id="banner" align="center">
+    <img src="themes/default/image/expertBanner.jpg" />
+</div>
+<!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
+<!--类型选择-->
+<div id="typeList" class="w12">
+    <!--{foreach from=$attr item=item key=key}-->
+    <div class="typeList">
+        <div class="tlLeft floatl">
+            <p>{$item.name}</p>
+        </div>
+        <div class="tlRight floatl" style="overflow: hidden">
+            <div>
+
+                <a href="javascript:;" data-key="{$key}" data-value="0"  class="floatl attr_a attr_a_{$key} aActive">全部</a>
+                <!--{foreach from=$item.child item=v}-->
+                <a href="javascript:;" data-key="{$key}" data-value="{$v}" class="floatl attr_a {if in_array(trim($v),$attr_value)}aActive{/if}">{$v}</a>
+                {if in_array(trim($v),$attr_value)}
+                <script type="text/javascript">
+                    attr[{$key}]='{$v}';
+                    $('.attr_a_{$key}').removeClass('aActive');
+                </script>
+                {/if}
+                <!--{/foreach}-->
+
+                <div class="clearl"></div>
+            </div>
+
+        </div>
+        <div class="more floatl" style="display: none">
+            <p>更多</p>
+        </div>
+        <div class="clearl"></div>
+    </div>
+    <!--{/foreach}-->
+    <script type="text/javascript">
+        $(function(){
+            $('.tlRight').each(function(){
+                if($(this).height()>64){
+                    $(this).css('height','64px');
+                    $(this).next('.more').show();
+                }
+            });
+
+            $('.typeList .more').on('click',function(){
+                var tlist=$(this).prev();
+                var t_h=tlist.css('height');
+                if(t_h=="64px"){
+                    tlist.css('height','auto');
+                    $(this).children('p').text('收起').addClass('p2');
+
+                }else{
+                    tlist.css('height','64px');
+                    $(this).children('p').text('更多').removeClass('p2');
+                }
+
+            });
+            $('.attr_a').on('click',function(){
+                var key=$(this).attr('data-key');
+                var val=$(this).attr('data-value');
+                if(val==0){
+                    attr[key]='';
+                }else{
+                    attr[key]=val;
+                }
+
+                var a=attr.join(',');
+
+                window.location.href='expert-{$cat_id}-attr'+a+'.html';
+            })
+
+        })
+    </script>
+</div>
+<!--教授-->
+
+<!--{foreach from=$pager.lists key=key item=item}-->
+<!--{if $key lt 10}-->
+<!--{if $key eq 0 }-->
+<div id="profession" class="w12">
+<!--{/if}-->
+    <!--{if $item.cat_id eq 7}-->
+    <div class="floatl pfBox" style="height: 350px" onclick="window.location.href='expert-act_details-{$item.id|my_intval}.html'">
+      <!--{else}-->
+        <div class="floatl pfBox"  onclick="window.location.href='expert-act_details-{$item.id|my_intval}.html'">
+        <!--{/if}-->
+        <ul>
+            <li>
+                <div class="pfHead">
+                    <img src=".{$item.thumb}" onerror="this.src='themes/default/img/develop.jpg'" />
+                </div>
+            </li>
+            <li>
+                <p class="pfName">{$item.name}&nbsp;{$item.job}</p>
+            </li>
+            <li>
+                <span></span>
+            </li>
+            <li>
+                <p class="pfDetails">{$item.unit}  {$item.position}</p>
+            </li>
+            <li>
+                <a href="expert-act_details-{$item.id|my_intval}.html">查看详情</a>
+            </li>
+        </ul>
+    </div>
+<!--{if $key eq 9 }-->
+    <div class="clearl"></div>
+</div>
+<!--教授名单-->
+<div id="professionList" class="w12">
+    <div class="pTable">
+<!--{/if}-->
+
+<!--{else /}-->
+        <a href="expert-act_details-{$item.id|my_intval}.html" class="floatl">{$item.name}</a>
+        <!--{/if}-->
+        <!--{/foreach}-->
+        <div class="clearl"></div>
+    </div>
+</div>
+
+<!-- #BeginLibraryItem "/library/pages2.lbi" --><!-- #EndLibraryItem -->
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="themes/default/script/expert.js" ></script>

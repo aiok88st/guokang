@@ -18,17 +18,24 @@ if (!defined('IN_ECS'))
     die('Hacking attempt');
 }
 
-$modules['01_certificate_manage']['certificate']        = 'certificate.php?act=list_edit';//授权，绑定矩阵
-$modules['01_certificate_manage']['service_market']     = 'service_market.php';//服务市场
-$modules['01_certificate_manage']['sms_resource']     = 'sms_resource.php';//短信平台
-$modules['01_certificate_manage']['logistic_tracking']  = 'logistic_tracking.php';//云起物流
+$modules['00_certificate_manage']['certificate']        = 'certificate.php?act=list_edit';//授权，绑定矩阵
+//$modules['01_certificate_manage']['service_market']     = 'service_market.php';//服务市场
+$modules['00_certificate_manage']['sms_resource']     = 'sms_resource.php';//短信平台
+$modules['00_certificate_manage']['logistic_tracking']  = 'logistic_tracking.php';//云起物流
+
+//客户留言管理
+$modules['01_massge']['01_policy']="policy.php";
+$modules['01_massge']['02_apply']="apply.php";
+
 
 $modules['02_cat_and_goods']['01_goods_list']       = 'goods.php?act=list';         // 商品列表
 $modules['02_cat_and_goods']['02_goods_add']        = 'goods.php?act=add';          // 添加商品
 $modules['02_cat_and_goods']['03_category_list']    = 'category.php?act=list';
 $modules['02_cat_and_goods']['05_comment_manage']   = 'comment_manage.php?act=list';
-$modules['02_cat_and_goods']['06_goods_brand_list'] = 'brand.php?act=list';
+//$modules['02_cat_and_goods']['06_goods_brand_list'] = 'brand.php?act=list';
 $modules['02_cat_and_goods']['08_goods_type']       = 'goods_type.php?act=manage';
+$modules['02_cat_and_goods']['09_goods_tag']        ="goods_tag.php?act=list";
+
 $modules['02_cat_and_goods']['11_goods_trash']      = 'goods.php?act=trash';        // 商品回收站
 $modules['02_cat_and_goods']['12_batch_pic']        = 'picture_batch.php';
 $modules['02_cat_and_goods']['13_batch_add']        = 'goods_batch.php?act=add';    // 商品批量上传
@@ -42,23 +49,22 @@ $modules['02_cat_and_goods']['52_virtual_card_change'] = 'virtual_card.php?act=c
 $modules['02_cat_and_goods']['goods_auto']             = 'goods_auto.php?act=list';
 
 
-$modules['03_doctor']['02_doctorcat_list']             = 'doctorcat.php?act=list';//专家-科室分类
-$modules['03_doctor']['03_doctor_list']             = 'doctor.php?act=list'; //专家列表
+
 
 
 
 //$modules['04_promotion']['02_snatch_list']          = 'snatch.php?act=list';
-$modules['04_promotion']['04_bonustype_list']       = 'bonus.php?act=list';
-$modules['04_promotion']['06_pack_list']            = 'pack.php?act=list';
-$modules['04_promotion']['07_card_list']            = 'card.php?act=list';
-$modules['04_promotion']['08_group_buy']            = 'group_buy.php?act=list';
-$modules['04_promotion']['09_topic']                = 'topic.php?act=list';
-$modules['04_promotion']['10_auction']              = 'auction.php?act=list';
-$modules['04_promotion']['12_favourable']           = 'favourable.php?act=list';
-$modules['04_promotion']['13_wholesale']            = 'wholesale.php?act=list';
-$modules['04_promotion']['14_package_list']         = 'package.php?act=list';
-//$modules['04_promotion']['ebao_commend']            = 'ebao_commend.php?act=list';
-$modules['04_promotion']['15_exchange_goods']       = 'exchange_goods.php?act=list';
+//$modules['04_promotion']['04_bonustype_list']       = 'bonus.php?act=list';
+//$modules['04_promotion']['06_pack_list']            = 'pack.php?act=list';
+//$modules['04_promotion']['07_card_list']            = 'card.php?act=list';
+//$modules['04_promotion']['08_group_buy']            = 'group_buy.php?act=list';
+//$modules['04_promotion']['09_topic']                = 'topic.php?act=list';
+//$modules['04_promotion']['10_auction']              = 'auction.php?act=list';
+//$modules['04_promotion']['12_favourable']           = 'favourable.php?act=list';
+//$modules['04_promotion']['13_wholesale']            = 'wholesale.php?act=list';
+//$modules['04_promotion']['14_package_list']         = 'package.php?act=list';
+////$modules['04_promotion']['ebao_commend']            = 'ebao_commend.php?act=list';
+//$modules['04_promotion']['15_exchange_goods']       = 'exchange_goods.php?act=list';
 
 
 $modules['05_order']['02_order_list']               = 'order.php?act=list';
@@ -84,6 +90,13 @@ $modules['07_stats']['sale_list']                   = 'sale_list.php?act=list';
 $modules['07_stats']['sell_stats']                  = 'sale_order.php?act=goods_num';
 $modules['07_stats']['report_users']                = 'users_order.php?act=order_num';
 $modules['07_stats']['visit_buy_per']               = 'visit_sold.php?act=list';
+
+
+$modules['07_doctor']['01_doctorcat_1']             = 'doctor.php?act=cat&type=1';//专家-科室分类
+$modules['07_doctor']['02_doctorcat_2']             = 'doctor.php?act=cat&type=2';//专家-科室分类
+$modules['07_doctor']['03_doctor_list']             = 'doctor.php?act=list'; //专家列表
+
+
 
 $modules['08_content']['03_article_list']           = 'article.php?act=list';
 $modules['08_content']['02_articlecat_list']        = 'articlecat.php?act=list';
@@ -127,11 +140,13 @@ $modules['12_system']['file_check']                 = 'filecheck.php';
 $modules['12_system']['021_reg_fields']             = 'reg_fields.php?act=list';
 
 
-$modules['13_template']['02_template_select']       = 'template.php?act=list';
-$modules['13_template']['03_template_setup']        = 'template.php?act=setup';
-$modules['13_template']['04_template_library']      = 'template.php?act=library';
-$modules['13_template']['05_edit_languages']        = 'edit_languages.php?act=list';
-$modules['13_template']['06_template_backup']       = 'template.php?act=backup_setting';
+
+
+//$modules['13_template']['02_template_select']       = 'template.php?act=list';
+//$modules['13_template']['03_template_setup']        = 'template.php?act=setup';
+//$modules['13_template']['04_template_library']      = 'template.php?act=library';
+//$modules['13_template']['05_edit_languages']        = 'edit_languages.php?act=list';
+//$modules['13_template']['06_template_backup']       = 'template.php?act=backup_setting';
 $modules['13_template']['mail_template_manage']     = 'mail_template.php?act=list';
 
 
@@ -158,11 +173,11 @@ $modules['17_email_manage']['magazine_list']        = 'magazine_list.php?act=lis
 $modules['17_email_manage']['attention_list']       = 'attention_list.php?act=list';
 $modules['17_email_manage']['view_sendlist']        = 'view_sendlist.php?act=list';
 
-$modules['18_lead_manage']['banner_mobile']        = 'mobile_setting.php?act=list';//移动端banner设置
-$modules['18_lead_manage']['lead']        = 'lead.php?act=list';//H5店铺二维码
-$modules['18_lead_manage']['leancloud']        = 'leancloud.php?act=list';//云推送管理
-$modules['18_lead_manage']['mobile_setting']        = 'ecmobile_setting.php?act=list';//移动版应用配置
-$modules['18_lead_manage']['h5_setting']        = 'h5_setting.php?act=list';//移动版应用配置
-$modules['18_lead_manage']['wxa_setting']        = 'wxa_setting.php?act=list';//小程序应用配置
+//$modules['18_lead_manage']['banner_mobile']        = 'mobile_setting.php?act=list';//移动端banner设置
+//$modules['18_lead_manage']['lead']        = 'lead.php?act=list';//H5店铺二维码
+//$modules['18_lead_manage']['leancloud']        = 'leancloud.php?act=list';//云推送管理
+//$modules['18_lead_manage']['mobile_setting']        = 'ecmobile_setting.php?act=list';//移动版应用配置
+//$modules['18_lead_manage']['h5_setting']        = 'h5_setting.php?act=list';//移动版应用配置
+//$modules['18_lead_manage']['wxa_setting']        = 'wxa_setting.php?act=list';//小程序应用配置
 
 ?>

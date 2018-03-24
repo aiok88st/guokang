@@ -1,0 +1,135 @@
+body {
+  background-color: #F4F4F4; }
+
+#payNow {
+  background-color: white;
+  margin-bottom: 0.2rem; }
+  #payNow .order {
+    padding: 0.5rem 0;
+    margin: 0 auto;
+    width: 72%;
+    position: relative; }
+    #payNow .order .oleft {
+      width: 30%; }
+      #payNow .order .oleft img {
+        width: 100%; }
+    #payNow .order .oRight {
+      width: 66%;
+      position: absolute;
+      top: 0;
+      left: 34%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      display: -webkit-flex;
+      -webkit-align-items: center;
+      -webkit-justify-content: center;
+      -webkit-flex-direction: column;
+      line-height: 0.38rem; }
+      #payNow .order .oRight ul Li:nth-child(1) {
+        font-size: 0.26rem;
+        color: #555555; }
+      #payNow .order .oRight ul Li:nth-child(2) {
+        font-size: 0.22rem;
+        color: #888888; }
+
+.mny {
+  width: 100%;
+  border-bottom: 1px solid #e4e4e4; }
+  .mny .box {
+    position: relative; }
+
+.ptitle {
+  line-height: 0.9rem;
+  font-size: 0.28rem;
+  color: #333333; }
+  .ptitle p:nth-child(2) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.26rem;
+    color: #888888; }
+    .ptitle p:nth-child(2) span {
+      color: #f81200;
+      font-weight: bold;
+      font-size: 0.28rem; }
+
+#payMethods {
+  background-color: white; }
+  #payMethods .method:nth-last-child(1) {
+    border-bottom: 0px; }
+  #payMethods .method {
+    border-bottom: 1px solid #e4e4e4; }
+    #payMethods .method p {
+      line-height: 0.9rem;
+      font-size: 0.26rem;
+      color: #333333;
+      width: 80%; }
+    #payMethods .method .zfb {
+      background: url(../img/noChoice.png) no-repeat right center;
+      background-size: 4.6%; }
+      #payMethods .method .zfb p {
+        background: url(../img/zfb.png) no-repeat left center;
+        background-size: 0.34rem;
+        text-indent: 0.4rem; }
+    #payMethods .method .wx {
+      background: url(../img/noChoice.png) no-repeat right center;
+      background-size: 4.6%; }
+      #payMethods .method .wx p {
+        background: url(../img/wx.png) no-repeat left center;
+        background-size: 0.34rem;
+        text-indent: 0.4rem; }
+    #payMethods .method .hasChoice {
+      background-image: url(../img/choice.png); }
+
+#payMoney {
+  padding: 0.2rem 0;
+  background-color: white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; }
+  #payMoney button {
+    width: 86.67%;
+    background-color: #f81200;
+    border-color: #f81200; }
+
+#success {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
+  -webkit-flex-direction: column; }
+  #success ul {
+    width: 100%;
+    line-height: 0.36rem; }
+    #success ul img {
+      width: 20.27%;
+      display: block;
+      margin: 0 auto; }
+    #success ul li:nth-child(2) {
+      margin-top: 0.1rem; }
+      #success ul li:nth-child(2) p {
+        font-size: 0.26rem;
+        color: #555555;
+        text-align: center; }
+    #success ul li:nth-child(3) p {
+      font-size: 0.22rem;
+      color: #888888;
+      text-align: center; }
+    #success ul a {
+      width: 36%;
+      border-radius: 0.35rem;
+      text-align: center;
+      line-height: 0.7rem;
+      margin-top: 0.2rem;
+      height: 0.7rem;
+      font-size: 0.28rem; }
+
+/*# sourceMappingURL=payNow.css.map */

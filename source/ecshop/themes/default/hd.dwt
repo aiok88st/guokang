@@ -1,0 +1,20 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+
+<link rel="stylesheet" href="themes/default/scss/knowZero.css?v=2" />
+
+        <div>
+            <div class="">
+                    <div class="fullContent">
+
+                        <p>{$article.content}</p>
+                     </div>
+                <div class="clearl"></div>
+            </div>
+
+        </div>
+		<!--免费申请-->
+<!-- #BeginLibraryItem "/library/hdappl.lbi" --><!-- #EndLibraryItem -->
+<script type="text/javascript" src="themes/default/script/know1.js" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+
+

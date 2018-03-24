@@ -1,62 +1,175 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>ECShop_mobile</title>
-</head>
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/productDetails.css">
+<script type="text/javascript" src="templates/lib/layui.js"></script>
+<style type="text/css">
+    .cjImg{
+        height: 1.2rem;
+    }
+    .wrapList{
+        font-size: 0.3rem;
+    }
+</style>
+<!--购物车购买栏-->
+<div class="bottomBar" style="display: none">
+    <img src="templates/img/bottomBar_icon.png">
+    <div class="buyBus">加入购物车</div>
+    <div class="buy selectBar">立即购买</div>
+</div>
 
-<body>
-<p align='left'>
-{$goods_info.goods_name}<br/>
---------------<br/>
-{if $goods_info.brand_id}
-    商品品牌:<a href='brands.php?b_id={$goods_info.brand_id}'>{$brand_name}</a><br/>
-{/if}
-商品编号:{$goods_info.goods_sn}<br/>
-商品分类:
-{foreach from=$cat_array item=cat_data}
-    <a href='category.php?c_id={$cat_data.cat_id}'>{$cat_data.cat_name}</a>-&gt;
-{/foreach}
-{$goods_info.goods_name}<br/>
-{if $goods_info.goods_number neq ""}商品库存：
-{if $goods_info.goods_number eq 0}
-已售完
-{else}
-{$goods_info.goods_number}
-{/if}<br />
-{/if}
-市场价格:{$goods_info.market_price}<br/>
-商品价格:{if $promote_price_org}{$goods_info.promote_price}{else}{$goods_info.shop_price_formated}{/if}<br/>
- <!-- {foreach from=$rank_prices item=rank_price key=key} 会员等级对应的价格-->
-       <strong>{$rank_price.rank_name}：</strong><font class="shop" id="ECS_RANKPRICE_{$key}">{$rank_price.price}</font><br />
-       <!--{/foreach}-->
-{if $goods_info.promote_price and $goods_info.gmt_end_time}促销价格:{$goods_info.promote_price}{/if}<br/>
-{foreach from=$specification item=spec key=spec_key}
-{$spec.name}:<br />
-  {if $spec.attr_type eq 1}
-    {foreach from=$spec.values item=value key=key}
-    <input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if}/>
-    {$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]<br />
-    {/foreach}
-    <input type="hidden" name="spec_list" value="{$key}" />
-  {else}
-    {foreach from=$spec.values item=value key=key}
-    <input type="checkbox" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}"/>
-    {$value.label} [{if $value.price gt 0}{$lang.plus}{elseif $value.price lt 0}{$lang.minus}{/if} {$value.format_price|abs}]<br />
-    {/foreach}
-    <input type="hidden" name="spec_list" value="{$key}" />
-  {/if}
-{/foreach}
-浏览次数:{$goods_info.click_count}<br/>
-商品说明:{$goods_info.goods_brief}<br/><br/>
-<a href='buy.php?id={$goods_id}'>购买此商品</a><br/>
-<a href='goods.php?act=view_img&amp;id={$goods_id}'>点击查看商品图片</a><br/>
-<a href='comment.php?g_id={$goods_id}'>商品评论({$comment.pager.record_count})</a><br/>
+    <div class="firstList">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {foreach from=$pictures item=item}
+                <div class="swiper-slide">
+                    <img src="/{$item.img_url}" />
+                </div>
+                {/foreach}
+            </div>
+        </div>
+        <div class="info">
+            <div class="name">{$goods_info.goods_name}</div>
+            <p class="intro">{$goods_info.goods_brief}</p>
+            <div class="pric">
+                <div class="price">
+                    <div style="display: inline-block;">
+                        {$goods_info.shop_price}元
+                    </div>
 
---------------<br/>
-<a href="javascript:history.back(-1)">回上一页</a><br/>
-<a href='index.php'>返回首页</a>
-{$footer}
-</p>
+                    <div class="oldPrice" style="position: static;display: inline-block;">
+                    &nbsp;&nbsp;市场价：<span>{$goods_info.market_price}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--概述 案例 评价-->
+    <div class="secondList" id="secondList">
+        <div class="tabList">
+            <div class="tab"><div class="select">概述</div></div>
+            <div class="tab"><div>案例</div></div>
+            <div class="tab"><div>评价</div></div>
+        </div>
+        <div class="wrapList" style="display: block;">
+            {$goods_info.goods_desc}
+        </div>
+        <div class="wrapList" >
+            <div id="newsList">
+                <div class="cjBottom">
+                    <div class="cjList">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="wrapList">
+
+            {if $comment}
+            <div class="title3" style="width: 100%;text-align: center;line-height: 1.2rem">
+                暂时没有评价
+            </div>
+<!--            <div class="good">-->
+<!---->
+<!--                <div class="pers">{$c4}%</div>-->
+<!--                <div class="good-left">-->
+<!--                    <span class="left-span1">购买后满意</span>-->
+<!--                    <span>{$cc}名用户投票</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="comment-content">-->
+<!--                <div class="con-info">-->
+<!--                    <div class="head">-->
+<!--                        <img src="img/head.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="wrap">-->
+<!--                        <div class="commentName">方新雄</div>-->
+<!--                        <p class="commentInfo">国康服务很好，我很感动!</p>-->
+<!--                        <div class="commentTime">2018-02-22</div>-->
+<!--                        <div class="relay-img">-->
+<!--                            <img src="img/img11.png" alt="">-->
+<!--                            <img src="img/img11.png" alt="">-->
+<!--                        </div>-->
+<!--                        <div class="commentReply">-->
+<!--                            <div class="reply-name">官方回复：</div>-->
+<!--                            <div class="reply-info">谢谢支持！</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div class="con-info">-->
+<!--                    <div class="head">-->
+<!--                        <img src="img/head.png" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="wrap">-->
+<!--                        <div class="commentName">方新雄</div>-->
+<!--                        <p class="commentInfo">国康服务很好，我很感动!</p>-->
+<!--                        <div class="commentTime">2018-02-22</div>-->
+<!--                        <div class="commentReply">-->
+<!--                            <div class="reply-name">官方回复：</div>-->
+<!--                            <div class="reply-info">谢谢支持！</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+            {else}
+            <div class="title3" style="width: 100%;text-align: center;line-height: 1.2rem">
+                暂时没有评价
+            </div>
+            {/if}
+        </div>
+
+    </div>
+{include file="/library/page_footer.html"}
+
+<script type="text/javascript">
+    $(function(){
+        $('.tabList .tab').on('click',function(){
+            var index=$(this).index();
+            $('.wrapList').hide();
+            $('.wrapList').eq(index).show();
+            $('.tab .select').removeClass('select');
+            $(this).children().addClass('select');
+        })
+    })
+    layui.use('flow', function(){
+        var $ = layui.jquery; //不用额外加载jQuery，flow模块本身是有依赖jQuery的，直接用即可。
+        var flow = layui.flow;
+        flow.load({
+            elem: '#newsList' //指定列表容器
+            ,done: function(page, next){ //到达临界点（默认滚动触发），触发下一页
+                var lis = [];
+                //以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
+                $.get('ajax.php?act=goods_article&goods_id={$goods_info.goods_id}&page='+page, function(res){
+                    //假设你的列表返回在data集合中
+                    var list=res.list;
+                    var html='';
+                    if(list.length>=1){
+                        for(item in list){
+                            if(list[item].article_id){
+                                html +='<a href="/mobile/article.php?id='+list[item].article_id+'" class="cjl">';
+                                html +=' <div class="cjImg">';
+                                html +='<img src="/'+list[item].file_url+'" onerror="this.src=\'/themes/default/img/develop.jpg\'"/>';
+                                html +='  </div>';
+                                html +='<div class="cjContent">';
+                                html +=' <p>'+list[item].title+'</p>';
+                                html +=' <p class="p1">'+list[item].add_time+'&nbsp;&nbsp;国康健康</p>';
+                                html +=' </div>';
+                                html +='</a>';
+                            }
+
+                        }
+                    }
+
+                    $('.cjList').append(html);
+                    //执行下一页渲染，第二参数为：满足“加载更多”的条件，即后面仍有分页
+                    //pages为Ajax返回的总页数，只有当前页小于总页数的情况下，才会继续出现加载更多
+                    next(lis.join(''), page < res.pages);
+                },'JSON');
+            }
+        });
+
+    });
+
+</script>
 </body>
 </html>

@@ -136,6 +136,10 @@ $_LANG['cfg_name']['send'] = '发送测试邮件';
 $_LANG['cfg_name']['send_service_email'] = '下订单时是否给客服发邮件';
 $_LANG['cfg_name']['show_goods_in_cart'] = '购物车里显示商品方式';
 $_LANG['cfg_name']['show_attr_in_cart'] = '购物车里是否显示商品属性';
+
+$_LANG['cfg_name']['shop_weibo']='微博二维码';
+$_LANG['cfg_name']['shop_weixin']='微信二维码';
+
 $_LANG['test_mail_title'] = '测试邮件';
 $_LANG['cfg_name']['email_content']  = '您好！这是一封检测邮件服务器设置的测试邮件。收到此邮件，意味着您的邮件服务器设置正确！您可以进行其它邮件发送的操作了！';
 $_LANG['cfg_name']['sms'] = '短信设置';
@@ -185,6 +189,8 @@ $_LANG['cfg_desc']['msn'] = '如果您有多个客服的MSN号码，请在每个
 $_LANG['cfg_desc']['ym'] = '如果您有多个客服的 Yahoo Messenger 号码，请在每个号码之间使用半角逗号（,）分隔。';
 $_LANG['cfg_desc']['ww'] = '如果您有多个客服的淘宝旺旺号码，请在每个号码之间使用半角逗号（,）分隔。';
 $_LANG['cfg_desc']['shop_logo'] = '请在上传前将图片的文件名命名为logo.gif';
+$_LANG['cfg_desc']['shop_weibo'] = '请在上传前将图片的文件名命名为weibo_er.gif';
+$_LANG['cfg_desc']['shop_weixin'] = '请在上传前将图片的文件名命名为weixin_er.gif';
 $_LANG['cfg_desc']['enable_gzip'] = '启用Gzip模式可压缩发送页面大小，加快网页传输。需要php支持Gzip。如果已经用Apache等对页面进行Gzip压缩，请禁止该功能。';
 $_LANG['cfg_desc']['skype'] = '如果您有多个客服的Skype号码，请在每个号码之间使用半角逗号（,）分隔。提示：你需要在你的Skype隐私设置中启用状态显示功能';
 $_LANG['cfg_desc']['attr_related_number'] = '在商品详情页面显示多少个属性关联的商品。';

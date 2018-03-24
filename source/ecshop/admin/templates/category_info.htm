@@ -16,6 +16,19 @@
         <input type='text' name='cat_name2' maxlength="20" value='{$cat_info.cat_name2|escape:html}' size='27' /> <font color="red"></font>
       </td>
     </tr>
+    <tr>
+      <td class="label">手机端标题:</td>
+      <td>
+        <input type='text' name='cat_name3' maxlength="20" value='{$cat_info.cat_name3|escape:html}' size='27' /> <font color="red"></font>
+      </td>
+    </tr>
+    <tr>
+      <td class="label">分类图标:</td>
+      <td>
+        <input type="file" name="thumb">
+      </td>
+    </tr>
+
       <tr>
         <td class="label">{$lang.parent_id}:</td>
         <td>
@@ -143,7 +156,12 @@
         <td><input type="text" name="keywords" value='{$cat_info.keywords}' size="50">
         </td>
       </tr>
-
+      <tr>
+         <td class="label">网页描述:</td>
+         <td>
+           <textarea name="description" id="" cols="48" rows="6">{$cat_info.description}</textarea>
+         </td>
+      </tr>
       <tr>
         <td class="label">{$lang.cat_desc}:</td>
         <td>

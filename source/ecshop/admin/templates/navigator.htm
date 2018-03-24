@@ -6,11 +6,26 @@
 {/if}
 <table cellspacing='1' cellpadding='3' id='list-table'>
 <tr>
-	<th>{$lang.item_name}</th><th>{$lang.item_ifshow}</th><th>{$lang.item_opennew}</th><th>{$lang.item_vieworder}</th><th>{$lang.item_type}</th><th width="60px">{$lang.handler}</th>
+	<th>{$lang.item_name}</th>
+    <th>上级导航</th>
+    <th>{$lang.item_ifshow}</th>
+    <th>{$lang.item_opennew}</th>
+    <th>{$lang.item_vieworder}</th>
+    <th>{$lang.item_type}</th>
+    <th width="60px">{$lang.handler}</th>
 </tr>
 {foreach from=$navdb item=val}
+
+
 <tr>
-	<td align="center"><!-- {if $val.id} -->{$val.name}<!-- {else} -->&nbsp;<!-- {/if} --></td>
+	<td align="left" style="text-align: left">
+        <!-- {if $val.id} -->
+
+        {$val.name}
+        <!-- {else} -->&nbsp;<!-- {/if} -->
+    </td>
+    <td>{$val.parent_}</td>
+
   <td align="center">
    <!-- {if $val.id} -->
    <img src="images/{if $val.ifshow eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_ifshow', {$val.id})" />
@@ -25,12 +40,40 @@
   <a href="navigator.php?act=del&id={$val.id}" onclick="return confirm('{$lang.ckdel}');" title="{$lang.ckdel}"><img src="images/no.gif" width="16" height="16" border="0" /><!-- {/if} --></a>
   </td>
 </tr>
+    <!--{if $val.chile}-->
+    {foreach from=$val.chile item=v}
+    <tr>
+        <td align="left" style="text-align: left">
+            <!-- {if $val.id} -->
+            &nbsp; &nbsp; &nbsp; &nbsp;
+            {$v.name}
+            <!-- {else} -->&nbsp;<!-- {/if} -->
+        </td>
+        <td>{$v.parent_}</td>
+
+        <td align="center">
+            <!-- {if $val.id} -->
+            <img src="images/{if $v.ifshow eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_ifshow', {$v.id})" />
+            <!-- {/if} --></td>
+        <td align="center">
+            <!-- {if $val.id} -->
+            <img src="images/{if $v.opennew eq '1'}yes{else}no{/if}.gif" onclick="listTable.toggle(this, 'toggle_opennew', {$v.id})" />
+            <!-- {/if} --></td>
+        <td align="center"><!-- {if $val.id} --><span onclick="listTable.edit(this, 'edit_sort_order', {$v.id})">{$v.vieworder}</span><!-- {/if} --></td>
+        <td align="center"><!-- {if $val.id} -->{$lang[$v.type]}<!-- {/if} --></td>
+        <td align="center"><!-- {if $val.id} --><a href="navigator.php?act=edit&id={$v.id}" title="{$lang.edit}"><img src="images/icon_edit.gif" width="16" height="16" border="0" /></a>
+            <a href="navigator.php?act=del&id={$v.id}" onclick="return confirm('{$lang.ckdel}');" title="{$lang.ckdel}"><img src="images/no.gif" width="16" height="16" border="0" /><!-- {/if} --></a>
+        </td>
+    </tr>
+    {/foreach}
+    <!--{/if}-->
+
 {foreachelse}
 <tr><td class="no-records" colspan="10">{$lang.no_records}</td></tr>
 {/foreach}
 </table>
 
-  <table cellpadding="4" cellspacing="0">
+  <table cellpadding="4" cellspacing="0" style="display: none">
     <tr>
       <td align="right">{include file="page.htm"}</td>
     </tr>

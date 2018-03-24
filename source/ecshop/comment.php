@@ -34,7 +34,10 @@ if (empty($_REQUEST['act']))
      * act 参数为空
      * 默认为添加评论内容
      */
-    $cmt  = $json->decode($_REQUEST['cmt']);
+    $post = trim(str_replace('\\','',$_REQUEST['cmt']),'""');
+
+    $cmt  = $json->decode($post);
+
     $cmt->page = 1;
     $cmt->id   = !empty($cmt->id)   ? intval($cmt->id) : 0;
     $cmt->type = !empty($cmt->type) ? intval($cmt->type) : 0;
@@ -51,12 +54,14 @@ if (empty($_REQUEST['act']))
     }
     else
     {
-        if ((intval($_CFG['captcha']) & CAPTCHA_COMMENT) && gd_version() > 0)
+        $no_captcha=1;
+        if ((intval($_CFG['captcha']) & CAPTCHA_COMMENT) && gd_version() > 0 && $no_captcha=0)
         {
             /* 检查验证码 */
             include_once('includes/cls_captcha.php');
 
             $validator = new captcha();
+
             if (!$validator->check_word($cmt->captcha))
             {
                 $result['error']   = 1;
@@ -67,6 +72,9 @@ if (empty($_REQUEST['act']))
                 $factor = intval($_CFG['comment_factor']);
                 if ($cmt->type == 0 && $factor > 0)
                 {
+
+
+
                     /* 只有商品才检查评论条件 */
                     switch ($factor)
                     {
@@ -128,6 +136,7 @@ if (empty($_REQUEST['act']))
                                 $result['message'] = $_LANG['comment_brought'];
                             }
                     }
+
                 }
 
                 /* 无错误就保存留言 */
@@ -139,6 +148,7 @@ if (empty($_REQUEST['act']))
         }
         else
         {
+
             /* 没有验证码时，用时间来限制机器人发帖或恶意发评论 */
             if (!isset($_SESSION['send_time']))
             {
@@ -287,14 +297,21 @@ function add_comment($cmt)
     $user_name = empty($cmt->username) ? $_SESSION['user_name'] : '';
     $email = htmlspecialchars($email);
     $user_name = htmlspecialchars($user_name);
+    $rec_id=isset($cmt->rec_id)?$cmt->rec_id:0;
 
     /* 保存评论内容 */
     $sql = "INSERT INTO " .$GLOBALS['ecs']->table('comment') .
-           "(comment_type, id_value, email, user_name, content, comment_rank, add_time, ip_address, status, parent_id, user_id) VALUES " .
-           "('" .$cmt->type. "', '" .$cmt->id. "', '$email', '$user_name', '" .$cmt->content."', '".$cmt->rank."', ".gmtime().", '".real_ip()."', '$status', '0', '$user_id')";
+           "(comment_type, id_value, email, user_name, content, comment_rank, add_time, ip_address, status, parent_id, user_id,rec_id) VALUES " .
+           "('" .$cmt->type. "', '" .$cmt->id. "', '$email', '$user_name', '" .$cmt->content."', '".$cmt->rank."', ".gmtime().", '".real_ip()."', '$status', '0', '$user_id','$rec_id')";
 
     $result = $GLOBALS['db']->query($sql);
+
     clear_cache_files('comments_list.lbi');
+    if(isset($cmt->rec_id)){
+        $sql="update ".$GLOBALS['ecs']->table('order_goods').' set `commint_status`=1 where `rec_id`='.$cmt->rec_id;
+        $GLOBALS['db']->query($sql);
+
+    }
     /*if ($status > 0)
     {
         add_feed($GLOBALS['db']->insert_id(), COMMENT_GOODS);

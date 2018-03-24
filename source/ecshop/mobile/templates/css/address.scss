@@ -1,0 +1,160 @@
+$black:#555555;
+$blue:#0068b7;
+.explain{
+    border-bottom: 1px solid #e4e4e4;
+    p{
+        font-size: 0.28rem;
+        line-height: 0.8rem;
+        color: $black;
+    }
+    a{
+        font-size: 0.28rem;
+        line-height: 0.8rem;
+        text-indent: 0.3rem;
+        background: url(../img/addAddress.png) no-repeat left 0.27rem;
+        background-size: 0.26rem;
+        color: $blue;
+    }
+}
+.addressBox{
+    .box{
+        position: relative;
+    }
+    .abLeft{
+        display: none;
+        width: 14%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background:url(../img/choice.png) no-repeat center center;
+        background-size: 40%;
+    }
+    .abRight{
+        width: 81.7%;
+        margin-left: 0%;
+        font-size: 0.28rem;
+        line-height: 0.4rem;
+        .arp1{
+            padding: 0.3rem 0 0.13rem;  
+        }
+        .arp2{
+            padding: 0.13rem 0 0.3rem; 
+            p{
+                text-align: justify;
+                color: #888888;
+            } 
+        }
+    }
+    .abBtn{
+        border-top: 1px solid #e4e4e4;
+    }
+}
+.sbChoice{
+    .abLeft{
+        display: block;
+    }
+    .abRight{
+        margin-left: 14%;
+    }
+}
+#address{
+    margin-bottom: 1.2rem;
+}
+.abBtn{
+    padding: 0.22rem 0;
+    button{
+        padding: 0 0.4rem;
+        display: block;
+        height: 0.3rem;
+        margin-right: 0.4rem;
+    }
+}
+.delete{
+    background: url(../img/delete.png) no-repeat center center;
+    background-size: auto 100%;
+}
+.edit{
+    background: url(../img/edit.png) no-repeat center center;
+    background-size: auto 100%;
+}
+.save{
+   
+}
+.saveBtn{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0.4rem;
+    a{
+        width: 86.67%;
+        margin: 0 auto;
+        height:0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        font-size:0.28rem;
+        color:white;
+        display:block;
+        background-color:$blue;
+        border-radius:5px;
+    }
+}
+#addAddress{
+    .box{
+        position: relative;
+    }
+    ul li{
+        height: 0.8rem;
+        line-height: 0.8rem;
+        font-size: 0.26rem; 
+        border-bottom: 1px solid #E4E4E4;
+        p{
+            position: absolute;
+            left: 0;
+            top: 0;  
+            width: 25%;
+        }
+        input{
+            width: 72%;
+            height: 0.8rem;
+            margin-left: 24%;
+            font-size: 0.26rem;
+            border: 0px;
+        }
+        textarea{
+            margin: 0.2rem 0;
+            width: 72%;
+            line-height: 0.4rem;
+            text-align: justify;
+            margin-left: 24%;
+            font-size: 0.26rem;
+            border: 0px;
+            resize: none;
+        }
+    }
+    ul li.textBox{
+        height: 1.2rem;
+        p{
+            margin: 0.2rem 0;
+            line-height: 0.4rem;
+        }
+    }
+}
+.set{
+    position: relative;
+}
+.setLeft{
+    width: 10%;
+    height: 1.2rem;
+    background:url(../img/choice.png) no-repeat center center;
+    background-size: 40%;
+    input{
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+}
+.setRight{
+    font-size: 0.26rem;
+    line-height: 1.2rem;
+}

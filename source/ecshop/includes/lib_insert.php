@@ -122,7 +122,7 @@ function insert_cart_info()
 
     $str = sprintf($GLOBALS['_LANG']['cart_info'], $number, price_format($amount, false));
 
-    return '<a href="flow.php" title="' . $GLOBALS['_LANG']['view_cart'] . '">' . $str . '</a>';
+    return '<a href="flow.php" title="' . $GLOBALS['_LANG']['view_cart'] . '"> <span class="glyphicon icon01" aria-hidden="true"></span> ' . $str . '</a>';
 }
 
 /**
@@ -178,11 +178,13 @@ function insert_ads($arr)
         $position_style = $row['position_style'];
         switch ($row['media_type'])
         {
+
             case 0: // 图片广告
+                $ad_height=$row['ad_height']==100?'':$row['ad_height'];
                 $src = (strpos($row['ad_code'], 'http://') === false && strpos($row['ad_code'], 'https://') === false) ?
                         DATA_DIR . "/afficheimg/$row[ad_code]" : $row['ad_code'];
                 $ads[] = "<a href='affiche.php?ad_id=$row[ad_id]&amp;uri=" .urlencode($row["ad_link"]). "'
-                target='_blank'><img src='$src' width='" .$row['ad_width']. "' height='$row[ad_height]'
+                target='_blank'><img src='$src' width='" .$row['ad_width']. "' height='$ad_height'
                 border='0' /></a>";
                 break;
             case 1: // Flash
@@ -191,6 +193,94 @@ function insert_ads($arr)
                 $ads[] = "<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" " .
                          "codebase=\"http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0\"  " .
                            "width='$row[ad_width]' height='$row[ad_height]'>
+                           <param name='movie' value='$src'>
+                           <param name='quality' value='high'>
+                           <embed src='$src' quality='high'
+                           pluginspage='http://www.macromedia.com/go/getflashplayer'
+                           type='application/x-shockwave-flash' width='$row[ad_width]'
+                           height='$row[ad_height]'></embed>
+                         </object>";
+                break;
+            case 2: // CODE
+                $ads[] = $row['ad_code'];
+                break;
+            case 3: // TEXT
+                $ads[] = "<a href='affiche.php?ad_id=$row[ad_id]&amp;uri=" .urlencode($row["ad_link"]). "'
+                target='_blank'>" .htmlspecialchars($row['ad_code']). '</a>';
+                break;
+        }
+    }
+    $position_style = 'str:' . $position_style;
+
+    $need_cache = $GLOBALS['smarty']->caching;
+    $GLOBALS['smarty']->caching = false;
+    $GLOBALS['smarty']->assign('ads', $ads);
+    $val = $GLOBALS['smarty']->fetch($position_style);
+
+    $GLOBALS['smarty']->caching = $need_cache;
+
+    return $val;
+}
+/*
+ * 自定义的广告位调用
+ * */
+function insert_ads2($arr){
+    static $static_res = NULL;
+
+    $arr['num'] = intval($arr['num']);
+    $arr['id'] = intval($arr['id']);
+    $time = gmtime();
+    if (!empty($arr['num']) && $arr['num'] != 1)
+    {
+        $sql  = 'SELECT a.ad_id, a.position_id, a.media_type, a.ad_link, a.ad_code, a.ad_name, p.ad_width, ' .
+            'p.ad_height, p.position_style, RAND() AS rnd ' .
+            'FROM ' . $GLOBALS['ecs']->table('ad') . ' AS a '.
+            'LEFT JOIN ' . $GLOBALS['ecs']->table('ad_position') . ' AS p ON a.position_id = p.position_id ' .
+            "WHERE enabled = 1 AND start_time <= '" . $time . "' AND end_time >= '" . $time . "' ".
+            "AND a.position_id = '" . $arr['id'] . "' " .
+            'ORDER BY rnd LIMIT ' . $arr['num'];
+        $res = $GLOBALS['db']->GetAll($sql);
+    }
+    else
+    {
+        if ($static_res[$arr['id']] === NULL)
+        {
+            $sql  = 'SELECT a.ad_id, a.position_id, a.media_type, a.ad_link, a.ad_code, a.ad_name, p.ad_width, '.
+                'p.ad_height, p.position_style, RAND() AS rnd ' .
+                'FROM ' . $GLOBALS['ecs']->table('ad') . ' AS a '.
+                'LEFT JOIN ' . $GLOBALS['ecs']->table('ad_position') . ' AS p ON a.position_id = p.position_id ' .
+                "WHERE enabled = 1 AND a.position_id = '" . $arr['id'] .
+                "' AND start_time <= '" . $time . "' AND end_time >= '" . $time . "' " .
+                'ORDER BY rnd LIMIT 1';
+            $static_res[$arr['id']] = $GLOBALS['db']->GetAll($sql);
+        }
+        $res = $static_res[$arr['id']];
+    }
+    $ads = array();
+    $position_style = '';
+
+    foreach ($res AS $row)
+    {
+        if ($row['position_id'] != $arr['id'])
+        {
+            continue;
+        }
+        $position_style = $row['position_style'];
+        switch ($row['media_type'])
+        {
+            case 0: // 图片广告
+                $src = (strpos($row['ad_code'], 'http://') === false && strpos($row['ad_code'], 'https://') === false) ?
+                    DATA_DIR . "/afficheimg/$row[ad_code]" : $row['ad_code'];
+                $ads[] = "<a href='affiche.php?ad_id=$row[ad_id]&amp;uri=" .urlencode($row["ad_link"]). "'
+                target='_blank'><img src='$src'  border='0' /></a>";
+
+                break;
+            case 1: // Flash
+                $src = (strpos($row['ad_code'], 'http://') === false && strpos($row['ad_code'], 'https://') === false) ?
+                    DATA_DIR . "/afficheimg/$row[ad_code]" : $row['ad_code'];
+                $ads[] = "<object classid=\"clsid:d27cdb6e-ae6d-11cf-96b8-444553540000\" " .
+                    "codebase=\"http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0\"  " .
+                    "width='$row[ad_width]' height='$row[ad_height]'>
                            <param name='movie' value='$src'>
                            <param name='quality' value='high'>
                            <embed src='$src' quality='high'
@@ -278,11 +368,21 @@ function insert_comments($arr)
         $GLOBALS['smarty']->assign('enabled_captcha', 1);
         $GLOBALS['smarty']->assign('rand', mt_rand());
     }
-    $GLOBALS['smarty']->assign('username',     stripslashes($_SESSION['user_name']));
-    $GLOBALS['smarty']->assign('email',        $_SESSION['email']);
+//    $GLOBALS['smarty']->assign('username',     stripslashes($_SESSION['user_name']));
+//    $GLOBALS['smarty']->assign('email',        $_SESSION['email']);
     $GLOBALS['smarty']->assign('comment_type', $arr['type']);
+
+    if ($_SESSION['user_id'] > 0)
+    {
+
+        $GLOBALS['smarty']->assign('user_info', get_user_info());
+    }
+
+
     $GLOBALS['smarty']->assign('id',           $arr['id']);
     $cmt = assign_comment($arr['id'],          $arr['type']);
+
+
     $GLOBALS['smarty']->assign('comments',     $cmt['comments']);
     $GLOBALS['smarty']->assign('pager',        $cmt['pager']);
 

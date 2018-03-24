@@ -93,11 +93,11 @@ p {
       color: #555555;
       text-indent: 10px; }
     #part1 .partR input::-moz-placeholder {
-      color: #ced2d8; }
+      color: #777; }
     #part1 .partR input::-ms-input-placeholder {
-      color: #ced2d8; }
+      color: #777; }
     #part1 .partR input::-webkit-input-placeholder {
-      color: #ced2d8; }
+      color: #777; }
     #part1 .partR .nameBox {
       width: 220px;
       margin: 0 auto; }
@@ -139,7 +139,8 @@ p {
         border-radius: 18px;
         font-size: 14px;
         text-indent: 12px;
-        background-color: #f5f5f7; }
+        /*background-color: #f5f5f7;*/
+      }
     #part1 .partR .selectBox {
       width: 220px;
       margin: 12px auto 0; }
@@ -151,7 +152,7 @@ p {
         border-radius: 18px;
         padding-left: 12px;
         color: #555555;
-        background-color: #f5f5f7;
+        /*background-color: #f5f5f7;*/
         border-color: #F5F5F7; }
       #part1 .partR .selectBox .layui-form-select .layui-edge {
         right: 12px; }
@@ -341,7 +342,7 @@ p {
         -moz-transition: opacity 0.5s;
         -ms-transition: opacity 0.5s;
         -webkit-transition: opacity 0.5s;
-        margin-top: 30px; }
+        margin-top: 15px; }
         #part3 .part3 .ptContent .ptcMethod a {
           width: 115px;
           background-color: #056dbb;
@@ -431,7 +432,7 @@ p {
         color: #555555;
         line-height: 48px;
         position: relative;
-        margin-right: 50px; }
+        margin-right: 41px; }
     #part4 .pfRight .pfrcLeft {
       width: 205px;
       height: 140px;
@@ -567,4 +568,8 @@ p {
 .navbar {
   margin-bottom: 0px; }
 
+
+.newList{
+  display: none;
+}
 /*# sourceMappingURL=zjindex.css.map */

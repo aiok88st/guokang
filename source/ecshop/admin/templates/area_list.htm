@@ -40,6 +40,9 @@
          {$lang.manage_area}</a>&nbsp;&nbsp;
        {/if}
        <a href="javascript:listTable.remove({$list.region_id}, '{$lang.area_drop_confirm}', 'drop_area')" title="{$lang.drop}">{$lang.drop}</a>
+       {if $region_type < 1}
+       <a href="area_manage.php?act=createJson&type={$list.region_type+1}&pid={$list.region_id}" title="生成js文件">生成js文件</a>
+       {/if}
        </span>
       </td>
     {/foreach}

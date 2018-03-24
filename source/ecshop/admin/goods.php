@@ -106,6 +106,11 @@ if ($_REQUEST['act'] == 'list' || $_REQUEST['act'] == 'trash')
 elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['act'] == 'copy')
 {
     include_once(ROOT_PATH . 'includes/fckeditor/fckeditor.php'); // 包含 html editor 类文件
+    include_once(ROOT_PATH . '/includes/lib_model.php');
+    $model=new Model;
+    $tag=$model->table($GLOBALS['ecs']->table('goods_tag'))->select();
+    $smarty->assign('tag',$tag);
+
 
     $is_add = $_REQUEST['act'] == 'add'; // 添加还是编辑的标识
     $is_copy = $_REQUEST['act'] == 'copy'; //是否复制
@@ -184,7 +189,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             'promote_end_date'   => local_date('Y-m-d', local_strtotime('+1 month')),
             'goods_weight'  => 0,
             'give_integral' => -1,
-            'rank_integral' => -1
+            'rank_integral' => 0
         );
 
         if ($code != '')
@@ -471,6 +476,15 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
     $smarty->assign('volume_price_list', $volume_price_list);
     /* 显示商品信息页面 */
     assign_query_info();
+
+    /**规定好相关文章**/
+    include_once(ROOT_PATH . '/includes/lib_model.php');
+    $model=new Model;
+    $art_cat_list=$model->table($ecs->table('article_cat'))->where('`parent_id`=39 OR `parent_id`=3')->select();
+
+    $smarty->assign('art_cat_list',$art_cat_list);
+    //商品标签
+    $smarty->assign('goods_tag_id',explode(',',$goods['tag_id']));
     $smarty->display('goods_info.htm');
 }
 
@@ -848,6 +862,18 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $goods_thumb = (empty($goods_thumb) && !empty($_POST['goods_thumb_url']) && goods_parse_url($_POST['goods_thumb_url'])) ? htmlspecialchars(trim($_POST['goods_thumb_url'])) : $goods_thumb;
     $goods_thumb = (empty($goods_thumb) && isset($_POST['auto_thumb']))? $goods_img : $goods_thumb;
 
+    $tag=isset($_POST['tag_id'])?$_POST['tag_id']:'';
+    if(is_array($tag)){
+        $tag_id=array();
+        foreach ($tag as $key=>$value){
+            $tag_id[]= intval($value);
+        }
+        $tag_id=implode(',',$tag_id);
+    }else{
+        $tag_id='';
+    }
+
+
     /* 入库 */
     if ($is_insert)
     {
@@ -857,13 +883,13 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
             "cat_id, brand_id, shop_price, market_price, virtual_sales, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral, suppliers_id)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, rank_integral, suppliers_id,tag_id)" .
                 "VALUES ('$agree_num','$user_num','$member_price','$no_member_price','$vip_price','$return_amount','$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                 "'$brand_id', '$shop_price', '$market_price', '$virtual_sales', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', '$is_on_sale', '$is_alone_sale', $is_shipping, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral', '$suppliers_id')";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$rank_integral', '$suppliers_id','$tag_id')";
         }
         else
         {
@@ -871,13 +897,13 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                     "cat_id, brand_id, shop_price, market_price, virtual_sales, is_promote, promote_price, " .
                     "promote_start_date, promote_end_date, goods_img, goods_thumb, original_img, keywords, goods_brief, " .
                     "seller_note, goods_weight, goods_number, warn_number, integral, give_integral, is_best, is_new, is_hot, is_real, " .
-                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral)" .
+                    "is_on_sale, is_alone_sale, is_shipping, goods_desc, add_time, last_update, goods_type, extension_code, rank_integral,tag_id)" .
                 "VALUES ('$agree_num','$user_num','$member_price','$no_member_price','$vip_price','$return_amount','$_POST[goods_name]', '$goods_name_style', '$goods_sn', '$catgory_id', " .
                     "'$brand_id', '$shop_price', '$market_price', '$virtual_sales', '$is_promote','$promote_price', ".
                     "'$promote_start_date', '$promote_end_date', '$goods_img', '$goods_thumb', '$original_img', ".
                     "'$_POST[keywords]', '$_POST[goods_brief]', '$_POST[seller_note]', '$goods_weight', '$goods_number',".
                     " '$warn_number', '$_POST[integral]', '$give_integral', '$is_best', '$is_new', '$is_hot', 0, '$is_on_sale', '$is_alone_sale', $is_shipping, ".
-                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral')";
+                    " '$_POST[goods_desc]', '" . gmtime() . "', '". gmtime() ."', '$goods_type', '$code', '$rank_integral','$tag_id')";
         }
     }
     else
@@ -917,7 +943,8 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "vip_price = '$vip_price', ".
                 "return_amount = '$return_amount', ".
                 "agree_num = '$agree_num', ".
-                "user_num = '$user_num', ";
+                "user_num = '$user_num', ".
+                "tag_id='$tag_id', ";
 
 
         /* 如果有上传图片，需要更新数据库 */
@@ -953,6 +980,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
                 "goods_type = '$goods_type' " .
                 "WHERE goods_id = '$_REQUEST[goods_id]' LIMIT 1";
     }
+
     $db->query($sql);
 
     /* 商品编号 */
@@ -2099,6 +2127,12 @@ elseif ($_REQUEST['act'] == 'get_article_list')
         $keyword  = trim($filters['title']);
         $where   .=  " AND title LIKE '%" . mysql_like_quote($keyword) . "%' ";
     }
+    if (!empty($filters['cat_id']))
+    {
+        $cat_id  = trim($filters['cat_id']);
+        $where   .=  " AND `cat_id` =$cat_id ";
+    }
+
 
     $sql        = 'SELECT article_id, title FROM ' .$ecs->table('article'). $where.
                   'ORDER BY article_id DESC LIMIT 50';

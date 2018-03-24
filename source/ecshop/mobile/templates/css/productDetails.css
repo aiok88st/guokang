@@ -1,0 +1,510 @@
+.clearfloat:after{
+    content: '';
+    display: block;
+    clear: both;
+    visibility: hidden;
+    height: 0;
+}
+.clearfloat{
+    zoom: 1;
+}
+html{
+    font-size: 50px;
+}
+body{
+    width: 100%;
+    position: relative;
+    background-color: #f4f4f4;
+    overflow: hidden;
+}
+.bottomBar{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 8%;
+    background-color: #ffffff
+}
+.bottomBar img{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    margin-top: -0.25rem;
+    width: .5rem;
+    height: .5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.bottomBar div{
+    color: #666666;
+    float: right;
+    font-size: .25rem;
+    height: .65rem;
+    background-color: #f4f4f4;
+    -webkit-border-radius: 40%;
+    -moz-border-radius: 40%;
+    border-radius: .325rem;
+    text-align: center;
+    line-height: .65rem;
+    /*margin: .15rem .5rem 0 0;*/
+    position: absolute;
+    top: 50%;
+    right: 4%;
+    margin-top: -0.3rem;
+}
+.bottomBar div.buyBus{
+    width: 2rem;
+    right: 32%;
+}
+.bottomBar div.buy{
+    width: 1.7rem;
+}
+.bottomBar div.selectBar{
+    background-color: #006fbb;
+    color: #FFFFFF;
+}
+.wrap{
+    height: 92%;
+    overflow-x: scroll;
+}
+.firstList{
+    width: 100%;
+    background-color: #fff;
+}
+.swiper-container{
+    width: 100%;
+    height: 5.9rem;
+}
+.swiper-container .swiper-wrapper .swiper-slide img{
+    width: 100%;
+}
+.firstList .info{
+    width: 100%;
+    height: 2rem;
+}
+.firstList .name{
+    font-size: 0.32rem;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+.firstList .intro{
+    font-size: 0.1rem;
+    color: #9f9f9f;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+.firstList .pric{
+    height: 0.5rem;
+    position: relative;
+    margin-left: 0.2rem;
+    margin-top: 0.2rem;
+}
+.firstList .pric div{
+    float: left;
+}
+.firstList .price{
+    color: red;
+    font-size: 0.3rem;
+}
+.firstList .oldPrice{
+    color: #9f9f9f;
+    font-size: 0.2rem;
+    text-decoration: line-through;
+    position: absolute;
+    top: 0.1rem;
+    left: 1.2rem;
+}
+.secondList{
+    background-color: #fff;
+    width: 100%;
+    margin-top: 0.15rem;
+}
+.secondList .tabList{
+    width: 100%;
+    height: 0.8rem;
+}
+.secondList .tabList div{
+    float: left;
+    width: 33.3%;
+    height: 100%;
+    line-height: .8rem;
+    font-size: .22rem;
+    position: relative;
+}
+.secondList .tabList div div{
+    position: absolute;
+    left: 50%;
+    top: .4rem;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.secondList .tabList div div.select{
+    color: #0068b7;
+    border-bottom: .01rem solid #0068b7;
+}
+
+.secondList .wrapList{
+    background-color: #fff;
+    width: 100%;
+    padding: 0.2rem 0.1rem;
+    display: none;
+}
+.secondList .wrapList .list1{
+    width: 100%;
+    height: 3.2rem;
+    font-size: .1rem;
+}
+.secondList .wrapList .list1>div{
+    float: left;
+    width: 48%;
+    height: 99%;
+}
+.secondList .wrapList .list1 .list1-left{
+    padding: .1rem;
+    height: 93%;
+}
+.secondList .wrapList .list1 .list1-left span{
+    display: block;
+}
+.secondList .wrapList .list1 .list1-left .line{
+    height: 1px;
+    background-color: #000000;
+    width: .9rem;
+}
+.secondList .wrapList .list1 .list1-right img{
+    width: 100%;
+    height: 100%;
+}
+.secondList .wrapList .list1 .btnList a{
+    float: left;
+    width: .4rem;
+    height: .4rem;
+}
+.secondList .wrapList .list1 .btnList a img{
+    width: 100%;
+}
+.secondList .wrapList .list2{
+    width: 100%;
+    height: 3.2rem;
+    font-size: .1rem;
+}
+.secondList .wrapList .list2>div{
+    float: left;
+    width: 48%;
+    height: 99%;
+}
+.secondList .wrapList .list2 .list2-right{
+    padding: .1rem;
+    height: 93%;
+}
+.secondList .wrapList .list2 .list2-right span{
+    display: block;
+}
+.secondList .wrapList .list2 .list2-right .line{
+    height: 1px;
+    background-color: #000000;
+    width: .9rem;
+}
+.secondList .wrapList .list2 .list2-left img{
+    width: 100%;
+    height: 100%;
+}
+.secondList .wrapList .list2 .btnList a{
+    float: left;
+    width: .4rem;
+    height: .4rem;
+}
+.secondList .wrapList .list2 .btnList a img{
+    width: 100%;
+}
+<<<<<<< HEAD
+
+#newsList {
+    background: white;
+    width: 100%; }
+
+.cjBottom {
+    width: 89.33%;
+    margin: 0 auto;
+    padding: 0.2rem 0 0.5rem; }
+.cjBottom .cjbBox p {
+    font-size: 0.4rem;
+    color: #000000;
+    line-height: 1rem; }
+.cjBottom .cjl {
+    display: block;
+    width: 100%;
+    position: relative;
+    margin: 0.4rem 0 0; }
+.cjBottom .cjl:nth-child(1) {
+    margin-top: 0px; }
+.cjBottom .cjl:nth-last-child(1) .cjContent::after {
+    display: none; }
+.cjBottom .cjImg {
+    width: 21.83%;
+    margin-left: 78.17%; }
+.cjBottom .cjImg > img {
+    width: 100%; }
+.cjBottom .cjContent {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 68.03%;
+    margin-left: 0.97%;
+    height: 100%;
+    line-height: 0.38rem; }
+.cjBottom .cjContent p:nth-child(1) {
+    width: 100%;
+    font-size: 0.24rem;
+    color: #000000; }
+.cjBottom .cjContent p:nth-child(2) {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 0.2rem;
+    color: #888888; }
+.cjBottom .cjContent::after {
+    content: "";
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #cecece; }
+.getMore {
+    width: 100%;
+    font-size: 0.22rem;
+    line-height: 1.0rem;
+    background-color: #f4f4f4;
+    text-align: center; }
+.getMore a {
+    display: block;
+    width: 100%;
+    color: #999999; }
+
+
+/*评价*/
+.comment-content{
+    display: inline-block;
+    width: 95%;
+    border-bottom: 1px solid #cecece;
+}
+.con-info{
+    overflow: hidden;
+    padding: .4rem 0;
+}
+.comment-content .head {
+    display: inline-block;
+    width: 1rem;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    float: left;
+}
+.comment-content .head img{
+    width: 1rem;
+    height: 1.1rem;
+}
+.comment-content .wrap{
+    width: 80%;
+    float: left;
+    font-size: .2rem;
+    text-align: left;
+    margin-left: .2rem;
+    border-bottom: 1px solid #cecece;
+    padding: 0 0 .3rem 0;
+}
+.comment-content .wrap .commentName{
+    height: .5rem;
+    line-height: .5rem;
+    font-size: .25rem;
+    font-weight: bold;
+}
+.comment-content .wrap .commentTime{
+    height: .5rem;
+    font-size: .1rem;
+    color: #888888;
+    line-height: .5rem;
+}
+.comment-content .wrap .commentReply{
+    width: 90%;
+    overflow: hidden;
+    padding: .4rem;
+    background-color: #f6f6f6;
+}
+.comment-content .wrap .commentReply div{
+    float: left;
+}
+.comment-content .wrap .commentReply .reply-name{
+    color: #006fbb;
+}
+.comment-content .wrap .relay-img{
+    width: 100%;
+    margin-bottom:.2rem;
+    overflow: hidden;
+}
+.comment-content .wrap .relay-img img{
+    float: left;
+    width: 1rem;
+    height: 1rem;
+    margin-left: .1rem;
+}
+
+.secondList .good{
+    width: 100%;
+    height: 1.5rem;
+    background-color: #fff;
+    border-bottom: 2px solid #f4f4f4;
+    overflow: hidden;
+}
+.secondList .good>div{
+    float: left;
+    width: 50%;
+}
+.secondList .good .pers{
+    float: left;
+    width: 50%;
+    color: #ff0000;
+    font-size: .7rem;
+    text-align: center;
+    line-height: 1.5rem;
+}
+.secondList .good .good-left{
+    font-size: .2rem;
+}
+.secondList .good .good-left span{
+    display: block;
+    color: #000;
+}
+.secondList .good .good-left .left-span1{
+    margin-top: .4rem;
+}
+=======
+#details{
+	position: fixed;
+	left: 0;
+	bottom: -100%;
+	
+	width: 100%;
+	z-index: 100;
+	
+}
+.dt01 {
+	padding: 0.2rem 0 0;
+	border-bottom: 1px solid #d2d2d2;
+}
+.dt01 ul li{
+	line-height: 0.5rem;
+}
+.dt01 ul li:nth-child(1){
+	font-size: 0.32rem;
+	color: #333333;
+}
+.dt01 ul li:nth-child(2){
+	font-size: 0.32rem;
+	color: #fb0404;
+}
+.dt01 ul li:nth-child(2) span{
+	font-size: 0.26rem;
+}
+.dt01 ul li:nth-child(3){
+	font-size: 0.22rem;
+	color: #333333;
+}
+.dt02{
+	padding: 0.2rem 0 0;
+	font-size: 0.24rem;
+	line-height: 0.4rem;
+	color: #6b6b6b;
+}
+.dt02 p{
+	margin-bottom: 0.1rem;
+}
+.dt02 button{
+	width: 64%;
+	height: 0.7rem;
+	display: block;
+	border-radius: 4px;
+	border: 1px solid #bfbfbf;
+	background-color: transparent;
+	color: #666666;
+	font-size: 0.28rem;
+	margin-bottom: 0.2rem;
+}
+.dt02 .bBtn{
+	color: #333333;
+	border-color: #2e6db5;
+}
+.dt03{
+	padding: 0 0 0.4rem 0 ;
+	font-size: 0.24rem;
+	line-height: 0.4rem;
+	color: #6b6b6b;
+	border-bottom: 1px solid #dcdcdc;
+}
+.dt02 p{
+	margin-bottom: 0.1rem;
+}
+.number .noReduce {
+          opacity: 0.4; }
+.number .add {
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 30%;
+          height: 100%;
+          background: url(../img/add.png) no-repeat center center;
+          background-size: 30%; }
+.number .reduce {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 30%;
+          height: 100%;
+          background: url(../img/reduce.png) no-repeat center center;
+          background-size: 30%; }
+.number p {
+          font-size: 0.28rem;
+          text-align: center;
+          line-height: 0.6rem;
+          color: #555555;
+          font-family: arial;
+          margin-top: 1px; }
+.number {
+        position: relative;
+
+        width: 50%;
+    	height: 0.6rem;
+        border: 1px solid #e4e4e4;
+        border-radius: 5px;
+        overflow: hidden; }
+.dt04 button{
+	height: 0.7rem;
+	font-size: 0.28rem;
+	color: white;
+	display: block;
+	width: 100%;
+	background-color: #016fbc;
+	border-radius: 0.35rem;
+}
+.dt04{
+	padding: 0.2rem 0;
+}
+.details{
+	background: white;
+	position: relative;
+}
+.close{
+	position: absolute;
+	top: 0.4rem;
+	right: 2.65%;
+	width: 0.3rem;
+}
+.close img{
+	width: 100%;
+}
+
+.doc{
+	display: none;
+	width: 100%;
+	background-color: rgba(0,0,0,0.1);
+}
+>>>>>>> 061a24a97530f55f3ad442201f8d800b77df810b

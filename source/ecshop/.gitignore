@@ -6,3 +6,4 @@ temp/caches/*
 temp/static_caches/*
 temp/backup/*
 .idea
+data/config.php

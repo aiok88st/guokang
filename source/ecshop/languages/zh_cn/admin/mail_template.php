@@ -34,6 +34,7 @@ $_LANG['remind_of_new_order'] = '新订单提醒模板';
 $_LANG['goods_booking'] = '缺货回复模板';
 $_LANG['user_message'] = '留言回复模板';
 $_LANG['recomment'] = '用户评论回复模板';
+$_LANG['email_hash'] = '邮箱验证';
 
 $_LANG['subject_empty'] = '对不起，邮件的主题不能为空。';
 $_LANG['content_empty'] = '对不起，邮件的内容不能为空。';

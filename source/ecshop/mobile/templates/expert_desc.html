@@ -1,0 +1,37 @@
+{include file="/library/page_header.html"}
+<link rel="stylesheet" href="templates/css/doctorIntroduce.css?v=3">
+<style>
+    .content-mes{
+        height: auto !important;
+        font-size: 0.3rem !important;
+        line-height: 0.5rem;
+    }
+</style>
+<!--内容-->
+<div class="content">
+    <div class="title">
+        <img class="bg" src="templates/img/ssd.png" alt="">
+        <div class="title-head" >
+            <img src="{$data.thumb}" alt="" onerror="this.src='/themes/default/img/develop.jpg'" style="border-radius: 50%">
+        </div>
+        <div class="title-name">
+            <div>{$data.name}</div>
+            <div class="name-d2">{$data.job}</div>
+        </div>
+        <div class="hospital">
+            <div>{$data.unit} {$data.attr}</div>
+            <div>{$data.position}</div>
+        </div>
+    </div>
+    <div class="content-mes">
+        {$data.content}
+    </div>
+    {include file="/library/desc_fx.html"}
+
+</div>
+<!--评论-->
+
+{include file="/library/comment.html"}
+{include file="/library/page_footer.html"}
+</body>
+</html>

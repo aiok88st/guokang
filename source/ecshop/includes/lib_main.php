@@ -118,7 +118,7 @@ function get_user_info($id=0)
         $id = $_SESSION['user_id'];
     }
     $time = date('Y-m-d');
-    $sql  = 'SELECT u.user_id, u.email, u.user_name, u.user_money, u.pay_points'.
+    $sql  = 'SELECT u.user_id, u.email, u.user_name, u.user_money, u.pay_points,u.open_face,u.sex'.
             ' FROM ' .$GLOBALS['ecs']->table('users'). ' AS u ' .
             " WHERE u.user_id = '$id'";
     $user = $GLOBALS['db']->getRow($sql);
@@ -256,13 +256,136 @@ function assign_ur_here($cat = 0, $str = '')
     if (!empty($str))
     {
         $page_title  = $str . '_' . $page_title;
-        $ur_here    .= ' <code>&gt;</code> ' . $str;
+        $ur_here    .= ' &gt;'.'<a href="javascript:;">&nbsp;'.$str.'</a>';
     }
 
     /* 返回值 */
     return array('title' => $page_title, 'ur_here' => $ur_here);
 }
 
+/**自定义获取用户位置**/
+function assign_ur_here2($cat = 0, $str = ''){
+    /* 判断是否重写，取得文件名 */
+    $cur_url = basename(PHP_SELF);
+    if (intval($GLOBALS['_CFG']['rewrite']))
+    {
+        $filename = strpos($cur_url,'-') ? substr($cur_url, 0, strpos($cur_url,'-')) : substr($cur_url, 0, -4);
+    }
+    else
+    {
+        $filename = substr($cur_url, 0, -4);
+    }
+
+    /* 初始化“页面标题”和“当前位置” */
+    $page_title = $GLOBALS['_CFG']['shop_title'];
+    $ur_here    = '<li><a href=".">' . $GLOBALS['_LANG']['home'] . '</a></li>';
+
+    /* 根据文件名分别处理中间的部分 */
+    if ($filename != 'index')
+    {
+        /* 处理有分类的 */
+        if (in_array($filename, array('category', 'goods', 'article_cat', 'article', 'brand')))
+        {
+            /* 商品分类或商品 */
+            if ('category' == $filename || 'goods' == $filename || 'brand' == $filename)
+            {
+                if ($cat > 0)
+                {
+                    $cat_arr = get_parent_cats($cat);
+
+                    $key     = 'cid';
+                    $type    = 'category';
+                }
+                else
+                {
+                    $cat_arr = array();
+                }
+            }
+            /* 文章分类或文章 */
+            elseif ('article_cat' == $filename || 'article' == $filename)
+            {
+                if ($cat > 0)
+                {
+                    $cat_arr = get_article_parent_cats($cat);
+
+                    $key  = 'acid';
+                    $type = 'article_cat';
+                }
+                else
+                {
+                    $cat_arr = array();
+                }
+            }
+
+            /* 循环分类 */
+            if (!empty($cat_arr))
+            {
+                krsort($cat_arr);
+                foreach ($cat_arr AS $val)
+                {
+                    $page_title = htmlspecialchars($val['cat_name']) . '_' . $page_title;
+                    $args       = array($key => $val['cat_id']);
+                    $ur_here   .= ' <li><a href="' . build_uri($type, $args, $val['cat_name']) . '">&gt; ' .
+                        htmlspecialchars($val['cat_name']) . '</a></li>';
+                }
+            }
+        }
+        /* 处理无分类的 */
+        else
+        {
+            /* 团购 */
+            if ('group_buy' == $filename)
+            {
+                $page_title = $GLOBALS['_LANG']['group_buy_goods'] . '_' . $page_title;
+                $args       = array('gbid' => '0');
+                $ur_here   .= ' <li><a href="group_buy.php">&gt;' .
+                    $GLOBALS['_LANG']['group_buy_goods'] . ' </a></li>';
+            }
+            /* 拍卖 */
+            elseif ('auction' == $filename)
+            {
+                $page_title = $GLOBALS['_LANG']['auction'] . '_' . $page_title;
+                $args       = array('auid' => '0');
+                $ur_here   .= ' <li> <a href="auction.php">&gt;' .
+                    $GLOBALS['_LANG']['auction'] . '</a></li>';
+            }
+            /* 夺宝 */
+            elseif ('snatch' == $filename)
+            {
+                $page_title = $GLOBALS['_LANG']['snatch'] . '_' . $page_title;
+                $args       = array('id' => '0');
+                $ur_here   .= ' <li> <a href="snatch.php">&gt;' .                                 $GLOBALS['_LANG']['snatch_list'] . ' </a></li>';
+            }
+            /* 批发 */
+            elseif ('wholesale' == $filename)
+            {
+                $page_title = $GLOBALS['_LANG']['wholesale'] . '_' . $page_title;
+                $args       = array('wsid' => '0');
+                $ur_here   .= ' <li> <a href="wholesale.php">&gt;' .
+                    $GLOBALS['_LANG']['wholesale'] . '</a></li>';
+            }
+            /* 积分兑换 */
+            elseif ('exchange' == $filename)
+            {
+                $page_title = $GLOBALS['_LANG']['exchange'] . '_' . $page_title;
+                $args       = array('wsid' => '0');
+                $ur_here   .= ' <li> <a href="exchange.php">&gt;' .
+                    $GLOBALS['_LANG']['exchange'] . '</a></li>';
+            }
+            /* 其他的在这里补充 */
+        }
+    }
+
+    /* 处理最后一部分 */
+    if (!empty($str))
+    {
+        $page_title  = $str . '_' . $page_title;
+//        $ur_here    .= '<li> '.'<a href="javascript:;">&nbsp;'.$str.'</a></li>';
+    }
+
+    /* 返回值 */
+    return array('title' => $page_title, 'ur_here' => $ur_here);
+}
 /**
  * 获得指定分类的所有上级分类
  *
@@ -634,6 +757,107 @@ function assign_pager($app, $cat, $record_count, $size, $sort, $order, $page = 1
  * @return  array       $pager
  */
 function get_pager($url, $param, $record_count, $page = 1, $size = 10)
+{
+    $size = intval($size);
+    if ($size < 1)
+    {
+        $size = 10;
+    }
+
+    $page = intval($page);
+    if ($page < 1)
+    {
+        $page = 1;
+    }
+
+    $record_count = intval($record_count);
+
+    $page_count = $record_count > 0 ? intval(ceil($record_count / $size)) : 1;
+    if ($page > $page_count)
+    {
+        $page = $page_count;
+    }
+    /* 分页样式 */
+    $pager['styleid'] = isset($GLOBALS['_CFG']['page_style'])? intval($GLOBALS['_CFG']['page_style']) : 0;
+
+    $page_prev  = ($page > 1) ? $page - 1 : 1;
+    $page_next  = ($page < $page_count) ? $page + 1 : $page_count;
+
+    /* 将参数合成url字串 */
+    $param_url = '';
+    $param_url .= '-';
+    foreach ($param AS $key => $value)
+    {
+        $param_url .= ''. $value . '-';
+    }
+
+    $pager['url']          = $url;
+    $pager['start']        = ($page -1) * $size;
+    $pager['page']         = $page;
+    $pager['size']         = $size;
+    $pager['record_count'] = $record_count;
+    $pager['page_count']   = $page_count;
+
+    if ($pager['styleid'] == 0)
+    {
+        $pager['page_first']   = $url . $param_url . 'p1.html';
+        $pager['page_prev']    = $url . $param_url . 'p' . $page_prev.'.html';
+        $pager['page_next']    = $url . $param_url . 'p' . $page_next.'.html';
+        $pager['page_last']    = $url . $param_url . 'p' . $page_count.'.html';
+        $pager['array']  = array();
+        for ($i = 1; $i <= $page_count; $i++)
+        {
+            $pager['array'][$i] = $i;
+        }
+    }
+    else
+    {
+        $_pagenum = 10;     // 显示的页码
+        $_offset = 2;       // 当前页偏移值
+        $_from = $_to = 0;  // 开始页, 结束页
+        if($_pagenum > $page_count)
+        {
+            $_from = 1;
+            $_to = $page_count;
+        }
+        else
+        {
+            $_from = $page - $_offset;
+            $_to = $_from + $_pagenum - 1;
+            if($_from < 1)
+            {
+                $_to = $page + 1 - $_from;
+                $_from = 1;
+                if($_to - $_from < $_pagenum)
+                {
+                    $_to = $_pagenum;
+                }
+            }
+            elseif($_to > $page_count)
+            {
+                $_from = $page_count - $_pagenum + 1;
+                $_to = $page_count;
+            }
+        }
+        $url_format = $url . $param_url . 'p';
+        $pager['page_first'] = ($page - $_offset > 1 && $_pagenum < $page_count) ? $url_format . '1.html' : '';
+        $pager['page_prev']  = ($page > 1) ? $url_format . $page_prev.'.html' : '';
+        $pager['page_next']  = ($page < $page_count) ? $url_format . $page_next.'.html' : '';
+        $pager['page_last']  = ($_to < $page_count) ? $url_format . $page_count.'.html' : '';
+        $pager['page_kbd']  = ($_pagenum < $page_count) ? true : false;
+        $pager['page_number'] = array();
+        for ($i=$_from;$i<=$_to;++$i)
+        {
+            $pager['page_number'][$i] = $url_format . $i.'.html';
+        }
+    }
+    $pager['search'] = $param;
+
+    return $pager;
+}
+
+
+function get_pager2($url, $param, $record_count, $page = 1, $size = 10)
 {
     $size = intval($size);
     if ($size < 1)
@@ -1584,8 +1808,8 @@ function assign_comment($id, $type, $page = 1)
     /* 取得评论列表 */
     $count = $GLOBALS['db']->getOne('SELECT COUNT(*) FROM ' .$GLOBALS['ecs']->table('comment').
            " WHERE id_value = '$id' AND comment_type = '$type' AND status = 1 AND parent_id = 0");
-    $size  = !empty($GLOBALS['_CFG']['comments_number']) ? $GLOBALS['_CFG']['comments_number'] : 5;
 
+    $size  = !empty($GLOBALS['_CFG']['comments_number']) ? $GLOBALS['_CFG']['comments_number'] : 5;
     $page_count = ($count > 0) ? intval(ceil($count / $size)) : 1;
 
     $sql = 'SELECT * FROM ' . $GLOBALS['ecs']->table('comment') .
@@ -1605,6 +1829,10 @@ function assign_comment($id, $type, $page = 1)
         $arr[$row['comment_id']]['content']  = nl2br(str_replace('\n', '<br />', $arr[$row['comment_id']]['content']));
         $arr[$row['comment_id']]['rank']     = $row['comment_rank'];
         $arr[$row['comment_id']]['add_time'] = local_date($GLOBALS['_CFG']['time_format'], $row['add_time']);
+        $sql='SELECT `open_face`,`name` FROM ' . $GLOBALS['ecs']->table('users') .' WHERE `user_id`='.$row['user_id'];
+        $user=$GLOBALS['db']->getRow($sql);
+        $arr[$row['comment_id']]['open_face']=$user['open_face'];
+        $arr[$row['comment_id']]['name']=$user['name'];
     }
     /* 取得已有回复的评论 */
     if ($ids)
@@ -1640,6 +1868,10 @@ function assign_template($ctype = '', $catlist = array())
 {
     global $smarty;
 
+
+    $smarty->assign('shop_weibo',trim($GLOBALS['_CFG']['shop_weibo'],'.'));
+    $smarty->assign('shop_weixin',trim($GLOBALS['_CFG']['shop_weixin'],'.'));
+
     $smarty->assign('image_width',   $GLOBALS['_CFG']['image_width']);
     $smarty->assign('image_height',  $GLOBALS['_CFG']['image_height']);
     $smarty->assign('points_name',   $GLOBALS['_CFG']['integral_name']);
@@ -1660,7 +1892,36 @@ function assign_template($ctype = '', $catlist = array())
     $smarty->assign('username',      !empty($_SESSION['user_name']) ? $_SESSION['user_name'] : '');
     $smarty->assign('category_list', cat_list(0, 0, true,  2, false));
     $smarty->assign('catalog_list',  cat_list(0, 0, false, 1, false));
+
+    $nav_list=get_navigator($ctype, $catlist);
+
+    //最新新闻
+    $news = get_new_news_article2(17,'`cat_id` <> 47');
+
+    $smarty->assign('new_article_list', $news);
+
+    $smarty->assign('cat_name','最新新闻');
+    //客户表扬
+    $praise=get_new_news_article2(17,'`cat_id`=47',10);
+    $smarty->assign('praise',$praise);
+
+    $middle= $nav_list['middle'];
+    $middle=tree($middle,0);
+
+    $smarty->assign('middle',$middle);
+
+    $bottom= $nav_list['bottom'];
+    $bottom=tree($bottom,0);
+    $smarty->assign('bottom',$bottom);
+
     $smarty->assign('navigator_list',        get_navigator($ctype, $catlist));  //自定义导航栏
+
+    //网站关键字与描述
+
+    $smarty->assign('keywords',        htmlspecialchars($GLOBALS['_CFG']['shop_keywords']));
+    $smarty->assign('description',     htmlspecialchars($GLOBALS['_CFG']['shop_desc']));
+
+
 
     if (!empty($GLOBALS['_CFG']['search_keywords']))
     {
@@ -1981,11 +2242,14 @@ function get_navigator($ctype = '', $catlist = array())
     while ($row = $GLOBALS['db']->fetchRow($res))
     {
         $navlist[$row['type']][] = array(
+            'id'        =>  $row['id'],
             'name'      =>  $row['name'],
             'opennew'   =>  $row['opennew'],
             'url'       =>  $row['url'],
             'ctype'     =>  $row['ctype'],
             'cid'       =>  $row['cid'],
+            'parent_id' =>  $row['parent_id'],
+            'wap_url' =>$row['wap_url']
             );
     }
 
@@ -2023,6 +2287,8 @@ function get_navigator($ctype = '', $catlist = array())
 
     return $navlist;
 }
+
+
 
 /**
  * 授权信息内容
@@ -2068,5 +2334,117 @@ function url_domain()
 
     return $root;
 }
+/*
+ * 获取提交的文本并过滤
+ * */
+function filters($post)
+{
+    $info=[];
+    foreach ($post as $key =>$val){
+        if(is_array($val)){
+            $attr=array();
+            foreach ($val as $k=>$v){
+                if(is_array($v)){
+                    foreach ($v as $l=>$i){
+                        $v[$l]=compile_str(trim($i));
+                    }
+                    $attr[$k]=$v;
+                }else{
+                    $attr[$k]=compile_str(trim($v));
+                }
 
+            }
+            $info[$key]=$attr;
+        }elseif(is_string($val)){
+            $info[$key]=compile_str(trim($val));
+        }
+
+
+    }
+    return $info;
+}
+/*
+ * 正则验证身份证号码
+ * */
+
+function isCreditNo($vStr){
+    $vCity = array(
+        '11','12','13','14','15','21','22',
+        '23','31','32','33','34','35','36',
+        '37','41','42','43','44','45','46',
+        '50','51','52','53','54','61','62',
+        '63','64','65','71','81','82','91'
+    );
+    if (!preg_match('/^([\d]{17}[xX\d]|[\d]{15})$/', $vStr)) return false;
+    if (!in_array(substr($vStr, 0, 2), $vCity)) return false;
+    $vStr = preg_replace('/[xX]$/i', 'a', $vStr);
+    $vLength = strlen($vStr);
+    if ($vLength == 18) {
+        $vBirthday = substr($vStr, 6, 4) . '-' . substr($vStr, 10, 2) . '-' . substr($vStr, 12, 2);
+    } else {
+        $vBirthday = '19' . substr($vStr, 6, 2) . '-' . substr($vStr, 8, 2) . '-' . substr($vStr, 10, 2);
+    }
+    if (date('Y-m-d', strtotime($vBirthday)) != $vBirthday) return false;
+    if ($vLength == 18) {
+        $vSum = 0;
+        for ($i = 17 ; $i >= 0 ; $i--) {
+            $vSubStr = substr($vStr, 17 - $i, 1);
+            $vSum += (pow(2, $i) % 11) * (($vSubStr == 'a') ? 10 : intval($vSubStr , 11));
+        }
+        if($vSum % 11 != 1) return false;
+    }
+    return true;
+}
+/*
+ * 正则验证港澳通行证
+ * */
+function isgat($vStr){
+    if (!preg_match('/^[HMhm]{1}([0-9]{10}|[0-9]{8})$/', $vStr)) return false;
+    return true;
+}
+
+
+/*
+ * 更新语句
+ * */
+function as_update($table,$where,$data=[]){
+    $setSql="";
+
+    foreach ($data as $key=>$value){
+        if(!empty($value)){
+            $setSql .=" `$key`"."='".$value.'\',';
+        }
+    }
+    $setSql=trim($setSql,',');
+    if($setSql){
+        $sql="UPDATE ".$table." SET ".$setSql." WHERE ".$where;
+        return $sql;
+    }
+    return false;
+}
+/*
+ * 插入语句
+ * */
+function as_insert($table,$data=[]){
+    $setSql="";
+    $valSql="";
+    end($data);
+    $key_last = key($data);
+    foreach ($data as $key=>$value){
+        if(!empty($value)){
+            $setSql .="`$key`".',';
+            $valSql .='\''.$value.'\''.',';
+        }
+    }
+
+    $setSql=trim($setSql,',');
+    $valSql=trim($valSql,',');
+
+
+    if($setSql){
+        $sql = 'INSERT INTO' .$table. " (".$setSql.") VALUES (".$valSql.")";
+        return $sql;
+    }
+    return false;
+}
 ?>

@@ -21,11 +21,19 @@ require_once(ROOT_PATH . 'languages/' .$_CFG['lang']. '/user.php');
 
 $act = isset($_GET['act']) ? $_GET['act'] : '';
 
+require(ROOT_PATH . 'includes/lib_model.php');
+$model=new Model;
+assign_template();
+
+$position = assign_ur_here();
+
+
 /* 用户登陆 */
 if ($act == 'do_login')
 {
     $user_name = !empty($_POST['username']) ? $_POST['username'] : '';
     $pwd = !empty($_POST['pwd']) ? $_POST['pwd'] : '';
+    $remember = !empty($_POST['remember']) ? $_POST['remember'] : '';
     if (empty($user_name) || empty($pwd))
     {
         $login_faild = 1;
@@ -35,15 +43,18 @@ if ($act == 'do_login')
         if ($user->check_user($user_name, $pwd) > 0)
         {
             $user->set_session($user_name);
-            $user->set_cookie($user_name);
+            $user->set_cookie($user_name,$remember);
             update_user_info();
-            show_user_center();
+            $login_faild=0;
+
+//            show_user_center();
         }
         else
         {
             $login_faild = 1;
         }
     }
+    echo $login_faild;
 }
 
 elseif ($act == 'order_list')
@@ -241,13 +252,13 @@ elseif ($act == 'act_register')
 /* 用户中心 */
 else
 {
+
     if ($_SESSION['user_id'] > 0)
     {
         show_user_center();
     }
     else
     {
-        $smarty->assign('footer', get_footer());
         $smarty->display('login.html');
     }
 }
@@ -256,7 +267,7 @@ else
  * 用户中心显示
  */
 function show_user_center()
-{
+{   $smarty=$GLOBALS['smarty'];
     $best_goods = get_recommend_goods('best');
     if (count($best_goods) > 0)
     {
@@ -266,9 +277,16 @@ function show_user_center()
             $best_goods[$key]['name'] = encode_output($best_data['name']);
         }
     }
-    $GLOBALS['smarty']->assign('best_goods' , $best_goods);
-    $GLOBALS['smarty']->assign('footer', get_footer());
-    $GLOBALS['smarty']->display('user.html');
+    $user_id=$_SESSION['user_id'];
+    include_once(ROOT_PATH .'includes/lib_clips.php');
+    $info= get_user_default($user_id);
+    var_dump($info);
+    $smarty->assign('info',        $info);
+
+    $smarty->assign('page_title',      '个人中心_国康');    // 页面标题
+    $smarty->assign('best_goods' , $best_goods);
+
+    $smarty->display('user.html');
 }
 
 /**

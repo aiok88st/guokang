@@ -131,10 +131,27 @@ class captcha
     function check_word($word)
     {
         $recorded = isset($_SESSION[$this->session_word]) ? base64_decode($_SESSION[$this->session_word]) : '';
+
         $given    = $this->encrypts_word(strtoupper($word));
 
         return (preg_match("/$given/", $recorded));
     }
+    /**
+     * 检查给出的验证码是否和session中的一致2
+     *
+     * @access  public
+     * @param   string  $word   验证码
+     * @return  bool
+     */
+    function check_word2($word)
+    {
+        $recorded = isset($_SESSION[$this->session_word]) ? $_SESSION[$this->session_word] : '';
+
+        $given    = $this->encrypts_word(strtoupper($word));
+
+        return (preg_match("/$given/", $recorded));
+    }
+
 
     /**
      * 生成图片并输出到浏览器

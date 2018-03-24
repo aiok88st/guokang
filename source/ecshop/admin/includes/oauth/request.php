@@ -45,6 +45,7 @@ class oauth2_request extends oauth2 {
         if ($this->__token) {
             $headers['Authorization'] = 'OAuth2 ' . $this->__token;
         }
+
         $url = "{$this->site}/{$api}";
         return $this->action('put', "{$url}", $headers, null, $params, $signtime);
     }
@@ -55,6 +56,7 @@ class oauth2_request extends oauth2 {
         if ($this->__token) {
             $headers['Authorization'] = 'OAuth2 ' . $this->__token;
         }
+
         $url = "{$this->site}/{$api}";
         return $this->action('get', "{$url}", $headers, null, $params, $signtime);
     }

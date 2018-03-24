@@ -1621,7 +1621,7 @@ function get_cart_goods($rec_type = CART_GENERAL_GOODS)
         $total['market_price'] += $row['market_price'] * $row['goods_number'];
 
         $row['subtotal']     = price_format($row['goods_price'] * $row['goods_number'], false);
-        $row['goods_price']  = price_format($row['goods_price'], false);
+//        $row['goods_price']  = price_format($row['goods_price'], false);
         $row['market_price'] = price_format($row['market_price'], false);
 
         /* 统计实体商品和虚拟商品的个数 */
@@ -1736,14 +1736,14 @@ function exist_real_goods($order_id = 0, $flow_type = CART_GENERAL_GOODS)
  */
 function check_consignee_info($consignee, $flow_type)
 {
+
+
     if (exist_real_goods(0, $flow_type))
     {
+
         /* 如果存在实体商品 */
         $res = !empty($consignee['consignee']) &&
-            !empty($consignee['country']) &&
-            !empty($consignee['email']) &&
-            !empty($consignee['tel']);
-
+            !empty($consignee['country']);
         if ($res)
         {
             if (empty($consignee['province']))
@@ -1770,9 +1770,7 @@ function check_consignee_info($consignee, $flow_type)
     else
     {
         /* 如果不存在实体商品 */
-        return !empty($consignee['consignee']) &&
-            !empty($consignee['email']) &&
-            !empty($consignee['tel']);
+        return !empty($consignee['consignee']);
     }
 }
 
@@ -1878,6 +1876,7 @@ function flow_order_info()
     $order = isset($_SESSION['flow_order']) ? $_SESSION['flow_order'] : array();
 
     /* 初始化配送和支付方式 */
+
     if (!isset($order['shipping_id']) || !isset($order['pay_id']))
     {
         /* 如果还没有设置配送和支付 */

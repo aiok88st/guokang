@@ -4,14 +4,15 @@
 <link rel="stylesheet" href="themes/default/scss/page.css" />
 <style>
     #banner img{
-        width: 100%;
+        width: 1920px;
         height: 400px;
     }
 </style>
 		<!--集团简介-->
-		<div id="banner" align="center">
+		<p style="font-size:38px; font-weight:bold; color:#fff; text-align:center; height:400px;background:url('http://www.gkbroker.com/guokang/mall/data/afficheimg/1516258933346182311.jpg') no-repeat center; "></p>
+<!-- 		<div id="banner" align="center">
             {insert name='ads' id=4 num=1}
-		</div>
+		</div> -->
 
         <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
 
@@ -23,9 +24,9 @@
 				</div>
 				<div class="tlRight floatl">				                                                                                           
 					<div>
-						<a href="category.php?id=2&cid=0" class="floatl <!-- {if $cid eq 0} -->aActive<!-- {/if} -->">全部</a>
+						<a href="category-2.html" class="floatl <!-- {if $cid eq 0} -->aActive<!-- {/if} -->">全部</a>
                         <!--{foreach from=$catList item=vo}-->
-						<a href="category.php?id=2&cid={$vo.cat_id}" class="floatl <!-- {if $cid eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
+						<a href="category-2-{$vo.cat_id}.html" class="floatl <!-- {if $cid eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
                         <!--{/foreach}-->
 
 						<div class="clearl"></div>
@@ -41,9 +42,9 @@
 				</div>
 				<div class="tlRight floatl">				                                                                                           
 					<div>
-                        <a href="category.php?id=2&cid={$cid}&aid=0" class="floatl <!-- {if $aid eq 0} -->aActive<!-- {/if} -->">全部</a>
+                        <a href="category-2-{$cid}-0.html" class="floatl <!-- {if $aid eq 0} -->aActive<!-- {/if} -->">全部</a>
                         <!--{foreach from=$cList item=vo}-->
-						<a href="category.php?id=2&cid={$cid}&aid={$vo.cat_id}" class="floatl <!-- {if $aid eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
+						<a href="category-2-{$cid}-{$vo.cat_id}.html" class="floatl <!-- {if $aid eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
                         <!--{/foreach}-->
 
 						<div class="clearl"></div>
@@ -59,7 +60,7 @@
 				<div class="leftContent floatl noBord">
                     <!-- {if $g_list neq ''} -->
                     <!--{foreach from=$g_list item=vo}-->
-					<div class="planBox">
+					<div class="planBox" onclick="window.location.href='goods-{$vo.goods_id}.html'">
 						<div class="plLeft floatl">
 							<img src="{$vo.goods_img}" />
 						</div>
@@ -73,7 +74,7 @@
 								</li>
 								<li>
                                     <!--{foreach from=$vo.attr_value item=vv}-->
-									<a href="javascript:;" class="floatl">{$vv.attr_value}</a>
+									<a href="javascript:;" class="floatl">{$vv.name}</a>
                                     <!--{/foreach}-->
 
 									<div class="clearl"> </div>
@@ -83,17 +84,24 @@
 						<div class="plLine floatl"></div>
 						<div class="plRight floatl">
 							<ul>
+								<!--{if $vo.is_real eq 1}-->
 								<li>
-									<p>会员价：<span>&yen;{$vo.member_price}</span></p>
+									<p>会员价：<span>&yen;{$vo.shop_price}</span><span style="padding-left:5px;color:#868686; font-size:14px;">起</span></p>
 								</li>
-								<li>
-									<p>贵宾价：<del><span>&yen;{$vo.vip_price}</span></del></p>
-								</li>
+								<!--<li>-->
+									<!--<p>贵宾价：<del><span>&yen;{$vo.vip_price}</span></del></p>-->
+								<!--</li>-->
 								<li>
 									<p>市场价：<del><span>&yen;{$vo.market_price}</span></del></p>
 								</li>
+								<!--{else}-->
 								<li>
-									<a href="goods.php?id={$vo.goods_id}">查看详情</a>
+									<p>价格：<span>&yen;{$vo.shop_price}</span><span style="padding-left:5px;color:#868686; font-size:14px;"></span></p>
+								</li>
+								<!--{/if}-->
+								<li>
+									<a href="goods-{$vo.goods_id}.html">服务介绍</a>
+									<a href="goods-{$vo.goods_id}-over.html">马上购买</a>
 								</li>
 							</ul>
 						</div>

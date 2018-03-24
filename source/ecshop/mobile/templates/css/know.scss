@@ -1,0 +1,88 @@
+#web{
+    width:100%;
+    .webTitle{
+        width: 89.73%;
+    margin: 0 auto;
+        font-size: 0.4rem;
+    color: #000000;
+    line-height: 1rem;
+    }
+    
+}
+.webBox{
+    width: 100%;
+    position: relative;
+    >img{
+        width: 100%;
+    }
+    .pBox{
+        position: absolute;
+        left: 6%;
+        bottom: 5%;
+        font-size: 0.46rem;
+        color: white;
+        p:nth-child(2){
+            font-size: 0.24rem;
+            color: #949aa6;
+        }
+    }
+     .pBox2{
+         left: 57%;
+     }
+}
+#Authentication{
+    padding-top: 0.6rem;
+    .authentication{
+        width: 90.66%;
+        margin: 0 auto;
+        
+        .title{
+            width: 44.0%;
+            margin: 0 auto;
+            text-align: center;
+            color: #737373;
+            font-size: 0.26rem;
+            position: relative;
+        }
+        .title::after{
+            width: 63.5%;
+            content: "";
+            left: 100%;
+            top: 50%;
+            position: absolute;
+            border-bottom: 1px solid #b3b3b3;
+        }
+        .title::before{
+            width: 63.5%;
+            content: "";
+            right: 100%;
+            top: 50%;
+            position: absolute;
+            border-bottom: 1px solid #b3b3b3;
+        }
+    }
+    .ati{
+        width: 90.66%;
+        margin: 0 auto;
+        padding: 0.5rem 0;
+        a{
+            width: 22%;
+            display: block;
+            margin-right: 17%;
+        }
+        a:nth-last-child(2){
+            margin-right: 0%;
+        }
+        img{
+            width: 80%;
+            margin: 0 auto;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+        p{
+            font-size: 0.24rem;
+            color: #555555;
+            text-align: center;
+        }
+    }
+}

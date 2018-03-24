@@ -27,9 +27,9 @@
 											<p>{$vo.description}</p>
 										</div>
 									</li>
-									<li>
+<!-- 									<li>
 										<p class="horTime">时间：{$vo.add_time}</p>
-									</li>
+									</li> -->
 								</ul>
 								<div class="mc"></div>
 							</div>

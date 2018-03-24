@@ -1,0 +1,152 @@
+<!-- 收获地址 -->
+<script type="text/javascript" src='themes/default/lib/layui.js'></script>
+<script type="text/javascript">
+    layui.use('layer', function(){
+        var layer = layui.layer;
+
+    });
+</script>
+
+{insert_scripts files='my_common.js,my_region.js'}
+<div class="col-xs-12 col-sm-10 address-bg right-content" style="display: block">
+    <div class="main-bg-right">
+
+        <div class="row">
+
+            <h3 class="text-center">收货地址</h3>
+
+        </div>
+
+        <div class="row main-bg-right-content">
+
+            <div class="address-list clearfix">
+                <!-- {foreach from=$consignee_list item=consignee key=sn} -->
+                <div class="address-item active pull-left">
+                    <div class="middle">
+                        <p>
+                            <span>{$consignee.name}</span>
+                            <span>{$consignee.mobile}</span>
+                        </p>
+                        <p>
+                            <span>{$consignee.province} {$consignee.city} {$consignee.district} {$consignee.address}</span>
+                        </p>
+                    </div>
+                    <a href="user.php?act=edit_address&id={$consignee.address_id}#my_from" class="address-edit">
+                        <img src="themes/default/img/icon12.png" alt="">
+                    </a>
+                    <a href="javascript:;" class="address-del" onclick="dele('{$consignee.address_id}')">
+                        <img src="themes/default/img/icon13.png" alt="">
+                    </a>
+                </div>
+                <!--{/foreach}-->
+                {if $clc eq 1}
+                <div class="address-add pull-left">
+                    <div class="middle">
+                        <a href="javascript:;" class='add_icon'>添加新地址</a>
+                    </div>
+                </div>
+                {/if}
+            </div>
+            <a href="" name="my_from"></a>
+            <div class="addess-message" {if $is_edit eq 1}style="display: block"{/if}>
+                <hr style="margin-bottom: 40px;"/>
+
+                <form class="my_from">
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <input type="text" class="form-control input-lg" name="name" placeholder='姓 名' value="{$data.name}">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <input type="text" class="form-control input-lg" name="mobile" placeholder='电 话' value="{$data.mobile}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <select class="form-control input-lg" name="province" style="display: block" onchange="region.changed(this, 2, 'selCities_')">
+                                <option value="0">请选择省</option>
+                                <!-- {foreach from=$province_list item=province} -->
+                                <option value="{$province.region_id}" {if $data.province eq $province.region_id}selected{/if}>{$province.region_name}</option>
+                                <!-- {/foreach} -->
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <select class="form-control input-lg" name="city" style="display: block" id="selCities_" onchange="region.changed(this, 3, 'selDistricts_')">
+                                <option value="0">请选择市</option>
+                                <!-- {foreach from=$city_list item=city} -->
+                                <option value="{$city.region_id}" {if $data.city eq $city.region_id}selected{/if}>{$city.region_name}</option>
+                                <!-- {/foreach} -->
+                            </select>
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <select class="form-control input-lg" name="district" id="selDistricts_">
+                                <option value="0">请选择区/县</option>
+                                <!-- {foreach from=$district_list item=district} -->
+                                <option value="{$district.region_id}" {if $data.district eq $district.region_id}selected{/if}>{$district.region_name}</option>
+                                <!-- {/foreach} -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-8">
+                            <input type="text" class="form-control input-lg" name="address" placeholder='详细地址' value="{$data.address}">
+                        </div>
+                    </div>
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-lg btn-del">取消</button>
+                        </div>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-lg btn-save">保存</button>
+                        </div>
+                    </div>
+                    {if $is_edit eq 1}
+                    <input type="hidden" name="address_id" value="{$data.address_id}">
+                    {/if}
+                </form>
+
+                <script type="text/javascript">
+                        $(function(){
+                            /*保存*/
+                            $('.btn-save').click(function(){
+                                var data=my_from();
+
+                                Ajax("user.php?act=add_edit_address",data,submit_rul,"POST","JSON",'',false);
+                                return false;
+                            });
+                            /*取消*/
+                            $('.btn-del').click(function(){
+                                if($('[name="address_id"]').val()){
+                                    window.location.href="user.php?act=address_list";
+                                    return false;
+                                }
+                                $('.addess-message').hide();
+
+                                return false;
+                            });
+
+                        });
+
+                        function dele(id){
+                            massges(1,'温馨提示','确定删除此地址吗',function(){
+                                Ajax("user.php?act=drop_consignee&id="+id,{},submit_rul,"GET","JSON",'',false);
+                                return false;
+                            });
+
+                        }
+
+                        function submit_rul(result) {
+                            if(result.content =='succ'){
+                                window.location.href="user.php?act=address_list";
+                            }else{
+                                layer.msg(result.content);
+                            }
+                        }
+
+                </script>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src='themes/default/js/personal.js?v=3'></script>

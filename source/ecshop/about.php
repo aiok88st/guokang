@@ -18,7 +18,9 @@
 define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
+include_once(dirname(__FILE__)  . '/includes/lib_model.php');
 
+$model=new Model;
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
@@ -63,7 +65,7 @@ if($catid == 14){
         /* 如果页面没有被缓存则重新获得页面的内容 */
         assign_template('a', array($catid));
         $position = assign_ur_here($article['cat_id'], $article['title']);
-        $smarty->assign('page_title',   $position['title']);    // 页面标题
+        $smarty->assign('page_title',   $position['title'].'_国康私人医生集团');    // 页面标题
         $smarty->assign('ur_here',      $position['ur_here']);  // 当前位置
 
         $smarty->assign('categories',           get_categories_tree(0)); // 分类树
@@ -75,13 +77,14 @@ if($catid == 14){
         $smarty->assign('hot_goods',            get_recommend_goods('hot'));
         $smarty->assign('promotion_goods',      get_promote_goods());
         $smarty->assign('promotion_info', get_promotion_info());
-        $smarty->assign('keywords',    htmlspecialchars($meta['keywords']));
-        $smarty->assign('description', htmlspecialchars($meta['cat_desc']));
+            $smarty->assign('keywords',     '_国康私人医生集团');
+            $smarty->assign('description',  '_国康私人医生集团');
 
         /* 获得文章总数 */
         $size   = 12;
         $count  = get_article_count($catid);
         $pager = get_pager('about.php', array('tpl'=>'knowfive','id'=>98,'cat_id'=>14), $count, $page,$size);
+
         $smarty->assign('pager', $pager);
         $sql = 'SELECT article_id, title, author, add_time, file_url, open_type, description' .
             ' FROM ' .$GLOBALS['ecs']->table('article') .
@@ -89,6 +92,7 @@ if($catid == 14){
             ' ORDER BY article_type DESC, article_id DESC'.
             ' limit '.$pager[start] . ',' .$pager[size];
         $data = $db->getAll($sql);
+
         foreach($data as $k=>$v){
             $data[$k]['add_time'] = date($GLOBALS['_CFG']['date_format'], $v['add_time']);
         }
@@ -98,13 +102,90 @@ if($catid == 14){
         assign_dynamic('article_cat');
     }
 
+    //$db->selectLimit();
+
     $smarty->assign('feed_url',         ($_CFG['rewrite'] == 1) ? "feed-typearticle_cat" . $catid . ".xml" : 'feed.php?type=article_cat' . $catid); // RSS URL
 
     $smarty->display($tpl.'.dwt', $cache_id);
+}elseif($catid == 31){
+    $catlist = array();
+    $res=get_article_parent_cats(31);
+
+    assign_template('a', $catlist);
+    $position = assign_ur_here(31, $res[0]['cat_name']);
+    $smarty->assign('page_title',  $position['title'].'_国康私人医生集团');    // 页面标题
+	$smarty->assign('keywords',     '私人医生,家庭医生,国康简介,关于国康,健康管理公司,私人医生服务,私人健康顾问,健康保险,养老保险');
+    $smarty->assign('description',  '国康私人医生健康管理集团是中国领先的私人医生健康管理服务机构.提供私人医生,企业健康福利,亚健康管理,家庭健康顾问,健康保险,养老保险,健康管家等健康医疗服务.国康推出的私人医生诊所+三甲医院转诊的服务体系,有效的解决了客户看病难,服务差,误诊高,亚健康,缺保健等问题.');
+
+    assign_dynamic($tpl);
+    /**我们是谁:分类ID，32**/
 
 
+    $cat32=get_article_cat(32);
+    $cat32_desc=explode("\r\n",$cat32['cat_desc']);
+    $cat32['cat_desc']=$cat32_desc;
+    $smarty->assign('cat32',$cat32);
 
-}else{
+    $sql="SELECT content FROM ".$GLOBALS['ecs']->table('article'). " WHERE `cat_id`=32 ORDER BY article_id desc";
+    $cat32_info=$db->getRow($sql);
+    $smarty->assign('cat32_info',$cat32_info);
+
+    /**我们是谁 END**/
+
+    /**国康能干啥:分类ID，33**/
+    $cat33=get_article_cat(33);
+
+    $cat33_desc=explode("\r\n",$cat33['cat_desc']);
+    $cat33['cat_desc']=$cat33_desc;
+    $smarty->assign('cat33',$cat33);
+
+
+    /*保险：分类ID，34*/
+    $article=get_article_attr(34);
+    $smarty->assign('article34',$article);
+
+    /*健康管理：分类ID，35*/
+    $article=get_article_attr(35);
+    $smarty->assign('article35',$article);
+
+    /*保健理疗：分类ID，36*/
+
+
+    $article=get_article_attr(36);
+
+    $smarty->assign('article36',$article);
+
+    $cat34=get_article_cat(34);
+
+    $smarty->assign('cat34',$cat34);
+    $cat34=get_article_cat(35);
+    $smarty->assign('cat35',$cat34);
+    $cat34=get_article_cat(36);
+    $smarty->assign('cat36',$cat34);
+    /**合作企业**/
+    $bs2=$model->table($ecs->table('article'))->where('`cat_id`=45')->limit(24)->select(1);
+
+    $bs2_count=count($bs2);
+    $smarty->assign('bs2_count',$bs2_count);
+    $smarty->assign('bs2',$bs2);
+    /**合作企业end**/
+
+    /**国康能干啥 END**/
+    /**专家团队**/
+    $expert=$model->table($ecs->table('expert'))->where("cat_id IN (1)")->limit(10)->select();
+    $smarty->assign('expert',$expert);
+    /**专家团队end**/
+    /**最新动态**/
+    $news=$model->table($ecs->table('article'))->where("cat_id IN (6,46)")->order('title,file_url,description,add_time')->limit(3)->select();
+    foreach ($news as $key=>$value){
+        $news[$key]['addTime']=date('Y-m-d',$value['add_time']);
+        $news[$key]['addDay']=date('d',$value['add_time']);
+        $news[$key]['addMoth']=date('Y-m',$value['add_time']);
+    }
+    $smarty->assign('news',$news);
+    /**最新动态end**/
+    $smarty->display('knowZero.dwt', $cache_id);
+} else{
     $cache_id = sprintf('%X', crc32($_REQUEST['id'] . '-' . $_CFG['lang']));
 
     if (!$smarty->is_cached($tpl.'.dwt', $cache_id))
@@ -127,6 +208,8 @@ if($catid == 14){
             $sql = 'SELECT article_id,title,cat_id, content, file_url, description FROM ecs_article where cat_id = 16 ORDER BY add_time DESC';
             $smarty->assign('article2', $db->getAll($sql));
         }
+
+
 
         $smarty->assign('article_categories',   article_categories_tree($article_id)); //文章分类树
         $smarty->assign('categories',       get_categories_tree());  // 分类树
@@ -162,8 +245,12 @@ if($catid == 14){
 
         assign_template('a', $catlist);
 
+
+
         $position = assign_ur_here($article['cat_id'], $article['title']);
-        $smarty->assign('page_title',   $position['title']);    // 页面标题
+        $smarty->assign('page_title',   $position['title'].'_国康私人医生集团');    // 页面标题
+		$smarty->assign('keywords',     htmlspecialchars($article['keywords']));
+        $smarty->assign('description', htmlspecialchars($article['description']));
         $smarty->assign('ur_here',      $position['ur_here']);  // 当前位置
         $smarty->assign('comment_type', 1);
 
@@ -211,6 +298,8 @@ if($catid == 14){
 }
 
 
+
+
 /*------------------------------------------------------ */
 //-- PRIVATE FUNCTION
 /*------------------------------------------------------ */
@@ -245,7 +334,30 @@ function get_article_info($article_id)
 
     return $row;
 }
+/*获取分类属性*/
+function get_article_cat($cat_id){
 
+    $sql="SELECT * FROM ".$GLOBALS['ecs']->table('article_cat') .' WHERE `cat_id`='.$cat_id;
+    $row=$GLOBALS['db']->getRow($sql);
+    return $row;
+}
+
+/*
+ * 根据分类获取文章，和查询文章拓展属性
+ * @cat_id:分类ID
+ * @limit:文章条数
+ * @attr_limit：属性条数
+ * */
+function get_article_attr($cat_id,$limit=2,$attr_limit=3){
+    $sql="SELECT * FROM ".$GLOBALS['ecs']->table('article'). " WHERE `cat_id`=".$cat_id." ORDER BY article_id asc limit ".$limit;
+    $article=$GLOBALS['db']->getAll($sql);
+    foreach ($article as $key => $value){
+        $sql="SELECT * FROM ".$GLOBALS['ecs']->table('article_attr'). " WHERE `article_id`=".$value['article_id']." ORDER BY article_id asc limit ".$attr_limit;
+        $attr=$GLOBALS['db']->getAll($sql);
+        $article[$key]['attr']=$attr;
+    }
+    return $article;
+}
 /**
  * 获得文章关联的商品
  *
@@ -291,7 +403,6 @@ function article_related_goods($id)
 
     return $arr;
 }
-
 
 
 ?>

@@ -303,7 +303,9 @@ $_LANG['os'][OS_RETURNED] = '退货';
 $_LANG['ss'][SS_UNSHIPPED] = '未发货';
 $_LANG['ss'][SS_PREPARING] = '配货中';
 $_LANG['ss'][SS_SHIPPED] = '已发货';
-$_LANG['ss'][SS_RECEIVED] = '收货确认';
+
+$_LANG['ss'][SS_RECEIVED] = '已完成';
+
 $_LANG['ss'][SS_SHIPPED_PART] = '已发货(部分商品)';
 $_LANG['ss'][SS_SHIPPED_ING] = '配货中'; // 已分单
 

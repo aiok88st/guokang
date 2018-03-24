@@ -13,31 +13,18 @@
  * $Id: index.php 17217 2011-01-19 06:29:08Z liubo $
 */
 
-
 define('IN_ECS', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
+
+include_once(dirname(__FILE__)  . '/includes/lib_model.php');
+$model=new Model;
 
 if ((DEBUG_MODE & 2) != 2)
 {
     $smarty->caching = true;
 }
-$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
 
-$uachar = "/(nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|mobile)/i";
-
-if(($ua == '' || preg_match($uachar, $ua))&& !strpos(strtolower($_SERVER['REQUEST_URI']),'wap'))
-{
-    $Loaction = 'h5/';
-
-    if (!empty($Loaction))
-    {
-        ecs_header("Location: $Loaction\n");
-
-        exit;
-    }
-
-}
 /*------------------------------------------------------ */
 //-- Shopex系统地址转换
 /*------------------------------------------------------ */
@@ -127,14 +114,14 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('group_buy_goods', index_get_group_buy());      // 团购商品
     $smarty->assign('auction_list',    index_get_auction());        // 拍卖活动
     $smarty->assign('shop_notice',     $_CFG['shop_notice']);       // 商店公告
-
+    //极速投保表单
+    $policy_type=$model->table($ecs->table('policy_type'))->where('`id`=1')->find();
+    $policy_type=explode("\n",$policy_type['value']);
+    $smarty->assign('policy_type',$policy_type);
     //首页促销
-    $sql = 'SELECT goods_id, goods_name, cat_id,goods_brief,shop_price,market_price,original_img, member_price, no_member_price, vip_price, return_amount FROM ' .
-        $GLOBALS['ecs']->table("goods") .
-        ' WHERE is_hot=1 AND is_on_sale=1 '.
-        ' ORDER BY sort_order ASC,add_time DESC LIMIT 4';
-//    $sql = 'SELECT article_id, title, description, file_url FROM  ecs_article WHERE is_open = 1 AND cat_id =5 limit 4';
-    $list = $db->getAll($sql);
+
+    $list=$model->table($ecs->table('article'))->where('cat_id=5')->field('article_id,new_url,title,description')->order('article_id desc')->limit(4)->select();
+
     $smarty->assign('index_list',     $list);
     //一楼健康保险
     $smarty->assign('one',     get_index_type(2));
@@ -144,11 +131,36 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
     $smarty->assign('two',     get_index_type(3));
     $smarty->assign('two_goods',     get_index_hot_goods(3));
     //三楼
-    $smarty->assign('three',     get_index_type(6));
+    $smarty->assign('three',    get_index_type(6));
     $smarty->assign('three_goods',     get_index_hot_goods(6));
     //四楼
     $smarty->assign('four',     get_index_type(5));
+
+
     $smarty->assign('four_goods',     get_index_hot_goods(5));
+    $new_cat=$model->table($ecs->table('article_cat'))
+        ->where('`parent_id`=17')
+        ->order('sort_order asc')
+        ->field('cat_id,cat_name')
+        ->select();
+    $smarty->assign('new_cat',$new_cat);
+
+    $new_list=array();
+    foreach ($new_cat as $key=>$value){
+        $new_list[$key]['cat_id']=$value['cat_id'];
+        $list=$model->table($ecs->table('article'))
+            ->where("is_open = 1 AND cat_id =".$value['cat_id'])
+            ->field('article_id,title,add_time,file_url,description')
+            ->order('article_type DESC,article_id DESC,add_time DESC')
+            ->limit(11)
+            ->select();
+        $new_list[$key]['lists']=$list;
+        $new_list[$key]['lists_num']=intval(count($list)-1);
+    }
+
+
+    $smarty->assign('new_list',$new_list);
+
     //企业新闻
     $smarty->assign('qiye_news',     get_index_new_articles(6,11));
     //健康资讯
@@ -169,6 +181,18 @@ if (!$smarty->is_cached('index.dwt', $cache_id))
         $smarty->assign('ad', $ad);
     }
 
+
+    $commont_list= $model->table($ecs->table('article'))->where('`cat_id`=47')->limit(3)->select();
+
+    foreach ($commont_list as $key=>$value){
+
+        $commont_list[$key]['add_time']=date('Y-m-d',$value['add_time']);
+        if(mb_strlen($value['description'],'utf-8')>50){
+            $commont_list[$key]['description']=mb_substr($value['description'],0,49,'utf-8').'..';
+        };
+
+    }
+    $smarty->assign('commont_list',$commont_list);
     /* links */
     $links = index_get_links();
     $smarty->assign('img_links',       $links['img']);
@@ -199,12 +223,13 @@ $smarty->display('index.dwt', $cache_id);
 
 //楼层分类
 function get_index_type($id){
-    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $GLOBALS['ecs']->table("category") . " WHERE cat_id =".$id;
+    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $GLOBALS['ecs']->table("category") . " WHERE `cat_id` =".$id;
     $one = $GLOBALS['db']->getRow($sql);
-    $sql = "SELECT attr_values, attr_id FROM " . $GLOBALS['ecs']->table("attribute") . " WHERE attr_id =".$one['filter_attr'];
-    $filter_attr = $GLOBALS['db']->getRow($sql);
-    $filter= str_replace("\n", ",", $filter_attr['attr_values']);
-    $one['filter_attr'] = explode(",",$filter);
+
+    $sql = "SELECT cat_name, cat_name2, cat_id,filter_attr,cat_desc FROM " . $GLOBALS['ecs']->table("category") . " WHERE `parent_id` =".$one['cat_id'];
+    $filter_attr = $GLOBALS['db']->getAll($sql);
+
+    $one['chile_attr'] = $filter_attr;
     return $one;
 }
 //楼层商品
@@ -221,7 +246,7 @@ function get_index_new_articles($id,$limit){
     $sql = 'SELECT article_id, title, add_time, file_url, open_type, description, link' .
         ' FROM ' . $GLOBALS['ecs']->table('article') .
         ' WHERE is_open = 1 AND cat_id = '.$id.
-        ' ORDER BY article_type DESC, add_time DESC LIMIT '.$limit;
+        ' ORDER BY article_type DESC,article_id DESC, add_time DESC LIMIT '.$limit;
     $data = $GLOBALS['db']->getAll($sql);
     foreach($data as $k=>$v){
         if(mb_strlen($v['title'])>25){

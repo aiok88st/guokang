@@ -1,28 +1,72 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
-<link rel="stylesheet" href="themes/default/scss/newsDetails.css" />
+
+{if $article.cat_id eq 45}
+<link rel="stylesheet" href="themes/default/scss/caseDetails.css" />
+
+<style>
+
+	#banner .w12{
+		margin-left: 0;
+	}
+
+</style>
+{else /}
+<link rel="stylesheet" href="themes/default/scss/newsDetails.css?v=1" />
+
+{/if}
 <link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
 <style>
     #banner img{
         width: 100%;
         height: 400px;
     }
+
+	.content{
+		padding: 10px;
+	}
+	.content a{
+		display: inline;
+	}
 </style>
 		<!--集团简介-->
 		<div id="banner" align="center">
-            {insert name='ads' id=6 num=1}
+
+			{insert name='ads' id=6 num=1}
+			{if $article.cat_id eq 45}
+			<div class="partner">
+				<div class="w12">
+					<div class="pnLeft floatl" style="margin-right: 100px">
+						<img src="{$article.file_url}" style="height: auto"/>
+					</div>
+					<div class="pfnRight floatl">
+						<ul>
+							<li>
+								<p style="font-size: 40px;line-height: 50px">{$article.title}</p>
+							</li>
+							<li>
+								{$article.description|wrap}
+							</li>
+						</ul>
+					</div>
+					<div class="clearl"></div>
+				</div>
+			</div>
+			{else /}
 			<div class="brBox">
 				<div class="w12">
 					<ul>
 						<li>
-							<p>{$article.title}</p>
+							<p style="font-weight: 900">{$article.title}</p>
+							<p style="font-size: 14px;padding-top:24px; width:800px">{$article.description}</p>
 						</li>
 						<li>
-							<!--<p>信息来源：国康健康保险</p>-->
+
 							<p>日期：{$article.add_time}</p>
 						</li>
 					</ul>
 				</div>
 			</div>
+			{/if}
 		</div>
         <!-- #BeginLibraryItem "/library/fengxiang_uhere.lbi" --><!-- #EndLibraryItem -->
 		<div id="mainContent">
@@ -30,8 +74,10 @@
 				<div class="leftContent floatl">
 					<div class="article">
 						<div class="fullContent">
-							<p>{$article.title}</p>
-                            <p>{$article.content}</p>
+
+							<div class="content">
+								{$article.content}
+							</div>
                         </div>
 						<div class="nextPrev">
                             <!-- {if $prev_article neq ''} -->
@@ -63,82 +109,7 @@
 						</div>
 					</div>
 
-					<div class="point">
-						<div class="pointTitle">
-							<p>评论（29）</p>
-						</div>
-						<div class="pointMessage">
-							<div class="pmLeft floatl">
-								<img src="themes/default/image/doctor.png" />
-							</div>
-							<div class="pmRight floatl ">
-								<textarea placeholder="请留下您的评论，谢谢！"></textarea>
-							</div>
-							<div class="clearl"></div>
-						</div>
-						<div class="pointBtn">
-							<button class="floatr">发表评论</button>
-							<div class="clearr"></div>
-						</div>
-						<span class="border"></span>
-						<div class="pmBox">
-							<div class="pointMessage pmm">
-								<div class="pmLeft floatl">
-									<img src="themes/default/image/doctor.png" />
-								</div>
-								<div class="pmRight floatl pmessage">
-									<ul>
-										<li>
-											<p class="pointName">Abinav sharma</p>
-											<p class="pointTime">2017-11-23</p>
-										</li>
-										<li>
-											<p class="pointContent">国康以深圳为总部，北京、上海、广州、成都、浙江、山东为运营中心，服务网络覆盖全国40多个大中城市，是中国覆盖最广服务质量满意度最高的私人医生服务商。国康是健康服务行业首个国家级高新技术企业，获得20余项健康服务相关产权...</p>
-										</li>
-									</ul>
-								</div>
-								<div class="clearl"></div>
-							</div>
-							<div class="pointMessage pmm">
-								<div class="pmLeft floatl">
-									<img src="themes/default/image/doctor.png" />
-								</div>
-								<div class="pmRight floatl pmessage">
-									<ul>
-										<li>
-											<p class="pointName">Abinav sharma</p>
-											<p class="pointTime">2017-11-23</p>
-										</li>
-										<li>
-											<p class="pointContent">国康以深圳为总部，北京、上海、广州、成都、浙江、山东为运营中心，服务网络覆盖全国40多个大中城市，是中国覆盖最广服务质量满意度最高的私人医生服务商。国康是健康服务行业首个国家级高新技术企业，获得20余项健康服务相关产权...</p>
-										</li>
-									</ul>
-								</div>
-								<div class="clearl"></div>
-							</div>
-							<div class="pointMessage pmm">
-								<div class="pmLeft floatl">
-									<img src="themes/default/image/doctor.png" />
-								</div>
-								<div class="pmRight floatl pmessage">
-									<ul>
-										<li>
-											<p class="pointName">Abinav sharma</p>
-											<p class="pointTime">2017-11-23</p>
-										</li>
-										<li>
-											<p class="pointContent">国康以深圳为总部，北京、上海、广州、成都、浙江、山东为运营中心，服务网络覆盖全国40多个大中城市，是中国覆盖最广服务质量满意度最高的私人医生服务商。国康是健康服务行业首个国家级高新技术企业，获得20余项健康服务相关产权...</p>
-										</li>
-									</ul>
-								</div>
-								<div class="clearl"></div>
-							</div>
-						</div>
-						<div class="lookPoint">
-							<a href="###">查看更多评论</a>
-						</div>
-
-					</div>
+					{insert name='comments' type=1 id=$id}
 				</div>
 				<div class="rightNavs floatl">
                     <!-- #BeginLibraryItem "/library/news_right.lbi" --><!-- #EndLibraryItem -->
@@ -148,5 +119,120 @@
 			</div>
 
 		</div>
-<script type="text/javascript" src="themes/default/script/news.js" ></script>
+<script type="text/javascript" src="themes/default/script/news.js?v=2" ></script>
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<script>
+layui.use('element', function(){
+  var $ = layui.jquery
+  ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+  
+  //触发事件
+  var active = {
+    tabAdd: function(){
+      //新增一个Tab项
+      element.tabAdd('demo', {
+        title: '新选项'+ (Math.random()*1000|0) //用于演示
+        ,content: '内容'+ (Math.random()*1000|0)
+        ,id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+      })
+    }
+    ,tabDelete: function(othis){
+      //删除指定Tab项
+      element.tabDelete('demo', '44'); //删除：“商品管理”
+      
+      
+      othis.addClass('layui-btn-disabled');
+    }
+    ,tabChange: function(){
+      //切换到指定Tab项
+      element.tabChange('demo', '22'); //切换到：用户管理
+    }
+  };
+  
+  $('.site-demo-active').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+  
+  //Hash地址的定位
+  var layid = location.hash.replace(/^#test=/, '');
+  element.tabChange('test', layid);
+  
+  element.on('tab(test)', function(elem){
+    location.hash = 'test='+ $(this).attr('lay-id');
+  });
+  
+});
+</script>
+<script>
+layui.use(['carousel', 'form'], function(){
+  var carousel = layui.carousel
+  ,form = layui.form;
+  
+  //常规轮播
+  carousel.render({
+    elem: '#test1'
+    ,arrow: 'always'
+  });
+  
+  //改变下时间间隔、动画类型、高度
+  carousel.render({
+    elem: '#test2'
+    ,interval: 1800
+    ,anim: 'fade'
+    ,height: '120px'
+	,width: '771px'
+  });
+  
+  //设定各种参数
+  var ins3 = carousel.render({
+    elem: '#test3'
+  });
+  //图片轮播
+  carousel.render({
+    elem: '#test10'
+    ,width: '778px'
+    ,height: '440px'
+    ,interval: 5000
+  });
+  
+  //事件
+  carousel.on('change(test4)', function(res){
+    console.log(res)
+  });
+  
+  var $ = layui.$, active = {
+    set: function(othis){
+      var THIS = 'layui-bg-normal'
+      ,key = othis.data('key')
+      ,options = {};
+      
+      othis.css('background-color', '#5FB878').siblings().removeAttr('style'); 
+      options[key] = othis.data('value');
+      ins3.reload(options);
+    }
+  };
+  
+  //监听开关
+  form.on('switch(autoplay)', function(){
+    ins3.reload({
+      autoplay: this.checked
+    });
+  });
+  
+  $('.demoSet').on('keyup', function(){
+    var value = this.value
+    ,options = {};
+    if(!/^\d+$/.test(value)) return;
+    
+    options[this.name] = value;
+    ins3.reload(options);
+  });
+  
+  //其它示例
+  $('.demoTest .layui-btn').on('click', function(){
+    var othis = $(this), type = othis.data('type');
+    active[type] ? active[type].call(this, othis) : '';
+  });
+});
+</script>

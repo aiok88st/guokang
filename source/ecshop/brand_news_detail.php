@@ -48,7 +48,7 @@ if (!$smarty->is_cached('famousTwo.dwt', $cache_id))
     $article = get_article_info($article_id);
     //面包屑
     $cat = get_cat_info($article['cat_id']);
-    $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="brand_news.php?id=19">品牌体系 &gt;</a></li><li><a href="brand_news.php?id='.$cat['cat_id'].'">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">新闻详情</a></li>';
+    $url_html = '<li><a href="./index.php">首页 &gt;</a></li><li><a href="brand_news.php?id=19">品牌体系 &gt;</a></li><li><a href="brand_news.php?id='.$cat['cat_id'].'">'.$cat['cat_name'].' &gt;</a></li><li><a href="javascript:;">品牌详情</a></li>';
     $smarty->assign('url_html', $url_html);
 
     if (empty($article))

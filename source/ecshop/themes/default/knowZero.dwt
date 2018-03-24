@@ -1,0 +1,328 @@
+<!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
+<style>
+	#banner img{
+		max-width:1920px;
+	}
+	.tv{ line-height:20px;}
+</style>
+<link rel="stylesheet" href="themes/default/scss/knowZero.css?v=2" />
+		<!--轮播图-->
+		<p class="tv" style="font-size:38px; font-weight:bold; color:#fff; text-align:center;padding-top:196px; height:800px;background:url('http://www.gkbroker.com/guokang/mall/data/afficheimg/1516761319477092270.jpg') no-repeat center; ">中国私人医生服务开创者<br/><br/><br/><br/>
+		<span style="font-size:18px; font-weight:normal; color:#fff; text-align:center; ">中国领先的保险和医疗保健服务商<br/>国康健康引领健康行业新标准</span></p>
+
+<!-- 		{insert name='ads2' id=9 num=1 -->
+
+		<!--我们是谁-->
+		<div id="weAre" style="padding-bottom: 40px">
+			<div class="w12">
+				<div class="weTitle">
+					<ul>
+						<li>
+							<p>{$cat32.cat_name}</p>
+						</li>
+						<li>
+							<!--{foreach from=$cat32.cat_desc item=vo}-->
+							<p>{$vo}</p>
+							<!--{/foreach}-->
+						</li>
+					</ul>
+				</div>
+				<div class="waBox">
+					{$cat32_info.content}
+					<div class="clearl"></div>
+				</div>
+			</div>
+		</div>
+		<!--能干什么？-->
+		<div id="weDo">
+			<img src="themes/default/image/weDo.jpg" />
+			<div class="weDo">
+				<div class="w12">
+					<div class="wdTitle">
+						<ul>
+							<li>
+								<p>{$cat33.cat_name}</p>
+							</li>
+							<li>
+								<!--{foreach from=$cat33.cat_desc item=vo}-->
+								<p>{$vo}</p>
+								<!--{/foreach}-->
+							</li>
+						</ul>
+					</div>
+					<div class="wdBox">
+						<div class="wdLeft floatl">
+							<ul>
+								<li>
+									<a href="javascript:;" class="aActive" index=1>
+										<img src="{$cat34.cat_thumb}"  />
+										<p>{$cat34.cat_name}</p>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;" index=2 >
+										<img src="{$cat35.cat_thumb}"  />
+										<p>{$cat35.cat_name}</p>
+									</a>
+								</li>
+								<li>
+									<a href="javascript:;"index=3>
+										<img src="{$cat36.cat_thumb}"  />
+										<p>{$cat36.cat_name}</p>
+									</a>
+								</li>
+							</ul>
+						</div>
+						<div class="wdRight wdRight1 floatl" >
+							<!--{foreach from=$article34 item=vo}-->
+							<div class="wdrBox">
+								<div class="wdrTitle">
+									<ul>
+										<li>
+											<p>{$vo.title}</p>
+										</li>
+										<li>
+											<p>{$vo.description}</p>
+										</li>
+									</ul>
+									<a href="{$vo.new_url}">马上体验</a>
+								</div>
+								<div class="wdrThree">
+									<!--{foreach from=$vo.attr item=v}-->
+									<a href="###" class="floatl">
+										<div>
+											<ul>
+												<li>
+													<p>{$v.title}</p>
+												</li>
+												<li>
+													<p>{$v.desc}</p>
+												</li>
+											</ul>
+										</div>
+									</a>
+									<!--{/foreach}-->
+									<div class="clearl"></div>
+								</div>
+							</div>
+							<!--{/foreach}-->
+
+						</div>
+						<div class="wdRight wdRight2 floatl" style="display: none;">
+							<!--{foreach from=$article35 item=vo}-->
+							<div class="wdrBox">
+								<div class="wdrTitle">
+									<ul>
+										<li>
+											<p>{$vo.title}</p>
+										</li>
+										<li>
+											<p>{$vo.description}</p>
+										</li>
+									</ul>
+									<a href="{$vo.new_url}">马上体验</a>
+								</div>
+								<div class="wdrThree">
+									<!--{foreach from=$vo.attr item=v}-->
+									<a href="###" class="floatl">
+										<div>
+											<ul>
+												<li>
+													<p>{$v.title}</p>
+												</li>
+												<li>
+													<p>{$v.desc}</p>
+												</li>
+											</ul>
+										</div>
+									</a>
+									<!--{/foreach}-->
+									<div class="clearl"></div>
+								</div>
+							</div>
+							<!--{/foreach}-->
+						</div>
+						<div class="wdRight wdRight3 floatl" style="display: none;">
+							<!--{foreach from=$article36 item=vo}-->
+							<div class="wdrBox">
+								<div class="wdrTitle">
+									<ul>
+										<li>
+											<p>{$vo.title}</p>
+										</li>
+										<li>
+											<p>{$vo.description}</p>
+										</li>
+									</ul>
+									<a href="{$vo.new_url}">马上体验</a>
+								</div>
+								<div class="wdrThree">
+									<!--{foreach from=$vo.attr item=v}-->
+									<a href="###" class="floatl">
+										<div>
+											<ul>
+												<li>
+													<p>{$v.title}</p>
+												</li>
+												<li>
+													<p>{$v.desc}</p>
+												</li>
+											</ul>
+										</div>
+									</a>
+									<!--{/foreach}-->
+									<div class="clearl"></div>
+								</div>
+							</div>
+							<!--{/foreach}-->
+						</div>
+						<div class="clearl"></div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		<!--服务品牌-->
+		<div id="logo">
+			<div class="logoTitle">
+				<ul>
+					<li>
+						<p>赤诚相待</p>
+						<p>我们正在服务的品牌</p>
+					</li>
+					<li>
+						<p>真正为华为、腾讯等超级品牌做过健康管理的大手</p>
+					</li>
+				</ul>
+			</div>
+			<div class="companyLogo w12">
+
+				<!--{foreach from=$bs2 item=item}-->
+				<a href="article-{$item.article_id}.html" class="floatl" style="background-image: url('{$item.file_url}')"></a>
+				<!--{/foreach}-->
+
+				<!--{if $bs2_count gt 24}-->
+				<a href="case-company.html" class="floatl"></a>
+				<!--{/if}-->
+
+				<div class="clearl"></div>
+
+
+			</div>
+		</div>
+		<!--专家-->
+		<div id="doctor" class="w12">
+			<div class="docTitle">
+				<p>顶级名医</p>
+				<p>我们的特聘专家顾问团</p>
+			</div>
+			<div class="doctorBox">
+				<div class="swiper-container swiper-container-doctor">
+					<div class="swiper-wrapper">
+						<!--{foreach from=$expert item=item}-->
+						<div class="swiper-slide">
+							<div class="doctor">
+								<ul>
+									<li>
+										<div class="pfHead">
+											{if $item.thumb}
+											<img src=".{$item.thumb}" />
+											{else /}
+											<img src="themes/default/img/headerImg.jpg" />
+											{/if}
+
+										</div>
+									</li>
+									<li>
+										<p class="pfName">{$item.name}</p>
+									</li>
+									<li>
+										<span></span>
+									</li>
+									<li>
+										<p class="pfDetails">{$item.unit} {$item.position}</p>
+									</li>
+									<li>
+										<a href="expert-act_details-{$item.id|my_intval}.html">查看详情</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--{/foreach}-->
+
+					</div>
+				</div>
+				<div class="swiper-button-prev prevLeft"></div>
+    			<div class="swiper-button-next nextRight"></div>
+			</div>
+			<div class="moreExpert">
+				<a href="###"><img src="themes/default/image/moreExpert.png"/></a>
+			</div>
+		</div>
+		<!--最新动态-->
+		<div id="news">
+			<div class="newsTitle">
+				<p>精进不休</p>
+				<p>我们的最新动态</p>
+			</div>
+			<div class="newsBoxs w12">
+				<!--{foreach from=$news item=item key=key}-->
+				<!--{if $key eq 0}-->
+				<a href="article-{$item.article_id}.html" class="nsLeft floatl">
+					<div class="nslImg">
+						<img src="{$item.file_url}" onerror="this.src='themes/default/img/develop.jpg'"/>
+					</div>
+					<div class="nslContent">
+						<ul>
+							<li>
+								<p>{$item.title}</p>
+							</li>
+							<li>
+								<p>{$item.description}...</p>
+							</li>
+							<li>
+								<p>{$item.addTime}</p>
+							</li>
+						</ul>
+					</div>
+				</a>
+				<!--{else}-->
+				<!--{if $key eq 1}-->
+				<div class="nsRight floatl">
+				<!--{/if}-->
+
+					<a href="article-{$item.article_id}.html" class="nsrBox">
+						<div class="nsrLitterBox">
+							<ul>
+								<li>
+									<p>{$item.title|truncate:28:"...":true}</p>
+								</li>
+								<li>
+									<p>{$item.description}...</p>
+								</li>
+							</ul>
+							<div class="nsrTime">
+								<span>{$item.addDay}</span>
+								<p>{$item.addMoth}</p>
+							</div>
+						</div>
+					</a>
+				<!--{if $key eq 2}-->
+				</div>
+				<!--{/if}-->
+				<!--{/if}-->
+				<!--{/foreach}-->
+
+
+
+				<div class="clearl"></div>
+			</div>
+			<div class="moreNews w12">
+				<a href="article_cat-6.html">查看更多&gt;&gt;</a>
+			</div>
+		</div>
+		<!--免费申请-->
+<!-- #BeginLibraryItem "/library/apply.lbi" --><!-- #EndLibraryItem -->
+
+		<script type="text/javascript" src="themes/default/script/knowZero.js?v=2" ></script>
+<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->

@@ -310,16 +310,35 @@ function get_position_list()
  */
 function create_html_editor($input_name, $input_value = '')
 {
-    global $smarty;
+//    global $smarty;
+//
+//    $editor = new FCKeditor($input_name);
+//    $editor->BasePath   = '../includes/fckeditor/';
+//    $editor->ToolbarSet = 'Normal';
+//    $editor->Width      = '100%';
+//    $editor->Height     = '320';
+//    $editor->Value      = $input_value;
+//    $FCKeditor = $editor->CreateHtml();
+//    $smarty->assign('FCKeditor', $FCKeditor);
 
-    $editor = new FCKeditor($input_name);
-    $editor->BasePath   = '../includes/fckeditor/';
-    $editor->ToolbarSet = 'Normal';
-    $editor->Width      = '100%';
-    $editor->Height     = '320';
-    $editor->Value      = $input_value;
-    $FCKeditor = $editor->CreateHtml();
-    $smarty->assign('FCKeditor', $FCKeditor);
+    global $smarty;
+    $kindeditor="<script charset='utf-8' src='../includes/kindeditor/kindeditor-all-min.js'></script>
+<script>
+var editor;
+KindEditor.ready(function(K) {
+editor = K.create('textarea[name=\"$input_name\"]', {
+filterMode : false,    
+allowFileManager : true,
+width : '800px',
+height: '400px',
+resizeType: 0
+});
+});
+</script>
+<textarea id=\"$input_name\" name=\"$input_name\" style='width:700px;height:300px;'>$input_value</textarea>
+";
+    $smarty->assign('FCKeditor', $kindeditor);
+
 }
 
 /**
@@ -840,5 +859,33 @@ function suppliers_list_name()
     }
 
     return $suppliers_name;
+}
+
+/**
+ * 递归获取省市区
+ */
+function tree_regions($list,$parent_id)
+{
+    $tree=[];
+    $data=$list;
+    foreach ($data as $key=>$value){
+        if($value['parent_id']==$parent_id){
+            $v=[];
+            $v['name']=$value['region_name'];
+            $v['code']=$value['region_id'];
+            if($value['region_type']==1){
+                $v['state']=tree_regions($data,$value['region_id']);
+            }elseif($value['region_type']==2){
+                $v['city']=tree_regions($data,$value['region_id']);
+            }
+            if($value['parent_id']==1){
+                $tree[]['region']=$v;
+            }else{
+                $tree[]=$v;
+            }
+
+        }
+    }
+    return $tree;
 }
 ?>

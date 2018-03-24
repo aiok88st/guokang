@@ -1,0 +1,138 @@
+<FilesMatch "\.(bak|inc|lib|sh|tpl|lbi|dwt)$">
+    order deny,allow
+    deny from all
+</FilesMatch>
+RewriteEngine On
+RewriteBase /
+
+Redirect permanent /p_jzfa.htm /category-2.html
+Redirect permanent /p_tjjj.htm /category-2.html
+Redirect permanent /p_about.htm /about-31.html
+Redirect permanent /p_about1.htm /about-31.html
+Redirect permanent /n_detail/1104.htm /expert-act_details-469.html
+Redirect permanent /p_gltd.htm /about_tpl-knowThree-94-12.html
+Redirect permanent /n_5.htm /article_cat-6.html
+Redirect permanent /n_5/p2.htm /article_cat-6.html
+Redirect permanent /n_81/p2.htm /article_cat-6.html
+Redirect permanent /n_81/p3.htm /article_cat-6.html
+Redirect permanent /n_81/p4.htm /article_cat-6.html
+Redirect permanent /n_news.htm /article_cat-6.html
+Redirect permanent /n_81.htm /article_cat-6.html
+Redirect permanent /p_help.htm /article-589.html
+Redirect permanent /n_76.htm /case-company.html
+Redirect permanent /p_resource.htm /expert-1.html
+Redirect permanent /n_73/p3.htm /expert-1.html
+Redirect permanent /n_73/p86.htm /expert-1.html
+Redirect permanent /n_73/p75.htm /expert-1.html
+Redirect permanent /n_73/p6.htm /expert-1.html
+Redirect permanent /n_73.htm /expert-1.html
+Redirect permanent /n_73/p4.htm /expert-1.html
+Redirect permanent /n_73/p5.htm /expert-1.html
+Redirect permanent /n_73/p2.htm /expert-1.html
+Redirect permanent /n_detail/2486.htm /expert-1.html
+Redirect permanent /p_zcfa.htm /p_case.htm
+Redirect permanent /p_ggfa.htm /p_case.htm
+Redirect permanent /p_gkmy.htm /p_case.htm
+Redirect permanent /n_detail/4535.htm /p_case.htm
+Redirect permanent /n_31.htm /article_cat-7.html
+Redirect permanent /srys/index.html /overview-14-over.html
+Redirect permanent /n_74.htm /expert-7.html
+Redirect permanent /n_75.htm /p_case.htm
+Redirect permanent /n_78.htm /article_cat-7.html
+Redirect permanent /n_80.htm /case-company.html
+Redirect permanent /goods/4.htm /about-31.html
+Redirect permanent /p_gkbxjj.htm /category-2.html
+Redirect permanent /n_detail/440.htm /article-160.html
+Redirect permanent /p_ppys.htm /p_case.htm
+Redirect permanent /n_detail/2491.htm /p_case.htm
+Redirect permanent /n_detail/3720.htm /expert-act_details-381.html
+Redirect permanent /10zhounian/ /article-908.html
+Redirect permanent /n_detail/3060.htm /expert-act_details-1264.html
+Redirect permanent /n_detail/384.htm /expert-act_details-31.html
+Redirect permanent /p_qyry.htm /about_tpl-knowfive-98-14.html
+Redirect permanent /n_detail/4800.htm /article-155.html
+Redirect permanent /p_fzlc.htm /about_tpl-knowFour-95-13.html
+Redirect permanent /p_fzlc.htm /service-doctor.html
+Redirect permanent /goods/1.htm /service-doctor.html
+Redirect permanent /goods/7.htm /service-doctor.html
+
+
+
+# direct one-word access
+RewriteRule ^index\.html$    index\.php [L]
+RewriteRule ^category$      index\.php [L]
+
+
+# access any object by its numeric identifier
+RewriteRule ^feed-c([0-9]+)\.xml$       feed\.php\?cat=$1 [L]
+RewriteRule ^feed-b([0-9]+)\.xml$       feed\.php\?brand=$1 [L]
+RewriteRule ^feed-type([^-]+)\.xml$       feed\.php\?type=$1 [L]
+RewriteRule ^feed\.xml$                 feed\.php [L]
+
+RewriteRule ^category-([0-9]+)-([0-9]+)-p([0-9]+)(.*)\.html$                                                                category\.php\?id=$1&cid=$2&page=$3  [QSA,L]
+RewriteRule ^category-([0-9]+)-([0-9]+)-([0-9]+)-p([0-9]+)(.*)\.html$                                                       category\.php\?id=$1&cid=$2&aid=$3&page=$4  [QSA,L]
+RewriteRule ^category-([0-9]+)-p([0-9]+)(.*)\.html$                                                                          category\.php\?id=$1&page=$2  [QSA,L]
+
+RewriteRule ^category-([0-9]+)-([0-9]+)(.*)\.html$                                                                category\.php\?id=$1&cid=$2  [QSA,L]
+RewriteRule ^category-([0-9]+)-([0-9]+)-([0-9]+)(.*)\.html$                                                       category\.php\?id=$1&cid=$2&aid=$3  [QSA,L]
+RewriteRule ^category-([0-9]+)(.*)\.html$                                                                         category\.php\?id=$1  [QSA,L]
+
+RewriteRule ^p_case\.htm(.*)$                                                                 case\.php$1  [QSA,L]
+RewriteRule ^case-(.*)-p([0-9]+)\.html(.*)$                                                  case\.php?act=$1&page=$2  [QSA,L]
+RewriteRule ^case-(.*)\.html(.*)$                                                            case\.php?act=$1&page=$2  [QSA,L]
+
+RewriteRule ^expert-([0-9]+)-p([0-9]+)\.html(.*)$                                            expert\.php?cat_id=$1&page=$2  [QSA,L]
+
+RewriteRule ^expert-([0-9]+)-attr(.*)-p([0-9]+)\.html(.*)$                                   expert\.php?cat_id=$1&attr=$2&page=$3  [QSA,L]
+
+RewriteRule ^expert-([0-9]+)\.html(.*)$                                                      expert\.php?cat_id=$1  [QSA,L]
+RewriteRule ^expert-act_(.*)-([0-9]+)\.html(.*)$                                             expert\.php?act=$1&id=$2  [QSA,L]
+RewriteRule ^expert-([0-9]+)-attr(.*)\.html(.*)$                                             expert\.php?cat_id=$1&attr=$2  [QSA,L]
+
+
+
+RewriteRule ^hd-(.*)\.html(.*)$                                                              hd\.php?id=$1  [QSA,L]
+
+RewriteRule ^service\.html(.*)$                                                              service\.php$1  [QSA,L]
+RewriteRule ^service-(.*)\.html(.*)$                                                         service\.php?act=$1  [QSA,L]
+
+RewriteRule ^es\.html(.*)$                                                              es\.php$1  [QSA,L]
+RewriteRule ^es-(.*)\.html(.*)$                                                         es\.php?act=$1  [QSA,L]
+
+RewriteRule ^goods-([0-9]+)-over(.*)\.html$  goods\.php\?id=$1&over=1 [QSA,L]
+RewriteRule ^goods-([0-9]+)(.*)\.html$  goods\.php\?id=$1 [QSA,L]
+
+
+RewriteRule ^overview-([0-9]+)(.*)\.html$  overview\.php\?id=$1 [QSA,L]
+
+RewriteRule ^article_cat-([0-9]+)-p([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$  article_cat\.php\?id=$1&page=$2&sort=$3&order=$4  [QSA,L]
+RewriteRule ^article_cat-([0-9]+)-p([0-9]+)-(.+)(.*)\.html$              article_cat\.php\?id=$1&page=$2&keywords=$3 [QSA,L]
+RewriteRule ^article_cat-([0-9]+)-p([0-9]+)(.*)\.html$                   article_cat\.php\?id=$1&page=$2   [QSA,L]
+RewriteRule ^article_cat-([0-9]+)(.*)\.html$                            article_cat\.php\?id=$1   [QSA,L]
+
+RewriteRule ^article-([0-9]+)(.*)\.html$                                article\.php\?id=$1   [QSA,L]
+
+RewriteRule ^brand-([0-9]+)-c([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)\.html   brand\.php\?id=$1&cat=$2&page=$3&sort=$4&order=$5 [QSA,L]
+RewriteRule ^brand-([0-9]+)-c([0-9]+)-([0-9]+)(.*)\.html                brand\.php\?id=$1&cat=$2&page=$3 [QSA,L]
+RewriteRule ^brand-([0-9]+)-c([0-9]+)(.*)\.html                         brand\.php\?id=$1&cat=$2 [QSA,L]
+RewriteRule ^brand-([0-9]+)(.*)\.html                                   brand\.php\?id=$1 [QSA,L]
+
+RewriteRule ^brand_news-([0-9]+)(.*)\.html                              brand_news\.php\?id=$1 [QSA,L]
+RewriteRule ^brand_news_detail-([0-9]+)(.*)\.html                       brand_news_detail\.php\?id=$1 [QSA,L]
+
+
+RewriteRule ^about-([0-9]+)(.*)\.html                                   about\.php\?cat_id=$1 [QSA,L]
+RewriteRule ^about_tpl-(.*)-([0-9]+)-([0-9]+)(.*)\.html                 about\.php\?tpl=$1&id=$2&cat_id=$3 [QSA,L]
+
+RewriteRule ^about_tpl-(.*)-([0-9]+)(.*)\.html                          about\.php\?tpl=$1&id=$2 [QSA,L]
+
+RewriteRule ^tag-(.*)\.html                                             search\.php\?keywords=$1 [QSA,L]
+RewriteRule ^snatch-([0-9]+)\.html$                                     snatch\.php\?id=$1 [QSA,L]
+RewriteRule ^group_buy-([0-9]+)\.html$                                  group_buy\.php\?act=view&id=$1 [QSA,L]
+RewriteRule ^auction-([0-9]+)\.html$                                    auction\.php\?act=view&id=$1 [QSA,L]
+
+RewriteRule ^exchange-id([0-9]+)(.*)\.html$                             exchange\.php\?id=$1&act=view [QSA,L]
+RewriteRule ^exchange-([0-9]+)-min([0-9]+)-max([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$ exchange\.php\?cat_id=$1&integral_min=$2&integral_max=$3&page=$4&sort=$5&order=$6 [QSA,L]
+RewriteRule ^exchange-([0-9]+)-([0-9]+)-(.+)-([a-zA-Z]+)(.*)\.html$                         exchange\.php\?cat_id=$1&page=$2&sort=$3&order=$4 [QSA,L]
+RewriteRule ^exchange-([0-9]+)-([0-9]+)(.*)\.html$                                          exchange\.php\?cat_id=$1&page=$2  [QSA,L]
+RewriteRule ^exchange-([0-9]+)(.*)\.html$                                                   exchange\.php\?cat_id=$1  [QSA,L]

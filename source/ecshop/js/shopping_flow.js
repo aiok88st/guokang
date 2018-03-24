@@ -18,47 +18,47 @@ var groupBuyPayment  = null;
  */
 function selectShipping(obj)
 {
-  if (selectedShipping == obj)
-  {
-    return;
-  }
-  else
-  {
-    selectedShipping = obj;
-  }
-
-  var supportCod = obj.attributes['supportCod'].value + 0;
-  var theForm = obj.form;
-
-  for (i = 0; i < theForm.elements.length; i ++ )
-  {
-    if (theForm.elements[i].name == 'payment' && theForm.elements[i].attributes['isCod'].value == '1')
-    {
-      if (supportCod == 0)
-      {
-        theForm.elements[i].checked = false;
-        theForm.elements[i].disabled = true;
-      }
-      else
-      {
-        theForm.elements[i].disabled = false;
-      }
-    }
-  }
-
-  if (obj.attributes['insure'].value + 0 == 0)
-  {
-    document.getElementById('ECS_NEEDINSURE').checked = false;
-    document.getElementById('ECS_NEEDINSURE').disabled = true;
-  }
-  else
-  {
-    document.getElementById('ECS_NEEDINSURE').checked = false;
-    document.getElementById('ECS_NEEDINSURE').disabled = false;
-  }
+  // if (selectedShipping == obj)
+  // {
+  //   return;
+  // }
+  // else
+  // {
+  //   selectedShipping = obj;
+  // }
+  //
+  // var supportCod = obj.attributes['supportCod'].value + 0;
+  // var theForm = obj.form;
+  //
+  // for (i = 0; i < theForm.elements.length; i ++ )
+  // {
+  //   if (theForm.elements[i].name == 'payment' && theForm.elements[i].attributes['isCod'].value == '1')
+  //   {
+  //     if (supportCod == 0)
+  //     {
+  //       theForm.elements[i].checked = false;
+  //       theForm.elements[i].disabled = true;
+  //     }
+  //     else
+  //     {
+  //       theForm.elements[i].disabled = false;
+  //     }
+  //   }
+  // }
+  //
+  // if (obj.attributes['insure'].value + 0 == 0)
+  // {
+  //   document.getElementById('ECS_NEEDINSURE').checked = false;
+  //   document.getElementById('ECS_NEEDINSURE').disabled = true;
+  // }
+  // else
+  // {
+  //   document.getElementById('ECS_NEEDINSURE').checked = false;
+  //   document.getElementById('ECS_NEEDINSURE').disabled = false;
+  // }
 
   var now = new Date();
-  Ajax.call('flow.php?step=select_shipping', 'shipping=' + obj.value, orderShippingSelectedResponse, 'GET', 'JSON');
+  Ajax.call('flow.php?step=select_shipping', 'shipping=' + obj, orderShippingSelectedResponse, 'GET', 'JSON');
 }
 
 /**
@@ -107,7 +107,8 @@ function selectPayment(obj)
     selectedPayment = obj;
   }
 
-  Ajax.call('flow.php?step=select_payment', 'payment=' + obj.value, orderSelectedResponse, 'GET', 'JSON');
+  // Ajax.call('flow.php?step=select_payment', 'payment=' + obj.value, orderSelectedResponse, 'GET', 'JSON');
+  Ajax.call('flow.php?step=select_payment', 'payment=' + obj, orderSelectedResponse, 'GET', 'JSON');
 }
 /* *
  * 团购购物流程 --> 改变配送方式
@@ -235,7 +236,13 @@ function orderSelectedResponse(result)
   if (result.error)
   {
     alert(result.error);
-    location.href = './';
+
+    if(result.url){
+        location.href = result.url;
+    }else{
+        location.href = './';
+    }
+
   }
 
   try
@@ -411,23 +418,15 @@ if (obj.error)
 /* *
  * 改变发票的方式
  */
-function changeNeedInv()
+function changeNeedInv(invType)
 {
-  var obj        = document.getElementById('ECS_NEEDINV');
-  var objType    = document.getElementById('ECS_INVTYPE');
-  var objPayee   = document.getElementById('ECS_INVPAYEE');
-  var objContent = document.getElementById('ECS_INVCONTENT');
-  var needInv    = obj.checked ? 1 : 0;
-  var invType    = obj.checked ? (objType != undefined ? objType.value : '') : '';
-  var invPayee   = obj.checked ? objPayee.value : '';
-  var invContent = obj.checked ? objContent.value : '';
-  objType.disabled = objPayee.disabled = objContent.disabled = ! obj.checked;
-  if(objType != null)
-  {
-    objType.disabled = ! obj.checked;
-  }
+  var needInv    =  1;
+
+  var invPayee   =  '';
+  var invContent =  '';
 
   Ajax.call('flow.php?step=change_needinv', 'need_inv=' + needInv + '&inv_type=' + encodeURIComponent(invType) + '&inv_payee=' + encodeURIComponent(invPayee) + '&inv_content=' + encodeURIComponent(invContent), orderSelectedResponse, 'GET');
+  return false;
 }
 
 /* *
@@ -498,42 +497,42 @@ function checkOrderForm(frm)
   }
 
   // 检查用户输入的余额
-  if (document.getElementById("ECS_SURPLUS"))
-  {
-    var surplus = document.getElementById("ECS_SURPLUS").value;
-    var error   = Utils.trim(Ajax.call('flow.php?step=check_surplus', 'surplus=' + surplus, null, 'GET', 'TEXT', false));
+  // if (document.getElementById("ECS_SURPLUS"))
+  // {
+  //   var surplus = document.getElementById("ECS_SURPLUS").value;
+  //   var error   = Utils.trim(Ajax.call('flow.php?step=check_surplus', 'surplus=' + surplus, null, 'GET', 'TEXT', false));
+  //
+  //   if (error)
+  //   {
+  //     try
+  //     {
+  //       document.getElementById("ECS_SURPLUS_NOTICE").innerHTML = error;
+  //     }
+  //     catch (ex)
+  //     {
+  //     }
+  //     return false;
+  //   }
+  // }
 
-    if (error)
-    {
-      try
-      {
-        document.getElementById("ECS_SURPLUS_NOTICE").innerHTML = error;
-      }
-      catch (ex)
-      {
-      }
-      return false;
-    }
-  }
-
-  // 检查用户输入的积分
-  if (document.getElementById("ECS_INTEGRAL"))
-  {
-    var integral = document.getElementById("ECS_INTEGRAL").value;
-    var error    = Utils.trim(Ajax.call('flow.php?step=check_integral', 'integral=' + integral, null, 'GET', 'TEXT', false));
-
-    if (error)
-    {
-      return false;
-      try
-      {
-        document.getElementById("ECS_INTEGRAL_NOTICE").innerHTML = error;
-      }
-      catch (ex)
-      {
-      }
-    }
-  }
+  // // 检查用户输入的积分
+  // if (document.getElementById("ECS_INTEGRAL"))
+  // {
+  //   var integral = document.getElementById("ECS_INTEGRAL").value;
+  //   var error    = Utils.trim(Ajax.call('flow.php?step=check_integral', 'integral=' + integral, null, 'GET', 'TEXT', false));
+  //
+  //   if (error)
+  //   {
+  //     return false;
+  //     try
+  //     {
+  //       document.getElementById("ECS_INTEGRAL_NOTICE").innerHTML = error;
+  //     }
+  //     catch (ex)
+  //     {
+  //     }
+  //   }
+  // }
   frm.action = frm.action + '?step=done';
   return true;
 }

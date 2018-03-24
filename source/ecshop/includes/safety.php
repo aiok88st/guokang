@@ -1,4 +1,5 @@
 <?php
+
 $url_arr=array(
 'xss'=>"\\=\\+\\/v(?:8|9|\\+|\\/)|\\%0acontent\\-(?:id|location|type|transfer\\-encoding)",
 );

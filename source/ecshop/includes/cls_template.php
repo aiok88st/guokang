@@ -649,7 +649,21 @@ class cls_template
                     case 'strip_tags':
                         $p = 'strip_tags(' . $p . ')';
                         break;
-
+                    case 'wrap':
+                        $p = 'wrap(' . $p . ')';
+                        break;
+                    case 'my_intval':
+                        $p = 'my_intval(' . $p . ')';
+                        break;
+                    case 'dateDay':
+                        $p = 'date("Y-m-d",' . $p . ')';
+                        break;
+                    case 'date_time':
+                        $p = 'date("Y-m-d H:i:s",' . $p . ')';
+                        break;
+                    case 'goods_attr':
+                        $p = 'goods_attr('.$p.')';
+                        break;
                     default:
                         # code...
                         break;

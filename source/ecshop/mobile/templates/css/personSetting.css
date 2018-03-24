@@ -1,0 +1,71 @@
+body{
+    font-size: .2rem;
+    background-color: #f4f4f4;
+    position: relative;
+    text-align: center;
+    color: #5e5e5e;
+}
+.info-list{
+    width: 100%;
+    background-color: #fff;
+}
+.info-list .list1{
+    overflow: hidden;
+    padding: .2rem;
+    color: #a6a6a6;
+    position: relative;
+    border: 1px solid #f4f4f4;
+}
+.info-list .list1 img.left{
+    float: left;
+    width: .6rem;
+    margin: .3rem .3rem .1rem .1rem;
+}
+.info-list .list1>div{
+    float: left;
+}
+.info-list .list1 .middle{
+    width: 3.6rem;
+    text-align: left;
+}
+.info-list .list1 .middle .middle1{
+    margin-bottom: .1rem;
+}
+.info-list .list1 .middle .middle1 .s1{
+    font-weight: bold;
+    font-size: .25rem;
+    color: #5e5e5e;
+    margin-right: .1rem;
+}
+.info-list .list1 .middle .middle1 .s2{
+    color: #55ba86;
+}
+.info-list .list1 .right{
+    font-size: .1rem;
+    text-align: center;
+    width: 1.3rem;
+    border: 1px solid #F4F4F4;
+    padding: .1rem 0;
+    -webkit-border-radius: .4rem;
+    -moz-border-radius: .4rem;
+    border-radius: .4rem;
+    color: #0067b1;
+    position: absolute;
+    top: 50%;
+    right: .1rem;
+    margin-top: -.3rem;
+}
+.exit{
+    width: 90%;
+    text-align: center;
+    padding: .3rem 0;
+    border: 1px solid #0067b1;
+    -webkit-border-radius: .15rem;
+    -moz-border-radius: .15rem;
+    border-radius: .15rem;
+    position: absolute;
+    left: 50%;
+    margin-left: -2.9rem;
+    bottom: .2rem;
+    color: #0067b1;
+}

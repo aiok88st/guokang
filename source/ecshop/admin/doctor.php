@@ -19,689 +19,603 @@ require(dirname(__FILE__) . '/includes/init.php');
 require_once(ROOT_PATH . "includes/fckeditor/fckeditor.php");
 require_once(ROOT_PATH . 'includes/cls_image.php');
 
-/*初始化数据交换对象 */
-$exc   = new exchange($ecs->table("doctor"), $db, 'doctor_id', 'title');
-//$image = new cls_image();
-
+include_once(ROOT_PATH . '/includes/lib_model.php');
+include_once(ROOT_PATH . '/includes/lib_main.php');
+$model=new Model;
+$image = new cls_image($_CFG['file']);
+$act=isset($_REQUEST['act'])?$_REQUEST['act']:"list";
 /* 允许上传的文件类型 */
 $allow_file_types = '|GIF|JPG|PNG|BMP|SWF|DOC|XLS|PPT|MID|WAV|ZIP|RAR|PDF|CHM|RM|TXT|';
 
-/*------------------------------------------------------ */
-//-- 文章列表
-/*------------------------------------------------------ */
-if ($_REQUEST['act'] == 'list')
-{
-    /* 取得过滤条件 */
-    $filter = array();
-    $smarty->assign('cat_select',  doctor_cat_list(0));
-    $smarty->assign('ur_here',      '专家列表');
-    $smarty->assign('action_link',  array('text' => '添加专家', 'href' => 'doctor.php?act=add'));
-    $smarty->assign('full_page',    1);
-    $smarty->assign('filter',       $filter);
+admin_priv('doctor');
+$smarty->assign('full_page',1);
+$type=isset($_REQUEST['type'])?intval($_REQUEST['type']):1;
+//团队列表
+if($act=="list"){
+    //获取专家分类
+    $cat_list=$model->table($ecs->table('expert_cat'))->order('list_order asc,id desc')->select();
+    $smarty->assign('action_link',array(
+        'href'=>'doctor.php?act=expert_add',
+        'text'=>'添加专家'
+    ));
+    $pam=[
+        'act'=>'list'
+    ];
+    $where='';
 
-    $article_list = get_articleslist();
+    if(isset($_GET['cat_id']) && $_GET['cat_id']){
+        $where .=' `cat_id`='.intval($_GET['cat_id']).'';
+        $pam['cat_id']=intval($_GET['cat_id']);
+    }
+    if(isset($_GET['name']) && $_GET['name']){
+        if(isset($_GET['cat_id']) && $_GET['cat_id']){
+            $where .=" AND ";
+        }
+        $where .=" `name` like '%".trim($_GET['name'])."%'";
+        $pam['name']=trim($_GET['name']);
+    }
+    if(!empty($where)){
+        $pager=$model
+            ->table($ecs->table('expert'))
+            ->where($where)
 
-    $smarty->assign('doctor_list',    $article_list['arr']);
-    $smarty->assign('filter',          $article_list['filter']);
-    $smarty->assign('record_count',    $article_list['record_count']);
-    $smarty->assign('page_count',      $article_list['page_count']);
+            ->order('list_order asc,id desc')
+            ->paginate(20,'doctor.php',$pam);
+    }else{
+        $pager=$model->table($ecs->table('expert'))->order('list_order asc,id desc')->paginate(20,'doctor.php',$pam);
+    }
 
-    $sort_flag  = sort_flag($article_list['filter']);
-    $smarty->assign($sort_flag['tag'], $sort_flag['img']);
+    $lists=$pager['lists'];
+    foreach ($lists as $key=>$value){
+        $cat_name=$model->table($ecs->table('expert_cat'))->where("`id`=".$value['cat_id'])->value('cat_name');
+        $lists[$key]['cat_name']=$cat_name;
+    }
+    $smarty->assign('pager',$pager);
+    $smarty->assign('record_count',$pager['record_count']);
+    $smarty->assign('page_count',$pager['page_count']);
 
-    assign_query_info();
+    $smarty->assign('filter',$pager);
+    $smarty->assign('lists',$lists);
+
+    $smarty->assign('cat_list',$cat_list);
     $smarty->display('doctor_list.htm');
 }
+//添加团队页面
+elseif($act=="expert_add"){
+    $smarty->assign('action_link',array(
+        'href'=>'doctor.php?act=list',
+        'text'=>'返回列表'
+    ));
+    create_html_editor('content');
 
-/*------------------------------------------------------ */
-//-- 翻页，排序
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'query')
-{
-    check_authz_json('article_manage');
+    $id=isset($_REQUEST['id'])?intval($_REQUEST['id']):'';
 
-    $article_list = get_articleslist();
+    if($id){
+        $data=$model->table($ecs->table('expert'))->where('`id`='.$id)->find();
+        if(!$data)  sys_msg('找不到内容详情', 1, array(), false);
 
-    $smarty->assign('doctor_list',    $article_list['arr']);
-    $smarty->assign('filter',          $article_list['filter']);
-    $smarty->assign('record_count',    $article_list['record_count']);
-    $smarty->assign('page_count',      $article_list['page_count']);
+        create_html_editor('content',rts_elipmoc($data['content']));
+        $smarty->assign('doctor',$data);
 
-    $sort_flag  = sort_flag($article_list['filter']);
-    $smarty->assign($sort_flag['tag'], $sort_flag['img']);
-
-    make_json_result($smarty->fetch('doctor_list.htm'), '',
-        array('filter' => $article_list['filter'], 'page_count' => $article_list['page_count']));
-}
-
-/*------------------------------------------------------ */
-//-- 添加文章
-/*------------------------------------------------------ */
-if ($_REQUEST['act'] == 'add')
-{
-
-    /* 权限判断 */
-    admin_priv('article_manage');
-
-    /* 创建 html editor */
-    create_html_editor('FCKeditor1');
-
-    /*初始化*/
-    $article = array();
-    $article['is_open'] = 1;
-
-    //省
-    $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
-
-
-
-    if (isset($_GET['id']))
-    {
-        $smarty->assign('cur_id',  $_GET['id']);
+    }else{
+        create_html_editor('content');
     }
-    $smarty->assign('doctor',     $article);
-    $smarty->assign('cat_select',  doctor_cat_list(0));
-    $smarty->assign('ur_here',     '添加专家');
-    $smarty->assign('action_link', array('text' => '专家列表', 'href' => 'doctor.php?act=list'));
-    $smarty->assign('form_action', 'insert');
 
-    assign_query_info();
+    $cat_list=$model->table($ecs->table('expert_cat'))->order('list_order asc,id desc')->select();
+    $smarty->assign('cat_list',$cat_list);
+    $smarty->assign('act','expert_inster');
+
     $smarty->display('doctor_info.htm');
 }
+//添加团队
+elseif($act=="expert_inster"){
+    try{
+        $info=filters($_POST);
+        if(!$info['name'])  sys_msg('请填写姓名', 1, array(), false);
+        if(!$info['cat_id'])  sys_msg('请选择分类', 1, array(), false);
 
-/*------------------------------------------------------ */
-//-- 添加文章
-/*------------------------------------------------------ */
-if ($_REQUEST['act'] == 'insert')
-{
-
-    /* 权限判断 */
-    admin_priv('article_manage');
-
-//    /*检查是否重复*/
-//    $is_only = $exc->is_only('title', $_POST['title'],0, " cat_id ='$_POST[doctor_cat]'");
-
-//    if (!$is_only)
-//    {
-//        sys_msg(sprintf($_LANG['title_exist'], stripslashes($_POST['title'])), 1);
-//    }
-
-    /* 取得文件地址 */
-    $file_url = '';
-    if ((isset($_FILES['file']['error']) && $_FILES['file']['error'] == 0) || (!isset($_FILES['file']['error']) && isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != 'none'))
-    {
-        // 检查文件格式
-        if (!check_file_type($_FILES['file']['tmp_name'], $_FILES['file']['name'], $allow_file_types))
-        {
-            sys_msg($_LANG['invalid_file']);
+        if($info['cat_id']!=7){
+            if(!$info['position'])  sys_msg('请填写职位', 1, array(), false);
+            if(!$info['unit'])  sys_msg('请填写所属单位', 1, array(), false);
         }
 
-        // 复制文件
-        $res = upload_article_file($_FILES['file']);
-        if ($res != false)
-        {
-            $file_url = $res;
+        //循环获取属性
+        $attr=array();
+        foreach ($info as $key=>$value){
+            if(strpos($key,'attr')!==false){
+                $attr[]=$value;
+            }
+        }
+        $thumb='';
+
+        if($_FILES['file']['error']==0){
+            $upload_image= basename($image->upload_image($_FILES['file'],'expert'));
+            $thumb= '/data/expert/'.$upload_image;
+        }
+        if($info['file_url']){
+            $thumb=$info['file_url'];
+        }
+
+        if(isset($info['id'])){
+            //先去删除旧的
+            $old_thumb=$model->table($ecs->table('expert'))
+                ->where("`id`=".intval($info['id']))->value('thumb');
+
+            if($thumb && $old_thumb){
+                @unlink('../'.$old_thumb);
+            }
+            if(empty($thumb)){
+                $thumb= $old_thumb;
+            }
+            $model->table($ecs->table('expert'))
+                ->where("`id`=".intval($info['id']))
+                ->update([
+                    'cat_id'=>intval($info['cat_id']),
+                    'name'=>$info['name'],
+                    'position'=>$info['position'],
+                    'attr_id'=>implode(',',$attr),
+                    'thumb'=>$thumb,
+                    'unit'=>$info['unit'],
+                    'content'=>$info['content'],
+                    'desc'=>$info['desc'],
+                    'job'=>$info['job'],
+                    'list_order'=>intval($info['list_order']),
+                ]);
+            sys_msg('修改成功', 0, array(
+                [
+                    'text'=>'返回',
+                    'href'=>'doctor.php?act=expert_add&id='.intval($info['id'])
+                ],
+                [
+                    'text'=>'返回列表',
+                    'href'=>'doctor.php?act=list'
+                ]
+            ), true);
+        }else{
+            $res=$model->table($ecs->table('expert'))->insert([
+                'cat_id'=>intval($info['cat_id']),
+                'name'=>$info['name'],
+                'position'=>$info['position'],
+                'attr_id'=>implode(',',$attr),
+                'thumb'=>$thumb,
+                'unit'=>$info['unit'],
+                'content'=>$info['content'],
+                'desc'=>$info['desc'],
+                'job'=>$info['job'],
+                'list_order'=>intval($info['list_order']),
+                'add_time'=>time(),
+            ]);
+            sys_msg('添加成功', 0, array(
+                [
+                    'text'=>'继续添加',
+                    'href'=>'doctor.php?act=expert_add'
+                ],
+                [
+                    'text'=>'返回列表',
+                    'href'=>'doctor.php?act=list'
+                ]
+            ), true);
+        }
+
+    }catch (\Exception $e){
+        sys_msg($e->getMessage(), 1, array(), true);
+    }
+
+}
+//删除团队
+elseif($act=='remove_expert'){
+    $id=isset($_GET['id'])?$_GET['id']:0;
+    if(!$id){
+        echo json_encode([
+            'code'=>0,
+            'message'=>'错误'
+        ]);
+        exit;
+    }
+    $table=$ecs->table('expert');
+
+    $model->table($table)->where("`id`=".$id)->del();
+    echo json_encode([
+        'code'=>1
+    ]);
+    exit;
+}
+//团队类型列表
+elseif($act=="cat" && $type==1){
+    $table=$ecs->table('expert_attr');
+    $model->table($table);
+    $pager=$model->where('`type`='.$type)->order('list_order asc,id desc')->paginate(20,'doctor.php',['act'=>'cat','type'=>$type]);
+
+    $filter=$pager;
+    $lists=$pager['lists'];
+    foreach ($lists as $key=>$value){
+        $lists[$key]['attr']=str_replace("\n", ", ", $value['attr']);
+    }
+
+    $smarty->assign('pager',$pager);
+
+    $smarty->assign('record_count',$pager['record_count']);
+    $smarty->assign('page_count',$pager['page_count']);
+
+    $smarty->assign('filter',$filter);
+    $smarty->assign('lists',$lists);
+    $smarty->assign('action_link',array(
+        'href'=>'doctor.php?act=cat_add&type='.$type,
+        'text'=>'添加分类'
+    ));
+
+    $smarty->display('doctorcat_list.htm');
+}
+//团队分类列表
+elseif($type==2 && $act=="cat"){
+    $table=$ecs->table('expert_cat');
+    $model->table($table);
+
+    $pager=$model->order('list_order asc,id desc')->paginate(20,'doctor.php',['act'=>'cat','type'=>$type]);
+    $filter=$pager;
+    $lists=$pager['lists'];
+    foreach ($lists as $key=>$value){
+        if($value['attr_id']){
+            $attr=$model->table($ecs->table('expert_attr'))->where('`id` IN ('.$value['attr_id'].')')->field('name')->select();
+            $attr_arr=array();
+            foreach ($attr as $v){
+                $attr_arr[]=$v['name'];
+            }
+
+            $lists[$key]['attr']=implode(',',$attr_arr);
         }
     }
 
-    if ($file_url == '')
-    {
-        $file_url = $_POST['file_url'];
-    }
+    $smarty->assign('pager',$pager);
 
-    /* 计算文章打开方式 */
-    if ($file_url == '')
-    {
-        $open_type = 0;
-    }
-    else
-    {
-        $open_type = $_POST['FCKeditor1'] == '' ? 1 : 2;
-    }
+    $smarty->assign('record_count',$pager['record_count']);
+    $smarty->assign('page_count',$pager['page_count']);
 
-    /*插入数据*/
-    $add_time = gmtime();
-    if (empty($_POST['cat_id']))
-    {
-        $_POST['cat_id'] = 0;
-    }
-    $sql = "INSERT INTO ".$ecs->table('doctor')."(title, cat_id, is_open,".
-        "  content, add_time, file_url, description, province, city, area) ".
-        "VALUES ('$_POST[title]', '$_POST[doctor_cat]',1,'$_POST[FCKeditor1]',  ".
-        "'$add_time', '$file_url','$_POST[description]','$_POST[province]','$_POST[city]','$_POST[district]')";
-
-    $db->query($sql);
-
-//    /* 处理关联商品 */
-//    $article_id = $db->insert_id();
-//    $sql = "UPDATE " . $ecs->table('goods_article') . " SET doctor_id = '$article_id' WHERE doctor_id = 0";
-//    $db->query($sql);
-
-    $link[0]['text'] = '继续添加专家';
-    $link[0]['href'] = 'doctor.php?act=add';
-
-    $link[1]['text'] = '专家列表';
-    $link[1]['href'] = 'doctor.php?act=list';
-
-    admin_log($_POST['title'],'add','doctor');
-
-    clear_cache_files(); // 清除相关的缓存文件
-
-    sys_msg('添加专家成功',0, $link);
+    $smarty->assign('filter',$filter);
+    $smarty->assign('lists',$lists);
+    $smarty->assign('action_link',array(
+        'href'=>'doctor.php?act=cat_add&type='.$type,
+        'text'=>'添加分类'
+    ));
+    $smarty->display('doctorcat_list2.htm');
 }
-
-/*------------------------------------------------------ */
-//-- 编辑
-/*------------------------------------------------------ */
-if ($_REQUEST['act'] == 'edit')
-{
-    /* 权限判断 */
-    admin_priv('article_manage');
-
-    /* 取文章数据 */
-    $sql = "SELECT * FROM " .$ecs->table('doctor'). " WHERE doctor_id='$_REQUEST[id]'";
-    $article = $db->GetRow($sql);
-
-    /* 创建 html editor */
-    create_html_editor('FCKeditor1',$article['content']);
-
-//    /* 取得分类、品牌 */
-//    $smarty->assign('goods_cat_list', cat_list());
-//    $smarty->assign('brand_list', get_brand_list());
-
-//    /* 取得关联商品 */
-//    $goods_list = get_article_goods($_REQUEST['id']);
-//    $smarty->assign('goods_list', $goods_list);
-
-    //省
-    $smarty->assign('shop_province_list', get_regions(1, $_CFG['shop_country']));
-//    var_dump($article);exit;
-    $smarty->assign('doctor',     $article);
-    $smarty->assign('cat_select',  doctor_cat_list(0, $article['cat_id']));
-    $smarty->assign('ur_here',     '编辑专家内容');
-    $smarty->assign('action_link', array('text' => '专家列表', 'href' => 'doctor.php?act=list&' . list_link_postfix()));
-    $smarty->assign('form_action', 'update');
-
-    assign_query_info();
-    $smarty->display('doctor_info.htm');
-}
-
-if ($_REQUEST['act'] =='update')
-{
-    /* 权限判断 */
-    admin_priv('article_manage');
-
-//    /*检查文章名是否相同*/
-//    $is_only = $exc->is_only('title', $_POST['title'], $_POST['id'], "cat_id = '$_POST[article_cat]'");
-//
-//    if (!$is_only)
-//    {
-//        sys_msg(sprintf($_LANG['title_exist'], stripslashes($_POST['title'])), 1);
-//    }
-
-
-    if (empty($_POST['cat_id']))
-    {
-        $_POST['cat_id'] = 0;
+//团队类型添加页面
+elseif($act=='cat_add' && $type==1){
+    $table=$ecs->table('expert_attr');
+    $model->table($table);
+    $id=isset($_REQUEST['id'])?intval($_REQUEST['id']):'';
+    if($id){
+        $attr=$model->where('`id`='.$id)->find();
+        if(!$attr)  sys_msg('找不到内容详情', 1, array(), false);
+        $smarty->assign('attr',$attr);
     }
 
-    /* 取得文件地址 */
-    $file_url = '';
-    if (empty($_FILES['file']['error']) || (!isset($_FILES['file']['error']) && isset($_FILES['file']['tmp_name']) && $_FILES['file']['tmp_name'] != 'none'))
-    {
-        // 检查文件格式
-        if (!check_file_type($_FILES['file']['tmp_name'], $_FILES['file']['name'], $allow_file_types))
-        {
-            sys_msg($_LANG['invalid_file']);
+    $smarty->assign('action_link',array(
+        'href'=>'doctor.php?act=cat&type='.$type,
+        'text'=>'返回列表'
+    ));
+    $smarty->assign('type',$type);
+    $smarty->assign('type_name','类型');
+    $smarty->display('doctorcat_info.htm');
+}
+//团队分类添加页面
+elseif($act=='cat_add' && $type==2){
+    $attr_list=$model->table($ecs->table('expert_attr'))->order('list_order asc,id desc')->field('id,name')->select();
+
+    $smarty->assign('attr_list',$attr_list);
+
+    $id=isset($_REQUEST['id'])?intval($_REQUEST['id']):'';
+    if($id){
+        $cat=$model->table($ecs->table('expert_cat'))->where('`id`='.$id)->find();
+        if(!$cat)  sys_msg('找不到内容详情', 1, array(), true);
+
+        $smarty->assign('cat_attr',explode(',',$cat['attr_id']));
+        $smarty->assign('cat',$cat);
+    }else{
+        $smarty->assign('cat_attr',[]);
+    }
+    $smarty->assign('action_link',array(
+        'href'=>'doctor.php?act=cat&type=2',
+        'text'=>'返回列表'
+    ));
+    $smarty->assign('type',$type);
+    $smarty->display('doctorcat_info2.htm');
+}
+//团队类型添加
+elseif($act=='update'){
+    try{
+        $table=$ecs->table('expert_attr');
+        $model->table($table);
+
+        $info=filters($_POST);
+
+        if(!$info['name'])sys_msg('请填写类型名称', 1, array(), true);
+        //检查名称是否存在
+
+
+        $info['list_order']=intval($info['list_order'])?intval($info['list_order']):50;
+        unset($info['act']);
+        $link=array();
+
+        if(isset($info['id'])){
+            $id=intval($info['id']);
+            $c_n_c=$model->where("`name`='$info[name]'")->field('id')->find();
+            if($c_n_c && $id!=$c_n_c['id'])sys_msg($info['name'].'已存在', 1, array(), true);
+
+            unset($info['id']);
+            $model->where('`id`='.$id)->update($info);
+            $link[0]=array(
+                array(
+                    'text'=>'返回修改',
+                    'href'=>'doctor.php?act=cat_add&type=1&id='.$id
+                )
+            );
+
+        }else{
+
+            $c_n_c=$model->where("`name`='$info[name]'")->count();
+            if($c_n_c>=1)sys_msg($info['name'].'已存在', 1, array(), true);
+            $link[0]=array(
+                array(
+                    'text'=>'继续添加',
+                    'href'=>'doctor.php?act=cat_add&type=1'
+                )
+            );
+            $model->insert($info);
         }
+        array_push($link,[
+            'text'=>'返回列表',
+            'href'=>'doctor.php?act=cat&type=1'
+        ]);
+        sys_msg('保存成功',0);
+    }catch (\Exception $e){
+        sys_msg($e->getMessage(), 1, array(
+            array(
+                'text'=>'返回',
+                'href'=>'javascript:window.history.go(-1);'
+            )
+        ), true);
+    }
+}
+//团队分类添加
+elseif($act=="update_cat"){
+    try{
+        $table=$ecs->table('expert_cat');
+        $model->table($table);
+        $info=filters($_POST);
+        if(!$info['cat_name'])sys_msg('请填写分类名称', 1, array(), true);
 
-        // 复制文件
-        $res = upload_article_file($_FILES['file']);
-        if ($res != false)
-        {
-            $file_url = $res;
+        $info['list_order']=intval($info['list_order'])?intval($info['list_order']):50;
+        if(!empty($info['attr_id'])){
+            $info['attr_id']=implode(',',$info['attr_id']);
+        }else{
+            $info['attr_id']=null;
         }
-    }
+        unset($info['act']);
 
-    if ($file_url == '')
-    {
-        $file_url = $_POST['file_url'];
-    }
+        $link=array();
 
-    /* 计算文章打开方式 */
-    if ($file_url == '')
-    {
-        $open_type = 0;
-    }
-    else
-    {
-        $open_type = $_POST['FCKeditor1'] == '' ? 1 : 2;
-    }
+        if(isset($info['id'])){
+            $id=intval($info['id']);
+            //检查名称是否存在
+            $c_n_c=$model->where("`cat_name`='$info[cat_name]'")->field('id')->find();
 
-    /* 如果 file_url 跟以前不一样，且原来的文件是本地文件，删除原来的文件 */
-    $sql = "SELECT file_url FROM " . $ecs->table('doctor') . " WHERE doctor_id = '$_POST[id]'";
-    $old_url = $db->getOne($sql);
-    if ($old_url != '' && $old_url != $file_url && strpos($old_url, 'http://') === false && strpos($old_url, 'https://') === false)
-    {
-        @unlink(ROOT_PATH . $old_url);
-    }
-
-    if ($exc->edit("title='$_POST[title]', cat_id='$_POST[doctor_cat]', file_url ='$file_url', content='$_POST[FCKeditor1]', description = '$_POST[description]', province = '$_POST[province]', city = '$_POST[city]', area = '$_POST[district]'", $_POST['id']))
-    {
-        $link[0]['text'] = '专家列表';
-        $link[0]['href'] = 'doctor.php?act=list&' . list_link_postfix();
-
-        $note = sprintf('编辑成功', stripslashes($_POST['title']));
-        admin_log($_POST['title'], 'edit', 'doctor');
-
-        clear_cache_files();
-
-        sys_msg($note, 0, $link);
-    }
-    else
-    {
-        die($db->error());
-    }
-}
-
-/*------------------------------------------------------ */
-//-- 编辑文章主题
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'edit_title')
-{
-    check_authz_json('article_manage');
-
-    $id    = intval($_POST['id']);
-    $title = json_str_iconv(trim($_POST['val']));
-
-    /* 检查文章标题是否重复 */
-    if ($exc->num("title", $title, $id) != 0)
-    {
-        make_json_error(sprintf($_LANG['title_exist'], $title));
-    }
-    else
-    {
-        if ($exc->edit("title = '$title'", $id))
-        {
-            clear_cache_files();
-            admin_log($title, 'edit', 'doctor');
-            make_json_result(stripslashes($title));
+            if($c_n_c && $c_n_c['id']!=$id)sys_msg($info['cat_name'].'已存在', 1, array(), true);
+            unset($info['id']);
+            $model->where('`id`='.$id)->update($info);
+            $link[0]=array(
+                array(
+                    'text'=>'返回修改',
+                    'href'=>'doctor.php?act=cat_add&type=2&id='.$id
+                )
+            );
+        }else{
+            $link[0]=array(
+                array(
+                    'text'=>'继续添加',
+                    'href'=>'doctor.php?act=cat_add&type=2'
+                )
+            );
+            //检查名称是否存在
+            $c_n_c=$model->where("`cat_name`='$info[cat_name]'")->count();
+            if($c_n_c>=1)sys_msg($info['cat_name'].'已存在', 1, array(), true);
+            $model->insert($info);
         }
-        else
-        {
-            make_json_error($db->error());
-        }
+        array_push($link,[
+            'text'=>'返回列表',
+            'href'=>'doctor.php?act=cat&type=2'
+        ]);
+
+        sys_msg('保存成功',0,$link,true);
+    }catch (\Exception $e){
+        sys_msg($e->getMessage(), 1, array(
+            array(
+                'text'=>'返回',
+                'href'=>'javascript:window.history.go(-1);'
+            )
+        ), true);
     }
 }
 
-/*------------------------------------------------------ */
-//-- 切换是否显示
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'toggle_show')
-{
-    check_authz_json('article_manage');
+//修改团队类型名称
+elseif($act=='edit_cat_name'){
 
-    $id     = intval($_POST['id']);
-    $val    = intval($_POST['val']);
-
-    $exc->edit("is_open = '$val'", $id);
-    clear_cache_files();
-
-    make_json_result($val);
-}
-
-/*------------------------------------------------------ */
-//-- 切换文章重要性
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'toggle_type')
-{
-    check_authz_json('article_manage');
-
-    $id     = intval($_POST['id']);
-    $val    = intval($_POST['val']);
-
-    $exc->edit("article_type = '$val'", $id);
-    clear_cache_files();
-
-    make_json_result($val);
-}
-
-
-
-/*------------------------------------------------------ */
-//-- 删除文章主题
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'remove')
-{
-    check_authz_json('article_manage');
-
-    $id = intval($_GET['id']);
-
-    /* 删除原来的文件 */
-    $sql = "SELECT file_url FROM " . $ecs->table('doctor') . " WHERE doctor_id = '$id'";
-    $old_url = $db->getOne($sql);
-    if ($old_url != '' && strpos($old_url, 'http://') === false && strpos($old_url, 'https://') === false)
-    {
-        @unlink(ROOT_PATH . $old_url);
+    $table=$ecs->table('expert_attr');
+    $model->table($table);
+    $id=isset($_POST['id'])?$_POST['id']:'';
+    $name=isset($_POST['val'])?$_POST['val']:'';
+    if(!$id){
+        echo json_encode([
+            'code'=>0,
+            'message'=>'错误'
+        ]);
+        exit;
     }
-
-    $name = $exc->get_name($id);
-    if ($exc->drop($id))
-    {
-        $db->query("DELETE FROM " . $ecs->table('comment') . " WHERE " . "comment_type = 1 AND id_value = $id");
-
-        admin_log(addslashes($name),'remove','doctor');
-        clear_cache_files();
+    $model->where('`id`='.$id)->update([
+        'name'=>$name
+    ]);
+    echo json_encode([
+        'error'=>0,
+        'act'=>'article_auto',
+        'content'=>$name
+    ]);
+    exit;
+}
+//修改团队分类名称
+elseif($act=="edit_cat_name2"){
+    $table=$ecs->table('expert_cat');
+    $model->table($table);
+    $id=isset($_POST['id'])?$_POST['id']:'';
+    $name=isset($_POST['val'])?$_POST['val']:'';
+    if(!$id){
+        echo json_encode([
+            'code'=>0,
+            'message'=>'错误'
+        ]);
+        exit;
     }
+    $model->where('`id`='.$id)->update([
+        'cat_name'=>$name
+    ]);
+    echo json_encode([
+        'error'=>0,
+        'act'=>'article_auto',
+        'content'=>$name
+    ]);
+    exit;
+}
+//修改团队类型排序
+elseif($act=='edit_cat_list_order'){
 
-    $url = 'doctor.php?act=query&' . str_replace('act=remove', '', $_SERVER['QUERY_STRING']);
-
-    ecs_header("Location: $url\n");
+    $table=$ecs->table('expert_attr');
+    $model->table($table);
+    $id=isset($_POST['id'])?$_POST['id']:'';
+    $name=isset($_POST['val'])?$_POST['val']:'';
+    if(!$id){
+        echo json_encode([
+            'code'=>0,
+            'message'=>'错误'
+        ]);
+        exit;
+    }
+    $model->where('`id`='.$id)->update([
+        'list_order'=>$name
+    ]);
+    echo json_encode([
+        'error'=>0,
+        'act'=>'article_auto',
+        'content'=>$name
+    ]);
+    exit;
+}
+//修改团队分类排序
+elseif($act=='edit_cat_list_order2'){
+    $table=$ecs->table('expert_cat');
+    $model->table($table);
+    $id=isset($_POST['id'])?$_POST['id']:'';
+    $name=isset($_POST['val'])?$_POST['val']:'';
+    if(!$id){
+        echo json_encode([
+            'code'=>0,
+            'message'=>'错误'
+        ]);
+        exit;
+    }
+    $model->where('`id`='.$id)->update([
+        'list_order'=>$name
+    ]);
+    echo json_encode([
+        'error'=>0,
+        'act'=>'article_auto',
+        'content'=>$name
+    ]);
     exit;
 }
 
-/*------------------------------------------------------ */
-//-- 将商品加入关联
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'add_link_goods')
-{
-    include_once(ROOT_PATH . 'includes/cls_json.php');
-    $json = new JSON;
-
-    check_authz_json('article_manage');
-
-    $add_ids = $json->decode($_GET['add_ids']);
-    $args = $json->decode($_GET['JSON']);
-    $article_id = $args[0];
-
-    if ($article_id == 0)
-    {
-        $article_id = $db->getOne('SELECT MAX(doctor_id)+1 AS doctor_id FROM ' .$ecs->table('doctor'));
+//删除团队类型
+elseif($act == "remove"){
+    $id=isset($_GET['id'])?$_GET['id']:0;
+    if(!$id){
+        echo json_encode([
+            'code'=>0,
+            'message'=>'错误'
+        ]);
+        exit;
     }
+    $table=$ecs->table('expert_attr');
+    $model->table($table)->where("`id`=".$id)->del();
+    echo json_encode([
+        'code'=>1
+    ]);
+    exit;
 
-    foreach ($add_ids AS $key => $val)
-    {
-        $sql = 'INSERT INTO ' . $ecs->table('goods_article') . ' (goods_id, doctor_id) '.
-            "VALUES ('$val', '$article_id')";
-        $db->query($sql, 'SILENT') or make_json_error($db->error());
+}
+//删除团队分类
+elseif($act=="remove2"){
+    $id=isset($_GET['id'])?$_GET['id']:0;
+    if(!$id){
+        echo json_encode([
+            'code'=>0,
+            'message'=>'错误'
+        ]);
+        exit;
     }
+    $table=$ecs->table('expert_cat');
+    $model->table($table)->where("`id`=".$id)->del();
+    echo json_encode([
+        'code'=>1
+    ]);
+    exit;
+}
+//获取分类下的属性
+elseif($act=='attr_select'){
+    $cat_id=isset($_GET['cat_id'])?intval($_GET['cat_id']):0;
+    $id=isset($_GET['eid'])?intval($_GET['eid']):0;
+    $table=$ecs->table('expert_cat');
+    $table2=$ecs->table('expert_attr');
+    $table3=$ecs->table('expert');
 
-    /* 重新载入 */
-    $arr = get_article_goods($article_id);
-    $opt = array();
-
-    foreach ($arr AS $key => $val)
-    {
-        $opt[] = array('value'  => $val['goods_id'],
-            'text'  => $val['goods_name'],
-            'data'  => '');
-    }
-
-    make_json_result($opt);
+    echo attr_select($table,$table2,$table3,$cat_id,$id);
+    exit;
 }
 
-/*------------------------------------------------------ */
-//-- 将商品删除关联
-/*------------------------------------------------------ */
-elseif ($_REQUEST['act'] == 'drop_link_goods')
-{
-    include_once(ROOT_PATH . 'includes/cls_json.php');
-    $json = new JSON;
+function attr_select($table,$table2,$table3,$cat_id,$id){
+    $model=new Model;
+    if(!$cat_id){
+        return 0;
+    }
+    $attr_id=$model->table($table)->where("`id`=".$cat_id)->value('attr_id');
+    $attr=$model->table($table2)->where("`id` IN ($attr_id)")->order('list_order asc,id desc')->select();
+    $attrs=[];
+    if($id){
+        $attr_ids=$model->table($table3)->where("`id`=".$id)->value('attr_id');
 
-    check_authz_json('article_manage');
+        $attrs=explode(',',$attr_ids);
 
-    $drop_goods     = $json->decode($_GET['drop_ids']);
-    $arguments      = $json->decode($_GET['JSON']);
-    $article_id     = $arguments[0];
-
-    if ($article_id == 0)
-    {
-        $article_id = $db->getOne('SELECT MAX(doctor_id)+1 AS doctor_id FROM ' .$ecs->table('doctor'));
     }
 
-    $sql = "DELETE FROM " . $ecs->table('goods_article').
-        " WHERE doctor_id = '$article_id' AND goods_id " .db_create_in($drop_goods);
-    $db->query($sql, 'SILENT') or make_json_error($db->error());
+    $html='';
+    foreach ($attr as $key=>$v){
+        $html .='<tr>';
+        $html .='<td class="narrow-label">'.$v['name'].'</td>';
+        $attr_vale=explode("\n",$v['attr']);
+        $html .='<td>';
 
-    /* 重新载入 */
-    $arr = get_article_goods($article_id);
-    $opt = array();
-
-    foreach ($arr AS $key => $val)
-    {
-        $opt[] = array('value'  => $val['goods_id'],
-            'text'  => $val['goods_name'],
-            'data'  => '');
-    }
-
-    make_json_result($opt);
-}
-
-/*------------------------------------------------------ */
-//-- 搜索商品
-/*------------------------------------------------------ */
-if ($_REQUEST['act'] == 'get_goods_list')
-{
-    include_once(ROOT_PATH . 'includes/cls_json.php');
-    $json = new JSON;
-
-    $filters = $json->decode($_GET['JSON']);
-
-    $arr = get_goods_list($filters);
-    $opt = array();
-
-    foreach ($arr AS $key => $val)
-    {
-        $opt[] = array('value' => $val['goods_id'],
-            'text' => $val['goods_name'],
-            'data' => $val['shop_price']);
-    }
-
-    make_json_result($opt);
-}
-/*------------------------------------------------------ */
-//-- 批量操作
-/*------------------------------------------------------ */
-
-elseif ($_REQUEST['act'] == 'batch')
-{
-    /* 批量删除 */
-    if (isset($_POST['type']))
-    {
-        if ($_POST['type'] == 'button_remove')
-        {
-            admin_priv('article_manage');
-
-            if (!isset($_POST['checkboxes']) || !is_array($_POST['checkboxes']))
-            {
-                sys_msg($_LANG['no_select_article'], 1);
+        foreach ($attr_vale as $item){
+            $html .='<label>';
+            if(in_array(trim($item),$attrs)){
+                $html .='<input type="radio" name="attr_'.$key.'" value="'.$item.'" checked>'.$item;
+            }else{
+                $html .='<input type="radio" name="attr_'.$key.'" value="'.$item.'">'.$item;
             }
 
-            /* 删除原来的文件 */
-            $sql = "SELECT file_url FROM " . $ecs->table('doctor') .
-                " WHERE doctor_id " . db_create_in(join(',', $_POST['checkboxes'])) .
-                " AND file_url <> ''";
-
-            $res = $db->query($sql);
-            while ($row = $db->fetchRow($res))
-            {
-                $old_url = $row['file_url'];
-                if (strpos($old_url, 'http://') === false && strpos($old_url, 'https://') === false)
-                {
-                    @unlink(ROOT_PATH . $old_url);
-                }
-            }
-
-            foreach ($_POST['checkboxes'] AS $key => $id)
-            {
-                if ($exc->drop($id))
-                {
-                    $name = $exc->get_name($id);
-                    admin_log(addslashes($name),'remove','doctor');
-                }
-            }
-
+            $html .='</label>';
         }
-
-        /* 批量隐藏 */
-        if ($_POST['type'] == 'button_hide')
-        {
-            check_authz_json('article_manage');
-            if (!isset($_POST['checkboxes']) || !is_array($_POST['checkboxes']))
-            {
-                sys_msg($_LANG['no_select_article'], 1);
-            }
-
-            foreach ($_POST['checkboxes'] AS $key => $id)
-            {
-                $exc->edit("is_open = '0'", $id);
-            }
-        }
-
-        /* 批量显示 */
-        if ($_POST['type'] == 'button_show')
-        {
-            check_authz_json('article_manage');
-            if (!isset($_POST['checkboxes']) || !is_array($_POST['checkboxes']))
-            {
-                sys_msg($_LANG['no_select_article'], 1);
-            }
-
-            foreach ($_POST['checkboxes'] AS $key => $id)
-            {
-                $exc->edit("is_open = '1'", $id);
-            }
-        }
-
-        /* 批量移动分类 */
-        if ($_POST['type'] == 'move_to')
-        {
-            check_authz_json('article_manage');
-            if (!isset($_POST['checkboxes']) || !is_array($_POST['checkboxes']) )
-            {
-                sys_msg($_LANG['no_select_article'], 1);
-            }
-
-            if(!$_POST['target_cat'])
-            {
-                sys_msg($_LANG['no_select_act'], 1);
-            }
-
-            foreach ($_POST['checkboxes'] AS $key => $id)
-            {
-                $exc->edit("cat_id = '".$_POST['target_cat']."'", $id);
-            }
-        }
+        $html .='</td>';
+        $html .='</tr>';
     }
+    return $html;
 
-    /* 清除缓存 */
-    clear_cache_files();
-    $lnk[] = array('text' => $_LANG['back_list'], 'href' => 'doctor.php?act=list');
-    sys_msg($_LANG['batch_handle_ok'], 0, $lnk);
+
 }
-
-/* 把商品删除关联 */
-function drop_link_goods($goods_id, $article_id)
-{
-    $sql = "DELETE FROM " . $GLOBALS['ecs']->table('goods_article') .
-        " WHERE goods_id = '$goods_id' AND doctor_id = '$article_id' LIMIT 1";
-    $GLOBALS['db']->query($sql);
-    create_result(true, '', $goods_id);
-}
-
-/* 取得文章关联商品 */
-function get_article_goods($article_id)
-{
-    $list = array();
-    $sql  = 'SELECT g.goods_id, g.goods_name'.
-        ' FROM ' . $GLOBALS['ecs']->table('goods_article') . ' AS ga'.
-        ' LEFT JOIN ' . $GLOBALS['ecs']->table('goods') . ' AS g ON g.goods_id = ga.goods_id'.
-        " WHERE ga.doctor_id = '$article_id'";
-    $list = $GLOBALS['db']->getAll($sql);
-
-    return $list;
-}
-
-/* 获得文章列表 */
-function get_articleslist()
-{
-    $result = get_filter();
-    if ($result === false)
-    {
-        $filter = array();
-        $filter['keyword']    = empty($_REQUEST['keyword']) ? '' : trim($_REQUEST['keyword']);
-        if (isset($_REQUEST['is_ajax']) && $_REQUEST['is_ajax'] == 1)
-        {
-            $filter['keyword'] = json_str_iconv($filter['keyword']);
-        }
-        $filter['cat_id'] = empty($_REQUEST['cat_id']) ? 0 : intval($_REQUEST['cat_id']);
-        $filter['sort_by']    = empty($_REQUEST['sort_by']) ? 'a.doctor_id' : trim($_REQUEST['sort_by']);
-        $filter['sort_order'] = empty($_REQUEST['sort_order']) ? 'DESC' : trim($_REQUEST['sort_order']);
-
-        $where = '';
-        if (!empty($filter['keyword']))
-        {
-            $where = " AND a.title LIKE '%" . mysql_like_quote($filter['keyword']) . "%'";
-        }
-        if ($filter['cat_id'])
-        {
-            $where .= " AND a." . get_article_children($filter['cat_id']);
-        }
-
-        /* 文章总数 */
-        $sql = 'SELECT COUNT(*) FROM ' .$GLOBALS['ecs']->table('doctor'). ' AS a '.
-            'LEFT JOIN ' .$GLOBALS['ecs']->table('doctor_cat'). ' AS ac ON ac.cat_id = a.cat_id '.
-            'WHERE 1 ' .$where;
-        $filter['record_count'] = $GLOBALS['db']->getOne($sql);
-
-        $filter = page_and_size($filter);
-
-        /* 获取文章数据 */
-        $sql = 'SELECT a.* , ac.cat_name '.
-            'FROM ' .$GLOBALS['ecs']->table('doctor'). ' AS a '.
-            'LEFT JOIN ' .$GLOBALS['ecs']->table('doctor_cat'). ' AS ac ON ac.cat_id = a.cat_id '.
-            'WHERE 1 ' .$where. ' ORDER by '.$filter['sort_by'].' '.$filter['sort_order'];
-
-        $filter['keyword'] = stripslashes($filter['keyword']);
-        set_filter($filter, $sql);
-    }
-    else
-    {
-        $sql    = $result['sql'];
-        $filter = $result['filter'];
-    }
-    $arr = array();
-    $res = $GLOBALS['db']->selectLimit($sql, $filter['page_size'], $filter['start']);
-
-    while ($rows = $GLOBALS['db']->fetchRow($res))
-    {
-        $rows['date'] = local_date($GLOBALS['_CFG']['time_format'], $rows['add_time']);
-
-        $arr[] = $rows;
-    }
-    return array('arr' => $arr, 'filter' => $filter, 'page_count' => $filter['page_count'], 'record_count' => $filter['record_count']);
-}
-
-/* 上传文件 */
-function upload_article_file($upload)
-{
-    if (!make_dir("../" . DATA_DIR . "/doctor"))
-    {
-        /* 创建目录失败 */
-        return false;
-    }
-
-    $filename = cls_image::random_filename() . substr($upload['name'], strpos($upload['name'], '.'));
-    $path     = ROOT_PATH. DATA_DIR . "/doctor/" . $filename;
-
-    if (move_upload_file($upload['tmp_name'], $path))
-    {
-        return DATA_DIR . "/doctor/" . $filename;
-    }
-    else
-    {
-        return false;
-    }
-}
-
 ?>

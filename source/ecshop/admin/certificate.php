@@ -27,6 +27,7 @@ if ($_REQUEST['act']== 'list_edit')
     $is_bind_taoda = $cert->is_bind_sn('taodali','bind_type');
     $is_bind_erp = $cert->is_bind_sn('ecos.ome','bind_type');
     $is_bind_crm = $cert->is_bind_sn('ecos.taocrm','bind_type');
+
     //echo"<pre>";var_dump($is_bind_crm,$is_bind_erp,$is_bind_taoda);exit;
     $is_bind_taoda or $is_bind_erp and $smarty->assign('is_bind',true);
     $is_bind_crm and $smarty->assign('is_bind_crm',true);

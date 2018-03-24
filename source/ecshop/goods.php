@@ -31,6 +31,18 @@ $smarty->assign('affiliate', $affiliate);
 
 $goods_id = isset($_REQUEST['id'])  ? intval($_REQUEST['id']) : 0;
 
+include_once(ROOT_PATH . '/includes/lib_model.php');
+
+$model=new Model;
+if(empty($_REQUEST['act'])){
+    $ov=$model->table($ecs->table('goods_overview'))->where('`goods_id`='.$goods_id)->find();
+
+    if(!isset($_REQUEST['over']) && !$_REQUEST['over']=="1" && $ov){
+        header('location:overview-'.$goods_id.'-over.html');
+    }
+}
+
+
 /*------------------------------------------------------ */
 //-- 改变属性、数量时重新计算商品价格
 /*------------------------------------------------------ */
@@ -140,10 +152,9 @@ if (!empty($_REQUEST['act']) && $_REQUEST['act'] == 'gotopage')
 $cache_id = $goods_id . '-' . $_SESSION['user_rank'].'-'.$_CFG['lang'];
 $cache_id = sprintf('%X', crc32($cache_id));
 
-
-
 if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
 {
+
     $smarty->assign('image_width',  $_CFG['image_width']);
     $smarty->assign('image_height', $_CFG['image_height']);
     $smarty->assign('helps',        get_shop_help()); // 网店帮助
@@ -156,6 +167,19 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
     /* 获得商品的信息 */
     $goods = get_goods_info($goods_id);
 
+
+    $table=$ecs->table('category');
+    $cat=$model->table($table)->where('`cat_id`='.$goods['cat_id'])->field('parent_id')->find();
+    /*保险产品*/
+    $insurance=array(2,3);
+    if(in_array($goods['cat_id'],$insurance) || in_array($cat['parent_id'],$insurance)){ //如果是保险产品
+        $smarty->assign('insurance',1);
+
+        //极速投保表单
+        $policy_type=$model->table($ecs->table('policy_type'))->where('`id`=1')->find();
+        $policy_type=explode("\n",$policy_type['value']);
+        $smarty->assign('policy_type',$policy_type);
+    }
     if ($goods === false)
     {
         /* 如果没有找到任何记录则跳回到首页 */
@@ -189,30 +213,18 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
                 $goods['bonus_money'] = price_format($goods['bonus_money']);
             }
         }
-
+        if($goods['tag_id']){
+           $tag= $model->table($ecs->table('goods_tag'))->where('id IN ('.$goods['tag_id'].')')->select();
+           $smarty->assign('goods_tag',$tag);
+        }
 
         //属性
+
+
         $sql='SELECT goods_attr_id, goods_id, attr_id, attr_value, attr_price FROM  ecs_goods_attr WHERE goods_id = '.$goods['goods_id'];
         $goods['attr_value'] = $db->getAll($sql);
-        //保险案例
-        $sql='SELECT goods_id, article_id, admin_id FROM  ecs_goods_article WHERE goods_id = '.$goods['goods_id'];
-        $artid =  $db->getAll($sql);
-        foreach($artid as $k=>$v){
-            $sql = 'SELECT article_id, title, file_url, description, cat_id' .
-                ' FROM ' .$GLOBALS['ecs']->table('article') .
-                ' WHERE is_open = 1 AND article_id=' . $v['article_id'] .
-                ' ORDER BY article_type DESC, article_id DESC';
-            $data_art[$k] = $GLOBALS['db']->getRow($sql);
-        }
-        $smarty->assign('data_art',              $data_art);
 
-        //常见问题
-        $sql = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id, content' .
-            ' FROM ' .$GLOBALS['ecs']->table('article') .
-            ' WHERE is_open = 1 AND cat_id = 29' .
-            ' ORDER BY article_type DESC, article_id DESC';
-        $problem = $db->getAll($sql);
-        $smarty->assign('problem',              $problem);
+
         //理赔服务电话
         $sql = 'SELECT parent_id, code, value, id' .
             ' FROM ' .$GLOBALS['ecs']->table('shop_config') .
@@ -257,6 +269,8 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
         $smarty->assign('promote_end_time',   $goods['gmt_end_time']);
         $smarty->assign('categories',         get_categories_tree($goods['cat_id']));  // 分类树
 
+        assign_template('c', $catlist);
+
         /* meta */
         $smarty->assign('keywords',           htmlspecialchars($goods['keywords']));
         $smarty->assign('description',        htmlspecialchars($goods['goods_brief']));
@@ -268,7 +282,7 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
             $catlist[] = $v['cat_id'];
         }
 
-        assign_template('c', $catlist);
+
 
          /* 上一个商品下一个商品 */
         $prev_gid = $db->getOne("SELECT goods_id FROM " .$ecs->table('goods'). " WHERE cat_id=" . $goods['cat_id'] . " AND goods_id > " . $goods['goods_id'] . " AND is_on_sale = 1 AND is_alone_sale = 1 AND is_delete = 0 LIMIT 1");
@@ -293,16 +307,18 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
 
         $properties = get_goods_properties($goods_id);  // 获得商品的规格和属性
 
+
         $smarty->assign('properties',          $properties['pro']);                              // 商品属性
         $smarty->assign('specification',       $properties['spe']);                              // 商品规格
         $smarty->assign('attribute_linked',    get_same_attribute_goods($properties));           // 相同属性的关联商品
         $smarty->assign('related_goods',       $linked_goods);                                   // 关联商品
-        $smarty->assign('goods_article_list',  get_linked_articles($goods_id));                  // 关联文章
+        $smarty->assign('goods_article_list',  get_linked_articles($goods_id,30));                  // 关联文章
         $smarty->assign('fittings',            get_goods_fittings(array($goods_id)));                   // 配件
         $smarty->assign('rank_prices',         get_user_rank_prices($goods_id, $shop_price));    // 会员等级价格
         $smarty->assign('pictures',            get_goods_gallery($goods_id));                    // 商品相册
         $smarty->assign('bought_goods',        get_also_bought($goods_id));                      // 购买了该商品的用户还购买了哪些商品
         $smarty->assign('goods_rank',          get_goods_rank($goods_id));                       // 商品的销售排名
+
 
         //获取tag
         $tag_array = get_tags($goods_id);
@@ -314,6 +330,12 @@ if (!$smarty->is_cached('shopDetails.dwt', $cache_id))
 
         assign_dynamic('goods');
         $volume_price_list = get_volume_price_list($goods['goods_id'], '1');
+
+        $problem=get_linked_articles($goods_id,29);
+
+        $smarty->assign('problem',              $problem);
+
+
         $smarty->assign('volume_price_list',$volume_price_list);    // 商品优惠价格区间
     }
 }
@@ -401,14 +423,20 @@ function get_linked_goods($goods_id)
  *
  * @access  public
  * @param   integer     $goods_id
+ * @param   integer     $cat_id
  * @return  void
  */
-function get_linked_articles($goods_id)
+function get_linked_articles($goods_id,$cat_id=null)
 {
-    $sql = 'SELECT a.article_id, a.title, a.file_url, a.open_type, a.add_time ' .
+    $where="g.article_id = a.article_id AND g.goods_id = '$goods_id' AND a.is_open = 1 ";
+
+    if(!empty($cat_id)){
+        $where .=" AND a.cat_id=".$cat_id." ";
+    }
+    $sql = 'SELECT a.article_id,a.description,a.content, a.title, a.file_url, a.open_type, a.add_time ' .
             'FROM ' . $GLOBALS['ecs']->table('goods_article') . ' AS g, ' .
                 $GLOBALS['ecs']->table('article') . ' AS a ' .
-            "WHERE g.article_id = a.article_id AND g.goods_id = '$goods_id' AND a.is_open = 1 " .
+            "WHERE $where" .
             'ORDER BY a.add_time DESC';
     $res = $GLOBALS['db']->query($sql);
 

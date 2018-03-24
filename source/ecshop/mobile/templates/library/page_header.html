@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{$page_title}</title>
+    <meta name="Keywords" content="{$keywords}" />
+    <meta name="Description" content="{$description}" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <link rel="stylesheet" href="templates/css/swiper-3.4.2.min.css" />
+    <link rel="stylesheet" href="templates/css/reset.css" />
+    <link rel="stylesheet" href="templates/css/public.css?v=2" />
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="templates/js/rem.js" ></script>
+    <script type="text/javascript" src="templates/js/swiper-3.4.2.min.js" ></script>
+    <script type="text/javascript">
+        var img_link='templates/';
+        var root_url='http://www.guokan.cnm/';
+    </script>
+
+</head>
+<body>
+<div class="wrap">
+<header class="nav">
+
+    <button class="mNav" isOpen = false></button>
+    <button class="pCenter" onclick="window.location.href='user.php'"></button>
+    <img src="templates/img/logo.png" onclick="window.location.href='/mobile'"/>
+    <div class="secondNav">
+        <ul>
+            <li>
+                <a href="/">首页</a>
+            </li>
+            {foreach name=nav_middle_list from=$middle item=nav}
+            <li>
+                {if $nav.id eq 5 or $nav.id eq 16 or $nav.id eq 13}
+                    <a class="none" href="/{$nav.wap_url}">{$nav.name}</a>
+                {else}
+                <a
+                   {if $nav.child}
+                    class="navMore"
+                    href="javascript:;"
+                   {else/}
+                   class="none"
+                   href="/{$nav.wap_url}"
+                   {/if}
+                    isOpen=false>{$nav.name}</a>
+                {if $nav.child}
+                <ul>
+                    {foreach from=$nav.child item=v}
+                    <li>
+                        <a href="/{$v.wap_url}">{$v.name}</a>
+                    </li>
+                    {/foreach}
+
+                </ul>
+                {/if}
+                {/if}
+            </li>
+            {/foreach}
+
+
+        </ul>
+        <div class="zw"></div>
+    </div>
+</header>

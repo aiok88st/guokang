@@ -1,9 +1,16 @@
+
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <link rel="stylesheet" href="themes/default/scss/video-js.css" />
-<link rel="stylesheet" href="themes/default/scss/zjindex.css" />
-
-
-
+<link rel="stylesheet" href="themes/default/scss/zjindex.css?v=2" />
+<style type="text/css">
+	.part3 img{
+		width: auto !important;
+		height: 100% !important;
+	}
+	.part3 .ptImg .ptImgBox{
+		overflow: hidden;
+	}
+</style>
 		<div id="part1" class="w12">
 			<div class="w12">
 
@@ -15,56 +22,56 @@
 
                 </div>
 				<div class="partR floatl">
-					<div class="nameBox">
-						<ul>
-							<li>
-								<p>极速投保</p>
-							</li>
-							<li>
-								<input type="search" placeholder="请输入您的姓名"/>
-							</li>
-						</ul>
-					</div>
-					<div class="sexBox">
-						<div class="sexBoxl floatl">
-							<p>请选择性别</p>
+					<form class="layui-form">
+						<div class="nameBox">
+							<ul>
+								<li>
+									<p>极速管家</p>
+								</li>
+								<li>
+									<input type="search" name="name" lay-verify="required" placeholder="请输入您的姓名"/>
+								</li>
+							</ul>
 						</div>
-						<div class="sexBoxr floatl">
-							<div class="layui-form">
-								<!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
-								<div class="layui-form-item">
-									<div class="layui-input-block">
-										<input type="radio" name="sex" value="0" title="男" checked="checked">
-										<input type="radio" name="sex" value="0" title="女">
+						<div class="sexBox">
+							<div class="sexBoxl floatl">
+								<p>请选择性别</p>
+							</div>
+							<div class="sexBoxr floatl">
+								<div class="layui-form">
+									<!-- 提示：如果你不想用form，你可以换成div等任何一个普通元素 -->
+									<div class="layui-form-item">
+										<div class="layui-input-block">
+											<input type="radio" name="gender" value="1" title="男" checked="checked">
+											<input type="radio" name="gender" value="2" title="女">
+										</div>
 									</div>
 								</div>
 							</div>
+							<div class="clearl"></div>
 						</div>
-						<div class="clearl"></div>
-					</div>
-					<div class="phoneBox">
-						<input type="search" placeholder="请输入您的联系电话"/>
-					</div>
-					<div class="selectBox">
-						<div class="layui-form">
-							<div class="layui-input-block">
-						      	<select name="city" lay-verify="required">
-							        <option value=""></option>
-							        <option value="0">北京</option>
-							        <option value="1">上海</option>
-							        <option value="2">广州</option>
-							        <option value="3">深圳</option>
-							        <option value="4">杭州</option>
-						      	</select>
-						    </div>
+						<div class="phoneBox">
+							<input type="search" name="mobile" lay-verify="phone" placeholder="请输入您的联系电话"/>
 						</div>
-					</div>
-					<div class="btnBox">
-						<button class="btn">马上呼叫您的保险经纪人</button>
-					</div>
-					<div class="tips">
-						<p>目前已有人<span>10000000+</span>提交投保表单</p>
-					</div>
+						<div class="selectBox">
+							<div class="layui-form">
+								<div class="layui-input-block">
+									<select name="demand" lay-verify="required">
+										<option value=""></option>
+										<!--{foreach from=$policy_type item=item}-->
+										<option value="{$item}">{$item}</option>
+										<!--{/foreach}-->
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="btnBox">
+							<button class="btn" lay-submit lay-filter="policy">马上呼叫您的健康规划师</button>
+						</div>
+						<div class="tips">
+							<p>目前已有<span>10010181</span>人申请使用服务</p>
+						</div>
+					</form>
 				</div>
 				<div class="clearl"></div>
 			</div>
@@ -75,14 +82,19 @@
 				<div class="floatl">
 					<ul>
 						<li>
-							<p class="pwTitle">{$vo.goods_name}</p>
+							<p class="pwTitle">{$vo.title}</p>
 						</li>
 						<li>
-							<p class="pwcontent">{$vo.goods_brief}</p>
+							<p class="pwcontent">{$vo.description}</p>
 						</li>
 						<li>
 							<div class="pwBtn">
-								<a href="goods.php?id={$vo.goods_id}">查看详情</a>
+								{if $vo.new_url}
+								<a href="{$vo.new_url}">查看详情</a>
+								{else}
+								<a href="hd-{$vo.article_id}.html">查看详情</a>
+								{/if}
+
 							</div>
 						</li>
 					</ul>
@@ -105,16 +117,17 @@
 
 						</li>
 						<li>
-                            <!--{foreach from=$one['filter_attr'] item=cat}-->
-							<a href="category.php?id=2&cid=2&aid={$one.cat_id}" class="floatl">{$cat}</a>
+							<a href="category-2-2.html" class="floatl">全部</a>
+                            <!--{foreach from=$one.chile_attr item=cat}-->
+							<a href="category-2-2-{$cat.cat_id}.html" class="floatl">{$cat.cat_name}</a>
                             <!--{/foreach}-->
 
-							<a href="category.php?id=2&cid=2" class="floatl">全部</a>
+
 						</li>
 					</ul>
 				</div>
 				<div class="floatl ptImg">
-					<a href="goods.php?id={$one_goods[0].goods_id}" class="ptImgBox">
+					<a href="goods-{$one_goods[0].goods_id}.html" class="ptImgBox">
 						<img src="{$one_goods[0].original_img}" />
 					</a>
 				</div>
@@ -134,7 +147,7 @@
 							</li>
 							
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$one_goods[1].market_price}</p></del>
 									</div>
@@ -142,10 +155,10 @@
 										<p>会员价:<span>&yen;</span><span>{$one_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$one_goods[1].goods_id}" class="floatr">马上购买</a>
+									<a href="goods-{$one_goods[1].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$one_goods[1].goods_id}-over.html" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -167,7 +180,7 @@
 								{$one_goods[2].goods_brief}
 							</li>						
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$one_goods[2].market_price}</p></del>
 									</div>
@@ -175,10 +188,12 @@
 										<p>会员价:<span>&yen;</span><span>{$one_goods[2].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$one_goods[2].goods_id}" class="floatr">马上购买</a>
+
+
+									<a href="goods-{$one_goods[2].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$one_goods[2].goods_id}-over.html" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -197,10 +212,12 @@
 							{$two.cat_desc}
 						</li>
 						<li>
-                            <!--{foreach from=$two['filter_attr'] item=cat}-->
-                            <a href="category.php?id=2&cid=3" class="floatl">{$cat}</a>
+
+							<a href="category-2-3.html" class="floatl">全部</a>
+                            <!--{foreach from=$two.chile_attr item=cat}-->
+							<a href="category-2-2-{$cat.cat_id}.html" class="floatl">{$cat.cat_name}</a>
                             <!--{/foreach}-->
-							<a href="category.php?id=2&cid=3" class="floatl">全部</a>
+
 						</li>
 					</ul>
 				</div>
@@ -221,7 +238,7 @@
 							</li>
 							
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$two_goods[0].market_price}</p></del>
 									</div>
@@ -229,10 +246,11 @@
 										<p>会员价:<span>&yen;</span><span>{$two_goods[0].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$two_goods[0].goods_id}" class="floatr">马上购买</a>
+
+									<a href="goods-{$two_goods[0].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$two_goods[0].goods_id}-over.html" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -254,7 +272,7 @@
 								{$two_goods[1].goods_brief}
 							</li>						
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$two_goods[1].market_price}</p></del>
 									</div>
@@ -262,10 +280,13 @@
 										<p>会员价:<span>&yen;</span><span>{$two_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$two_goods[1].goods_id}" class="floatr">马上购买</a>
+
+
+									<a href="goods-{$two_goods[1].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$two_goods[1].goods_id}-over.html" class="floatr">马上购买</a>
+
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -273,7 +294,7 @@
 					</div>
 				</div>
 				<div class="floatl ptImg">
-					<a href="goods.php?id={$two_goods[2].goods_id}" class="ptImgBox">
+					<a href="goods-{$two_goods[2].goods_id}.html" class="ptImgBox">
 						<img src="{$two_goods[2].original_img}" />
 					</a>
 				</div>
@@ -289,15 +310,16 @@
                             {$three.cat_desc}
 						</li>
 						<li>
-                            <!--{foreach from=$three['filter_attr'] item=cat}-->
-                            <a href="category.php?id=2&cid=6" class="floatl">{$cat}</a>
+							<a href="category-2-6.html" class="floatl">全部</a>
+                            <!--{foreach from=$three.chile_attr item=cat}-->
+                            <a href="category-2-6-{$cat.cat_id}.html" class="floatl">{$cat,cat_name}</a>
                             <!--{/foreach}-->
-							<a href="category.php?id=2&cid=6" class="floatl">全部</a>
+
 						</li>
 					</ul>
 				</div>
 				<div class="floatl ptImg">
-					<a href="goods.php?id={$three_goods[0].goods_id}" class="ptImgBox">
+					<a href="goods-{$three_goods[0].goods_id}.html" class="ptImgBox">
 						<img src="{$three_goods[0].original_img}" />
 					</a>
 				</div>
@@ -317,7 +339,7 @@
 							</li>
 							
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$three_goods[1].market_price}</p></del>
 									</div>
@@ -325,10 +347,12 @@
 										<p>会员价:<span>&yen;</span><span>{$three_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$three_goods[1].goods_id}" class="floatr">马上购买</a>
+									<a href="goods-{$three_goods[1].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$three_goods[1].goods_id}-over.html" class="floatr">马上购买</a>
+
+
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -350,7 +374,7 @@
 								{$three_goods[2].goods_brief}
 							</li>						
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$three_goods[2].market_price}</p></del>
 									</div>
@@ -358,10 +382,11 @@
 										<p>会员价:<span>&yen;</span><span>{$three_goods[2].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$three_goods[2].goods_id}" class="floatr">马上购买</a>
+
+									<a href="goods-{$three_goods[2].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$three_goods[2].goods_id}-over.html" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -380,10 +405,11 @@
                             {$four.cat_desc}
 						</li>
 						<li>
-                            <!--{foreach from=$four['filter_attr'] item=cat}-->
-                            <a href="category.php?id=2&cid=5" class="floatl">{$cat}</a>
+							<a href="category-2-5.html" class="floatl">全部</a>
+                            <!--{foreach from=$four.chile_attr item=cat}-->
+							<a href="category-2-6-{$cat.cat_id}.html" class="floatl">{$cat,cat_name}</a>
                             <!--{/foreach}-->
-							<a href="category.php?id=2&cid=5" class="floatl">全部</a>
+
 						</li>
 					</ul>
 				</div>
@@ -403,7 +429,7 @@
 							</li>
 							
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$four_goods[0].market_price}</p></del>
 									</div>
@@ -411,10 +437,10 @@
 										<p>会员价:<span>&yen;</span><span>{$four_goods[0].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$four_goods[0].goods_id}" class="floatr">马上购买</a>
+									<a href="goods-{$four_goods[0].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$four_goods[0].goods_id}-over.html" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -436,7 +462,7 @@
 								{$four_goods[1].goods_brief}
 							</li>						
 							<li>
-								<div class="priceBox">
+<!-- 								<div class="priceBox">
 									<div class="prLeft floatl">
 										<del><p>市场价&yen;{$four_goods[1].market_price}</p></del>
 									</div>
@@ -444,10 +470,10 @@
 										<p>会员价:<span>&yen;</span><span>{$four_goods[1].member_price}</span></p>
 									</div>
 									<div class="clearBoth"></div>
-								</div>
+								</div> -->
 								<div class="ptcMethod">
-									<a href="###" class="floatl">服务介绍</a>
-									<a href="goods.php?id={$four_goods[1].goods_id}" class="floatr">马上购买</a>
+									<a href="goods-{$four_goods[1].goods_id}.html" class="floatl">服务介绍</a>
+									<a href="goods-{$four_goods[1].goods_id}-over.html" class="floatr">马上购买</a>
 									<div class="clearBoth"></div>
 								</div>
 							</li>
@@ -455,13 +481,14 @@
 					</div>
 				</div>
 				<div class="floatl ptImg">
-					<a href="goods.php?id={$four_goods[2].goods_id}" class="ptImgBox">
+					<a href="goods-{$four_goods[2].goods_id}.html" class="ptImgBox">
 						<img src="{$four_goods[2].original_img}" />
 					</a>
 				</div>
 				<div class="floatl"></div>
 			</div>
-		</div>	
+		</div>
+<!--新闻-->
 		<div id="part4">
 			<div class="part4 w12">
 				<div class="pfLeft floatl">
@@ -469,202 +496,98 @@
 						<p>会员评价</p>
 					</div>
 					<div class="pfList">
-						<div class="pflChild">
+						<!--{foreach from=$commont_list item=v}-->
+						<div class="pflChild" onclick="window.location.href='article-{$v.article_id}.html'">
 							<div class="pflLeft floatl">
 								<div class="pflHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
+									<img src="{$v.file}" onerror="this.src='themes/default/img/develop.jpg'" style="width: 100%"/>
 								</div>
 							</div>
 							<div class="pflRight floatl">
 								<ul>
 									<li>
-										<p>招商信诺客户徐女士</p>
-										<span>2017-11-22</span>
+
+										<p>{$v.title}</p>
+
+										<span>{$v.add_time}</span>
 									</li>
 									<li>
-										<p>国康的服务很给力！国康的服务很给力！国康的服务很给力！现场的服务真的是超预期！</p>
+										<p>{$v.description}</p>
 									</li>
 								</ul>
 							</div>
 							<div class="clearl"></div>
 						</div>
-						<div class="pflChild">
-							<div class="pflLeft floatl">
-								<div class="pflHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
-								</div>
-							</div>
-							<div class="pflRight floatl">
-								<ul>
-									<li>
-										<p>招商信诺客户徐女士</p>
-										<span>2017-11-22</span>
-									</li>
-									<li>
-										<p>国康的服务很给力！国康的服务很给力！国康的服务很给力！现场的服务真的是超预期！</p>
-									</li>
-								</ul>
-							</div>
-							<div class="clearl"></div>
-						</div>
-						<div class="pflChild">
-							<div class="pflLeft floatl">
-								<div class="pflHead">
-									<img src="themes/default/image/bannerIndex.jpg" />
-								</div>
-							</div>
-							<div class="pflRight floatl">
-								<ul>
-									<li>
-										<p>招商信诺客户徐女士</p>
-										<span>2017-11-22</span>
-									</li>
-									<li>
-										<p>国康的服务很给力！国康的服务很给力！国康的服务很给力！现场的服务真的是超预期！</p>
-									</li>
-								</ul>
-							</div>
-							<div class="clearl"></div>
-						</div>
+						<!--{/foreach}-->
 					</div>
 				</div>
 				<div class="pfRight floatl">
 					<div class="pfrNav">
 						<ul>
+							<!--{foreach from=$new_cat item=item}-->
 							<li>
-								<a href="javascript:;" index="1">企业新闻</a>
+								<a index="{$item.cat_id}">{$item.cat_name}</a>
 							</li>
-							<li>
-								<a href="javascript:;" index="2">健康资讯</a>
-							</li>
-							<li>
-								<a href="javascript:;" index="3">保险资讯</a>
-							</li>
+							<!--{/foreach}-->
 						</ul>
 						<div class="clearl"></div>
 						<span></span>
 					</div>
 					<div class="pfrThree">
-						<div class="pfrThree1">
-							<div class="pfrContent">
-								<div class="pfrcLeft floatl" onclick="javascript:window.location.href='article.php?id={$qiye_news[0].article_id}'">
-									<img src="{$qiye_news[0].file_url}" />
+
+						<!--{foreach from=$new_list item=item key=key}-->
+
+						<div class="pfrThree{$item.cat_id} newList" {if $key eq 0}style="display: block"{/if}>
+							<!--{foreach from=$item.lists item=v key=k}-->
+
+							<!--{if $k eq 0}-->
+							<div class="pfrContent" onclick="javascript:window.location.href='article-{$v.article_id}.html'">
+								<div class="pfrcLeft floatl" >
+									<img src="{$v.file_url}" onerror="this.src='themes/default/img/develop.jpg'" style="width: 100%"/>
 								</div>
 								<div class="pfrcRight floatl">
 									<ul>
-										<li onclick="javascript:window.location.href='article.php?id={$qiye_news[0].article_id}'">
-											<p>{$qiye_news[0].title}</p>
+										<li style="width: 100%">
+											<p>{$v.title}</p>
 										</li>
-										<li onclick="javascript:window.location.href='article.php?id={$qiye_news[0].article_id}'">
-											<p>{$qiye_news[0].description}</p>
+										<li style="width: 100%">
+											<p>{$v.description}</p>
 										</li>
 										<li>
 											<div class="lookBtn">
-												<a href="article_cat.php?id=6">查看更多</a>
+												<a href="article_cat-{$item.cat_id}.html">查看更多</a>
 											</div>
 										</li>
 									</ul>
 								</div>
 								<div class="clearl"></div>
 							</div>
+							<!--{/if}-->
+
+							<!--{if $k gt 0}-->
+
+							<!--{if $k eq 6}-->
+
+					</div>
+					<div class="pfnRight floatl">
+							<!--{/if}-->
+
+							<!--{if $k eq 1}-->
 							<div class="pfNews">
 								<div class="pfnLeft floatl">
-									<a href="article.php?id={$qiye_news[1].article_id}">{$qiye_news[1].title}</a>
-									<a href="article.php?id={$qiye_news[2].article_id}">{$qiye_news[2].title}</a>
-									<a href="article.php?id={$qiye_news[3].article_id}">{$qiye_news[3].title}</a>
-									<a href="article.php?id={$qiye_news[4].article_id}">{$qiye_news[4].title}</a>
-									<a href="article.php?id={$qiye_news[5].article_id}">{$qiye_news[5].title}</a>
-								</div>
-								<div class="pfnRight floatl">
-									<a href="article.php?id={$qiye_news[6].article_id}">{$qiye_news[6].title}</a>
-									<a href="article.php?id={$qiye_news[7].article_id}">{$qiye_news[7].title}</a>
-									<a href="article.php?id={$qiye_news[8].article_id}">{$qiye_news[8].title}</a>
-									<a href="article.php?id={$qiye_news[9].article_id}">{$qiye_news[9].title}</a>
-									<a href="article.php?id={$qiye_news[10].article_id}">{$qiye_news[10].title}</a>
+							<!--{/if}-->
+									<a href="article-{$v.article_id}.html">{$v.title|truncate:26:"...":true}</a>
+
+							<!--{if $k eq $item.lists_num}-->
 								</div>
 								<div class="clearl"></div>
 							</div>
+							<!--{/if}-->
+
+							<!--{/if}-->
+						<!--{/foreach}-->
 						</div>
-						<div class="pfrThree2">
-							<div class="pfrContent">
-								<div class="pfrcLeft floatl" onclick="javascript:window.location.href='article.php?id={$jk_news[0].article_id}'">
-									<img src="{$jk_news[0].file_url}" />
-								</div>
-								<div class="pfrcRight floatl">
-									<ul>
-										<li onclick="javascript:window.location.href='article.php?id={$jk_news[0].article_id}'">
-											<p>{$jk_news[0].title}</p>
-										</li>
-										<li onclick="javascript:window.location.href='article.php?id={$jk_news[0].article_id}'">
-											<p>{$jk_news[0].description}</p>
-										</li>
-										<li>
-											<div class="lookBtn">
-												<a href="article_cat.php?id=7">查看更多</a>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<div class="clearl"></div>
-							</div>
-							<div class="pfNews">
-								<div class="pfnLeft floatl">
-									<a href="article.php?id={$jk_news[1].article_id}">{$jk_news[1].title}</a>
-									<a href="article.php?id={$jk_news[2].article_id}">{$jk_news[2].title}</a>
-									<a href="article.php?id={$jk_news[3].article_id}">{$jk_news[3].title}</a>
-									<a href="article.php?id={$jk_news[4].article_id}">{$jk_news[4].title}</a>
-									<a href="article.php?id={$jk_news[5].article_id}">{$jk_news[5].title}</a>
-								</div>
-								<div class="pfnRight floatl">
-									<a href="article.php?id={$jk_news[6].article_id}">{$jk_news[6].title}</a>
-									<a href="article.php?id={$jk_news[7].article_id}">{$jk_news[7].title}</a>
-									<a href="article.php?id={$jk_news[8].article_id}">{$jk_news[8].title}</a>
-									<a href="article.php?id={$jk_news[9].article_id}">{$jk_news[9].title}</a>
-									<a href="article.php?id={$jk_news[10].article_id}">{$jk_news[10].title}</a>
-								</div>
-								<div class="clearl"></div>
-							</div>
-						</div>
-						<div class="pfrThree3">
-							<div class="pfrContent">
-								<div class="pfrcLeft floatl" onclick="javascript:window.location.href='article.php?id={$bx_news[0].article_id}'">
-									<img src="{$bx_news[0].file_url}" />
-								</div>
-								<div class="pfrcRight floatl">
-									<ul>
-										<li onclick="javascript:window.location.href='article.php?id={$bx_news[0].article_id}'">
-											<p>{$bx_news[0].title}</p>
-										</li>
-										<li onclick="javascript:window.location.href='article.php?id={$bx_news[0].article_id}'">
-											<p>{$bx_news[0].description}</p>
-										</li>
-										<li>
-											<div class="lookBtn">
-												<a href="article_cat.php?id=8">查看更多</a>
-											</div>
-										</li>
-									</ul>
-								</div>
-								<div class="clearl"></div>
-							</div>
-							<div class="pfNews">
-								<div class="pfnLeft floatl">
-									<a href="article.php?id={$bx_news[1].article_id}">{$bx_news[1].title}</a>
-									<a href="article.php?id={$bx_news[2].article_id}">{$bx_news[2].title}</a>
-									<a href="article.php?id={$bx_news[3].article_id}">{$bx_news[3].title}</a>
-									<a href="article.php?id={$bx_news[4].article_id}">{$bx_news[4].title}</a>
-									<a href="article.php?id={$bx_news[5].article_id}">{$bx_news[5].title}</a>
-								</div>
-								<div class="pfnRight floatl">
-									<a href="article.php?id={$bx_news[6].article_id}">{$bx_news[6].title}</a>
-									<a href="article.php?id={$bx_news[7].article_id}">{$bx_news[7].title}</a>
-									<a href="article.php?id={$bx_news[8].article_id}">{$bx_news[8].title}</a>
-									<a href="article.php?id={$bx_news[9].article_id}">{$bx_news[9].title}</a>
-									<a href="article.php?id={$bx_news[10].article_id}">{$bx_news[10].title}</a>
-								</div>
-								<div class="clearl"></div>
-							</div>
-						</div>
+						<!--{/foreach}-->
 					</div>
 					
 				</div>
@@ -678,11 +601,8 @@
 			<div class="part5 w12">
                 <!--{foreach from=$lj_video item=vo}-->
 				<div class="videoChild floatl">
-					<div class="videoBox">
-						<video id="my-video1" class="video-js" controls preload="auto" width="740" height="400"
-						  poster="{$vo.file_url}" data-setup="{}">
-							<source src="{$vo.link}" type="video/mp4"></source>
-						</video>
+					<div class="videoBox" onclick="show_video('{$vo.file_url}','{$vo.link}')">
+						<img src="{$vo.file_url}" alt="">
 						<div class="playBox playBox1">
 							<button></button>
 						</div>
@@ -693,7 +613,7 @@
 								<p>{$vo.title}</p>
 							</li>
 							<li>
-								<p>{$vo.description}</p>
+								<p>{$vo.description|truncate:20:"...":true}</p>
 							</li>
 						</ul>
 					</div>
@@ -705,4 +625,34 @@
 		</div>
 
 <!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<div id="video" style="display: none">
+	<video id="my-video1" class="video-js" controls preload="auto" width="740" height="400" poster="" data-setup="{}">
 
+	</video>
+</div>
+<script type="text/javascript">
+    layui.use(['layer'], function(){
+        $ = layui.jquery;
+        var element = layui.element;
+
+    })
+    function show_video(img,url) {
+
+        $('#my-video1').attr('poster',img);
+        $('#my-video1').attr('src',url);
+
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn: 1,
+            area: ['740px','400px'],
+            skin: 'layui-layer-nobg', //没有背景色
+            shadeClose: true,
+            content: $('#video'),
+            cancel: function(){
+                $('#my-video1')[0].pause();
+            }
+        });
+
+    }
+</script>

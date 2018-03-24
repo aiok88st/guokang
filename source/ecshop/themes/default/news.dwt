@@ -1,13 +1,25 @@
 <!-- #BeginLibraryItem "/library/page_header.lbi" --><!-- #EndLibraryItem -->
 <link rel="stylesheet" href="themes/default/scss/produce.css" />
 <link rel="stylesheet" href="themes/default/scss/news.css" />
-<link rel="stylesheet" href="themes/default/scss/fengxiang.css" />
 <link rel="stylesheet" href="themes/default/scss/page.css" />
+
+<!--<img id="img" style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; z-index: 11; opacity: 0;" src="">-->
 <style>
     #banner img{
-        width: 100%;
+        width: 1920px;
         height: 400px;
     }
+	.nsBox img{
+		max-width: 100%;
+	}
+	#mainContent .leftContent {
+    background-color: rgba(255,255,255,.0);
+    width: 823px;
+    border: 1px solid rgba(255,255,255,.0);
+	}
+	#pager a {
+    background-color: #ffffff;
+	}
 </style>
 		<!--集团简介-->
 		<div id="banner" align="center">
@@ -17,14 +29,14 @@
 
         <!--类型选择-->
         <div id="typeList" class="w12">
-            <div class="typeList">
+            <div class="typeList" style="margin-bottom: 0">
                 <div class="tlLeft floatl">
                     <p>分类</p>
                 </div>
                 <div class="tlRight floatl">
                     <div>
                         <!--{foreach from=$catlist item=vo}-->
-                        <a href="article_cat.php?id={$vo.cat_id}" class="floatl <!-- {if $cat_id eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
+                        <a href="article_cat-{$vo.cat_id}.html" class="floatl <!-- {if $cat_id eq $vo.cat_id} -->aActive<!-- {/if} -->">{$vo.cat_name}</a>
                         <!--{/foreach}-->
 
                         <div class="clearl"></div>
@@ -41,9 +53,11 @@
 
 
                     <!--{foreach from=$artciles_list item=vo}-->
-					<a href="article.php?id={$vo.article_id}" class="nsBox">
+					<a href="article-{$vo.article_id}.html" class="nsBox">
 						<div class="nsLeft floatl">
-							<img src="{$vo.file_url}" />
+
+							<img src="{$vo.file_url}" onerror="this.src='themes/default/img/develop.jpg'"/>
+
 						</div>
 						<div class="nsRight floatl">
 							<div class="nsTitle">

@@ -225,6 +225,7 @@ function init_users()
     }
     include_once(ROOT_PATH . 'includes/modules/integrates/' . $GLOBALS['_CFG']['integrate_code'] . '.php');
     $cfg = unserialize($GLOBALS['_CFG']['integrate_config']);
+
     $cls = new $GLOBALS['_CFG']['integrate_code']($cfg);
 
     return $cls;
@@ -622,6 +623,7 @@ function load_config()
         {
             $arr['integrate_code'] = 'ecshop'; // 默认的会员整合插件为 ecshop
         }
+
         write_static_cache('shop_config', $arr);
     }
     else
@@ -630,6 +632,7 @@ function load_config()
     }
 
     return $arr;
+
 }
 
 /**
@@ -3068,6 +3071,7 @@ function test_api()
                              array_keys($headers),
                              $headers);
 
+
     $req = curl_init($api_url);
     curl_setopt($req, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($req, CURLOPT_SSL_VERIFYHOST, false);
@@ -3153,7 +3157,40 @@ function get_new_news_article($parent_id){
     }
     return $data;
 }
+/**
+ *  获取最新新闻2
+ * @param   string  $product
+ *  @return  array
+ */
+function get_new_news_article2($parent_id,$wh,$limit=5){
+    $where="`parent_id`=$parent_id";
+    if($wh){
+        $where .=" AND ".$wh;
+    }
 
+    $sql = 'SELECT cat_id, cat_name, parent_id FROM  ecs_article_cat WHERE '.$where.' ORDER BY sort_order ASC';
+    $catlist = $GLOBALS['db']->getAll($sql);
+    $uid = '';
+    foreach($catlist as $k=>$v){
+        $uid .= $v['cat_id'].',';
+    }
+    $sqls = 'SELECT article_id, title, author, add_time, file_url, open_type, description, cat_id' .
+        ' FROM ' .$GLOBALS['ecs']->table('article') .
+        ' WHERE is_open = 1 AND cat_id in (' . rtrim($uid, ',') .
+        ') ORDER BY article_type DESC,article_id DESC ,add_time DESC'.
+        ' limit '.$limit;
+    $data = $GLOBALS['db']->getAll($sqls);
+    foreach($data as $k=>$v){
+        if(mb_strlen($v['title'])>13){
+            $data[$k]['title'] = mb_substr($v['title'],0,13,'utf-8').'...';
+        }
+        if(mb_strlen($v['description'])>16){
+            $data[$k]['description'] = mb_substr($v['description'],0,16,'utf-8').'...';
+        }
+        $data[$k]['add_time'] = date('m-d', $v['add_time']);
+    }
+    return $data;
+}
 
 //省市区
 function get_region($pid,$type){
@@ -3163,6 +3200,26 @@ function get_region($pid,$type){
     $data = $GLOBALS['db']->getAll($sql);
     return $data;
 }
+//省市区
+function get_region_info($id){
+    $sql = 'SELECT region_id, parent_id, region_name, region_type' .
+        ' FROM ' .$GLOBALS['ecs']->table('region') .
+        ' WHERE region_id = '.$id;
+    $data = $GLOBALS['db']->getRow($sql);
+    return $data;
+}
 
+/**递归无限分类**/
+function tree($list,$parent_id){
+    $tree=array();
+    foreach ($list as $key=>$value){
+        if($value['parent_id']==$parent_id ){
+             $value['child']=tree($list,$value['id']);
+             $tree[]=$value;
+       }
+    }
+    return $tree;
+}
+/**递归构建html无限分类**/
 
 ?>

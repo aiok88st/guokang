@@ -2,11 +2,11 @@
 <div class="partL floatl">
     <ul>
         <li>
-            <a href="">全部产品</a>
+            <a href="category-2.html">产品列表</a>
         </li>
         <!--{foreach from=$categories item=cat}-->
         <li>
-            <a href="{$cat.url}">{$cat.name|escape:html}</a>
+            <a href="category-2-{$cat.id}.html">{$cat.name|escape:html}</a>
         </li>
         <!--{/foreach}-->
 
